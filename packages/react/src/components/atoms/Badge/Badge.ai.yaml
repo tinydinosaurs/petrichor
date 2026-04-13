@@ -1,0 +1,204 @@
+schema: ptr-contract/v1
+id: badge
+category: atom
+status: draft
+version: 0.1.0
+
+description: >
+  A static display label for status, category, or metadata.
+  Purely visual — no implicit ARIA role, no interactive behavior.
+  Color is never the sole carrier of meaning — text content always
+  conveys the status. For interactive dismissible tags, use Tag (planned).
+
+dom:
+  element: span
+  notes: >
+    No implicit role. No keyboard interaction.
+    When asChild is true, renders as the child element.
+    Use asChild with <a> for linked badges.
+
+props:
+  variant:
+    type: enum
+    values: [default, info, success, warning, error, brand]
+    default: default
+    descriptions:
+      default: Neutral grey — no semantic meaning. Category labels, metadata.
+      info: Rain blue — informational status.
+      success: Teal — positive status. Complete, online, stable.
+      warning: Gold — caution. Beta, deprecated, degraded.
+      error: Amber — problem state. Error, offline, suspended.
+      brand: Brand primary — brand moments. New, Featured, highlighted items.
+
+  size:
+    type: enum
+    values: [sm, md, lg]
+    default: md
+    descriptions:
+      sm: 20px height — tight spaces, table cells, inline with small text
+      md: 24px height — default
+      lg: 28px height — prominent labels, hero contexts
+
+  iconStart:
+    type: ReactNode
+    default: undefined
+    notes: >
+      Icon before label text. Always aria-hidden — decorative only.
+      Common use: status dot (<circle> SVG) for online/offline indicators.
+      Keep icons small — 6–8px for dots, 12px max for other icons.
+
+  asChild:
+    type: boolean
+    default: false
+    notes: >
+      Renders as child element via @radix-ui/react-slot.
+      Use for linked badges: <Badge asChild><a href="...">v2.4.0</a></Badge>
+
+states:
+  default: Static — no hover, focus, or active states unless asChild is used
+
+tokens:
+  border-width: var(--ptr-border-hairline)
+  border-radius: var(--ptr-radius-component-badge)
+  font-family: var(--ptr-typography-font-ui)
+  font-weight: var(--ptr-typography-weight-label)
+  variants:
+    default:
+      background: var(--ptr-color-bg-elevated)
+      color: var(--ptr-color-text-secondary)
+      border: var(--ptr-color-border-subtle)
+    info:
+      background: var(--ptr-color-bg-info)
+      color: var(--ptr-color-text-info)
+    success:
+      background: var(--ptr-color-bg-success)
+      color: var(--ptr-color-text-success)
+    warning:
+      background: var(--ptr-color-bg-warning)
+      color: var(--ptr-color-text-warning)
+    error:
+      background: var(--ptr-color-bg-danger)
+      color: var(--ptr-color-text-danger)
+    brand:
+      background: var(--ptr-color-brand-primary-tint)
+      color: var(--ptr-color-brand-primary-text)
+      border: var(--ptr-color-brand-primary)
+
+brand_radius:
+  raindrop: radius-sm (2px) — rectangular, technical
+  dusk-rose: radius-pill (999px) — full pill, editorial
+  notes: >
+    Same component, different personality per brand.
+    Controlled by --ptr-radius-component-badge token in brand files.
+
+accessibility:
+  role: none (span has no implicit role)
+  keyboard: none — static element, not focusable
+  color_alone: >
+    Never use color as the sole signal. Text content must convey the meaning.
+    Wrong: <Badge variant="error" />
+    Right: <Badge variant="error">Offline</Badge>
+  icon_only: >
+    If icon-only badge is needed, provide aria-label on the Badge element.
+    <Badge aria-label="Status: online" iconStart={<DotIcon />} />
+  contrast: >
+    PENDING — dark mode contrast audit not yet completed.
+    All variants need WebAIM verification. Deferred to visual polish phase.
+
+composition:
+  contains:
+    - Text (required — never color-only)
+    - Single icon via iconStart (optional, decorative)
+
+  contained_by:
+    - Card headers and footers
+    - Table cells
+    - Nav items
+    - Story cards (Exquisite Corpse)
+    - Leaderboard rows (Raindrop)
+    - Any inline context
+
+  never_contains:
+    - Interactive elements
+    - More than 3-4 words
+    - Block-level elements
+
+  never_do:
+    - Use as the only signal for critical information
+    - Use without text content (color alone is insufficient)
+    - Make interactive without asChild
+
+patterns:
+  - id: component-status
+    description: Petrichor component status taxonomy
+    example: |
+      <Badge variant="default">Draft</Badge>
+      <Badge variant="warning">Beta</Badge>
+      <Badge variant="success">Stable</Badge>
+      <Badge variant="error">Deprecated</Badge>
+
+  - id: status-dot
+    description: Online/offline indicator with dot icon
+    example: |
+      <Badge variant="success" iconStart={<DotIcon />}>Online</Badge>
+      <Badge variant="error" iconStart={<DotIcon />}>Offline</Badge>
+    notes: DotIcon is a small filled circle SVG — 6px diameter.
+
+  - id: story-card-meta
+    description: Story metadata in Exquisite Corpse story cards
+    example: |
+      <Badge variant="brand">New</Badge>
+      <Badge variant="success" iconStart={<DotIcon />}>Complete</Badge>
+      <Badge variant="info">4 contributors</Badge>
+      <Badge variant="default">6 segments</Badge>
+
+  - id: linked-badge
+    description: Version number or tag that links to a page
+    example: |
+      <Badge asChild variant="info">
+        <a href="/changelog">v2.4.0</a>
+      </Badge>
+
+anti_patterns:
+  - id: color-only
+    description: Using variant color without text
+    wrong: <Badge variant="error" />
+    right: <Badge variant="error">Offline</Badge>
+    reason: Color alone fails WCAG 1.4.1 — use of color.
+
+  - id: too-long
+    description: Badge text longer than 3-4 words
+    wrong: <Badge>Currently processing your request</Badge>
+    right: <Badge variant="warning">Processing</Badge>
+    reason: >
+      Badge is for compact labels. Long text belongs in helper text,
+      a tooltip, or a dedicated status component.
+
+  - id: interactive-without-aschild
+    description: Adding onClick to a Badge span
+    wrong: <Badge onClick={handleClick}>Filter</Badge>
+    right: |
+      <Badge asChild variant="info">
+        <button onClick={handleClick}>Filter</button>
+      </Badge>
+    reason: >
+      Span has no keyboard semantics. Screen reader users cannot
+      interact with it. Use asChild with a button or anchor.
+
+related:
+  - id: tag
+    status: planned
+    when_to_use: >
+      Interactive, dismissible, or selectable labels — filter chips,
+      removable tags. Tag composes Badge visually but adds interactivity.
+
+  - id: avatar
+    status: planned
+    when_to_use: >
+      When you need to represent a person compactly. Avatar can be
+      composed with Badge for status indicators (online dot on avatar).
+
+  - id: button
+    when_to_use: >
+      Any time the label needs to trigger an action. Badge is static —
+      if it needs to do something, use Button or asChild with a button.

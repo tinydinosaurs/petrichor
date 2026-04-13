@@ -1,0 +1,111 @@
+schema: ptr-contract/v1
+id: spinner
+category: atom
+status: draft
+version: 0.1.0
+
+description: >
+  A loading indicator SVG. Inherits color via currentColor.
+  Announces loading state via role="status" and aria-label.
+  Use inside Button via the loading prop — not directly.
+  For content shapes, use Card's loading prop instead.
+
+dom:
+  element: svg
+  attributes:
+    role: status
+    aria-label: "{label prop, default: 'Loading'}"
+
+props:
+  size:
+    type: enum
+    values: [xs, sm, md, lg]
+    default: sm
+    pixel_values:
+      xs: 12px
+      sm: 16px
+      md: 20px
+      lg: 24px
+
+  label:
+    type: string
+    default: Loading
+    notes: >
+      Accessible label announced by screen readers.
+      Always provide context-specific text when known:
+      "Saving changes", "Loading results", "Submitting form"
+      Generic "Loading" is acceptable as a fallback only.
+
+color:
+  mechanism: currentColor
+  notes: >
+    Set color on the parent element — never pass color directly to Spinner.
+    Spinner picks up whatever color is inherited from CSS context.
+
+accessibility:
+  role: status — announces loading state to screen readers
+  aria_label: from label prop, default "Loading"
+  reduced_motion: >
+    The CSS animation should respect prefers-reduced-motion.
+    Add @media (prefers-reduced-motion: reduce) override if needed.
+  paired_with_text: >
+    When shown alongside visible loading text, add aria-hidden="true"
+    to the Spinner to prevent double-announcement:
+    <div role="status"><Spinner aria-hidden="true" /><span>Loading...</span></div>
+
+composition:
+  contained_by:
+    - Any element needing a loading indicator
+    - Button (via loading prop — do not use Spinner directly in Button)
+    - Section or page loading containers
+
+  never_use_directly_in:
+    - Button — use the loading prop instead
+    - Card — use the loading prop instead
+
+patterns:
+  - id: inline-with-text
+    example: |
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ptr-spacing-2xs)', color: 'var(--ptr-color-text-secondary)' }}>
+        <Spinner size="sm" label="Loading results" />
+        <span>Loading results...</span>
+      </div>
+
+  - id: section-loading
+    example: |
+      <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ptr-spacing-xl)', color: 'var(--ptr-color-text-tertiary)' }}>
+        <Spinner size="lg" label="Loading dashboard" />
+      </div>
+
+  - id: button-loading
+    description: Do NOT do this — use Button's loading prop instead
+    wrong: |
+      <Button>
+        <Spinner size="sm" />
+        Saving...
+      </Button>
+    right: |
+      <Button loading={isSaving}>Save changes</Button>
+
+anti_patterns:
+  - id: direct-in-button
+    description: Using Spinner directly inside Button
+    wrong: <Button><Spinner /></Button>
+    right: <Button loading={true}>Label</Button>
+    reason: Button's loading prop handles spinner, disabled state, and aria-busy together.
+
+  - id: hardcoded-color
+    description: Setting color directly on Spinner
+    wrong: <Spinner color="var(--ptr-color-brand-primary)" />
+    right: |
+      <span style={{ color: 'var(--ptr-color-brand-primary)' }}>
+        <Spinner />
+      </span>
+    reason: Spinner uses currentColor — set color on the parent.
+
+related:
+  - id: button
+    when_to_use: Button has a built-in loading prop that uses Spinner internally.
+
+  - id: card
+    when_to_use: Card has a built-in loading prop that shows a skeleton — better than Spinner for known content shapes.

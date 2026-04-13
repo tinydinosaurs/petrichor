@@ -1,0 +1,16 @@
+node_modules/
+.turbo/
+
+# Style Dictionary output
+packages/tokens/dist/
+
+# Build outputs
+packages/*/dist/
+packages/docs/storybook-static/
+
+# OS
+.DS_Store
+
+# Env
+.env
+.env.local

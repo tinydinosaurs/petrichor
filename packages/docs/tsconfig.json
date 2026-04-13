@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"paths": {
+			"@petrichor/tokens/*": ["../tokens/dist/*"],
+			"@petrichor/tokens": ["../tokens/dist/js/tokens.js"]
+		}
+	},
+	"include": [".storybook/**/*"]
+}

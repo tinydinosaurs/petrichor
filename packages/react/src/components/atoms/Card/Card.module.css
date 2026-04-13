@@ -1,0 +1,180 @@
+/* ============================================================
+   CARD ROOT
+   ============================================================ */
+
+.card {
+	background: var(--ptr-color-bg-surface);
+	border: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
+	border-radius: var(--ptr-radius-component-card);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.loading {
+	pointer-events: none;
+}
+
+/* ============================================================
+   SKELETON
+   ============================================================ */
+
+.skeletonWrap {
+	padding: var(--ptr-spacing-sm);
+}
+
+.skeletonLine {
+	border-radius: var(--ptr-radius-md);
+	background: var(--ptr-color-bg-elevated);
+	animation: ptr-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes ptr-shimmer {
+	0%,
+	100% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.8;
+	}
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header {
+	padding: var(--ptr-spacing-sm);
+	display: flex;
+	align-items: flex-start;
+	gap: var(--ptr-spacing-2xs);
+}
+
+.headerBordered {
+	border-bottom: var(--ptr-border-hairline) solid
+		var(--ptr-color-border-subtle);
+}
+
+/* ============================================================
+   BODY
+   ============================================================ */
+
+.body {
+	padding: var(--ptr-spacing-sm);
+	flex: 1;
+}
+
+.header + .body,
+.imageWrap + .body {
+	padding-top: 0;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+	padding: var(--ptr-spacing-sm);
+	display: flex;
+	align-items: center;
+	gap: var(--ptr-spacing-2xs);
+}
+
+.footerBordered {
+	border-top: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
+}
+
+/* ============================================================
+   IMAGE
+   ============================================================ */
+
+.imageWrap {
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.image-top {
+	border-radius: 0;
+}
+
+.image-bottom {
+	order: 999;
+	border-radius: 0;
+}
+
+.image-left {
+	width: 40%;
+	border-radius: 0;
+}
+
+.image-right {
+	width: 40%;
+	order: 999;
+	border-radius: 0;
+}
+
+.image-left ~ *,
+.image-right ~ * {
+	flex: 1;
+}
+
+.card:has(.image-left),
+.card:has(.image-right) {
+	flex-direction: row;
+}
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+
+.divider {
+	border: none;
+	border-top: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
+	margin: 0 var(--ptr-spacing-sm);
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: var(--ptr-spacing-xl) var(--ptr-spacing-md);
+	gap: var(--ptr-spacing-2xs);
+}
+
+.emptyIcon {
+	color: var(--ptr-color-text-secondary);
+	margin-bottom: var(--ptr-spacing-2xs);
+}
+
+.emptyMessage {
+	font-family: var(--ptr-typography-font-ui);
+	font-size: var(--ptr-typography-size-base);
+	font-weight: var(--ptr-typography-weight-label);
+	color: var(--ptr-color-text-primary);
+	margin: 0;
+}
+
+.emptyDescription {
+	font-family: var(--ptr-typography-font-ui);
+	font-size: var(--ptr-typography-size-sm);
+	color: var(--ptr-color-text-secondary);
+	margin: 0;
+	max-width: 280px;
+}
+
+.emptyAction {
+	margin-top: var(--ptr-spacing-2xs);
+}

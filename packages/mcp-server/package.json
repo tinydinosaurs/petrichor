@@ -1,0 +1,26 @@
+{
+	"name": "@petrichor/mcp-server",
+	"version": "0.1.0",
+	"description": "Petrichor MCP server — exposes design token schema and component contracts to AI tools",
+	"type": "module",
+	"main": "dist/index.js",
+	"bin": {
+		"petrichor-mcp": "dist/index.js"
+	},
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"dev": "tsc --project tsconfig.json --watch",
+		"start": "node dist/index.js",
+		"typecheck": "tsc --noEmit",
+		"clean": "rm -rf dist"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.0.0",
+		"@petrichor/tokens": "workspace:*",
+		"js-yaml": "^4.1.0"
+	},
+	"devDependencies": {
+		"@types/js-yaml": "^4.0.0",
+		"@types/node": "^20.0.0"
+	}
+}

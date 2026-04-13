@@ -1,0 +1,259 @@
+schema: ptr-contract/v1
+id: text
+category: atom
+status: draft
+version: 0.1.0
+
+description: >
+  Typography component. variant controls visual style (font, size, weight,
+  line-height). as controls the semantic HTML element. Smart defaults pair
+  each variant with its most common semantic element — override as only
+  when document hierarchy and visual hierarchy need to diverge.
+
+  This separation is intentional and important for accessibility: a card
+  with three "heading2"-styled sections inside a page that already has an
+  h2 should use as="h3" to maintain a correct document outline.
+
+dom:
+  element: determined by variant default or as prop override
+  default_elements:
+    display:  h1
+    heading1: h1
+    heading2: h2
+    heading3: h3
+    heading4: h4
+    body-lg:  p
+    body:     p
+    body-sm:  p
+    label:    span
+    caption:  span
+    mono:     code
+
+props:
+  variant:
+    type: enum
+    values: [display, heading1, heading2, heading3, heading4, body-lg, body, body-sm, label, caption, mono]
+    required: true
+    notes: >
+      Controls visual style only — not the HTML element.
+      Pick the variant that matches the visual role.
+      Use the as prop to control semantic element when needed.
+
+  as:
+    type: enum
+    values: [h1, h2, h3, h4, h5, h6, p, span, div, label, code, strong, em, small, blockquote]
+    required: false
+    notes: >
+      Overrides the default semantic element for this variant.
+      Use when visual hierarchy and document outline need to diverge.
+
+      Common cases:
+        - Card section titles that are visually heading2 but semantically
+          heading3 (because the page already has an h2)
+        - label variant used as a real <label> element with htmlFor
+        - display variant used as h2 on a page that already has an h1
+
+  truncate:
+    type: boolean
+    default: false
+    notes: Truncates to single line with ellipsis. Requires a width constraint on the element or a parent.
+
+variants:
+  display:
+    element: h1
+    font: var(--ptr-typography-font-display)
+    size: var(--ptr-typography-size-3xl)
+    weight: var(--ptr-typography-weight-display)
+    line-height: var(--ptr-typography-line-height-display)
+    letter-spacing: var(--ptr-typography-letter-spacing-tight)
+    color: var(--ptr-color-text-primary)
+    brand_note: >
+      Fraunces on Dusk Rose (editorial, wonky, literary).
+      Inter on Raindrop (clean, technical).
+      Use for hero moments, story titles, page-level display text.
+
+  heading1:
+    element: h1
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-2xl)
+    weight: var(--ptr-typography-weight-label)
+    line-height: var(--ptr-typography-line-height-display)
+    letter-spacing: var(--ptr-typography-letter-spacing-tight)
+    color: var(--ptr-color-text-primary)
+
+  heading2:
+    element: h2
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-xl)
+    weight: var(--ptr-typography-weight-label)
+    line-height: var(--ptr-typography-line-height-display)
+    letter-spacing: var(--ptr-typography-letter-spacing-tight)
+    color: var(--ptr-color-text-primary)
+
+  heading3:
+    element: h3
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-lg)
+    weight: var(--ptr-typography-weight-label)
+    line-height: var(--ptr-typography-line-height-ui)
+    color: var(--ptr-color-text-primary)
+
+  heading4:
+    element: h4
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-md)
+    weight: var(--ptr-typography-weight-label)
+    line-height: var(--ptr-typography-line-height-ui)
+    color: var(--ptr-color-text-primary)
+
+  body-lg:
+    element: p
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-md)
+    weight: var(--ptr-typography-weight-body)
+    line-height: var(--ptr-typography-line-height-body)
+    color: var(--ptr-color-text-primary)
+    use_for: Lead paragraphs, prominent descriptions
+
+  body:
+    element: p
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-base)
+    weight: var(--ptr-typography-weight-body)
+    line-height: var(--ptr-typography-line-height-body)
+    color: var(--ptr-color-text-primary)
+    use_for: Default body text, card content, general reading
+
+  body-sm:
+    element: p
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-sm)
+    weight: var(--ptr-typography-weight-body)
+    line-height: var(--ptr-typography-line-height-body)
+    color: var(--ptr-color-text-secondary)
+    use_for: Secondary content, metadata, supporting information
+
+  label:
+    element: span
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-sm)
+    weight: var(--ptr-typography-weight-label)
+    line-height: var(--ptr-typography-line-height-ui)
+    color: var(--ptr-color-text-primary)
+    use_for: >
+      UI labels — stat card labels, section labels, metadata keys.
+      Use as="label" with htmlFor when labeling a form input.
+
+  caption:
+    element: span
+    font: var(--ptr-typography-font-ui)
+    size: var(--ptr-typography-size-xs)
+    weight: var(--ptr-typography-weight-body)
+    line-height: var(--ptr-typography-line-height-ui)
+    color: var(--ptr-color-text-secondary)
+    use_for: Timestamps, update notices, fine print, image captions
+
+  mono:
+    element: code
+    font: var(--ptr-typography-font-mono)
+    size: var(--ptr-typography-size-sm)
+    weight: var(--ptr-typography-weight-body)
+    line-height: var(--ptr-typography-line-height-body)
+    color: var(--ptr-color-text-primary)
+    use_for: Inline code, token names, technical values, scores/stats needing monospace
+
+accessibility:
+  document_outline: >
+    The as prop exists specifically for accessibility. A correct document
+    outline should never skip heading levels (h1 → h3 with no h2).
+    Visual style and semantic structure are independent concerns.
+
+  heading_levels: >
+    Each page should have exactly one h1. Headings should form a
+    logical hierarchy without skipping levels. Use the as prop to
+    adjust semantic level when the visual design calls for a specific
+    variant that doesn't match the outline position.
+
+  label_element: >
+    When using Text as a form label, use as="label" with htmlFor:
+    <Text variant="label" as="label" htmlFor="email-input">Email</Text>
+    This is more explicit than Input's built-in label — use when
+    you need a label outside the Input composite component.
+
+composition:
+  contained_by:
+    - Any layout surface
+    - Card.Header, Card.Body, Card.Footer
+    - StatCard (label and value use Text tokens directly)
+
+  common_patterns:
+    - id: page-header
+      example: |
+        <Text variant="heading1">Season Rankings</Text>
+        <Text variant="body-sm">Division 1 · Spring 2025</Text>
+
+    - id: card-section
+      description: Card section title nested under a page h2 — must use h3
+      example: |
+        <Text variant="heading2" as="h3">Top Players</Text>
+
+    - id: story-hero
+      description: Exquisite Corpse story display
+      example: |
+        <Text variant="display">The Clockmaker's Last Dream</Text>
+        <Text variant="body-lg">
+          The door opened onto a street that hadn't existed yesterday...
+        </Text>
+        <Text variant="caption">4 contributors · 6 segments</Text>
+
+    - id: form-label
+      example: |
+        <Text variant="label" as="label" htmlFor="email">
+          Email address
+        </Text>
+
+    - id: stat-label
+      description: Used inside StatCard for the metric name
+      example: |
+        <Text variant="label">Season points</Text>
+        <Text variant="heading1">2,840</Text>
+
+anti_patterns:
+  - id: skipping-heading-levels
+    description: Using as prop to skip heading levels
+    wrong: |
+      <Text variant="heading1">Page title</Text>
+      <Text variant="heading3" as="h3">Section</Text>
+    right: |
+      <Text variant="heading1">Page title</Text>
+      <Text variant="heading2">Section</Text>
+    reason: >
+      Skipping from h1 to h3 breaks screen reader navigation.
+      If you need the visual size of heading3 after heading1,
+      rethink the hierarchy or use heading2 visually.
+
+  - id: display-overuse
+    description: Using display variant for all headings
+    wrong: <Text variant="display">Every heading on the page</Text>
+    right: <Text variant="display">Hero moment only</Text>
+    reason: >
+      display is for page-level hero text — story titles, dashboard headers.
+      One per screen maximum. Use heading1-4 for structural headings.
+
+  - id: color-override
+    description: Overriding text color inline
+    wrong: <Text variant="body" style={{ color: 'oklch(65% 0.11 240)' }}>Text</Text>
+    right: >
+      Use a semantic token: style={{ color: 'var(--ptr-color-text-info)' }}
+      Or use a status-aware wrapper element.
+    reason: Hardcoded colors bypass the token system and fail the audit script.
+
+related:
+  - id: input
+    when_to_use: Input has its own label — use Text as="label" only outside of Input.
+
+  - id: badge
+    when_to_use: Short status labels — Badge not Text.
+
+  - id: stat-card
+    when_to_use: StatCard composes Text internally for label and value.

@@ -1,0 +1,83 @@
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ptr-spacing-3xs);
+	font-family: var(--ptr-typography-font-ui);
+	font-weight: var(--ptr-typography-weight-label);
+	line-height: 1;
+	white-space: nowrap;
+	border: var(--ptr-border-hairline) solid transparent;
+}
+
+.iconStart {
+	display: inline-flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+/* ============================================================
+   SIZES
+   ============================================================ */
+
+.sm {
+	height: 20px;
+	padding: 0 var(--ptr-spacing-3xs);
+	font-size: var(--ptr-typography-size-xs);
+	border-radius: var(--ptr-radius-component-badge);
+}
+
+.md {
+	height: 24px;
+	padding: 0 var(--ptr-spacing-2xs);
+	font-size: var(--ptr-typography-size-sm);
+	border-radius: var(--ptr-radius-component-badge);
+}
+
+.lg {
+	height: 28px;
+	padding: 0 var(--ptr-spacing-xs);
+	font-size: var(--ptr-typography-size-base);
+	border-radius: var(--ptr-radius-component-badge);
+}
+
+/* ============================================================
+   VARIANTS
+   Dark mode defaults — overridden in light mode via data-color-scheme
+   ============================================================ */
+
+.default {
+	background: var(--ptr-color-bg-elevated);
+	color: var(--ptr-color-text-secondary);
+	border-color: var(--ptr-color-border-subtle);
+}
+
+.info {
+	background: var(--ptr-color-bg-info);
+	color: var(--ptr-color-text-info);
+}
+
+.success {
+	background: var(--ptr-color-bg-success);
+	color: var(--ptr-color-text-success);
+}
+
+.warning {
+	background: var(--ptr-color-bg-warning);
+	color: var(--ptr-color-text-warning);
+}
+
+.error {
+	background: var(--ptr-color-status-error-bg);
+	color: var(--ptr-color-status-error-text);
+}
+
+.danger {
+	background: var(--ptr-color-status-danger-bg);
+	color: var(--ptr-color-status-danger-text);
+}
+
+.brand {
+	background: var(--ptr-color-brand-primary-tint);
+	color: var(--ptr-color-brand-primary-text);
+	border-color: var(--ptr-color-brand-primary);
+}

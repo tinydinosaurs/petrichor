@@ -1,0 +1,120 @@
+schema: ptr-contract/v1
+id: divider
+category: atom
+status: draft
+version: 0.1.0
+
+description: >
+  A thin decorative line for separating content sections.
+  Always aria-hidden — purely visual, no semantic meaning.
+  Whitespace should handle most separation needs.
+  Use Divider only when a visible line adds genuine clarity.
+  Inside Card, use Card.Divider instead.
+
+dom:
+  element: hr
+  notes: >
+    aria-hidden="true" set automatically.
+    Screen readers skip it entirely.
+
+props:
+  orientation:
+    type: enum
+    values: [horizontal, vertical]
+    default: horizontal
+    notes: >
+      vertical requires a flex parent with defined height.
+      align-self: stretch fills the parent height automatically.
+
+  spacing:
+    type: enum
+    values: [none, sm, md, lg]
+    default: none
+    notes: >
+      Adds equal margin on both sides of the divider.
+      none: no margin — position via parent layout
+      sm: var(--ptr-spacing-sm) = 16px on each side
+      md: var(--ptr-spacing-md) = 24px on each side
+      lg: var(--ptr-spacing-lg) = 32px on each side
+
+tokens:
+  color: var(--ptr-color-border-subtle)
+  thickness: var(--ptr-border-hairline)
+
+accessibility:
+  aria_hidden: true — always, automatically
+  meaning: >
+    Divider conveys no information. Section separation
+    must be expressed through heading hierarchy and content
+    structure, not visual lines.
+
+composition:
+  use_instead_inside_card: Card.Divider
+  contained_by:
+    - Any layout surface
+    - Toolbars (vertical orientation)
+    - Section containers (horizontal orientation)
+
+  never_use_for:
+    - Inside Card components — use Card.Divider
+    - Separating list items — use gap/padding
+    - When whitespace is sufficient
+
+patterns:
+  - id: horizontal-section-separator
+    example: |
+      <section>
+        <p>First section</p>
+        <Divider spacing="md" />
+        <p>Second section</p>
+      </section>
+
+  - id: vertical-toolbar-separator
+    description: Separating groups of actions in a toolbar
+    example: |
+      <div style={{ display: 'flex', alignItems: 'center', height: '36px' }}>
+        <button>Bold</button>
+        <button>Italic</button>
+        <Divider orientation="vertical" spacing="sm" />
+        <button>H1</button>
+        <button>H2</button>
+      </div>
+    notes: Flex parent with defined height required for vertical orientation.
+
+anti_patterns:
+  - id: inside-card
+    description: Using Divider inside a Card component
+    wrong: |
+      <Card>
+        <Card.Body>Content</Card.Body>
+        <Divider />
+        <Card.Body>More content</Card.Body>
+      </Card>
+    right: |
+      <Card>
+        <Card.Body>Content</Card.Body>
+        <Card.Divider />
+        <Card.Body>More content</Card.Body>
+      </Card>
+    reason: Card.Divider handles horizontal margin to align with card body padding.
+
+  - id: whitespace-replacement
+    description: Using Divider instead of spacing
+    wrong: |
+      <div>
+        <Button>Save</Button>
+        <Divider spacing="sm" />
+        <Button>Cancel</Button>
+      </div>
+    right: |
+      <div style={{ display: 'flex', gap: 'var(--ptr-spacing-sm)' }}>
+        <Button>Save</Button>
+        <Button>Cancel</Button>
+      </div>
+    reason: >
+      A line between buttons creates visual friction, not clarity.
+      Use gap for spacing between related elements.
+
+related:
+  - id: card
+    when_to_use: Use Card.Divider for dividers inside Card components.

@@ -1,0 +1,189 @@
+schema: ptr-contract/v1
+id: icon
+category: atom
+status: draft
+version: 0.1.0
+
+description: >
+  A normalized wrapper around Phosphor Icons. Handles size mapping,
+  weight selection, color inheritance, and accessibility automatically.
+  Decorative by default — provide a label only when the icon conveys
+  meaning not expressed in nearby text.
+
+library: "@phosphor-icons/react"
+library_notes: >
+  Phosphor has 9000+ icons in 6 weights: thin, light, regular, bold, fill, duotone.
+  Import icon components from @phosphor-icons/react and pass as the icon prop.
+  Example: import { Trophy } from '@phosphor-icons/react'
+
+dom:
+  element: svg (rendered by Phosphor)
+  notes: >
+    Icon renders the Phosphor SVG directly with normalized props.
+    No wrapper element — the SVG is the root.
+
+props:
+  icon:
+    type: "typeof PhosphorIcon"
+    required: true
+    notes: >
+      The Phosphor icon component class, not an instance.
+      Pass the component reference: icon={Trophy}
+      NOT: icon={<Trophy />}
+
+  size:
+    type: enum
+    values: [xs, sm, md, lg, xl]
+    default: sm
+    pixel_values:
+      xs: 12px
+      sm: 16px
+      md: 20px
+      lg: 24px
+      xl: 32px
+    notes: sm is correct for most UI contexts. lg/xl for empty states and decorative use.
+
+  weight:
+    type: enum
+    values: [thin, light, regular, bold, fill, duotone]
+    default: regular
+    notes: >
+      Usually leave unset — brand token controls the default.
+      Raindrop default: regular. Dusk Rose default: light.
+      Override only when a specific weight is needed for a specific context.
+
+  duotone:
+    type: boolean
+    default: false
+    notes: >
+      Explicit flag for the duotone weight. Overrides weight prop.
+      Reserved for expressive moments: empty states, hero sections,
+      onboarding, decorative contexts. NOT for standard UI icons.
+      When in doubt, don't use duotone.
+
+  label:
+    type: string
+    required: false
+    notes: >
+      Accessible label for informative icons.
+      OMIT for decorative icons (default) — aria-hidden="true" is set automatically.
+      PROVIDE when icon conveys meaning not expressed in nearby text.
+
+      Decorative (no label needed):
+        <Icon icon={Trophy} /> next to text "Season champion"
+        <Icon icon={ArrowUp} /> next to "+124 vs last month"
+
+      Informative (label needed):
+        <Icon icon={Warning} label="Warning" /> standing alone
+        <Icon icon={Check} label="Verified" /> as the only indicator
+
+  color:
+    type: string
+    default: currentColor
+    notes: >
+      Defaults to currentColor — inherits from parent CSS.
+      Control icon color by setting color on the parent element, not the icon.
+      Only override when a specific color is needed independent of context.
+
+accessibility:
+  decorative: >
+    Default behavior. aria-hidden="true" set automatically.
+    Screen readers ignore the icon entirely.
+    Use when nearby text already conveys the meaning.
+  informative: >
+    When label is provided: role="img" + aria-label set.
+    Screen reader announces "[label], image".
+    Use when icon is the only conveyor of meaning.
+  principle: >
+    Most icons in UI are decorative. A search icon next to a search input
+    is decorative — the input's label conveys the meaning.
+    A standalone warning icon with no nearby text is informative.
+
+brand_weight_defaults:
+  raindrop: regular
+  dusk-rose: light
+  notes: >
+    Brand weight tokens are planned but not yet implemented in the token schema.
+    Currently the default weight is regular for both brands.
+    When brand weight tokens are added, Icon will read them automatically.
+
+composition:
+  usage: >
+    Pass as iconStart/iconEnd to Button and Input.
+    Pass as icon to StatCard.
+    Use directly in any component that needs an icon.
+
+  examples:
+    button_with_icon: |
+      import { Trophy } from '@phosphor-icons/react'
+      import { Button, Icon } from '@petrichor/react'
+
+      <Button iconStart={<Icon icon={Trophy} />}>
+        View rankings
+      </Button>
+
+    stat_card_icon: |
+      import { Trophy } from '@phosphor-icons/react'
+      import { StatCard, Icon } from '@petrichor/react'
+
+      <StatCard
+        label="Season points"
+        value="2,840"
+        icon={<Icon icon={Trophy} size="sm" />}
+      />
+
+    empty_state: |
+      import { CloudRain } from '@phosphor-icons/react'
+      import { Icon } from '@petrichor/react'
+
+      <div className={styles.emptyState}>
+        <Icon icon={CloudRain} size="xl" duotone />
+        <p>No matches found</p>
+      </div>
+
+anti_patterns:
+  - id: icon-instance-not-class
+    description: Passing an icon instance instead of the component class
+    wrong: <Icon icon={<Trophy />} />
+    right: <Icon icon={Trophy} />
+    reason: Icon needs the component class to pass weight and size props.
+
+  - id: hardcoded-color
+    description: Setting color directly instead of via parent
+    wrong: <Icon icon={Trophy} color="oklch(65% 0.11 240)" />
+    right: |
+      <span style={{ color: 'oklch(65% 0.11 240)' }}>
+        <Icon icon={Trophy} />
+      </span>
+    reason: >
+      Hardcoded colors bypass the token system and don't respond
+      to theme changes. Control color via parent CSS.
+
+  - id: duotone-everywhere
+    description: Using duotone for standard UI icons
+    wrong: <Icon icon={MagnifyingGlass} duotone />
+    right: <Icon icon={MagnifyingGlass} />
+    reason: >
+      Duotone is reserved for expressive moments. Overuse removes its impact.
+      Standard UI icons (search, close, arrow) should use regular or light weight.
+
+  - id: missing-label-standalone
+    description: Standalone icon with no label
+    wrong: <Icon icon={Warning} />
+    right: <Icon icon={Warning} label="Warning" />
+    reason: >
+      When an icon stands alone with no nearby text, it must have a label.
+      aria-hidden without a label means screen reader users miss the information entirely.
+
+related:
+  - id: button
+    when_to_use: Pass Icon as iconStart or iconEnd prop.
+
+  - id: input
+    when_to_use: Pass Icon as prefix or suffix prop for search and field icons.
+
+  - id: stat-card
+    when_to_use: Pass Icon as icon prop for metric category identification.
+
+  - id: badge
+    when_to_use: Pass Icon as iconStart prop for status dot or category icons.

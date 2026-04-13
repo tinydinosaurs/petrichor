@@ -1,0 +1,117 @@
+# =============================================================================
+# PETRICHOR DESIGN SYSTEM — BRAND: RAINDROP
+# =============================================================================
+# Brand token overrides for the Raindrop brand.
+# Target app: Sports ranking app
+# Primary: Rain blue — calm, technical, trustworthy
+#
+# This file overrides ONLY what differs from semantic.yaml defaults.
+# Everything not listed here inherits from semantic.yaml.
+#
+# To apply this brand: merge this file over semantic.yaml in Style Dictionary.
+# CSS output: --ptr-* variables scoped to [data-brand="raindrop"]
+# =============================================================================
+
+meta:
+    brand: { value: 'raindrop', comment: 'Brand identifier' }
+    primary: { value: 'rain-blue', comment: 'Primary accent' }
+    tone: { value: 'technical', comment: 'Sharp, data-dense, analytical' }
+
+# ---------------------------------------------------------------------------
+# BRAND COLOR OVERRIDES
+# ---------------------------------------------------------------------------
+
+color:
+    brand:
+        primary:
+            {
+                value: '{color.rain.600}',
+                comment: 'Rain blue #3d6ea8 — buttons, links, focus rings',
+            }
+        primary-mid:
+            {
+                value: '{color.rain.400}',
+                comment: 'Rain mid #7B9FD4 — hover states, icons',
+            }
+        primary-light:
+            {
+                value: '{color.rain.200}',
+                comment: 'Rain light #b0c8e8 — tinted backgrounds, badges',
+            }
+        primary-tint:
+            {
+                value: '{color.rain.800}',
+                comment: 'Rain tint #1e2d40 — dark mode tinted surfaces',
+            }
+        primary-text:
+            {
+                value: '{color.rain.400}',
+                comment: 'Rain mid — links and labels on dark',
+            }
+
+        # Gradient mark — used in logo, loading bar, focus indicators
+        gradient-from:
+            {
+                value: '{color.rain.600}',
+                comment: 'Gradient start  oklch(46% 0.12 240)',
+            }
+        gradient-to:
+            {
+                value: '{color.rain.400}',
+                comment: 'Gradient end oklch(65% 0.11 240)',
+            }
+        gradient:
+            {
+                value: 'linear-gradient(135deg, oklch(46% 0.12 240), oklch(65% 0.11 240))',
+                comment: 'Raindrop brand gradient',
+            }
+
+# ---------------------------------------------------------------------------
+# TYPOGRAPHY OVERRIDES
+# ---------------------------------------------------------------------------
+
+typography:
+    font:
+        ui:
+            {
+                value: '{typography.family.sans-ui}',
+                comment: 'Inter — Google Fonts',
+            }
+        display:
+            {
+                value: '{typography.family.sans-ui}',
+                comment: 'Inter — same as UI, no separate display font',
+            }
+
+    size:
+        xs: { value: '{typography.size-125.xs}', comment: '10px — 1.25 scale' }
+        sm: { value: '{typography.size-125.sm}', comment: '13px' }
+        base: { value: '{typography.size-125.base}', comment: '16px' }
+        md: { value: '{typography.size-125.md}', comment: '20px' }
+        lg: { value: '{typography.size-125.lg}', comment: '25px' }
+        xl: { value: '{typography.size-125.xl}', comment: '31px' }
+        2xl: { value: '{typography.size-125.2xl}', comment: '39px' }
+        3xl: { value: '{typography.size-125.3xl}', comment: '49px' }
+
+    # Inter-specific: tabular numerals for leaderboard alignment
+    features:
+        numeric:
+            {
+                value: "'tnum', 'cv11'",
+                comment: 'Tabular numerals — column-aligned ranking numbers',
+            }
+
+# ---------------------------------------------------------------------------
+# RADIUS OVERRIDES — sharp, technical
+# ---------------------------------------------------------------------------
+
+radius:
+    component:
+        button:
+            { value: '{border-radius.sm}', comment: '2px — sharp, engineered' }
+        input: { value: '{border-radius.sm}', comment: '2px' }
+        card: { value: '{border-radius.md}', comment: '4px' }
+        modal: { value: '{border-radius.md}', comment: '4px' }
+        badge:
+            { value: '{border-radius.sm}', comment: '2px — rectangular badges' }
+        tooltip: { value: '{border-radius.sm}', comment: '2px' }

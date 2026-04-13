@@ -1,0 +1,284 @@
+schema: ptr-contract/v1
+id: card
+category: atom
+status: draft
+version: 0.1.0
+
+description: >
+  A compound surface component. The Card root provides the container surface.
+  Sub-components (Card.Header, Card.Body, Card.Footer, Card.Image, Card.Divider,
+  Card.Empty) provide optional structure. One topic per card — never two
+  unrelated pieces of content in the same card.
+
+dom:
+  element: div (default) | article | section | li
+  notes: >
+    Use as="article" for standalone content cards (story cards, player profiles).
+    Use as="li" when cards are items in a list.
+    Use as="section" for grouped content areas.
+    Default div is appropriate for UI panels and stat cards.
+
+sub_components:
+  Card.Header:
+    description: Top content area — title, metadata, thumbnail
+    props:
+      bordered:
+        type: boolean
+        default: false
+        notes: Adds hairline bottom border. Use when header is visually distinct from body.
+
+  Card.Body:
+    description: Main content area with standard padding
+    notes: flex-1 — expands to fill available space in vertical cards.
+
+  Card.Footer:
+    description: Bottom content area — actions, metadata, status
+    props:
+      bordered:
+        type: boolean
+        default: false
+        notes: Adds hairline top border. Use for action areas that need separation.
+    layout: flex row, gap 2xs — place Buttons and Badges directly inside.
+
+  Card.Image:
+    description: Full-bleed image that clips to card border radius
+    props:
+      src:
+        type: string
+        required: true
+      alt:
+        type: string
+        required: true
+        notes: Always provide meaningful alt text. Empty string only for decorative images.
+      orientation:
+        type: enum
+        values: [top, bottom, left, right]
+        default: top
+        notes: >
+          top/bottom: vertical card layout (image above/below content).
+          left/right: horizontal card layout (image beside content).
+          left/right triggers flex-row on the card container.
+      aspectRatio:
+        type: string
+        default: undefined
+        notes: >
+          CSS aspect-ratio value. e.g. "16/9", "1/1", "4/3".
+          Recommended for top/bottom orientation to prevent layout shift.
+
+  Card.Divider:
+    description: Thin horizontal rule inside the card
+    notes: >
+      aria-hidden — decorative only. Use sparingly.
+      Let whitespace handle separation where possible.
+      Horizontal margin matches card body padding.
+
+  Card.Empty:
+    description: Empty state pattern — icon + message + optional description + optional CTA
+    props:
+      icon:
+        type: ReactNode
+        notes: Use <Icon duotone size="xl" /> for best results. aria-hidden automatically.
+      message:
+        type: string
+        required: true
+        notes: Primary empty state message. Keep short — 2-5 words.
+      description:
+        type: string
+        notes: Supporting explanation. Why is it empty? What can the user do?
+      action:
+        type: ReactNode
+        notes: Optional CTA. Pass a Button component.
+
+props:
+  as:
+    type: enum
+    values: [div, article, section, li]
+    default: div
+    notes: >
+      Semantic element for the card container.
+      article: standalone content (story cards, player profiles)
+      section: grouped content areas
+      li: items in a card grid list
+      div: UI panels, stat cards, generic containers
+
+  loading:
+    type: boolean
+    default: false
+    notes: >
+      Hides children, renders shimmer skeleton.
+      Keep label/title visible if possible — prevents layout shift.
+      StatCard keeps label visible during loading.
+
+states:
+  default: Surface with border, no shadow.
+  loading: Children hidden, skeleton shimmer visible.
+
+tokens:
+  background: var(--ptr-color-bg-surface)
+  border: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle)
+  border-radius: var(--ptr-radius-component-card)
+  header-padding: var(--ptr-spacing-sm)
+  body-padding: var(--ptr-spacing-sm)
+  footer-padding: var(--ptr-spacing-sm)
+  divider: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle)
+
+accessibility:
+  semantic_element: >
+    Choose as= based on content semantics, not appearance.
+    article: content that makes sense in isolation (story, player profile)
+    li: items in a navigable list
+    div: generic container with no standalone meaning
+  image: >
+    Card.Image requires alt prop. Empty string acceptable for decorative images
+    but prefer meaningful descriptions for content images.
+  empty_state: >
+    Card.Empty icon is aria-hidden — message text conveys the meaning.
+    action CTA should be a Button with clear label text.
+  loading: >
+    Skeleton is aria-hidden. If the card has a visible label during loading,
+    screen reader can identify the loading region by that label.
+
+composition:
+  sub_component_order:
+    recommended: Card.Image → Card.Header → Card.Body → Card.Divider → Card.Footer
+    notes: Any order is valid but this order is most common and expected.
+
+  contains:
+    - Card.Header (optional)
+    - Card.Body (optional)
+    - Card.Footer (optional)
+    - Card.Image (optional)
+    - Card.Divider (optional, use sparingly)
+    - Card.Empty (optional, replaces other content when empty)
+    - Any ReactNode when used as a bare container
+
+  contained_by:
+    - CardGrid molecule (planned)
+    - Any layout surface
+    - List elements (as="li" inside ul/ol)
+
+  never_do:
+    - Two unrelated topics in one card
+    - Card inside a Card (nesting cards)
+    - Card.Header outside a Card
+    - Card.Footer as the only content (use Card.Body)
+
+patterns:
+  - id: story-card
+    description: Exquisite Corpse story card
+    example: |
+      <Card as="article" aria-label={`Story: ${title}`}>
+        <Card.Image src={coverUrl} alt={`Cover for ${title}`} aspectRatio="16/9" />
+        <Card.Header>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span>{title}</span>
+            <Badge variant="success">Complete</Badge>
+          </div>
+        </Card.Header>
+        <Card.Body>
+          <p>{excerpt}</p>
+        </Card.Body>
+        <Card.Footer>
+          <Badge variant="default">{contributorCount} contributors</Badge>
+          <Badge variant="default">{segmentCount} segments</Badge>
+          <Button variant="primary" size="sm">Read story</Button>
+        </Card.Footer>
+      </Card>
+
+  - id: stat-card-surface
+    description: StatCard built on Card surface
+    example: |
+      <Card>
+        <Card.Body>
+          {/* StatCard internal layout */}
+        </Card.Body>
+      </Card>
+    notes: StatCard uses Card as its surface. Do not use Card directly for stat cards — use the StatCard component.
+
+  - id: empty-state
+    description: Card with empty state
+    example: |
+      <Card>
+        <Card.Empty
+          icon={<Icon icon={CloudRain} size="xl" duotone />}
+          message="No stories yet"
+          description="Start by creating your first story."
+          action={<Button variant="primary">Start a story</Button>}
+        />
+      </Card>
+
+  - id: horizontal-card
+    description: Horizontal layout with image on left
+    example: |
+      <Card>
+        <Card.Image src={url} alt={alt} orientation="left" />
+        <Card.Body>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </Card.Body>
+      </Card>
+
+anti_patterns:
+  - id: two-topics
+    description: Two unrelated topics in one card
+    wrong: |
+      <Card>
+        <Card.Header>Player Stats</Card.Header>
+        <Card.Body>...</Card.Body>
+        <Card.Divider />
+        <Card.Header>Match History</Card.Header>
+        <Card.Body>...</Card.Body>
+      </Card>
+    right: |
+      <Card><Card.Header>Player Stats</Card.Header>...</Card>
+      <Card><Card.Header>Match History</Card.Header>...</Card>
+    reason: One card, one topic. Use separate cards for separate content.
+
+  - id: nested-cards
+    description: Card inside a Card
+    wrong: |
+      <Card>
+        <Card.Body>
+          <Card>Nested card</Card>
+        </Card.Body>
+      </Card>
+    right: Use layout primitives or CardGrid for arranging multiple cards.
+    reason: Nested cards create visual confusion and unclear hierarchy.
+
+  - id: divider-overuse
+    description: Using dividers between every section
+    wrong: |
+      <Card>
+        <Card.Header>Title</Card.Header>
+        <Card.Divider />
+        <Card.Body>Content</Card.Body>
+        <Card.Divider />
+        <Card.Footer>Actions</Card.Footer>
+      </Card>
+    right: |
+      <Card>
+        <Card.Header bordered>Title</Card.Header>
+        <Card.Body>Content</Card.Body>
+        <Card.Footer bordered>Actions</Card.Footer>
+      </Card>
+    reason: >
+      Use bordered on Header/Footer for structural separation.
+      Reserve Card.Divider for mid-body content separation only.
+      Whitespace should handle most separation needs.
+
+related:
+  - id: stat-card
+    when_to_use: Metric display — StatCard uses Card as its surface.
+
+  - id: card-grid
+    status: planned
+    when_to_use: Layout for multiple cards — responsive grid with consistent gaps.
+
+  - id: badge
+    when_to_use: Status and metadata labels inside Card.Header and Card.Footer.
+
+  - id: button
+    when_to_use: Actions inside Card.Footer.
+
+  - id: icon
+    when_to_use: Pass Icon with duotone to Card.Empty for empty state illustrations.

@@ -1,0 +1,99 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ptr-spacing-2xs);
+  width: 100%;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* ============================================================
+   BODY CONTENT
+   ============================================================ */
+
+.excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: var(--ptr-spacing-2xs);
+}
+
+.teaser {
+  color: var(--ptr-color-text-tertiary);
+  font-style: italic;
+  margin-bottom: var(--ptr-spacing-2xs);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ptr-spacing-3xs);
+  margin-top: var(--ptr-spacing-2xs);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ptr-spacing-2xs);
+  width: 100%;
+}
+
+.footerMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--ptr-spacing-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* audit-ignore — 2px gap between caption lines, below spacing scale intentionally */
+}
+
+
+/* ============================================================
+   AVATAR GROUP
+   ============================================================ */
+
+.avatarGroup {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.avatarWrap {
+  position: relative;
+  border-radius: var(--ptr-radius-pill);
+  border: var(--ptr-border-base) solid var(--ptr-color-bg-surface);
+}
+
+.avatarWrap + .avatarWrap {
+  margin-left: -6px; /* audit-ignore — avatar overlap offset, intentional negative margin */
+}
+
+.avatarOverflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--ptr-radius-pill);
+  background: var(--ptr-color-bg-elevated);
+  border: var(--ptr-border-base) solid var(--ptr-color-bg-surface);
+  margin-left: -6px; /* audit-ignore — avatar overflow overlap, intentional negative margin */
+  flex-shrink: 0;
+}

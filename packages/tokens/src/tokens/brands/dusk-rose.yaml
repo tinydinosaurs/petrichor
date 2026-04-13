@@ -1,0 +1,209 @@
+# =============================================================================
+# PETRICHOR DESIGN SYSTEM — BRAND: DUSK ROSE
+# =============================================================================
+# Brand token overrides for the Dusk Rose brand.
+# Target app: Exquisite Corpse writing app
+# Primary: Rose — editorial, confident, distinctive
+#
+# This file overrides ONLY what differs from semantic.yaml defaults.
+# Everything not listed here inherits from semantic.yaml.
+#
+# Key differences from Raindrop:
+#   - Rose primary instead of blue
+#   - Two-font system: Cabinet Grotesk (UI) + Fraunces (display/stories)
+#   - 1.333 type scale instead of 1.25
+#   - Softer radius defaults
+#   - Pill badges
+#
+# CSS output: --ptr-* variables scoped to [data-brand="dusk-rose"]
+# =============================================================================
+
+meta:
+    brand: { value: 'dusk-rose', comment: 'Brand identifier' }
+    primary: { value: 'rose', comment: 'Primary accent' }
+    tone: { value: 'editorial', comment: 'Soft, literary, creative' }
+
+# ---------------------------------------------------------------------------
+# BRAND COLOR OVERRIDES
+# ---------------------------------------------------------------------------
+
+color:
+    brand:
+        primary:
+            {
+                value: '{color.rose.600}',
+                comment: 'Rose #a04870 — buttons, links, focus rings',
+            }
+        primary-mid:
+            {
+                value: '{color.rose.400}',
+                comment: 'Rose mid #b86888 — hover states, icons',
+            }
+        primary-light:
+            {
+                value: '{color.rose.200}',
+                comment: 'Rose light #d4a0b8 — tinted backgrounds',
+            }
+        primary-tint:
+            {
+                value: '{color.rose.800}',
+                comment: 'Rose tint #301828 — dark mode tinted surfaces',
+            }
+        primary-text:
+            {
+                value: '{color.rose.400}',
+                comment: 'Rose mid — links and labels on dark',
+            }
+
+        # Gradient mark — used in logo, active states, loading indicators
+        gradient-from:
+            {
+                value: '{color.rose.600}',
+                comment: 'Gradient start  oklch(44% 0.13 355)',
+            }
+        gradient-to:
+            {
+                value: '{color.rose.400}',
+                comment: 'Gradient end oklch(58% 0.12 355)',
+            }
+        gradient:
+            {
+                value: 'linear-gradient(135deg, oklch(44% 0.13 355), oklch(58% 0.12 355))',
+                comment: 'Dusk Rose brand gradient',
+            }
+
+# ---------------------------------------------------------------------------
+# TYPOGRAPHY OVERRIDES
+# Two-font system: Cabinet Grotesk for UI, Fraunces for story display
+# ---------------------------------------------------------------------------
+
+typography:
+    font:
+        ui:
+            {
+                value: '{typography.family.sans-ec}',
+                comment: 'Cabinet Grotesk — Fontshare. Load from api.fontshare.com',
+            }
+        display:
+            {
+                value: '{typography.family.serif}',
+                comment: 'Fraunces — Google Fonts. Variable font, use opsz axis.',
+            }
+
+    size:
+        xs:
+            {
+                value: '{typography.size-133.xs}',
+                comment: '10px — 1.333 scale (Perfect Fourth)',
+            }
+        sm: { value: '{typography.size-133.sm}', comment: '13px' }
+        base: { value: '{typography.size-133.base}', comment: '16px' }
+        md: { value: '{typography.size-133.md}', comment: '21px' }
+        lg: { value: '{typography.size-133.lg}', comment: '28px' }
+        xl: { value: '{typography.size-133.xl}', comment: '38px' }
+        2xl: { value: '{typography.size-133.2xl}', comment: '51px' }
+        3xl:
+            {
+                value: '{typography.size-133.3xl}',
+                comment: '68px — editorial display only',
+            }
+
+    # Fraunces optical sizing — apply font-variation-settings at each display step
+    # The opsz value should match the rendered font size in px
+    fraunces-opsz:
+        base: { value: "'opsz' 16", comment: 'Body text — more readable' }
+        md: { value: "'opsz' 21", comment: 'Lead paragraph' }
+        lg: { value: "'opsz' 28", comment: 'Story titles' }
+        xl: { value: "'opsz' 38", comment: 'Page headings' }
+        2xl: { value: "'opsz' 51", comment: 'Display — opens up significantly' }
+        3xl:
+            {
+                value: "'opsz' 68",
+                comment: 'Editorial display — most expressive',
+            }
+
+    # Cabinet Grotesk weight usage
+    # Note: bold (700) is available and appropriate for display headings in EC
+    weight:
+        display:
+            {
+                value: '{typography.weight.bold}',
+                comment: '700 — Cabinet Grotesk display headings',
+            }
+
+# ---------------------------------------------------------------------------
+# RADIUS OVERRIDES — soft, friendly without being bubbly
+# ---------------------------------------------------------------------------
+
+radius:
+    component:
+        button:
+            { value: '{border-radius.md}', comment: '4px — soft, approachable' }
+        input: { value: '{border-radius.md}', comment: '4px' }
+        card:
+            { value: '{border-radius.lg}', comment: '8px — generous rounding' }
+        modal: { value: '{border-radius.lg}', comment: '8px' }
+        badge:
+            {
+                value: '{border-radius.pill}',
+                comment: '999px — full pill badges',
+            }
+        tooltip: { value: '{border-radius.md}', comment: '4px' }
+
+# ---------------------------------------------------------------------------
+# MOTION ADDITIONS — EC-specific motion tokens
+# These extend the base motion tokens for Exquisite Corpse's unique mechanics
+# ---------------------------------------------------------------------------
+
+motion:
+    # Reveal strip — previous contributor's last sentence
+    # Shown immediately on editor load. Animates in with spring.
+    reveal:
+        duration: { value: '{motion.duration.slow}', comment: '500ms' }
+        easing:
+            {
+                value: '{motion.easing.spring}',
+                comment: 'Slight overshoot — feels physical',
+            }
+        transform-in:
+            {
+                value: 'scaleX(1)',
+                comment: 'Initial state — mask covering text',
+            }
+        transform-out:
+            { value: 'scaleX(0)', comment: 'Revealed state — mask slides away' }
+        origin: { value: 'left', comment: 'Reveal sweeps left to right' }
+
+    # Random assignment — "the system is finding you a story"
+    # Deliberate, narrative-quality loading moment
+    assignment:
+        duration:
+            { value: '{motion.duration.deliberate}', comment: '800ms total' }
+        pulse-delay-1: { value: '0ms', comment: 'First dot' }
+        pulse-delay-2: { value: '200ms', comment: 'Second dot' }
+        pulse-delay-3: { value: '400ms', comment: 'Third dot' }
+        note:
+            {
+                value: 'framer-motion',
+                comment: 'Stagger requires Framer Motion — see packages/react/src/components/RandomAssignment',
+            }
+
+    # Story completion — contributor chips stagger in, title springs into place
+    completion:
+        chip-stagger:
+            {
+                value: '150ms',
+                comment: 'Delay between each contributor chip appearing',
+            }
+        chip-duration:
+            { value: '{motion.duration.base}', comment: '200ms per chip' }
+        title-duration:
+            {
+                value: '{motion.duration.slow}',
+                comment: '500ms — spring settle',
+            }
+        note:
+            {
+                value: 'framer-motion',
+                comment: 'Stagger requires Framer Motion — see packages/react/src/components/CompletionScreen',
+            }

@@ -1,0 +1,131 @@
+.text {
+  margin: 0;
+  padding: 0;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   DISPLAY — hero/editorial, uses font-display (Fraunces on Dusk Rose)
+   ============================================================ */
+
+.display {
+  font-family: var(--ptr-typography-font-display);
+  font-size: var(--ptr-typography-size-3xl);
+  font-weight: var(--ptr-typography-weight-display);
+  line-height: var(--ptr-typography-line-height-display);
+  letter-spacing: var(--ptr-typography-letter-spacing-tight);
+  color: var(--ptr-color-text-primary);
+}
+
+
+/* ============================================================
+   HEADINGS — structural, uses font-ui
+   ============================================================ */
+
+.heading1 {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-2xl);
+  font-weight: var(--ptr-typography-weight-label);
+  line-height: var(--ptr-typography-line-height-display);
+  letter-spacing: var(--ptr-typography-letter-spacing-tight);
+  color: var(--ptr-color-text-primary);
+}
+
+.heading2 {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-xl);
+  font-weight: var(--ptr-typography-weight-label);
+  line-height: var(--ptr-typography-line-height-display);
+  letter-spacing: var(--ptr-typography-letter-spacing-tight);
+  color: var(--ptr-color-text-primary);
+}
+
+.heading3 {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-lg);
+  font-weight: var(--ptr-typography-weight-label);
+  line-height: var(--ptr-typography-line-height-ui);
+  color: var(--ptr-color-text-primary);
+}
+
+.heading4 {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-md);
+  font-weight: var(--ptr-typography-weight-label);
+  line-height: var(--ptr-typography-line-height-ui);
+  color: var(--ptr-color-text-primary);
+}
+
+
+/* ============================================================
+   BODY — reading, uses font-ui
+   ============================================================ */
+
+.body_lg {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-md);
+  font-weight: var(--ptr-typography-weight-body);
+  line-height: var(--ptr-typography-line-height-body);
+  color: var(--ptr-color-text-primary);
+}
+
+.body {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-base);
+  font-weight: var(--ptr-typography-weight-body);
+  line-height: var(--ptr-typography-line-height-body);
+  color: var(--ptr-color-text-primary);
+}
+
+.body_sm {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  font-weight: var(--ptr-typography-weight-body);
+  line-height: var(--ptr-typography-line-height-body);
+  color: var(--ptr-color-text-secondary);
+}
+
+
+/* ============================================================
+   LABEL — UI labels, uses font-ui
+   ============================================================ */
+
+.label {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  font-weight: var(--ptr-typography-weight-label);
+  line-height: var(--ptr-typography-line-height-ui);
+  color: var(--ptr-color-text-primary);
+}
+
+
+/* ============================================================
+   CAPTION — supporting text, uses font-ui
+   ============================================================ */
+
+.caption {
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-xs);
+  font-weight: var(--ptr-typography-weight-body);
+  line-height: var(--ptr-typography-line-height-ui);
+  color: var(--ptr-color-text-secondary);
+}
+
+
+/* ============================================================
+   MONO — code and technical text
+   ============================================================ */
+
+.mono {
+  font-family: var(--ptr-typography-font-mono);
+  font-size: var(--ptr-typography-size-sm);
+  font-weight: var(--ptr-typography-weight-body);
+  line-height: var(--ptr-typography-line-height-body);
+  color: var(--ptr-color-text-primary);
+}

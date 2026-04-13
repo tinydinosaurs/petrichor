@@ -1,0 +1,45 @@
+{
+	"name": "@petrichor/tokens",
+	"version": "0.1.0",
+	"description": "Petrichor design tokens — CSS custom properties and JS objects generated from YAML schema",
+	"main": "dist/js/tokens.cjs",
+	"module": "dist/js/tokens.js",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/js/tokens.js",
+			"require": "./dist/js/tokens.cjs"
+		},
+		"./css": {
+			"types": "./src/css-exports.d.ts",
+			"default": "./dist/css/base.css"
+		},
+		"./css/light": {
+			"types": "./src/css-exports.d.ts",
+			"default": "./dist/css/light.css"
+		},
+		"./css/brand/raindrop": {
+			"types": "./src/css-exports.d.ts",
+			"default": "./dist/css/brand.raindrop.css"
+		},
+		"./css/brand/dusk-rose": {
+			"types": "./src/css-exports.d.ts",
+			"default": "./dist/css/brand.dusk-rose.css"
+		}
+	},
+	"files": [
+		"dist",
+		"src/css-exports.d.ts"
+	],
+	"types": "src/css-exports.d.ts",
+	"scripts": {
+		"build": "node style-dictionary.config.js",
+		"dev": "node style-dictionary.config.js --watch",
+		"clean": "rm -rf dist",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"style-dictionary": "^4.0.0",
+		"js-yaml": "^4.1.0"
+	}
+}

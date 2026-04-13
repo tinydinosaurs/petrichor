@@ -1,0 +1,27 @@
+{
+	"name": "petrichor",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Petrichor Design System — stormy neutrals, rainbow moments",
+	"scripts": {
+		"build": "turbo run build",
+		"build:tokens": "turbo run build --filter=@petrichor/tokens",
+		"dev": "turbo run dev --parallel",
+		"lint": "echo \"Linting not yet configured\"",
+		"test": "turbo run test",
+		"typecheck": "tsc --noEmit",
+		"clean": "turbo run clean && rm -rf node_modules",
+		"format": "prettier --write \"**/*.{ts,tsx,css,yaml,yml,md,json}\"",
+		"format:check": "prettier --check \"**/*.{ts,tsx,css,yaml,yml,md,json}\""
+	},
+	"devDependencies": {
+		"turbo": "^2.0.0",
+		"prettier": "^3.0.0",
+		"typescript": "^5.4.0"
+	},
+	"engines": {
+		"node": ">=20.0.0",
+		"pnpm": ">=9.0.0"
+	},
+	"packageManager": "pnpm@9.0.0"
+}

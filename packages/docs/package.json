@@ -1,0 +1,28 @@
+{
+	"name": "@petrichor/docs",
+	"version": "0.1.0",
+	"description": "Petrichor Storybook — component documentation with brand theme switcher",
+	"private": true,
+	"scripts": {
+		"dev": "storybook dev -p 6006",
+		"build": "storybook build",
+		"clean": "rm -rf storybook-static"
+	},
+	"dependencies": {
+		"@petrichor/react": "workspace:*",
+		"@petrichor/tokens": "workspace:*"
+	},
+	"devDependencies": {
+		"@storybook/addon-a11y": "^8.0.0",
+		"@storybook/addon-essentials": "^8.0.0",
+		"@storybook/addon-interactions": "^8.0.0",
+		"@storybook/react": "^8.0.0",
+		"@storybook/react-vite": "^8.0.0",
+		"@storybook/test": "^8.0.0",
+		"@types/react": "^18.0.0",
+		"@types/react-dom": "^18.0.0",
+		"@vitejs/plugin-react": "^4.0.0",
+		"storybook": "^8.0.0",
+		"vite": "^5.0.0"
+	}
+}

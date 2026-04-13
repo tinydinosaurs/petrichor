@@ -1,0 +1,504 @@
+# =============================================================================
+# PETRICHOR DESIGN SYSTEM — BASE TOKENS
+# =============================================================================
+# Raw scale values. No semantic meaning assigned here.
+# Components and semantic tokens reference these values — never hardcode hex.
+#
+# Naming convention: ptr-{category}-{subcategory}-{step}
+# All values are intentional — do not add steps outside the defined scales.
+# =============================================================================
+
+color:
+    # ---------------------------------------------------------------------------
+    # NEUTRAL BASE — stormy grey with whisper of blue
+    # Dark mode surfaces, light mode surfaces
+    # ---------------------------------------------------------------------------
+
+    base:
+        # Dark surfaces (primary dark mode palette)
+        950:
+            {
+                value: 'oklch(14% 0.01 258)',
+                comment: 'Primary dark background — near-black with whisper of blue',
+            }
+        900: { value: 'oklch(18% 0.01 258)', comment: 'Secondary dark surface' }
+        850:
+            {
+                value: 'oklch(21% 0.01 258)',
+                comment: 'Tertiary dark surface / borders on dark',
+            }
+        700:
+            {
+                value: 'oklch(27% 0.01 258)',
+                comment: 'Elevated surface on dark',
+            }
+        400: { value: 'oklch(58% 0.03 258)', comment: 'Muted text on dark' }
+        200: { value: 'oklch(78% 0.02 258)', comment: 'Secondary text on dark' }
+        50: { value: 'oklch(92% 0.01 258)', comment: 'Primary text on dark' }
+
+        # Light surfaces (primary light mode palette)
+        light-50:
+            {
+                value: 'oklch(98% 0.01 80)',
+                comment: 'Primary light background — warm white, papery',
+            }
+        light-100:
+            { value: 'oklch(96% 0.01 80)', comment: 'Secondary light surface' }
+        light-200:
+            {
+                value: 'oklch(93% 0.02 80)',
+                comment: 'Tertiary / page background on light',
+            }
+        light-300: { value: 'oklch(88% 0.02 80)', comment: 'Borders on light' }
+        light-400:
+            { value: 'oklch(72% 0.02 80)', comment: 'Muted text on light' }
+        light-700:
+            { value: 'oklch(38% 0.02 80)', comment: 'Secondary text on light' }
+        light-900:
+            { value: 'oklch(22% 0.02 80)', comment: 'Primary text on light' }
+
+    # ---------------------------------------------------------------------------
+    # ACCENT PALETTE — desaturated spectrum, the "rainbow moments"
+    # Each hue is cool-shifted and pulled toward grey.
+    # Named for weather / atmosphere, not hue names, to avoid semantic conflict.
+    # ---------------------------------------------------------------------------
+
+    rain:
+        # Blue — calm, technical, trustworthy
+        50:
+            {
+                value: 'oklch(94% 0.03 240)',
+                comment: 'Rain tint — background use',
+            }
+        100: { value: 'oklch(85% 0.06 240)', comment: 'Rain light' }
+        200: { value: 'oklch(78% 0.08 240)', comment: 'Rain light mid' }
+        400:
+            {
+                value: 'oklch(65% 0.11 240)',
+                comment: 'Rain mid — icons, decorative',
+            }
+        600:
+            {
+                value: 'oklch(46% 0.12 240)',
+                comment: 'Rain strong — Raindrop brand primary',
+            }
+        800:
+            {
+                value: 'oklch(22% 0.05 240)',
+                comment: 'Rain dark tint — dark mode bg',
+            }
+        900: { value: 'oklch(14% 0.03 240)', comment: 'Rain deepest' }
+
+    teal:
+        # Cool green — success adjacent, organic
+        50: { value: 'oklch(94% 0.03 175)', comment: 'Teal tint' }
+        100: { value: 'oklch(85% 0.07 175)', comment: 'Teal light' }
+        200: { value: 'oklch(76% 0.09 175)', comment: 'Teal light mid' }
+        400: { value: 'oklch(64% 0.11 175)', comment: 'Teal mid' }
+        600: { value: 'oklch(46% 0.10 175)', comment: 'Teal strong' }
+        800: { value: 'oklch(22% 0.05 175)', comment: 'Teal dark tint' }
+        900: { value: 'oklch(14% 0.03 175)', comment: 'Teal deepest' }
+
+    green:
+        # Organic green — natural, growth
+        50: { value: 'oklch(94% 0.04 145)', comment: 'Green tint' }
+        100: { value: 'oklch(85% 0.08 145)', comment: 'Green light' }
+        200: { value: 'oklch(76% 0.11 145)', comment: 'Green light mid' }
+        400: { value: 'oklch(64% 0.13 145)', comment: 'Green mid' }
+        600: { value: 'oklch(44% 0.12 145)', comment: 'Green strong' }
+        800: { value: 'oklch(22% 0.05 145)', comment: 'Green dark tint' }
+        900: { value: 'oklch(14% 0.03 145)', comment: 'Green deepest' }
+
+    gold:
+        # Warm yellow — highlight, warmth without urgency
+        50: { value: 'oklch(95% 0.04 90)', comment: 'Gold tint' }
+        100: { value: 'oklch(88% 0.09 90)', comment: 'Gold light' }
+        200: { value: 'oklch(80% 0.13 90)', comment: 'Gold light mid' }
+        400: { value: 'oklch(72% 0.14 90)', comment: 'Gold mid' }
+        600: { value: 'oklch(52% 0.12 90)', comment: 'Gold strong' }
+        800: { value: 'oklch(24% 0.05 90)', comment: 'Gold dark tint' }
+        900: { value: 'oklch(14% 0.03 90)', comment: 'Gold deepest' }
+
+    amber:
+        # Warm coral-orange — error adjacent, warm accent
+        50: { value: 'oklch(94% 0.03 55)', comment: 'Amber tint' }
+        100: { value: 'oklch(84% 0.08 55)', comment: 'Amber light' }
+        200: { value: 'oklch(74% 0.12 55)', comment: 'Amber light mid' }
+        400: { value: 'oklch(62% 0.13 55)', comment: 'Amber mid' }
+        600: { value: 'oklch(44% 0.12 55)', comment: 'Amber strong' }
+        800: { value: 'oklch(22% 0.05 55)', comment: 'Amber dark tint' }
+        900: { value: 'oklch(14% 0.03 55)', comment: 'Amber deepest' }
+
+    rose:
+        # Cool pink — editorial, confident, Dusk Rose brand primary
+        50: { value: 'oklch(94% 0.03 355)', comment: 'Rose tint' }
+        100: { value: 'oklch(84% 0.07 355)', comment: 'Rose light' }
+        200: { value: 'oklch(74% 0.10 355)', comment: 'Rose light mid' }
+        400: { value: 'oklch(58% 0.12 355)', comment: 'Rose mid' }
+        600:
+            {
+                value: 'oklch(44% 0.13 355)',
+                comment: 'Rose strong — Dusk Rose brand primary',
+            }
+        700: { value: 'oklch(36% 0.11 355)', comment: 'Rose dark' }
+        800:
+            {
+                value: 'oklch(22% 0.06 355)',
+                comment: 'Rose dark tint — dark mode bg',
+            }
+        900: { value: 'oklch(14% 0.03 355)', comment: 'Rose deepest' }
+
+    violet:
+        # Expressive purple — supporting accent (not brand primary — avoids Microsoft association)
+        50: { value: 'oklch(94% 0.03 300)', comment: 'Violet tint' }
+        100: { value: 'oklch(84% 0.07 300)', comment: 'Violet light' }
+        200: { value: 'oklch(74% 0.10 300)', comment: 'Violet light mid' }
+        400: { value: 'oklch(58% 0.12 300)', comment: 'Violet mid' }
+        600: { value: 'oklch(42% 0.14 300)', comment: 'Violet strong' }
+        800: { value: 'oklch(20% 0.06 300)', comment: 'Violet dark tint' }
+        900: { value: 'oklch(13% 0.03 300)', comment: 'Violet deepest' }
+
+    # ---------------------------------------------------------------------------
+    # UTILITY — pure values for shadows, overlays, always-white/black
+    # ---------------------------------------------------------------------------
+
+    always:
+        white:
+            {
+                value: 'oklch(100% 0 0)',
+                comment: 'Always white — regardless of theme',
+            }
+        black:
+            {
+                value: 'oklch(0% 0 0)',
+                comment: 'Always black — regardless of theme',
+            }
+
+    overlay:
+        light:
+            { value: 'oklch(0% 0 0 / 0.08)', comment: 'Subtle overlay / scrim' }
+        medium: { value: 'oklch(0% 0 0 / 0.32)', comment: 'Modal scrim' }
+        heavy: { value: 'oklch(0% 0 0 / 0.64)', comment: 'Full overlay' }
+
+# =============================================================================
+# TYPOGRAPHY
+# =============================================================================
+
+typography:
+    # ---------------------------------------------------------------------------
+    # FONT FAMILIES
+    # ---------------------------------------------------------------------------
+
+    family:
+        system:
+            {
+                value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                comment: 'System fallback — never use as primary',
+            }
+        sans-ui:
+            {
+                value: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                comment: 'Raindrop UI — Google Fonts',
+            }
+        sans-ec:
+            {
+                value: "'Cabinet Grotesk', -apple-system, sans-serif",
+                comment: 'Exquisite Corpse UI — Fontshare (api.fontshare.com)',
+            }
+        serif:
+            {
+                value: "'Fraunces', Georgia, serif",
+                comment: 'Exquisite Corpse story display — Google Fonts, variable (opsz 9-144)',
+            }
+        mono:
+            {
+                value: "'JetBrains Mono', 'Fira Code', monospace",
+                comment: 'System-wide — token docs, code samples',
+            }
+
+    # ---------------------------------------------------------------------------
+    # SIZE SCALES
+    # Two separate scales — 1.25 (Raindrop) and 1.333 (Exquisite Corpse)
+    # Base: 16px for both
+    # ---------------------------------------------------------------------------
+
+    # Raindrop — Major Third (1.25) — compact, dense UI
+    size-125:
+        xs:
+            {
+                value: '10px',
+                comment: '1.25^-2 ≈ 10px — filter labels, tertiary info',
+            }
+        sm: { value: '13px', comment: '1.25^-1 ≈ 13px — table cells, captions' }
+        base: { value: '16px', comment: '1.25^0 = 16px — body text' }
+        md: { value: '20px', comment: '1.25^1 = 20px — card labels, lead text' }
+        lg: { value: '25px', comment: '1.25^2 ≈ 25px — stat values' }
+        xl: { value: '31px', comment: '1.25^3 ≈ 31px — section headings' }
+        2xl: { value: '39px', comment: '1.25^4 ≈ 39px — page headings' }
+        3xl: { value: '49px', comment: '1.25^5 ≈ 49px — display' }
+
+    # Exquisite Corpse — Perfect Fourth (1.333) — editorial, expressive
+    size-133:
+        xs: { value: '10px', comment: '1.333^-2 ≈ 10px — labels, metadata' }
+        sm: { value: '13px', comment: '1.333^-1 ≈ 13px — captions, secondary' }
+        base: { value: '16px', comment: '1.333^0 = 16px — body text' }
+        md: { value: '21px', comment: '1.333^1 ≈ 21px — lead paragraph' }
+        lg: { value: '28px', comment: '1.333^2 ≈ 28px — story titles (medium)' }
+        xl:
+            {
+                value: '38px',
+                comment: '1.333^3 ≈ 38px — page headings / large story titles',
+            }
+        2xl: { value: '51px', comment: '1.333^4 ≈ 51px — display / hero' }
+        3xl:
+            {
+                value: '68px',
+                comment: '1.333^5 ≈ 68px — editorial display only',
+            }
+
+    # Monospace scale — shared system-wide
+    size-mono:
+        sm: { value: '11px', comment: 'Token tables, small code labels' }
+        base: { value: '13px', comment: 'Default code display' }
+        md: { value: '15px', comment: 'Code snippets' }
+        lg: { value: '18px', comment: 'Display code, package names' }
+
+    # ---------------------------------------------------------------------------
+    # WEIGHT
+    # ---------------------------------------------------------------------------
+
+    weight:
+        regular: { value: '400', comment: 'Body text, default' }
+        medium: { value: '500', comment: 'Labels, headings, emphasis' }
+        bold:
+            {
+                value: '700',
+                comment: 'Cabinet Grotesk only — strong display use',
+            }
+
+    # ---------------------------------------------------------------------------
+    # LINE HEIGHT
+    # ---------------------------------------------------------------------------
+
+    line-height:
+        tight: { value: '1.2', comment: 'Display headings' }
+        snug: { value: '1.4', comment: 'UI labels, table cells' }
+        base: { value: '1.6', comment: 'Body text, default' }
+        relaxed: { value: '1.75', comment: 'Story body text — reading comfort' }
+        loose:
+            {
+                value: '2.0',
+                comment: 'Poetry / spaced prose — Exquisite Corpse special use',
+            }
+
+    # ---------------------------------------------------------------------------
+    # LETTER SPACING
+    # ---------------------------------------------------------------------------
+
+    letter-spacing:
+        tight: { value: '-0.02em', comment: 'Large display headings' }
+        normal: { value: '0em', comment: 'Default — body and UI' }
+        wide: { value: '0.04em', comment: 'Small caps, labels' }
+        widest: { value: '0.08em', comment: 'Uppercase utility labels' }
+
+# =============================================================================
+# SPACING
+# =============================================================================
+# Base unit: 4px. Primary rhythm: 8px.
+# T-shirt naming — semantic over numeric.
+# Workhorses: space-sm (16px) and space-md (24px).
+# Rule: outer breathing room is always one step larger than inner rhythm.
+# =============================================================================
+
+spacing:
+    px:
+        {
+            value: '1px',
+            comment: 'Hairlines — not a spacing unit, for borders only',
+        }
+    3xs:
+        {
+            value: '4px',
+            comment: '4px — icon-to-label gap, tight inline. 4px rhythm.',
+        }
+    2xs:
+        {
+            value: '8px',
+            comment: '8px — button padding (v), badge padding. 8px rhythm.',
+        }
+    xs:
+        {
+            value: '12px',
+            comment: '12px — button padding (h), input padding. 4px rhythm.',
+        }
+    sm:
+        {
+            value: '16px',
+            comment: '16px — card padding, form field gap. 8px rhythm. ✦ workhorse',
+        }
+    md:
+        {
+            value: '24px',
+            comment: '24px — section gap, card-to-card. 8px rhythm. ✦ workhorse',
+        }
+    lg:
+        {
+            value: '32px',
+            comment: '32px — section padding, nav height. 8px rhythm.',
+        }
+    xl:
+        {
+            value: '48px',
+            comment: '48px — page section gap, hero padding. 8px rhythm.',
+        }
+    2xl:
+        {
+            value: '64px',
+            comment: '64px — page-level vertical rhythm. 8px rhythm.',
+        }
+    3xl:
+        {
+            value: '96px',
+            comment: '96px — layout margins, editorial breathing room. 8px rhythm.',
+        }
+
+# =============================================================================
+# MOTION
+# =============================================================================
+# Personality: fast for micro, slower for macro.
+# CSS transitions for all standard interactions.
+# Framer Motion for: reveal strip, random assignment (spring/stagger).
+# =============================================================================
+
+motion:
+    duration:
+        instant: { value: '80ms', comment: 'Focus rings, hover colour shifts' }
+        fast: { value: '120ms', comment: 'Tooltips, badges, small toggles' }
+        base:
+            { value: '200ms', comment: 'Dropdowns, popovers, button feedback' }
+        moderate:
+            {
+                value: '300ms',
+                comment: 'Modals entering, toasts, filter panels',
+            }
+        slow:
+            {
+                value: '500ms',
+                comment: 'Page transitions, reveal strip, story completion',
+            }
+        deliberate:
+            {
+                value: '800ms',
+                comment: 'Random assignment loading — narrative quality',
+            }
+
+    easing:
+        out:
+            {
+                value: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                comment: 'Things entering — feels like arrival',
+            }
+        in:
+            {
+                value: 'cubic-bezier(0.4, 0, 1, 1)',
+                comment: 'Things leaving — feels like departure',
+            }
+        in-out:
+            {
+                value: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                comment: 'Things moving within the screen',
+            }
+        spring:
+            {
+                value: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+                comment: 'Playful overshoot — CSS approximation of spring physics',
+            }
+
+    transition:
+    micro:
+        {
+            value: 'all 80ms cubic-bezier(0.16, 1, 0.3, 1)',
+            comment: 'Hover, focus — fastest',
+        }
+    appear:
+        {
+            value: 'all 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+            comment: 'Elements entering',
+        }
+    enter:
+        {
+            value: 'all 300ms cubic-bezier(0.16, 1, 0.3, 1)',
+            comment: 'Panels, modals',
+        }
+    reveal:
+        {
+            value: 'all 500ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+            comment: 'Reveal strip — EC only',
+        }
+
+# =============================================================================
+# BORDER RADIUS
+# =============================================================================
+# One scale, brand defaults differ.
+# Raindrop: prefers sm/md (sharp, technical)
+# Exquisite Corpse: prefers md/lg (soft, friendly)
+# =============================================================================
+
+border-radius:
+    none: { value: '0px', comment: 'No rounding — tables, inline code' }
+    sm: { value: '2px', comment: 'Raindrop default — buttons, inputs, badges' }
+    md:
+        {
+            value: '4px',
+            comment: 'Shared mid — Raindrop cards, EC buttons/inputs',
+        }
+    lg: { value: '8px', comment: 'EC default — cards, modals' }
+    xl: { value: '12px', comment: 'Large containers' }
+    2xl: { value: '16px', comment: 'Extra large — EC hero surfaces' }
+    pill:
+        {
+            value: '999px',
+            comment: 'Full pill — EC badges, tags. Intentional opt-in only.',
+        }
+
+# =============================================================================
+# ELEVATION / SHADOW
+# =============================================================================
+# Flat is the default. Shadows communicate lift, not decoration.
+# Pure black at low opacity — works on light and dark without adjustment.
+# The 0.5px border does structural work; shadow adds lift. Neither redundant.
+# =============================================================================
+
+shadow:
+    none: { value: 'none', comment: 'No shadow — default for most surfaces' }
+    sm:
+        {
+            value: '0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06)',
+            comment: 'Resting surfaces — stat cards, table containers',
+        }
+    md:
+        {
+            value: '0 4px 16px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08)',
+            comment: 'Floating surfaces — dropdowns, modals, tooltips',
+        }
+
+# =============================================================================
+# BORDER WIDTH
+# =============================================================================
+
+border-width:
+    hairline:
+        {
+            value: '0.5px',
+            comment: 'Default — cards, dividers, inputs, all structural borders',
+        }
+    base:
+        {
+            value: '1px',
+            comment: 'Emphasis — focus rings, active states, outline buttons',
+        }
+    thick:
+        {
+            value: '2px',
+            comment: 'Accent — featured cards, active tab indicators',
+        }
