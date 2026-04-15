@@ -1,0 +1,240 @@
+import { Meta } from '@storybook/blocks';
+import {
+	SpacingScale,
+	SpacingExample,
+	SpacingComparison,
+	SpacingGroup,
+	ComponentSpacing,
+} from './components/SpacingSpecimen';
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing
+
+Spacing in Petrichor follows a consistent scale based on multiples of 4px. This creates visual rhythm and makes layout decisions predictable. Components never use arbitrary pixel values — they reference spacing tokens.
+
+---
+
+## The scale
+
+The spacing scale ranges from 1px (borders only) to 96px (major layout divisions). Most day-to-day work uses `sm` (16px) and `md` (24px) — the workhorses of the system.
+
+<SpacingScale
+	tokens={[
+		{
+			token: '--ptr-spacing-px',
+			label: 'px',
+			value: '1px',
+			description: 'Borders and hairlines only',
+		},
+		{
+			token: '--ptr-spacing-3xs',
+			label: '3xs',
+			value: '4px',
+			description: 'Icon-to-label gap, tight inline spacing',
+		},
+		{
+			token: '--ptr-spacing-2xs',
+			label: '2xs',
+			value: '8px',
+			description: 'Button vertical padding, badge padding, compact gaps',
+		},
+		{
+			token: '--ptr-spacing-xs',
+			label: 'xs',
+			value: '12px',
+			description: 'Button horizontal padding, input padding',
+		},
+		{
+			token: '--ptr-spacing-sm',
+			label: 'sm',
+			value: '16px',
+			description: 'Card padding, form field gap — workhorse',
+		},
+		{
+			token: '--ptr-spacing-md',
+			label: 'md',
+			value: '24px',
+			description: 'Section gap, card-to-card spacing — workhorse',
+		},
+		{
+			token: '--ptr-spacing-lg',
+			label: 'lg',
+			value: '32px',
+			description: 'Section padding, large component internal spacing',
+		},
+		{
+			token: '--ptr-spacing-xl',
+			label: 'xl',
+			value: '48px',
+			description: 'Page section gaps, major content divisions',
+		},
+		{
+			token: '--ptr-spacing-2xl',
+			label: '2xl',
+			value: '64px',
+			description: 'Page-level rhythm, hero sections',
+		},
+		{
+			token: '--ptr-spacing-3xl',
+			label: '3xl',
+			value: '96px',
+			description: 'Layout margins, major page divisions',
+		},
+	]}
+/>
+
+---
+
+## Common patterns
+
+### Padding
+
+Internal spacing within containers. Cards, inputs, and buttons all use padding to create breathing room.
+
+<SpacingGroup title="Padding examples">
+	<SpacingExample
+		title="Card padding"
+		token="--ptr-spacing-sm"
+		type="padding"
+		description="Standard card internal spacing. Enough room to breathe without feeling wasteful."
+	/>
+	<SpacingExample
+		title="Modal padding"
+		token="--ptr-spacing-md"
+		type="padding"
+		description="Larger containers get more generous padding. Modals and dialogs use md."
+	/>
+</SpacingGroup>
+
+### Gap
+
+Space between sibling elements. Use CSS `gap` rather than margins when elements are in a flex or grid container.
+
+<SpacingGroup title="Gap examples">
+	<SpacingExample
+		title="Compact toolbar"
+		token="--ptr-spacing-2xs"
+		type="gap"
+		description="Tight spacing for icon buttons and dense UI. Elements feel related."
+	/>
+	<SpacingExample
+		title="Card grid"
+		token="--ptr-spacing-md"
+		type="gap"
+		description="Standard gap between cards. Enough separation to distinguish, close enough to relate."
+	/>
+</SpacingGroup>
+
+### Margin
+
+Space between sections. Use for separating unrelated content or creating vertical rhythm.
+
+<SpacingGroup title="Margin examples">
+	<SpacingExample
+		title="Form field stack"
+		token="--ptr-spacing-sm"
+		type="margin"
+		description="Between form fields. Close enough to feel like a unit, separate enough to scan."
+	/>
+	<SpacingExample
+		title="Section break"
+		token="--ptr-spacing-xl"
+		type="margin"
+		description="Between major page sections. Creates clear content boundaries."
+	/>
+</SpacingGroup>
+
+---
+
+## Component spacing reference
+
+How spacing tokens map to common component properties.
+
+<SpacingGroup title="Components">
+	<ComponentSpacing
+		name="Button"
+		description="Compact vertical, generous horizontal for click targets"
+		tokens={[
+			{ property: 'padding-y', token: '--ptr-spacing-2xs' },
+			{ property: 'padding-x', token: '--ptr-spacing-xs' },
+			{ property: 'gap', token: '--ptr-spacing-3xs' },
+		]}
+	/>
+	<ComponentSpacing
+		name="Input"
+		description="Matches button proportion for inline alignment"
+		tokens={[
+			{ property: 'padding-y', token: '--ptr-spacing-2xs' },
+			{ property: 'padding-x', token: '--ptr-spacing-xs' },
+		]}
+	/>
+	<ComponentSpacing
+		name="Card"
+		description="Comfortable internal spacing, clean edges"
+		tokens={[{ property: 'padding', token: '--ptr-spacing-sm' }]}
+	/>
+	<ComponentSpacing
+		name="Modal"
+		description="More generous for focused attention"
+		tokens={[
+			{ property: 'padding', token: '--ptr-spacing-md' },
+			{ property: 'gap', token: '--ptr-spacing-sm' },
+		]}
+	/>
+	<ComponentSpacing
+		name="Badge"
+		description="Tight fit for inline labels"
+		tokens={[
+			{ property: 'padding-y', token: '--ptr-spacing-px' },
+			{ property: 'padding-x', token: '--ptr-spacing-2xs' },
+		]}
+	/>
+</SpacingGroup>
+
+---
+
+## Density comparison
+
+The same content at different density levels. Dense UIs use smaller spacing tokens throughout.
+
+<SpacingComparison
+	title="Compact vs comfortable"
+	items={[
+		{ label: 'Compact', token: '--ptr-spacing-2xs', value: '8px' },
+		{ label: 'Default', token: '--ptr-spacing-sm', value: '16px' },
+		{ label: 'Relaxed', token: '--ptr-spacing-md', value: '24px' },
+	]}
+	description="Raindrop tends toward compact (data-dense dashboards). Dusk Rose tends toward relaxed (editorial reading). Same components, different token choices."
+/>
+
+---
+
+## When to use what
+
+| Scale | Value | Best for |
+| ----- | ----- | -------- |
+| `px` | 1px | Borders only — never for spacing |
+| `3xs` | 4px | Icon gaps, inline badge spacing |
+| `2xs` | 8px | Button/input vertical padding, tight groups |
+| `xs` | 12px | Button/input horizontal padding |
+| `sm` | 16px | Card padding, form gaps — **default choice** |
+| `md` | 24px | Section gaps, card-to-card — **default choice** |
+| `lg` | 32px | Large section padding |
+| `xl` | 48px | Page section divisions |
+| `2xl` | 64px | Hero sections, major breaks |
+| `3xl` | 96px | Layout margins |
+
+**When in doubt, reach for `sm` or `md`.** They handle 80% of spacing decisions correctly.
+
+---
+
+## Philosophy
+
+**Rhythm over randomness.** A 4px base unit creates harmonious proportions. Elements align naturally because every dimension is a multiple of the base. Arbitrary values (13px, 17px, 22px) break the rhythm.
+
+**Density is a brand choice.** Raindrop is data-dense — information-rich dashboards benefit from compact spacing. Dusk Rose is editorial — generous whitespace lets prose breathe. The same components, configured with different tokens.
+
+**Gap over margin.** When laying out siblings in flex or grid containers, use `gap` instead of margins. It's more predictable (no collapsing margins), easier to adjust, and the spacing stays with the container rather than scattering across children.
+
+**Components don't set external margin.** A Button doesn't know how far it should be from the next element — that's the parent's job. Components control their internal spacing (padding, gap). Layout spacing (margin between components) belongs to the container.

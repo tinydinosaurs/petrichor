@@ -10,7 +10,7 @@
 #
 # Key differences from Raindrop:
 #   - Rose primary instead of blue
-#   - Two-font system: Cabinet Grotesk (UI) + Fraunces (display/stories)
+#   - Two-font system: Epilogue (UI) + Fraunces (display/stories)
 #   - 1.333 type scale instead of 1.25
 #   - Softer radius defaults
 #   - Pill badges
@@ -74,7 +74,7 @@ color:
 
 # ---------------------------------------------------------------------------
 # TYPOGRAPHY OVERRIDES
-# Two-font system: Cabinet Grotesk for UI, Fraunces for story display
+# Two-font system: Epilogue for UI, Fraunces for story display
 # ---------------------------------------------------------------------------
 
 typography:
@@ -82,7 +82,7 @@ typography:
         ui:
             {
                 value: '{typography.family.sans-ec}',
-                comment: 'Cabinet Grotesk — Fontshare. Load from api.fontshare.com',
+                comment: 'Epilogue — Google Fonts',
             }
         display:
             {
@@ -122,7 +122,7 @@ typography:
                 comment: 'Editorial display — most expressive',
             }
 
-    # Cabinet Grotesk weight usage
+    # Epilogue weight usage
     # Note: bold (700) is available and appropriate for display headings in EC
     weight:
         display:

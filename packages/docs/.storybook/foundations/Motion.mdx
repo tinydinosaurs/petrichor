@@ -1,0 +1,212 @@
+import { Meta } from '@storybook/blocks';
+import {
+	DurationScale,
+	EasingGrid,
+	TransitionDemo,
+	MotionPrinciple,
+	MotionGroup,
+} from './components/MotionSpecimen';
+
+<Meta title="Foundations/Motion" />
+
+# Motion
+
+Motion in Petrichor is functional, not decorative. Transitions provide feedback, guide attention, and create continuity between states. The system is intentionally restrained — animation serves the interface, never the other way around.
+
+---
+
+## Duration scale
+
+Duration controls how long a transition takes. Shorter durations feel snappy and responsive. Longer durations feel deliberate and dramatic. Most UI interactions use the fast end of the scale.
+
+<DurationScale
+	tokens={[
+		{
+			token: '--ptr-motion-duration-instant',
+			label: 'instant',
+			value: '80ms',
+			description: 'Focus rings, color shifts, micro-feedback',
+		},
+		{
+			token: '--ptr-motion-duration-fast',
+			label: 'fast',
+			value: '120ms',
+			description: 'Button hover, checkbox toggle',
+		},
+		{
+			token: '--ptr-motion-duration-base',
+			label: 'base',
+			value: '200ms',
+			description: 'Default — dropdowns, tooltips appearing',
+		},
+		{
+			token: '--ptr-motion-duration-moderate',
+			label: 'moderate',
+			value: '300ms',
+			description: 'Panel slides, modal entrance',
+		},
+		{
+			token: '--ptr-motion-duration-slow',
+			label: 'slow',
+			value: '500ms',
+			description: 'Page transitions, staggered reveals',
+		},
+		{
+			token: '--ptr-motion-duration-deliberate',
+			label: 'deliberate',
+			value: '800ms',
+			description: 'Exquisite Corpse reveal, dramatic moments',
+		},
+	]}
+/>
+
+**The 200ms rule:** If you're unsure which duration to use, start with `base` (200ms). It's the Goldilocks zone — fast enough to feel responsive, slow enough to be perceivable. Adjust from there based on the element's size and importance.
+
+---
+
+## Easing curves
+
+Easing controls the acceleration profile of motion. Different curves create different feelings — snappy, gentle, bouncy.
+
+Click any curve to see it in action:
+
+<EasingGrid
+	tokens={[
+		{
+			token: '--ptr-motion-easing-out',
+			label: 'ease-out',
+			value: 'cubic-bezier(0.16, 1, 0.3, 1)',
+			description:
+				'Fast start, gentle landing. Default for most UI — feels responsive.',
+		},
+		{
+			token: '--ptr-motion-easing-in',
+			label: 'ease-in',
+			value: 'cubic-bezier(0.4, 0, 1, 1)',
+			description:
+				'Slow start, fast finish. Use for exits — elements leaving the screen.',
+		},
+		{
+			token: '--ptr-motion-easing-in-out',
+			label: 'ease-in-out',
+			value: 'cubic-bezier(0.4, 0, 0.2, 1)',
+			description:
+				'Symmetric acceleration. Use for looping or state toggles.',
+		},
+		{
+			token: '--ptr-motion-easing-spring',
+			label: 'spring',
+			value: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+			description:
+				'Slight overshoot, playful bounce. Reserved for Dusk Rose moments.',
+		},
+	]}
+/>
+
+**Ease-out is the default.** Elements entering the viewport or responding to interaction should use ease-out — it feels like the interface is eager to respond. Ease-in is reserved for exits, where the element accelerates away.
+
+---
+
+## Composed transitions
+
+These tokens combine duration and easing into ready-to-use transition values. Use these directly in CSS `transition` properties.
+
+<MotionGroup title="Transition tokens">
+	<TransitionDemo
+		token="--ptr-motion-micro"
+		label="micro"
+		description="Instantaneous feedback — focus rings, hover color shifts, toggle states. So fast it feels immediate but avoids the jarring pop of no transition."
+	/>
+	<TransitionDemo
+		token="--ptr-motion-appear"
+		label="appear"
+		description="Quick entrances — tooltips, dropdowns, popovers. Fast enough to not block workflow, slow enough to be noticed."
+	/>
+	<TransitionDemo
+		token="--ptr-motion-enter"
+		label="enter"
+		description="Standard entrances — modals, drawers, panels sliding in. Gives the user time to register what appeared."
+	/>
+	<TransitionDemo
+		token="--ptr-motion-reveal"
+		label="reveal"
+		description="Dramatic reveals — Exquisite Corpse segment unveiling, story card expansion. Uses spring easing for a subtle bounce."
+	/>
+</MotionGroup>
+
+---
+
+## Usage patterns
+
+| Pattern          | Token                 | Example                         |
+| ---------------- | --------------------- | ------------------------------- |
+| Hover feedback   | `--ptr-motion-micro`  | Button background color change  |
+| Focus indication | `--ptr-motion-micro`  | Input focus ring appearing      |
+| Dropdown open    | `--ptr-motion-appear` | Menu fading in and scaling      |
+| Modal entrance   | `--ptr-motion-enter`  | Dialog sliding up with backdrop |
+| Page transition  | `--ptr-motion-enter`  | Route change crossfade          |
+| Reveal moment    | `--ptr-motion-reveal` | Exquisite Corpse segment unveil |
+
+---
+
+## Principles
+
+<MotionPrinciple
+	title="Motion should be invisible"
+	description="Good motion is felt, not seen. If users notice your animations, they're probably too slow or too dramatic."
+	good="200ms ease-out on dropdown open"
+	bad="500ms bounce on every button hover"
+/>
+
+<MotionPrinciple
+	title="Match duration to distance"
+	description="Larger movements need more time to feel natural. A tooltip appearing needs less duration than a full-screen modal."
+	good="Modal (large): 300ms. Tooltip (small): 200ms."
+	bad="Same 300ms duration for everything"
+/>
+
+<MotionPrinciple
+	title="Entrances ease-out, exits ease-in"
+	description="Elements entering should feel eager (fast start). Elements exiting should accelerate away (fast end)."
+	good="ease-out for dropdown open, ease-in for dropdown close"
+	bad="ease-in-out for everything"
+/>
+
+<MotionPrinciple
+	title="Reserve spring for personality"
+	description="The spring easing has a subtle overshoot that feels playful. Use it sparingly — only in brand moments on Dusk Rose."
+	good="Spring on Exquisite Corpse reveal"
+	bad="Spring on every button click"
+/>
+
+---
+
+## Reduced motion
+
+Always respect `prefers-reduced-motion`. Users who enable this setting may experience motion sickness, vestibular disorders, or simply prefer less movement.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+```
+
+This is included in `base.css`. When reduced motion is enabled, all transitions become effectively instant — the state change still happens, but without perceived animation.
+
+**Never disable this.** Motion preferences are an accessibility requirement, not a nice-to-have.
+
+---
+
+## Philosophy
+
+**Functional, not decorative.** Every animation should answer: "What does this help the user understand?" If the answer is "nothing, it just looks cool," remove it.
+
+**Fast by default.** The difference between 150ms and 250ms feels negligible when you're watching — but it compounds across hundreds of interactions per session. Err on the faster side.
+
+**Consistency over creativity.** Using the same transition for all dropdowns creates predictability. Varying animations per component creates cognitive overhead. Save creative motion for the moments that deserve it.

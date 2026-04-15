@@ -63,7 +63,13 @@ StyleDictionary.registerFormat({
 			` * ========================================================= */`,
 		].join('\n');
 
-		return `${header}\n\n${selector} {\n${vars}\n}\n`;
+		const fontImports = (options.fontImports ?? [])
+			.map((url) => `@import url('${url}');`)
+			.join('\n');
+
+		const preamble = fontImports ? `${fontImports}\n\n` : '';
+
+		return `${header}\n\n${preamble}${selector} {\n${vars}\n}\n`;
 	},
 });
 
@@ -98,6 +104,9 @@ const baseConfig = {
 					options: {
 						selector: ':root',
 						brand: 'Base system',
+						fontImports: [
+							'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap',
+						],
 					},
 				},
 			],
@@ -175,6 +184,10 @@ const duskRoseConfig = {
 					options: {
 						selector: '[data-brand="dusk-rose"]',
 						brand: 'Dusk Rose',
+						fontImports: [
+							'https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap',
+							'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&display=swap',
+						],
 					},
 				},
 			],

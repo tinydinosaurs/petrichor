@@ -1,0 +1,292 @@
+import { Meta } from '@storybook/blocks';
+import { ColorSwatch, ColorGroup } from './components/ColorSwatch';
+import { ColorPair } from './components/ColorPair';
+
+<Meta title="Color" />
+
+# Color
+
+Petrichor's color system is built in OKLCH — a perceptually uniform color space where equal numeric steps produce equal visual steps. This means a `0.12` chroma value looks equally saturated whether the hue is blue, rose, or teal. It also means lightness values are reliable for contrast ratios without the surprises you get from HSL.
+
+The system is **dark-first**. Dark mode is the default in `base.css`. Light mode is a handwritten override layer in `light.css`.
+
+---
+
+## Brand palette
+
+These tokens update automatically when you switch brands using the toolbar above. The same component, two personalities — no component-level branching.
+
+<ColorGroup title="Brand">
+	<ColorSwatch
+		token="--ptr-color-brand-primary"
+		label="Brand primary"
+		description="Buttons, links, focus rings — the most dominant brand expression"
+	/>
+	<ColorSwatch
+		token="--ptr-color-brand-primary-mid"
+		label="Brand mid"
+		description="Hover states on primary, secondary accent uses"
+	/>
+	<ColorSwatch
+		token="--ptr-color-brand-primary-light"
+		label="Brand light"
+		description="Decorative uses, lighter accent moments"
+	/>
+	<ColorSwatch
+		token="--ptr-color-brand-primary-tint"
+		label="Brand tint"
+		description="Subtle brand background — ghost button hover, icon wrappers"
+	/>
+	<ColorSwatch
+		token="--ptr-color-brand-primary-text"
+		label="Brand text"
+		description="Text and icons placed on a brand tint background"
+	/>
+</ColorGroup>
+
+> **Toggle the brand** in the toolbar to see Raindrop blue ↔ Dusk Rose.
+
+---
+
+## Surfaces & backgrounds
+
+<ColorGroup title="Backgrounds">
+	<ColorSwatch
+		token="--ptr-color-bg-page"
+		label="Page"
+		description="The outermost layer — html background"
+	/>
+	<ColorSwatch
+		token="--ptr-color-bg-surface"
+		label="Surface"
+		description="Cards, panels, sidebar — one step above page"
+	/>
+	<ColorSwatch
+		token="--ptr-color-bg-elevated"
+		label="Elevated"
+		description="Tooltips, dropdowns, skeleton shimmer — floats above surface"
+	/>
+	<ColorSwatch
+		token="--ptr-color-bg-input"
+		label="Input"
+		description="Text input and select backgrounds"
+	/>
+	<ColorSwatch
+		token="--ptr-color-bg-overlay"
+		label="Overlay"
+		description="Modal and dialog backdrop"
+	/>
+</ColorGroup>
+
+---
+
+## Text
+
+<ColorGroup title="Text">
+	<ColorSwatch
+		token="--ptr-color-text-primary"
+		label="Primary"
+		description="Headings, body text, labels — main reading surface"
+	/>
+	<ColorSwatch
+		token="--ptr-color-text-secondary"
+		label="Secondary"
+		description="Supporting text, metadata, placeholder labels"
+	/>
+	<ColorSwatch
+		token="--ptr-color-text-tertiary"
+		label="Tertiary"
+		description="Placeholder text, disabled states, ghost copy"
+	/>
+	<ColorSwatch
+		token="--ptr-color-text-on-brand"
+		label="On brand"
+		description="Text placed on a brand-colored background (primary button label)"
+	/>
+</ColorGroup>
+
+---
+
+## Borders
+
+<ColorGroup title="Borders">
+	<ColorSwatch
+		token="--ptr-color-border-subtle"
+		label="Subtle"
+		description="Card borders, section dividers — barely-there structural lines"
+	/>
+	<ColorSwatch
+		token="--ptr-color-border-default"
+		label="Default"
+		description="Input borders at rest"
+	/>
+	<ColorSwatch
+		token="--ptr-color-border-strong"
+		label="Strong"
+		description="Input borders on hover and focus"
+	/>
+</ColorGroup>
+
+---
+
+## Status palette
+
+Status colors carry semantic meaning. They come in pairs — a background tint and a foreground text/icon color — designed to be used together. The preview below shows both tokens in context.
+
+Each status also has a `border` token for bordered variants.
+
+<ColorGroup title="Status">
+	<ColorPair
+		name="Info"
+		bgToken="--ptr-color-status-info-bg"
+		textToken="--ptr-color-status-info-text"
+		borderToken="--ptr-color-status-info-border"
+		description="Neutral information, helper text, in-progress states"
+	/>
+	<ColorPair
+		name="Success"
+		bgToken="--ptr-color-status-success-bg"
+		textToken="--ptr-color-status-success-text"
+		borderToken="--ptr-color-status-success-border"
+		description="Completed actions, positive outcomes, valid states"
+	/>
+	<ColorPair
+		name="Warning"
+		bgToken="--ptr-color-status-warning-bg"
+		textToken="--ptr-color-status-warning-text"
+		borderToken="--ptr-color-status-warning-border"
+		description="Non-blocking issues, approaching limits, caution"
+	/>
+	<ColorPair
+		name="Error"
+		bgToken="--ptr-color-status-error-bg"
+		textToken="--ptr-color-status-error-text"
+		borderToken="--ptr-color-status-error-border"
+		description="Something went wrong — validation failure, API error, system unavailable"
+	/>
+	<ColorPair
+		name="Danger"
+		bgToken="--ptr-color-status-danger-bg"
+		textToken="--ptr-color-status-danger-text"
+		borderToken="--ptr-color-status-danger-border"
+		description="Destructive consequence — delete, revoke, irreversible action"
+	/>
+</ColorGroup>
+
+### Error vs Danger
+
+These are semantically distinct — don't conflate them.
+
+**Error** is reactive — something went wrong that the user needs to know about. Form validation failure, network request error, required field left empty. The user made a mistake or the system failed.
+
+**Danger** is proactive — the user is about to do something with a permanent consequence. Delete an account, revoke an API key, submit an irreversible transfer. The user hasn't done anything wrong. You're warning them before they proceed.
+
+Using error colors for a delete button is wrong. Using danger colors for a failed form submission is wrong.
+
+---
+
+## Accent palette
+
+The accent palette provides expressive color beyond the brand and status systems. Use sparingly — for decorative elements, data visualization, illustrations, or moments that need a specific hue that no semantic token covers.
+
+Prefer semantic tokens wherever meaning applies. Reach for accents only when no semantic token fits.
+
+<ColorGroup title="Accents">
+	<ColorSwatch
+		token="--ptr-color-accent-rain"
+		label="Rain"
+		description="Blue — Raindrop's home hue"
+		size="sm"
+	/>
+	<ColorSwatch
+		token="--ptr-color-accent-teal"
+		label="Teal"
+		description="Teal — success adjacent, growth"
+		size="sm"
+	/>
+	<ColorSwatch
+		token="--ptr-color-accent-green"
+		label="Green"
+		description="Green — nature, positive delta"
+		size="sm"
+	/>
+	<ColorSwatch
+		token="--ptr-color-accent-gold"
+		label="Gold"
+		description="Gold — achievement, ranking, warning adjacent"
+		size="sm"
+	/>
+	<ColorSwatch
+		token="--ptr-color-accent-amber"
+		label="Amber"
+		description="Amber — warm, error adjacent"
+		size="sm"
+	/>
+	<ColorSwatch
+		token="--ptr-color-accent-rose"
+		label="Rose"
+		description="Rose — Dusk Rose's home hue"
+		size="sm"
+	/>
+	<ColorSwatch
+		token="--ptr-color-accent-violet"
+		label="Violet"
+		description="Violet — expressive, editorial"
+		size="sm"
+	/>
+</ColorGroup>
+
+---
+
+## Always tokens
+
+Two tokens that never change regardless of brand or color scheme. Use these only when you genuinely need a color that must not adapt — icon on a photo, overlay on any background.
+
+<ColorGroup title="Always">
+	<ColorSwatch
+		token="--ptr-color-always-white"
+		label="Always white"
+		description="White that stays white in dark mode — use very sparingly"
+	/>
+	<ColorSwatch
+		token="--ptr-color-always-black"
+		label="Always black"
+		description="Black that stays black in light mode — use very sparingly"
+	/>
+</ColorGroup>
+
+---
+
+## How theming works
+
+All color tokens live in CSS custom properties on `:root`. Switching brand or color scheme sets `data-brand` and `data-color-scheme` on the `<html>` element — the cascade does the rest.
+
+```css
+/* base.css — dark defaults */
+:root {
+	--ptr-color-brand-primary: oklch(46% 0.12 240); /* rain blue */
+	--ptr-color-bg-page: oklch(14% 0.01 258);
+}
+
+/* brand.dusk-rose.css — brand override */
+[data-brand='dusk-rose'] {
+	--ptr-color-brand-primary: oklch(44% 0.13 355); /* rose */
+}
+
+/* light.css — light mode override */
+[data-color-scheme='light'] {
+	--ptr-color-bg-page: oklch(98% 0.01 80);
+}
+```
+
+Components reference `var(--ptr-color-brand-primary)` and receive whatever value the cascade resolves to. **No component ever knows which brand or theme it's in.**
+
+---
+
+## Philosophy
+
+**Stormy neutrals with rainbow moments.** The neutral palette leans cool and desaturated — slightly blue-grey, like the sky before rain. Color appears intentionally in brand moments, status signals, and the accent palette. The contrast between muted neutrals and saturated accents gives the system its character.
+
+**OKLCH throughout.** The base scale uses OKLCH for perceptual uniformity. Equal lightness steps look equal. Equal chroma steps look equal. This makes the scale predictable and accessible — you can reason about contrast ratios numerically rather than squinting at swatches.
+
+**Dark first.** The base is dark. Light mode is an explicit override. This reflects where Petrichor lives — data dashboards and late-night writing sessions both want dark mode by default.

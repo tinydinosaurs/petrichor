@@ -1,0 +1,182 @@
+import { Meta } from '@storybook/blocks';
+import {
+	RadiusScale,
+	ComponentRadius,
+	ElevationScale,
+	BorderScale,
+	SurfaceComposition,
+	SurfaceGroup,
+	BrandRadiusCompare,
+} from './components/SurfaceSpecimen';
+
+<Meta title="Foundations/Surface" />
+
+# Surface
+
+Surfaces are how components occupy physical space. Every card, button, input, and modal is a surface — defined by its background, border, corner radius, and elevation. Petrichor's surface system creates visual hierarchy through layering and gives each brand its tactile personality.
+
+---
+
+## Brand personality through radius
+
+The most visible brand distinction happens at the corners. **Raindrop** is sharp and technical — small radii, squared edges, data-focused. **Dusk Rose** is soft and editorial — larger radii, gentler curves, more approachable.
+
+Toggle brands in the toolbar to see the same component tokens resolve to different values:
+
+<BrandRadiusCompare />
+
+| Component | Raindrop | Dusk Rose |
+| --------- | -------- | --------- |
+| Button    | 2px      | 4px       |
+| Input     | 2px      | 4px       |
+| Card      | 4px      | 8px       |
+| Modal     | 4px      | 8px       |
+| Badge     | 2px      | pill      |
+| Tooltip   | 2px      | 4px       |
+
+Components use semantic radius tokens like `--ptr-radius-component-button` — they never reference the raw scale directly. This is what makes brand switching work without component-level conditionals.
+
+---
+
+## Radius scale
+
+The raw radius scale. Components don't use these directly — they use component-specific tokens that reference these values per brand.
+
+<RadiusScale
+	tokens={[
+		{ token: '--ptr-radius-none', label: 'none', value: '0px' },
+		{ token: '--ptr-radius-sm', label: 'sm', value: '2px' },
+		{ token: '--ptr-radius-md', label: 'md', value: '4px' },
+		{ token: '--ptr-radius-lg', label: 'lg', value: '8px' },
+		{ token: '--ptr-radius-xl', label: 'xl', value: '12px' },
+		{ token: '--ptr-radius-2xl', label: '2xl', value: '16px' },
+		{ token: '--ptr-radius-pill', label: 'pill', value: '999px' },
+	]}
+/>
+
+---
+
+## Component radius tokens
+
+These are the tokens components actually use. They resolve to different scale values per brand.
+
+<ComponentRadius
+	components={[
+		{ name: 'Button', token: '--ptr-radius-component-button' },
+		{ name: 'Input', token: '--ptr-radius-component-input' },
+		{ name: 'Card', token: '--ptr-radius-component-card' },
+		{ name: 'Modal', token: '--ptr-radius-component-modal' },
+		{ name: 'Badge', token: '--ptr-radius-component-badge' },
+		{ name: 'Tooltip', token: '--ptr-radius-component-tooltip' },
+	]}
+/>
+
+---
+
+## Elevation
+
+Elevation creates depth through shadow. Petrichor uses a minimal two-level system — resting and floating. Most surfaces are flat (no shadow). Elevation is reserved for elements that genuinely float above others.
+
+<ElevationScale
+	tokens={[
+		{
+			token: '--ptr-elevation-none',
+			label: 'None',
+			description: 'Flat surface — cards, inputs, most UI',
+		},
+		{
+			token: '--ptr-elevation-resting',
+			label: 'Resting',
+			description: 'Subtle lift — hover states, selected cards',
+		},
+		{
+			token: '--ptr-elevation-floating',
+			label: 'Floating',
+			description: 'Floats above — dropdowns, tooltips, modals',
+		},
+	]}
+/>
+
+**Don't overuse elevation.** A card at rest needs no shadow — its background contrast against the page is enough. Save shadows for elements that actually float: dropdowns, popovers, dialogs. Overusing shadows flattens the hierarchy and makes everything feel heavy.
+
+---
+
+## Border width
+
+Three border widths for different contexts.
+
+<BorderScale
+	tokens={[
+		{ token: '--ptr-border-hairline', label: 'Hairline', value: '0.5px' },
+		{ token: '--ptr-border-base', label: 'Base', value: '1px' },
+		{ token: '--ptr-border-thick', label: 'Thick', value: '2px' },
+	]}
+/>
+
+| Token | Usage |
+| ----- | ----- |
+| `--ptr-border-hairline` | Dividers, subtle separators, decorative lines |
+| `--ptr-border-base` | Input borders, card borders, standard UI |
+| `--ptr-border-thick` | Focus rings, active states, emphasis |
+
+---
+
+## Surface compositions
+
+Common surface recipes showing how background, border, radius, and elevation combine.
+
+<SurfaceGroup title="Common patterns">
+	<SurfaceComposition
+		name="Card"
+		bg="--ptr-color-bg-surface"
+		border="--ptr-color-border-subtle"
+		radius="--ptr-radius-component-card"
+		description="Standard content container. One step above page background, subtle border, component-appropriate radius."
+	/>
+	<SurfaceComposition
+		name="Input"
+		bg="--ptr-color-bg-input"
+		border="--ptr-color-border-default"
+		radius="--ptr-radius-component-input"
+		description="Form input background. Slightly recessed appearance, visible border for affordance."
+	/>
+	<SurfaceComposition
+		name="Dropdown"
+		bg="--ptr-color-bg-elevated"
+		radius="--ptr-radius-component-tooltip"
+		shadow="--ptr-elevation-floating"
+		description="Floating menu. Elevated background, no border (shadow provides edge), floating elevation."
+	/>
+	<SurfaceComposition
+		name="Modal"
+		bg="--ptr-color-bg-surface"
+		radius="--ptr-radius-component-modal"
+		shadow="--ptr-elevation-floating"
+		description="Dialog surface. Larger radius, heavy shadow, centered attention."
+	/>
+</SurfaceGroup>
+
+---
+
+## Background layering
+
+Surfaces stack in a consistent order. Each layer is one step lighter (dark mode) or darker (light mode) than the one below.
+
+| Token | Layer | Usage |
+| ----- | ----- | ----- |
+| `--ptr-color-bg-page` | 0 | The page itself — `<html>` / `<body>` |
+| `--ptr-color-bg-surface` | 1 | Cards, panels, sidebar, main content areas |
+| `--ptr-color-bg-elevated` | 2 | Tooltips, dropdowns, modals — floats above surface |
+| `--ptr-color-bg-input` | inset | Form inputs — visually recessed into surface |
+
+Never skip layers. A tooltip (layer 2) shouldn't appear directly on the page (layer 0) without an intervening surface. The layering creates a consistent sense of depth across the interface.
+
+---
+
+## Philosophy
+
+**Flat until it floats.** Most surfaces are flat. Shadows appear only when something genuinely floats above something else — a dropdown over a card, a modal over the page. This restraint makes elevation meaningful when it appears.
+
+**Radius as brand voice.** Corner radius is one of the strongest brand signals. Sharp corners feel technical, precise, utilitarian. Soft corners feel approachable, editorial, warm. The same button component, two personalities — purely through radius tokens.
+
+**Borders for affordance, not decoration.** Borders exist to communicate — this is an input, this is a separate section, this is clickable. Decorative borders add visual noise. If a border isn't helping the user understand something, remove it.

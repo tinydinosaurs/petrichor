@@ -104,7 +104,7 @@
 
 .primary {
 	background: var(--ptr-color-brand-primary);
-	color: oklch(92% 0.01 258);
+	color: var(--ptr-color-text-on-brand);
 	border-color: transparent;
 }
 
@@ -133,8 +133,8 @@
 }
 
 .danger {
-	background: var(--ptr-color-status-error-bg);
-	color: oklch(92% 0.01 258);
+	background: var(--ptr-color-status-danger-bg);
+	color: var(--ptr-color-text-on-brand);
 	border-color: transparent;
 }
 

@@ -202,8 +202,8 @@ typography:
             }
         sans-ec:
             {
-                value: "'Cabinet Grotesk', -apple-system, sans-serif",
-                comment: 'Exquisite Corpse UI — Fontshare (api.fontshare.com)',
+                value: "'Epilogue', -apple-system, sans-serif",
+                comment: 'Exquisite Corpse UI — Google Fonts',
             }
         serif:
             {

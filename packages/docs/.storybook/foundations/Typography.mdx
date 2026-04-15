@@ -1,0 +1,277 @@
+import { Meta } from '@storybook/blocks';
+import {
+	TypeSpecimen,
+	TypeScale,
+	BrandCompare,
+} from './components/TypeSpecimen';
+
+<Meta title="Typography" />
+
+# Typography
+
+Petrichor uses a three-font system. Two of the fonts change per brand — the third is shared.
+
+| Token                           | Raindrop       | Dusk Rose       | Role                                       |
+| ------------------------------- | -------------- | --------------- | ------------------------------------------ |
+| `--ptr-typography-font-ui`      | Inter          | Cabinet Grotesk | All UI text — labels, buttons, inputs, nav |
+| `--ptr-typography-font-display` | Inter          | Fraunces        | Headings, display text, story titles       |
+| `--ptr-typography-font-mono`    | JetBrains Mono | JetBrains Mono  | Code, token names, character counts        |
+
+On Raindrop, `font-ui` and `font-display` are both Inter — the type system is utilitarian and consistent. On Dusk Rose, `font-display` becomes Fraunces — a variable serif with intentional quirks and an optical size axis, suited to literary and editorial contexts.
+
+## The display variant
+
+The clearest brand personality difference. Toggle brands in the toolbar to see Fraunces vs Inter.
+
+<BrandCompare sample="The Storm Before" />
+
+Fraunces has optical size variation built in — at larger sizes it gets more expressive, with a slightly irregular baseline that feels hand-lettered. At smaller sizes it tightens up to read clearly. Inter at the same size is clean and authoritative.
+
+The `display` variant is reserved for hero moments — story titles, page-level headers, onboarding screens. One per view. Using it for subsection headings dilutes the effect.
+
+## Type scale
+
+The scale steps differ between brands. Raindrop uses a **Major Third (1.25)** ratio — compact, data-appropriate. Dusk Rose uses a **Perfect Fourth (1.333)** — more dramatic jumps, suited to editorial hierarchy.
+
+<TypeScale
+	steps={[
+		{
+			label: 'heading1',
+			size: '2xl',
+			weight: 'label',
+			sample: 'Season Rankings',
+		},
+		{
+			label: 'heading2',
+			size: 'xl',
+			weight: 'label',
+			sample: 'Top Players',
+		},
+		{
+			label: 'heading3',
+			size: 'lg',
+			weight: 'label',
+			sample: 'Match History',
+		},
+		{
+			label: 'heading4',
+			size: 'md',
+			weight: 'label',
+			sample: 'Recent Games',
+		},
+		{
+			label: 'body-lg',
+			size: 'md',
+			weight: 'body',
+			sample: 'Your win rate is trending upward this season.',
+		},
+		{
+			label: 'body',
+			size: 'base',
+			weight: 'body',
+			sample: 'Regular body text for descriptions and general reading.',
+		},
+		{
+			label: 'body-sm',
+			size: 'sm',
+			weight: 'body',
+			sample: 'Secondary content, metadata, supporting information.',
+		},
+		{
+			label: 'label',
+			size: 'sm',
+			weight: 'label',
+			sample: 'Season points',
+		},
+		{
+			label: 'caption',
+			size: 'xs',
+			weight: 'body',
+			sample: 'Updated 2 minutes ago',
+		},
+		{
+			label: 'mono',
+			size: 'sm',
+			weight: 'body',
+			sample: 'const score = 2840',
+		},
+	]}
+/>
+
+## Variant reference
+
+Each variant in the Text component maps to a specific combination of font, size, weight, and line-height tokens. The `as` prop controls the semantic HTML element independently of the visual style.
+
+### display
+
+<TypeSpecimen
+	variant="display"
+	element="h1"
+	tokens={{
+		font: 'display',
+		size: '3xl',
+		weight: 'display',
+		lineHeight: 'display',
+		letterSpacing: 'tight',
+	}}
+	note="Brand personality variant. Fraunces on Dusk Rose, Inter on Raindrop. One per view maximum. Use for story titles, page heroes, onboarding moments."
+/>
+
+### heading1
+
+<TypeSpecimen
+	variant="heading1"
+	element="h1"
+	tokens={{
+		font: 'ui',
+		size: '2xl',
+		weight: 'label',
+		lineHeight: 'display',
+		letterSpacing: 'tight',
+	}}
+	note="Page-level title. Each page should have exactly one h1."
+/>
+
+### heading2
+
+<TypeSpecimen
+	variant="heading2"
+	element="h2"
+	tokens={{
+		font: 'ui',
+		size: 'xl',
+		weight: 'label',
+		lineHeight: 'display',
+		letterSpacing: 'tight',
+	}}
+/>
+
+### heading3
+
+<TypeSpecimen
+	variant="heading3"
+	element="h3"
+	tokens={{ font: 'ui', size: 'lg', weight: 'label', lineHeight: 'ui' }}
+/>
+
+### heading4
+
+<TypeSpecimen
+	variant="heading4"
+	element="h4"
+	tokens={{ font: 'ui', size: 'md', weight: 'label', lineHeight: 'ui' }}
+	note="Card headings, group labels, section titles within a card."
+/>
+
+### body-lg
+
+<TypeSpecimen
+	variant="body-lg"
+	element="p"
+	tokens={{ font: 'ui', size: 'md', weight: 'body', lineHeight: 'body' }}
+	multiLine
+	note="Lead paragraphs, prominent descriptions. Same size as heading4 but regular weight and body line-height."
+/>
+
+### body
+
+<TypeSpecimen
+	variant="body"
+	element="p"
+	tokens={{ font: 'ui', size: 'base', weight: 'body', lineHeight: 'body' }}
+	multiLine
+	note="Default body text. The workhorse variant — card content, descriptions, general reading."
+/>
+
+### body-sm
+
+<TypeSpecimen
+	variant="body-sm"
+	element="p"
+	tokens={{ font: 'ui', size: 'sm', weight: 'body', lineHeight: 'body' }}
+	multiLine
+	note="Secondary content. Renders in text-secondary color by default."
+/>
+
+### label
+
+<TypeSpecimen
+	variant="label"
+	element="span"
+	sample="Season points"
+	tokens={{ font: 'ui', size: 'sm', weight: 'label', lineHeight: 'ui' }}
+	note="UI labels. Same size as body-sm but medium weight and tighter line-height. Use as='label' with htmlFor when labelling a form input."
+/>
+
+### caption
+
+<TypeSpecimen
+	variant="caption"
+	element="span"
+	sample="Updated 2 minutes ago"
+	tokens={{ font: 'ui', size: 'xs', weight: 'body', lineHeight: 'ui' }}
+	note="Timestamps, fine print, image captions, update notices. Renders in text-secondary color."
+/>
+
+### mono
+
+<TypeSpecimen
+	variant="mono"
+	element="code"
+	sample="const score = 2840"
+	tokens={{ font: 'mono', size: 'sm', weight: 'body', lineHeight: 'body' }}
+	note="Inline code, token names, technical values, scores that need monospace alignment."
+/>
+
+## The variant / element split
+
+The most important design decision in Petrichor's typography system is separating visual style from semantic element.
+
+```tsx
+// Visual style = heading2, semantic element = h3
+// Use when card headings are nested under a page h2
+<Text variant="heading2" as="h3">Section title</Text>
+
+// Visual style = label, semantic element = <label>
+// Use when labelling a form input
+<Text variant="label" as="label" htmlFor="email">Email</Text>
+```
+
+**Visual hierarchy** is what the user sees. **Document hierarchy** is what screen readers and search engines see. They're independent concerns and both matter.
+
+A page with a visually prominent section title that's actually an `h1` — when the page already has an `h1` — is an accessibility failure regardless of how good it looks.
+
+### Heading level rules
+
+- Every page has exactly one `h1`
+- Heading levels never skip — `h1 → h3` without an `h2` in between is wrong
+- Use the `as` prop to fix the semantic level when the visual design calls for a specific variant that doesn't match the document position
+
+## Letter spacing
+
+Two letter-spacing tokens are used in typography:
+
+| Token                                   | Value     | Used by                                       |
+| --------------------------------------- | --------- | --------------------------------------------- |
+| `--ptr-typography-letter-spacing-tight` | `-0.02em` | display, heading1, heading2                   |
+| `--ptr-typography-letter-spacing-wide`  | `0.04em`  | Avatar initials, badge text, uppercase labels |
+
+Negative tracking on large headings compensates for the way optical spacing opens up at larger sizes. Wide tracking on uppercase small text improves legibility at small sizes.
+
+## Line height
+
+| Token                                  | Value  | Used by                            |
+| -------------------------------------- | ------ | ---------------------------------- |
+| `--ptr-typography-line-height-display` | `1.15` | heading1, heading2                 |
+| `--ptr-typography-line-height-ui`      | `1.4`  | heading3, heading4, label, caption |
+| `--ptr-typography-line-height-body`    | `1.6`  | body-lg, body, body-sm, mono       |
+
+Display line-height is tight — headings don't wrap often and tight leading looks intentional. Body line-height is comfortable for reading. UI line-height sits between them for elements that appear in mixed contexts.
+
+## Philosophy
+
+**Neutral until it isn't.** The type system is intentionally quiet on Raindrop — Inter is ubiquitous precisely because it disappears. The data is the hero. On Dusk Rose, Fraunces injects personality at the display level while Cabinet Grotesk keeps UI chrome calm. The literary experience gets an editorial voice; the interface stays out of the way.
+
+**Scale as personality.** The 1.25 vs 1.333 ratio difference is subtle but cumulative. At three heading levels deep, Dusk Rose has 15% more dramatic size contrast than Raindrop. That extra drama suits fiction. That restraint suits a leaderboard.
+
+**Two weights only.** `weight-body` (400) and `weight-label` (500). No bold, no thin. The type system gets its hierarchy from size and spacing, not weight. This keeps the system feeling considered rather than shouted.

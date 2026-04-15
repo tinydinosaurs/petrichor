@@ -1,37 +1,36 @@
-import React from 'react';
 import type { Preview, Decorator } from '@storybook/react';
+import { addons } from '@storybook/preview-api';
 
-// @ts-ignore
-import '../../tokens/dist/css/base.css';
-// @ts-ignore
-import '../../tokens/dist/css/light.css';
-// @ts-ignore
-import '../../tokens/dist/css/brand.raindrop.css';
-// @ts-ignore
-import '../../tokens/dist/css/brand.dusk-rose.css';
+import '@petrichor/tokens/css';
+import '@petrichor/tokens/css/light';
+import '@petrichor/tokens/css/brand/raindrop';
+import '@petrichor/tokens/css/brand/dusk-rose';
+import './docs.css';
 
-const withBrandTheme: Decorator = (Story, context) => {
-	const brand = context.globals.brand ?? 'raindrop';
-	const colorScheme = context.globals.colorScheme ?? 'dark';
+// Apply brand/scheme to <html> at module load and on every globals change.
+// This runs on all pages including pure MDX docs — not just story renders.
+function applyTheme(brand: string, colorScheme: string) {
+	document.documentElement.setAttribute('data-brand', brand);
+	document.documentElement.setAttribute('data-color-scheme', colorScheme);
+}
 
-	React.useEffect(() => {
-		const root = document.documentElement;
-		root.setAttribute('data-brand', brand);
-		root.setAttribute('data-color-scheme', colorScheme);
-	}, [brand, colorScheme]);
+applyTheme('raindrop', 'dark');
 
-	return (
-		<div
-			style={{
-				padding: '2rem',
-				background: 'var(--ptr-color-bg-page)',
-				color: 'var(--ptr-color-text-primary)',
-			}}
-		>
-			<Story />
-		</div>
-	);
-};
+addons.getChannel().on('globalsUpdated', ({ globals }: { globals: Record<string, string> }) => {
+	applyTheme(globals.brand ?? 'raindrop', globals.colorScheme ?? 'dark');
+});
+
+const withBrandTheme: Decorator = (Story) => (
+	<div
+		style={{
+			padding: '2rem',
+			background: 'var(--ptr-color-bg-page)',
+			color: 'var(--ptr-color-text-primary)',
+		}}
+	>
+		<Story />
+	</div>
+);
 
 const preview: Preview = {
 	globalTypes: {

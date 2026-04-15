@@ -3,6 +3,11 @@ import path from 'path';
 
 const config: StorybookConfig = {
 	stories: [
+		{
+			directory: './foundations',
+			files: '@(Color|Motion|Spacing|Surface|Typography).mdx',
+			titlePrefix: 'Foundations',
+		},
 		'../../../packages/react/src/**/*.stories.@(ts|tsx)',
 		'../../../packages/react/src/**/*.docs.mdx',
 	],
@@ -10,6 +15,7 @@ const config: StorybookConfig = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-interactions',
 		'@storybook/addon-a11y',
+		'@storybook/addon-mdx-gfm',
 	],
 	framework: {
 		name: '@storybook/react-vite',
