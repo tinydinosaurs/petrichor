@@ -16,3 +16,25 @@ declare module '@storybook/preview-api' {
 	}
 	export const addons: Addons;
 }
+
+// @storybook/manager-api — same hoisting issue as preview-api
+declare module '@storybook/manager-api' {
+	interface Channel {
+		on<T = unknown>(event: string, callback: (data: T) => void): void;
+		off<T = unknown>(event: string, callback: (data: T) => void): void;
+		emit(event: string, data: unknown): void;
+	}
+	interface API {
+		getChannel(): Channel;
+	}
+	interface Addons {
+		setConfig(config: Record<string, unknown>): void;
+		register(name: string, callback: (api: API) => void): void;
+	}
+	export const addons: Addons;
+}
+
+// @storybook/theming
+declare module '@storybook/theming' {
+	export function create(config: Record<string, unknown>): Record<string, unknown>;
+}
