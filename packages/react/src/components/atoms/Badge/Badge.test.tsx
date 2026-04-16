@@ -40,6 +40,7 @@ describe('Badge', () => {
       'success',
       'warning',
       'error',
+      'danger',
       'brand',
     ] as const)('renders %s variant without error', (variant) => {
       render(<Badge variant={variant}>Label</Badge>)

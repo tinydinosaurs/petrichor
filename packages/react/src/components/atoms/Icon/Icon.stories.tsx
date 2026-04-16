@@ -101,7 +101,7 @@ export const Weights: Story = {
 					<span
 						style={{
 							fontSize: '11px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 							width: '64px',
 							flexShrink: 0,
 						}}
@@ -155,7 +155,7 @@ export const Sizes: Story = {
 					<span
 						style={{
 							fontSize: '10px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 						}}
 					>
 						{size}

@@ -29,6 +29,23 @@
 	animation: ptr-shimmer 1.4s ease-in-out infinite;
 }
 
+.skeletonNarrow {
+	width: 40%;
+	height: 12px;
+}
+
+.skeletonWide {
+	width: 100%;
+	height: 20px;
+	margin-top: var(--ptr-spacing-2xs);
+}
+
+.skeletonMedium {
+	width: 80%;
+	height: 14px;
+	margin-top: var(--ptr-spacing-3xs);
+}
+
 @keyframes ptr-shimmer {
 	0%,
 	100% {
@@ -100,33 +117,33 @@
 	display: block;
 }
 
-.image-top {
+.imageTop {
 	border-radius: 0;
 }
 
-.image-bottom {
+.imageBottom {
 	order: 999;
 	border-radius: 0;
 }
 
-.image-left {
+.imageLeft {
 	width: 40%;
 	border-radius: 0;
 }
 
-.image-right {
+.imageRight {
 	width: 40%;
 	order: 999;
 	border-radius: 0;
 }
 
-.image-left ~ *,
-.image-right ~ * {
+.imageLeft ~ *,
+.imageRight ~ * {
 	flex: 1;
 }
 
-.card:has(.image-left),
-.card:has(.image-right) {
+.card:has(.imageLeft),
+.card:has(.imageRight) {
 	flex-direction: row;
 }
 

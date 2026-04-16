@@ -65,13 +65,27 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   truncate?: boolean
 }
 
+const variantClass: Record<TextVariant, string> = {
+  display: styles.display,
+  heading1: styles.heading1,
+  heading2: styles.heading2,
+  heading3: styles.heading3,
+  heading4: styles.heading4,
+  'body-lg': styles.bodyLg,
+  body: styles.body,
+  'body-sm': styles.bodySm,
+  label: styles.label,
+  caption: styles.caption,
+  mono: styles.mono,
+}
+
 export const Text = React.forwardRef<HTMLElement, TextProps>(
   ({ variant, as, truncate = false, className, children, ...rest }, ref) => {
     const Element = (as ?? defaultElement[variant]) as React.ElementType
 
     const classes = [
       styles.text,
-      styles[variant.replace('-', '_')],
+      variantClass[variant],
       truncate ? styles.truncate : '',
       className ?? '',
     ]

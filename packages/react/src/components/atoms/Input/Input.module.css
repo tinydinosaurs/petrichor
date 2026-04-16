@@ -62,7 +62,7 @@
 	border: var(--ptr-border-hairline) solid var(--ptr-color-border-default);
 	border-radius: var(--ptr-radius-component-input);
 	outline: none;
-	transition: var(--ptr-motion-transition-micro);
+	transition: var(--ptr-motion-micro);
 	box-sizing: border-box;
 }
 
@@ -187,7 +187,7 @@
 	color: var(--ptr-color-text-secondary);
 	padding: 4px; /* audit-ignore — password toggle target, intentionally below spacing scale */
 	border-radius: var(--ptr-radius-md);
-	transition: var(--ptr-motion-transition-micro);
+	transition: var(--ptr-motion-micro);
 }
 
 .passwordToggle:hover {

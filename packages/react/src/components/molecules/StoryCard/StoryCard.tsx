@@ -97,6 +97,7 @@ const ContributorAvatars = ({
 	return (
 		<div
 			className={styles.avatarGroup}
+			role="group"
 			aria-label={`${contributors.length} contributor${contributors.length === 1 ? '' : 's'}`}
 		>
 			{visible.map((contributor, i) => (

@@ -30,9 +30,9 @@ const CardRoot = React.forwardRef<HTMLElement, CardProps>(
       >
         {loading ? (
           <div className={styles.skeletonWrap} aria-hidden="true">
-            <div className={styles.skeletonLine} style={{ width: '40%', height: '12px' }} />
-            <div className={styles.skeletonLine} style={{ width: '100%', height: '20px', marginTop: '8px' }} />
-            <div className={styles.skeletonLine} style={{ width: '80%', height: '14px', marginTop: '6px' }} />
+            <div className={`${styles.skeletonLine} ${styles.skeletonNarrow}`} />
+            <div className={`${styles.skeletonLine} ${styles.skeletonWide}`} />
+            <div className={`${styles.skeletonLine} ${styles.skeletonMedium}`} />
           </div>
         ) : (
           children
@@ -140,6 +140,13 @@ export interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement
   alt: string
 }
 
+const orientationClass: Record<CardImageOrientation, string> = {
+  top: styles.imageTop,
+  bottom: styles.imageBottom,
+  left: styles.imageLeft,
+  right: styles.imageRight,
+}
+
 const CardImage = React.forwardRef<HTMLDivElement, CardImageProps>(
   (
     {
@@ -155,7 +162,7 @@ const CardImage = React.forwardRef<HTMLDivElement, CardImageProps>(
   ) => {
     const classes = [
       styles.imageWrap,
-      styles[`image-${orientation}`],
+      orientationClass[orientation],
       className ?? '',
     ]
       .filter(Boolean)

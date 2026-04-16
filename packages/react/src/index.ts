@@ -76,6 +76,10 @@ export type {
  ----------------- */
 
 export { StatCard } from './components/molecules/StatCard/StatCard';
+export type {
+	StatCardProps,
+	StatCardTrend,
+} from './components/molecules/StatCard/StatCard';
 export { StoryCard } from './components/molecules/StoryCard/StoryCard';
 export type {
 	StoryCardProps,

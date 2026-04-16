@@ -52,18 +52,18 @@
 }
 
 .info {
-	background: var(--ptr-color-bg-info);
-	color: var(--ptr-color-text-info);
+	background: var(--ptr-color-status-info-bg);
+	color: var(--ptr-color-status-info-text);
 }
 
 .success {
-	background: var(--ptr-color-bg-success);
-	color: var(--ptr-color-text-success);
+	background: var(--ptr-color-status-success-bg);
+	color: var(--ptr-color-status-success-text);
 }
 
 .warning {
-	background: var(--ptr-color-bg-warning);
-	color: var(--ptr-color-text-warning);
+	background: var(--ptr-color-status-warning-bg);
+	color: var(--ptr-color-status-warning-text);
 }
 
 .error {

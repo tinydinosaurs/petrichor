@@ -21,10 +21,17 @@ export const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
     },
     ref,
   ) => {
+    const spacingClass: Record<DividerSpacing, string> = {
+      none: '',
+      sm: styles.spacingSm,
+      md: styles.spacingMd,
+      lg: styles.spacingLg,
+    }
+
     const classes = [
       styles.divider,
       styles[orientation],
-      spacing !== 'none' ? styles[`spacing-${spacing}`] : '',
+      spacingClass[spacing],
       className ?? '',
     ]
       .filter(Boolean)
@@ -34,8 +41,8 @@ export const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
       <hr
         ref={ref}
         className={classes}
-        aria-hidden="true"
         {...rest}
+        aria-hidden="true"
       />
     )
   },

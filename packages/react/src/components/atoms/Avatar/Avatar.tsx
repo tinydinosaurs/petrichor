@@ -41,6 +41,13 @@ const sizeToIconSize: Record<AvatarSize, number> = {
 	xl: 32,
 };
 
+const statusClass: Record<AvatarStatus, string> = {
+	online: styles.statusOnline,
+	offline: styles.statusOffline,
+	away: styles.statusAway,
+	busy: styles.statusBusy,
+};
+
 export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
 	(
 		{
@@ -85,8 +92,8 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
 			<Comp
 				ref={ref}
 				className={classes}
-				aria-label={ariaLabel}
 				{...rest}
+				aria-label={ariaLabel}
 			>
 				{asChild ? (
 					children
@@ -123,8 +130,9 @@ export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
 							<span
 								className={[
 									styles.status,
-									styles[`status-${status}`],
+									statusClass[status],
 								].join(' ')}
+								role="status"
 								aria-label={`Status: ${status}`}
 							/>
 						)}

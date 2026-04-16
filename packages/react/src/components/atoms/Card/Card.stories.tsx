@@ -38,7 +38,7 @@ export const Bare: Story = {
 			<div
 				style={{
 					padding: '16px',
-					color: 'var(--color-text-primary)',
+					color: 'var(--ptr-color-text-primary)',
 					fontSize: '14px',
 				}}
 			>
@@ -70,7 +70,7 @@ export const WithHeader: Story = {
 						style={{
 							fontSize: '15px',
 							fontWeight: 500,
-							color: 'var(--color-text-primary)',
+							color: 'var(--ptr-color-text-primary)',
 						}}
 					>
 						Season Rankings
@@ -78,7 +78,7 @@ export const WithHeader: Story = {
 					<div
 						style={{
 							fontSize: '12px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 							marginTop: '2px',
 						}}
 					>
@@ -91,7 +91,7 @@ export const WithHeader: Story = {
 					style={{
 						margin: 0,
 						fontSize: '14px',
-						color: 'var(--color-text-secondary)',
+						color: 'var(--ptr-color-text-secondary)',
 					}}
 				>
 					Card body content goes here.
@@ -110,7 +110,7 @@ export const WithHeaderAndFooter: Story = {
 					style={{
 						fontSize: '15px',
 						fontWeight: 500,
-						color: 'var(--color-text-primary)',
+						color: 'var(--ptr-color-text-primary)',
 					}}
 				>
 					The Clockmaker's Last Dream
@@ -121,7 +121,7 @@ export const WithHeaderAndFooter: Story = {
 					style={{
 						margin: 0,
 						fontSize: '14px',
-						color: 'var(--color-text-secondary)',
+						color: 'var(--ptr-color-text-secondary)',
 						lineHeight: 1.6,
 					}}
 				>
@@ -150,7 +150,7 @@ export const WithDivider: Story = {
 					style={{
 						margin: 0,
 						fontSize: '14px',
-						color: 'var(--color-text-primary)',
+						color: 'var(--ptr-color-text-primary)',
 					}}
 				>
 					First section
@@ -162,7 +162,7 @@ export const WithDivider: Story = {
 					style={{
 						margin: 0,
 						fontSize: '14px',
-						color: 'var(--color-text-secondary)',
+						color: 'var(--ptr-color-text-secondary)',
 					}}
 				>
 					Second section — use dividers sparingly. Let whitespace do
@@ -191,7 +191,7 @@ export const WithImageTop: Story = {
 					style={{
 						fontSize: '15px',
 						fontWeight: 500,
-						color: 'var(--color-text-primary)',
+						color: 'var(--ptr-color-text-primary)',
 					}}
 				>
 					The Storm Before
@@ -202,7 +202,7 @@ export const WithImageTop: Story = {
 					style={{
 						margin: 0,
 						fontSize: '13px',
-						color: 'var(--color-text-secondary)',
+						color: 'var(--ptr-color-text-secondary)',
 					}}
 				>
 					4 contributors · 6 segments
@@ -226,7 +226,7 @@ export const WithImageLeft: Story = {
 					style={{
 						fontSize: '14px',
 						fontWeight: 500,
-						color: 'var(--color-text-primary)',
+						color: 'var(--ptr-color-text-primary)',
 						marginBottom: '4px',
 					}}
 				>
@@ -235,7 +235,7 @@ export const WithImageLeft: Story = {
 				<div
 					style={{
 						fontSize: '12px',
-						color: 'var(--color-text-secondary)',
+						color: 'var(--ptr-color-text-secondary)',
 					}}
 				>
 					4 contributors
@@ -267,7 +267,7 @@ export const EmptyState: Story = {
 				action={
 					<Button
 						variant="primary"
-						iconStart={<PlusIcon size={16} />}
+						iconStart={<Icon icon={PlusIcon} size="sm" />}
 					>
 						Start a story
 					</Button>
@@ -332,7 +332,7 @@ export const AsArticle: Story = {
 						style={{
 							fontSize: '15px',
 							fontWeight: 500,
-							color: 'var(--color-text-primary)',
+							color: 'var(--ptr-color-text-primary)',
 						}}
 					>
 						The Clockmaker's Last Dream
@@ -345,7 +345,7 @@ export const AsArticle: Story = {
 					style={{
 						margin: 0,
 						fontSize: '13px',
-						color: 'var(--color-text-secondary)',
+						color: 'var(--ptr-color-text-secondary)',
 						lineHeight: 1.6,
 					}}
 				>
@@ -387,7 +387,7 @@ export const StatCardPattern: Story = {
 					<span
 						style={{
 							fontSize: '12px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 						}}
 					>
 						Season points
@@ -397,11 +397,11 @@ export const StatCardPattern: Story = {
 							width: 32,
 							height: 32,
 							borderRadius: 6,
-							background: 'var(--color-background-info)',
+							background: 'var(--ptr-color-status-info-bg)',
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'center',
-							color: 'var(--color-text-info)',
+							color: 'var(--ptr-color-status-info-text)',
 						}}
 					>
 						★
@@ -411,7 +411,7 @@ export const StatCardPattern: Story = {
 					style={{
 						fontSize: '28px',
 						fontWeight: 500,
-						color: 'var(--color-text-primary)',
+						color: 'var(--ptr-color-text-primary)',
 						lineHeight: 1,
 						marginTop: 8,
 					}}
@@ -421,7 +421,7 @@ export const StatCardPattern: Story = {
 				<div
 					style={{
 						fontSize: '12px',
-						color: 'var(--color-text-success)',
+						color: 'var(--ptr-color-text-success)',
 						marginTop: 8,
 					}}
 				>

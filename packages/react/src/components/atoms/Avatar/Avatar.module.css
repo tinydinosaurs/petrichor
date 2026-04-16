@@ -120,7 +120,7 @@
   height: 12px;
 }
 
-.status-online  { background: var(--ptr-color-status-success-text); }
-.status-offline { background: var(--ptr-color-text-tertiary); }
-.status-away    { background: var(--ptr-color-status-warning-text); }
-.status-busy    { background: var(--ptr-color-status-error-text); }
+.statusOnline  { background: var(--ptr-color-status-success-text); }
+.statusOffline { background: var(--ptr-color-text-tertiary); }
+.statusAway    { background: var(--ptr-color-status-warning-text); }
+.statusBusy    { background: var(--ptr-color-status-error-text); }

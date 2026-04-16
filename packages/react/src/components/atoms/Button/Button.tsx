@@ -21,28 +21,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 	asChild?: boolean;
 }
 
-// const Spinner = () => (
-// 	<svg
-// 		width="14"
-// 		height="14"
-// 		viewBox="0 0 14 14"
-// 		fill="none"
-// 		aria-hidden="true"
-// 		className={styles.spinner}
-// 	>
-// 		<circle
-// 			cx="7"
-// 			cy="7"
-// 			r="5"
-// 			stroke="currentColor"
-// 			strokeWidth="2"
-// 			strokeLinecap="round"
-// 			strokeDasharray="20"
-// 			strokeDashoffset="10"
-// 		/>
-// 	</svg>
-// );
-
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
@@ -62,16 +40,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		},
 		ref,
 	) => {
-		// Dynamic component that can hold primitive HTML or other components.
-		// Uppercase required — JSX treats lowercase as HTML tag, uppercase as component
 		const Comp = asChild ? Slot : 'button';
 
 		const isDisabled = disabled || loading;
 		const isAriaDisabled = ariaDisabled ?? (loading ? true : undefined);
 
+		const variantClass: Record<ButtonVariant, string> = {
+			primary: styles.primary,
+			secondary: styles.secondary,
+			ghost: styles.ghost,
+			danger: styles.danger,
+			'ghost-danger': styles.ghostDanger,
+		};
+
 		const classes = [
 			styles.button,
-			styles[variant],
+			variantClass[variant],
 			styles[size],
 			iconOnly ? styles.iconOnly : '',
 			loading ? styles.loading : '',
@@ -97,7 +81,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 						{loading && (
 							<Spinner
 								size="sm"
-								aria-hidden="true"
 								label="Loading"
 								className={styles.spinner}
 							/>

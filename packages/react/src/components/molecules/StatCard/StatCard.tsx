@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '../../../index';
+import { Card } from '../../atoms/Card/Card';
 import styles from './StatCard.module.css';
 
 export interface StatCardTrend {
@@ -151,6 +151,7 @@ export const StatCard = React.forwardRef<HTMLElement, StatCardProps>(
 									trend.positive ?? true,
 								),
 							].join(' ')}
+							role="group"
 							aria-label={getTrendAriaLabel(trend)}
 						>
 							<span

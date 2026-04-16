@@ -16,7 +16,7 @@
 	font-weight: var(--ptr-typography-weight-body);
 	color: var(--ptr-color-text-secondary);
 	line-height: var(--ptr-typography-line-height-ui);
-	letter-spacing: 0.02em;
+	letter-spacing: var(--ptr-typography-letter-spacing-wide);
 }
 
 .iconWrap {
@@ -47,7 +47,7 @@
 	font-weight: var(--ptr-typography-weight-label);
 	color: var(--ptr-color-text-primary);
 	line-height: 1;
-	letter-spacing: -0.02em;
+	letter-spacing: var(--ptr-typography-letter-spacing-tight);
 	font-variant-numeric: tabular-nums;
 }
 
@@ -103,11 +103,11 @@
 }
 
 .trendPositive {
-	color: var(--ptr-color-text-success);
+	color: var(--ptr-color-status-success-text);
 }
 
 .trendNegative {
-	color: var(--ptr-color-text-error);
+	color: var(--ptr-color-status-error-text);
 }
 
 .trendNeutral {

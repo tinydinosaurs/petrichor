@@ -21,32 +21,32 @@
    SPACING — adds margin on both sides
    ============================================================ */
 
-.horizontal.spacing-sm {
+.horizontal.spacingSm {
   margin-top: var(--ptr-spacing-sm);
   margin-bottom: var(--ptr-spacing-sm);
 }
 
-.horizontal.spacing-md {
+.horizontal.spacingMd {
   margin-top: var(--ptr-spacing-md);
   margin-bottom: var(--ptr-spacing-md);
 }
 
-.horizontal.spacing-lg {
+.horizontal.spacingLg {
   margin-top: var(--ptr-spacing-lg);
   margin-bottom: var(--ptr-spacing-lg);
 }
 
-.vertical.spacing-sm {
+.vertical.spacingSm {
   margin-left: var(--ptr-spacing-sm);
   margin-right: var(--ptr-spacing-sm);
 }
 
-.vertical.spacing-md {
+.vertical.spacingMd {
   margin-left: var(--ptr-spacing-md);
   margin-right: var(--ptr-spacing-md);
 }
 
-.vertical.spacing-lg {
+.vertical.spacingLg {
   margin-left: var(--ptr-spacing-lg);
   margin-right: var(--ptr-spacing-lg);
 }

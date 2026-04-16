@@ -7,13 +7,11 @@ import {
 	MotionGroup,
 } from './components/MotionSpecimen';
 
-<Meta title="Foundations/Motion" />
+<Meta title="Motion" />
 
 # Motion
 
 Motion in Petrichor is functional, not decorative. Transitions provide feedback, guide attention, and create continuity between states. The system is intentionally restrained — animation serves the interface, never the other way around.
-
----
 
 ## Duration scale
 
@@ -62,8 +60,6 @@ Duration controls how long a transition takes. Shorter durations feel snappy and
 
 **The 200ms rule:** If you're unsure which duration to use, start with `base` (200ms). It's the Goldilocks zone — fast enough to feel responsive, slow enough to be perceivable. Adjust from there based on the element's size and importance.
 
----
-
 ## Easing curves
 
 Easing controls the acceleration profile of motion. Different curves create different feelings — snappy, gentle, bouncy.
@@ -105,8 +101,6 @@ Click any curve to see it in action:
 
 **Ease-out is the default.** Elements entering the viewport or responding to interaction should use ease-out — it feels like the interface is eager to respond. Ease-in is reserved for exits, where the element accelerates away.
 
----
-
 ## Composed transitions
 
 These tokens combine duration and easing into ready-to-use transition values. Use these directly in CSS `transition` properties.
@@ -134,8 +128,6 @@ These tokens combine duration and easing into ready-to-use transition values. Us
 	/>
 </MotionGroup>
 
----
-
 ## Usage patterns
 
 | Pattern          | Token                 | Example                         |
@@ -146,8 +138,6 @@ These tokens combine duration and easing into ready-to-use transition values. Us
 | Modal entrance   | `--ptr-motion-enter`  | Dialog sliding up with backdrop |
 | Page transition  | `--ptr-motion-enter`  | Route change crossfade          |
 | Reveal moment    | `--ptr-motion-reveal` | Exquisite Corpse segment unveil |
-
----
 
 ## Principles
 
@@ -179,8 +169,6 @@ These tokens combine duration and easing into ready-to-use transition values. Us
 	bad="Spring on every button click"
 />
 
----
-
 ## Reduced motion
 
 Always respect `prefers-reduced-motion`. Users who enable this setting may experience motion sickness, vestibular disorders, or simply prefer less movement.
@@ -200,8 +188,6 @@ Always respect `prefers-reduced-motion`. Users who enable this setting may exper
 This is included in `base.css`. When reduced motion is enabled, all transitions become effectively instant — the state change still happens, but without perceived animation.
 
 **Never disable this.** Motion preferences are an accessibility requirement, not a nice-to-have.
-
----
 
 ## Philosophy
 

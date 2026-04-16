@@ -47,7 +47,7 @@ export const Sizes: Story = {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
         >
           <Spinner size={size} />
-          <span style={{ fontSize: '10px', color: 'var(--color-text-secondary)' }}>{size}</span>
+          <span style={{ fontSize: '10px', color: 'var(--ptr-color-text-secondary)' }}>{size}</span>
         </div>
       ))}
     </div>

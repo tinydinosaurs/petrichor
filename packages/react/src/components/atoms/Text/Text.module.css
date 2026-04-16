@@ -67,7 +67,7 @@
    BODY — reading, uses font-ui
    ============================================================ */
 
-.body_lg {
+.bodyLg {
   font-family: var(--ptr-typography-font-ui);
   font-size: var(--ptr-typography-size-md);
   font-weight: var(--ptr-typography-weight-body);
@@ -83,7 +83,7 @@
   color: var(--ptr-color-text-primary);
 }
 
-.body_sm {
+.bodySm {
   font-family: var(--ptr-typography-font-ui);
   font-size: var(--ptr-typography-size-sm);
   font-weight: var(--ptr-typography-weight-body);

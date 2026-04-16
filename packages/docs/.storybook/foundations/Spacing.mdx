@@ -7,13 +7,11 @@ import {
 	ComponentSpacing,
 } from './components/SpacingSpecimen';
 
-<Meta title="Foundations/Spacing" />
+<Meta title="Spacing" />
 
 # Spacing
 
 Spacing in Petrichor follows a consistent scale based on multiples of 4px. This creates visual rhythm and makes layout decisions predictable. Components never use arbitrary pixel values — they reference spacing tokens.
-
----
 
 ## The scale
 
@@ -84,8 +82,6 @@ The spacing scale ranges from 1px (borders only) to 96px (major layout divisions
 	]}
 />
 
----
-
 ## Common patterns
 
 ### Padding
@@ -145,8 +141,6 @@ Space between sections. Use for separating unrelated content or creating vertica
 	/>
 </SpacingGroup>
 
----
-
 ## Component spacing reference
 
 How spacing tokens map to common component properties.
@@ -192,8 +186,6 @@ How spacing tokens map to common component properties.
 	/>
 </SpacingGroup>
 
----
-
 ## Density comparison
 
 The same content at different density levels. Dense UIs use smaller spacing tokens throughout.
@@ -208,26 +200,22 @@ The same content at different density levels. Dense UIs use smaller spacing toke
 	description="Raindrop tends toward compact (data-dense dashboards). Dusk Rose tends toward relaxed (editorial reading). Same components, different token choices."
 />
 
----
-
 ## When to use what
 
-| Scale | Value | Best for |
-| ----- | ----- | -------- |
-| `px` | 1px | Borders only — never for spacing |
-| `3xs` | 4px | Icon gaps, inline badge spacing |
-| `2xs` | 8px | Button/input vertical padding, tight groups |
-| `xs` | 12px | Button/input horizontal padding |
-| `sm` | 16px | Card padding, form gaps — **default choice** |
-| `md` | 24px | Section gaps, card-to-card — **default choice** |
-| `lg` | 32px | Large section padding |
-| `xl` | 48px | Page section divisions |
-| `2xl` | 64px | Hero sections, major breaks |
-| `3xl` | 96px | Layout margins |
+| Scale | Value | Best for                                        |
+| ----- | ----- | ----------------------------------------------- |
+| `px`  | 1px   | Borders only — never for spacing                |
+| `3xs` | 4px   | Icon gaps, inline badge spacing                 |
+| `2xs` | 8px   | Button/input vertical padding, tight groups     |
+| `xs`  | 12px  | Button/input horizontal padding                 |
+| `sm`  | 16px  | Card padding, form gaps — **default choice**    |
+| `md`  | 24px  | Section gaps, card-to-card — **default choice** |
+| `lg`  | 32px  | Large section padding                           |
+| `xl`  | 48px  | Page section divisions                          |
+| `2xl` | 64px  | Hero sections, major breaks                     |
+| `3xl` | 96px  | Layout margins                                  |
 
 **When in doubt, reach for `sm` or `md`.** They handle 80% of spacing decisions correctly.
-
----
 
 ## Philosophy
 

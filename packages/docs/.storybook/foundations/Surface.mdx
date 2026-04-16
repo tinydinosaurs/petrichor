@@ -9,13 +9,11 @@ import {
 	BrandRadiusCompare,
 } from './components/SurfaceSpecimen';
 
-<Meta title="Foundations/Surface" />
+<Meta title="Surface" />
 
 # Surface
 
 Surfaces are how components occupy physical space. Every card, button, input, and modal is a surface — defined by its background, border, corner radius, and elevation. Petrichor's surface system creates visual hierarchy through layering and gives each brand its tactile personality.
-
----
 
 ## Brand personality through radius
 
@@ -36,8 +34,6 @@ Toggle brands in the toolbar to see the same component tokens resolve to differe
 
 Components use semantic radius tokens like `--ptr-radius-component-button` — they never reference the raw scale directly. This is what makes brand switching work without component-level conditionals.
 
----
-
 ## Radius scale
 
 The raw radius scale. Components don't use these directly — they use component-specific tokens that reference these values per brand.
@@ -54,8 +50,6 @@ The raw radius scale. Components don't use these directly — they use component
 	]}
 />
 
----
-
 ## Component radius tokens
 
 These are the tokens components actually use. They resolve to different scale values per brand.
@@ -70,8 +64,6 @@ These are the tokens components actually use. They resolve to different scale va
 		{ name: 'Tooltip', token: '--ptr-radius-component-tooltip' },
 	]}
 />
-
----
 
 ## Elevation
 
@@ -99,8 +91,6 @@ Elevation creates depth through shadow. Petrichor uses a minimal two-level syste
 
 **Don't overuse elevation.** A card at rest needs no shadow — its background contrast against the page is enough. Save shadows for elements that actually float: dropdowns, popovers, dialogs. Overusing shadows flattens the hierarchy and makes everything feel heavy.
 
----
-
 ## Border width
 
 Three border widths for different contexts.
@@ -113,13 +103,11 @@ Three border widths for different contexts.
 	]}
 />
 
-| Token | Usage |
-| ----- | ----- |
+| Token                   | Usage                                         |
+| ----------------------- | --------------------------------------------- |
 | `--ptr-border-hairline` | Dividers, subtle separators, decorative lines |
-| `--ptr-border-base` | Input borders, card borders, standard UI |
-| `--ptr-border-thick` | Focus rings, active states, emphasis |
-
----
+| `--ptr-border-base`     | Input borders, card borders, standard UI      |
+| `--ptr-border-thick`    | Focus rings, active states, emphasis          |
 
 ## Surface compositions
 
@@ -156,22 +144,18 @@ Common surface recipes showing how background, border, radius, and elevation com
 	/>
 </SurfaceGroup>
 
----
-
 ## Background layering
 
 Surfaces stack in a consistent order. Each layer is one step lighter (dark mode) or darker (light mode) than the one below.
 
-| Token | Layer | Usage |
-| ----- | ----- | ----- |
-| `--ptr-color-bg-page` | 0 | The page itself — `<html>` / `<body>` |
-| `--ptr-color-bg-surface` | 1 | Cards, panels, sidebar, main content areas |
-| `--ptr-color-bg-elevated` | 2 | Tooltips, dropdowns, modals — floats above surface |
-| `--ptr-color-bg-input` | inset | Form inputs — visually recessed into surface |
+| Token                     | Layer | Usage                                              |
+| ------------------------- | ----- | -------------------------------------------------- |
+| `--ptr-color-bg-page`     | 0     | The page itself — `<html>` / `<body>`              |
+| `--ptr-color-bg-surface`  | 1     | Cards, panels, sidebar, main content areas         |
+| `--ptr-color-bg-elevated` | 2     | Tooltips, dropdowns, modals — floats above surface |
+| `--ptr-color-bg-input`    | inset | Form inputs — visually recessed into surface       |
 
 Never skip layers. A tooltip (layer 2) shouldn't appear directly on the page (layer 0) without an intervening surface. The layering creates a consistent sense of depth across the interface.
-
----
 
 ## Philosophy
 

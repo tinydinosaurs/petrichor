@@ -10,8 +10,6 @@ Petrichor's color system is built in OKLCH — a perceptually uniform color spac
 
 The system is **dark-first**. Dark mode is the default in `base.css`. Light mode is a handwritten override layer in `light.css`.
 
----
-
 ## Brand palette
 
 These tokens update automatically when you switch brands using the toolbar above. The same component, two personalities — no component-level branching.
@@ -46,8 +44,6 @@ These tokens update automatically when you switch brands using the toolbar above
 
 > **Toggle the brand** in the toolbar to see Raindrop blue ↔ Dusk Rose.
 
----
-
 ## Surfaces & backgrounds
 
 <ColorGroup title="Backgrounds">
@@ -78,8 +74,6 @@ These tokens update automatically when you switch brands using the toolbar above
 	/>
 </ColorGroup>
 
----
-
 ## Text
 
 <ColorGroup title="Text">
@@ -105,8 +99,6 @@ These tokens update automatically when you switch brands using the toolbar above
 	/>
 </ColorGroup>
 
----
-
 ## Borders
 
 <ColorGroup title="Borders">
@@ -126,8 +118,6 @@ These tokens update automatically when you switch brands using the toolbar above
 		description="Input borders on hover and focus"
 	/>
 </ColorGroup>
-
----
 
 ## Status palette
 
@@ -183,8 +173,6 @@ These are semantically distinct — don't conflate them.
 
 Using error colors for a delete button is wrong. Using danger colors for a failed form submission is wrong.
 
----
-
 ## Accent palette
 
 The accent palette provides expressive color beyond the brand and status systems. Use sparingly — for decorative elements, data visualization, illustrations, or moments that need a specific hue that no semantic token covers.
@@ -236,8 +224,6 @@ Prefer semantic tokens wherever meaning applies. Reach for accents only when no 
 	/>
 </ColorGroup>
 
----
-
 ## Always tokens
 
 Two tokens that never change regardless of brand or color scheme. Use these only when you genuinely need a color that must not adapt — icon on a photo, overlay on any background.
@@ -254,8 +240,6 @@ Two tokens that never change regardless of brand or color scheme. Use these only
 		description="Black that stays black in light mode — use very sparingly"
 	/>
 </ColorGroup>
-
----
 
 ## How theming works
 
@@ -280,8 +264,6 @@ All color tokens live in CSS custom properties on `:root`. Switching brand or co
 ```
 
 Components reference `var(--ptr-color-brand-primary)` and receive whatever value the cascade resolves to. **No component ever knows which brand or theme it's in.**
-
----
 
 ## Philosophy
 

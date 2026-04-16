@@ -9,7 +9,7 @@
 	white-space: nowrap;
 	cursor: pointer;
 	border: var(--ptr-border-hairline) solid transparent;
-	transition: var(--ptr-motion-transition-micro);
+	transition: var(--ptr-motion-micro);
 	position: relative;
 	text-decoration: none;
 	outline: none;
@@ -29,7 +29,6 @@
 .button[aria-disabled='true'] {
 	opacity: 0.38;
 	cursor: not-allowed;
-	pointer-events: none;
 }
 
 .loading {
@@ -142,13 +141,13 @@
 	filter: brightness(1.1);
 }
 
-.ghost-danger {
+.ghostDanger {
 	background: transparent;
 	color: var(--ptr-color-status-error-text);
 	border-color: transparent;
 }
 
-.ghost-danger:hover:not(:disabled):not([aria-disabled='true']) {
+.ghostDanger:hover:not(:disabled):not([aria-disabled='true']) {
 	background: var(--ptr-color-status-error-tint);
 }
 

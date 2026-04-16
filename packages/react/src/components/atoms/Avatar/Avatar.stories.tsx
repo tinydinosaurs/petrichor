@@ -109,7 +109,7 @@ export const Sizes: Story = {
 					<span
 						style={{
 							fontSize: '10px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 						}}
 					>
 						{size}
@@ -138,7 +138,7 @@ export const SizesInitials: Story = {
 					<span
 						style={{
 							fontSize: '10px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 						}}
 					>
 						{size}
@@ -184,7 +184,7 @@ export const WithStatus: Story = {
 					<span
 						style={{
 							fontSize: '11px',
-							color: 'var(--color-text-secondary)',
+							color: 'var(--ptr-color-text-secondary)',
 						}}
 					>
 						{status}
