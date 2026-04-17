@@ -75,6 +75,11 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
 	 * Truncate text to a single line with ellipsis.
 	 */
 	truncate?: boolean;
+
+	/**
+	 * Associates the element with a form input — only meaningful when as="label".
+	 */
+	htmlFor?: string;
 }
 
 const variantClass: Record<TextVariant, string | undefined> = {

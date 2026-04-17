@@ -9,7 +9,7 @@ const cats = [
   { name: 'Millie' },
 ]
 
-const meta = {
+const meta: Meta<typeof StoryCard> = {
   title: 'Molecules/StoryCard',
   component: StoryCard,
   tags: ['autodocs'],
@@ -191,6 +191,12 @@ export const ActiveComplete: Story = {
 
 export const AllStatuses: Story = {
   name: 'All status badges',
+  args: {
+    mode: 'completed',
+    title: "The Clockmaker's Last Dream",
+    status: 'completed',
+    href: '/stories/1',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '340px' }}>
       {(['draft', 'in_progress', 'completed', 'abandoned', 'moderated'] as const).map((status) => (
@@ -221,6 +227,12 @@ export const AllStatuses: Story = {
 
 export const StoryFeed: Story = {
   name: 'Story feed — mixed modes',
+  args: {
+    mode: 'active',
+    title: 'The Parliament of Clocks',
+    status: 'in_progress',
+    href: '/stories/2',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '340px' }}>
       <StoryCard
