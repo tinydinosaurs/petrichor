@@ -14,3 +14,6 @@ packages/docs/storybook-static/
 # Env
 .env
 .env.local
+
+# Misc
+notes/

@@ -30,6 +30,23 @@ jobs:
       - name: Build tokens first
         run: pnpm --filter @petrichor/tokens build
 
+      - name: Audit tokens
+        run: node scripts/token-audit.js
+
+      - name: Validate AI contracts
+        run: |
+          python3 -c "
+          import yaml, sys, pathlib
+          failed = []
+          for f in pathlib.Path('packages/react/src').rglob('*.ai.yaml'):
+            try:
+              yaml.safe_load(f.read_text())
+            except yaml.YAMLError as e:
+              print(f'FAIL: {f}: {e}')
+              failed.append(f)
+          sys.exit(len(failed))
+          "
+
       - name: Build all packages
         run: pnpm build
 
