@@ -7,6 +7,7 @@ Read this file at the start of every session before writing or modifying any cod
 ## What is Petrichor?
 
 Petrichor is a schema-first, MCP-ready design system. It serves two apps:
+
 - **Raindrop** — a sports ranking app (blue, technical, data-dense)
 - **Dusk Rose** — a collaborative surrealist writing app (rose, editorial, literary)
 
@@ -105,7 +106,8 @@ Theme is applied by setting attributes on `<html>`:
 
 ```html
 <html data-brand="raindrop" data-color-scheme="dark">
-<html data-brand="dusk-rose" data-color-scheme="light">
+  <html data-brand="dusk-rose" data-color-scheme="light"></html>
+</html>
 ```
 
 Never apply theme attributes to a wrapper div. They must be on the root element.
@@ -179,7 +181,7 @@ Do not test CSS values in unit tests. Do not test visual appearance in unit test
 When a component needs to render as a different element, use `asChild` via `@radix-ui/react-slot`:
 
 ```tsx
-const Comp = asChild ? Slot : 'button'
+const Comp = asChild ? Slot : 'button';
 // Uppercase required — JSX treats lowercase as HTML tag
 ```
 
@@ -191,14 +193,19 @@ When asChild is true, pass children directly — never wrap with internal elemen
 
 ### Current components
 
-| Component | Category | Status | File |
-|---|---|---|---|
-| Button | atom | draft | `atoms/Button/` |
-| Input | atom | draft | `atoms/Input/` |
-| Badge | atom | draft | `atoms/Badge/` |
-| Icon | atom | draft | `atoms/Icon/` |
-| Card | atom | draft | `atoms/Card/` |
-| StatCard | molecule | draft | `molecules/StatCard/` |
+| Component | Category | Status | File                   |
+| --------- | -------- | ------ | ---------------------- |
+| Button    | atom     | draft  | `atoms/Button/`        |
+| Input     | atom     | draft  | `atoms/Input/`         |
+| Badge     | atom     | draft  | `atoms/Badge/`         |
+| Icon      | atom     | draft  | `atoms/Icon/`          |
+| Card      | atom     | draft  | `atoms/Card/`          |
+| Avatar    | atom     | draft  | `atoms/Avatar/`        |
+| Spinner   | atom     | draft  | `atoms/Spinner/`       |
+| Text      | atom     | draft  | `atoms/Text/`          |
+| Divider   | atom     | draft  | `atoms/Divider/`       |
+| StatCard  | molecule | draft  | `molecules/StatCard/`  |
+| StoryCard | molecule | draft  | `molecules/StoryCard/` |
 
 ### Public API
 
@@ -209,6 +216,7 @@ All exports are in `packages/react/src/index.ts`. Import from there within the p
 ## The two brands
 
 ### Raindrop
+
 - **Primary color:** `oklch(46% 0.12 240)` — rain blue
 - **Radius:** sharp — buttons/inputs use `radius-sm` (2px), cards use `radius-md` (4px)
 - **Typography:** Inter, 1.25 (Major Third) scale
@@ -216,6 +224,7 @@ All exports are in `packages/react/src/index.ts`. Import from there within the p
 - **Tone:** technical, analytical, data-dense
 
 ### Dusk Rose
+
 - **Primary color:** `oklch(44% 0.13 355)` — rose
 - **Radius:** soft — buttons/inputs use `radius-md` (4px), cards use `radius-lg` (8px), badges use `radius-pill` (999px)
 - **Typography:** Cabinet Grotesk (UI) + Fraunces (display), 1.333 (Perfect Fourth) scale
@@ -232,34 +241,35 @@ All colors are OKLCH. Never write hex or rgb color values in component CSS.
 
 ### Semantic color roles
 
-| Token | Usage |
-|---|---|
-| `--ptr-color-brand-primary` | Primary brand color — buttons, links, focus rings |
-| `--ptr-color-brand-primary-tint` | Subtle brand background — icon wraps, hover states |
-| `--ptr-color-bg-page` | Page background |
-| `--ptr-color-bg-surface` | Card and panel surfaces |
-| `--ptr-color-bg-elevated` | Elevated surfaces, skeleton loading |
-| `--ptr-color-bg-input` | Input field background |
-| `--ptr-color-text-primary` | Primary text |
-| `--ptr-color-text-secondary` | Secondary/muted text |
-| `--ptr-color-text-tertiary` | Placeholder, disabled text |
-| `--ptr-color-border-subtle` | Subtle structural borders |
-| `--ptr-color-border-default` | Default input borders |
-| `--ptr-color-border-strong` | Hover/active borders |
-| `--ptr-color-status-info-bg` | Info tinted background |
-| `--ptr-color-status-info-text` | Info text and icons |
-| `--ptr-color-status-success-bg` | Success tinted background |
-| `--ptr-color-status-success-text` | Success text and icons |
-| `--ptr-color-status-warning-bg` | Warning tinted background |
-| `--ptr-color-status-warning-text` | Warning text and icons |
-| `--ptr-color-status-error-bg` | Error tinted background |
-| `--ptr-color-status-error-text` | Error text and icons |
-| `--ptr-color-status-danger-bg` | Danger tinted background — destructive actions |
-| `--ptr-color-status-danger-text` | Danger text and icons |
+| Token                             | Usage                                              |
+| --------------------------------- | -------------------------------------------------- |
+| `--ptr-color-brand-primary`       | Primary brand color — buttons, links, focus rings  |
+| `--ptr-color-brand-primary-tint`  | Subtle brand background — icon wraps, hover states |
+| `--ptr-color-bg-page`             | Page background                                    |
+| `--ptr-color-bg-surface`          | Card and panel surfaces                            |
+| `--ptr-color-bg-elevated`         | Elevated surfaces, skeleton loading                |
+| `--ptr-color-bg-input`            | Input field background                             |
+| `--ptr-color-text-primary`        | Primary text                                       |
+| `--ptr-color-text-secondary`      | Secondary/muted text                               |
+| `--ptr-color-text-tertiary`       | Placeholder, disabled text                         |
+| `--ptr-color-border-subtle`       | Subtle structural borders                          |
+| `--ptr-color-border-default`      | Default input borders                              |
+| `--ptr-color-border-strong`       | Hover/active borders                               |
+| `--ptr-color-status-info-bg`      | Info tinted background                             |
+| `--ptr-color-status-info-text`    | Info text and icons                                |
+| `--ptr-color-status-success-bg`   | Success tinted background                          |
+| `--ptr-color-status-success-text` | Success text and icons                             |
+| `--ptr-color-status-warning-bg`   | Warning tinted background                          |
+| `--ptr-color-status-warning-text` | Warning text and icons                             |
+| `--ptr-color-status-error-bg`     | Error tinted background                            |
+| `--ptr-color-status-error-text`   | Error text and icons                               |
+| `--ptr-color-status-danger-bg`    | Danger tinted background — destructive actions     |
+| `--ptr-color-status-danger-text`  | Danger text and icons                              |
 
 ### error vs danger
 
 These are semantically distinct — do not conflate them:
+
 - **error** — something went wrong (reactive). Form validation, network failure, system unavailable.
 - **danger** — destructive consequence (proactive). Delete, revoke, irreversible action. User hasn't done anything wrong — they're about to.
 
@@ -267,18 +277,18 @@ These are semantically distinct — do not conflate them:
 
 ## Spacing scale
 
-| Token | Value | Common use |
-|---|---|---|
-| `--ptr-spacing-px` | 1px | Borders only |
-| `--ptr-spacing-3xs` | 4px | Icon-to-label gap |
-| `--ptr-spacing-2xs` | 8px | Button padding (vertical), badge padding |
-| `--ptr-spacing-xs` | 12px | Button padding (horizontal), input padding |
-| `--ptr-spacing-sm` | 16px | Card padding, form field gap ✦ |
-| `--ptr-spacing-md` | 24px | Section gap, card-to-card ✦ |
-| `--ptr-spacing-lg` | 32px | Section padding |
-| `--ptr-spacing-xl` | 48px | Page section gap |
-| `--ptr-spacing-2xl` | 64px | Page-level rhythm |
-| `--ptr-spacing-3xl` | 96px | Layout margins |
+| Token               | Value | Common use                                 |
+| ------------------- | ----- | ------------------------------------------ |
+| `--ptr-spacing-px`  | 1px   | Borders only                               |
+| `--ptr-spacing-3xs` | 4px   | Icon-to-label gap                          |
+| `--ptr-spacing-2xs` | 8px   | Button padding (vertical), badge padding   |
+| `--ptr-spacing-xs`  | 12px  | Button padding (horizontal), input padding |
+| `--ptr-spacing-sm`  | 16px  | Card padding, form field gap ✦             |
+| `--ptr-spacing-md`  | 24px  | Section gap, card-to-card ✦                |
+| `--ptr-spacing-lg`  | 32px  | Section padding                            |
+| `--ptr-spacing-xl`  | 48px  | Page section gap                           |
+| `--ptr-spacing-2xl` | 64px  | Page-level rhythm                          |
+| `--ptr-spacing-3xl` | 96px  | Layout margins                             |
 
 ✦ Workhorses — use these when unsure.
 
@@ -286,32 +296,32 @@ These are semantically distinct — do not conflate them:
 
 ## Typography tokens
 
-| Token | Usage |
-|---|---|
-| `--ptr-typography-font-ui` | UI text — labels, buttons, inputs, body |
-| `--ptr-typography-font-display` | Display text — headings, story titles (Dusk Rose) |
-| `--ptr-typography-font-mono` | Monospace — code, token values, character counts |
-| `--ptr-typography-size-sm` | Small labels, helper text, badges |
-| `--ptr-typography-size-base` | Default body text |
-| `--ptr-typography-size-md` | Slightly larger body |
-| `--ptr-typography-size-lg` | Section headings |
-| `--ptr-typography-size-xl` | Page headings |
-| `--ptr-typography-size-2xl` | Stat values, hero numbers |
-| `--ptr-typography-weight-body` | 400 — regular text |
-| `--ptr-typography-weight-label` | 500 — labels, buttons, headings |
-| `--ptr-typography-line-height-ui` | Tight — UI elements |
-| `--ptr-typography-line-height-body` | Comfortable — reading |
+| Token                               | Usage                                             |
+| ----------------------------------- | ------------------------------------------------- |
+| `--ptr-typography-font-ui`          | UI text — labels, buttons, inputs, body           |
+| `--ptr-typography-font-display`     | Display text — headings, story titles (Dusk Rose) |
+| `--ptr-typography-font-mono`        | Monospace — code, token values, character counts  |
+| `--ptr-typography-size-sm`          | Small labels, helper text, badges                 |
+| `--ptr-typography-size-base`        | Default body text                                 |
+| `--ptr-typography-size-md`          | Slightly larger body                              |
+| `--ptr-typography-size-lg`          | Section headings                                  |
+| `--ptr-typography-size-xl`          | Page headings                                     |
+| `--ptr-typography-size-2xl`         | Stat values, hero numbers                         |
+| `--ptr-typography-weight-body`      | 400 — regular text                                |
+| `--ptr-typography-weight-label`     | 500 — labels, buttons, headings                   |
+| `--ptr-typography-line-height-ui`   | Tight — UI elements                               |
+| `--ptr-typography-line-height-body` | Comfortable — reading                             |
 
 ---
 
 ## Motion tokens
 
-| Token | Value | Usage |
-|---|---|---|
-| `--ptr-motion-transition-micro` | `all 80ms ease-out` | Focus rings, hover color |
-| `--ptr-motion-transition-appear` | `all 200ms ease-out` | Dropdowns, tooltips |
-| `--ptr-motion-transition-enter` | `all 300ms ease-out` | Modals, toasts |
-| `--ptr-motion-transition-reveal` | `all 500ms spring` | Exquisite Corpse reveal |
+| Token                 | Value                | Usage                    |
+| --------------------- | -------------------- | ------------------------ |
+| `--ptr-motion-micro`  | `all 80ms ease-out`  | Focus rings, hover color |
+| `--ptr-motion-appear` | `all 200ms ease-out` | Dropdowns, tooltips      |
+| `--ptr-motion-enter`  | `all 300ms ease-out` | Modals, toasts           |
+| `--ptr-motion-reveal` | `all 500ms spring`   | Exquisite Corpse reveal  |
 
 Use CSS transitions for all standard interactions. Framer Motion only for spring physics and stagger timing in Exquisite Corpse.
 
@@ -319,14 +329,14 @@ Use CSS transitions for all standard interactions. Framer Motion only for spring
 
 ## Radius tokens
 
-| Token | Value | Raindrop default | Dusk Rose default |
-|---|---|---|---|
-| `--ptr-radius-sm` | 2px | buttons, inputs | — |
-| `--ptr-radius-md` | 4px | cards | buttons, inputs |
-| `--ptr-radius-lg` | 8px | — | cards |
-| `--ptr-radius-xl` | 12px | modals | — |
-| `--ptr-radius-2xl` | 16px | — | modals |
-| `--ptr-radius-pill` | 999px | — | badges |
+| Token               | Value | Raindrop default | Dusk Rose default |
+| ------------------- | ----- | ---------------- | ----------------- |
+| `--ptr-radius-sm`   | 2px   | buttons, inputs  | —                 |
+| `--ptr-radius-md`   | 4px   | cards            | buttons, inputs   |
+| `--ptr-radius-lg`   | 8px   | —                | cards             |
+| `--ptr-radius-xl`   | 12px  | modals           | —                 |
+| `--ptr-radius-2xl`  | 16px  | —                | modals            |
+| `--ptr-radius-pill` | 999px | —                | badges            |
 
 Brand-specific component radius tokens (e.g. `--ptr-radius-component-button`) exist and should be used in components — they resolve to the correct brand value automatically.
 
@@ -383,12 +393,12 @@ Pass the component class (`Trophy`), never an instance (`<Trophy />`).
 
 ## Where to find things
 
-| What you need | Where to look |
-|---|---|
-| All available tokens | `specs/tokens/token-reference.md` |
-| Component contract | `packages/react/src/components/[atoms\|molecules\|organisms]/ComponentName/ComponentName.ai.yaml` |
-| Component human docs | `...ComponentName/ComponentName.docs.md` |
-| Architectural decisions | `decisions/001-foundation.md` |
-| Deferred items | `decisions/future-items.md` |
-| Foundation design brief | `petrichor-design-brief.md` |
-| Full context document | `petrichor-context.md` |
+| What you need           | Where to look                                                                                     |
+| ----------------------- | ------------------------------------------------------------------------------------------------- |
+| All available tokens    | `specs/tokens/token-reference.md`                                                                 |
+| Component contract      | `packages/react/src/components/[atoms\|molecules\|organisms]/ComponentName/ComponentName.ai.yaml` |
+| Component human docs    | `...ComponentName/ComponentName.docs.md`                                                          |
+| Architectural decisions | `decisions/001-foundation.md`                                                                     |
+| Deferred items          | `decisions/future-items.md`                                                                       |
+| Foundation design brief | `petrichor-design-brief.md`                                                                       |
+| Full context document   | `petrichor-context.md`                                                                            |
