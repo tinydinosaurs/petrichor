@@ -5,283 +5,284 @@ status: draft
 version: 0.1.0
 
 description: >
-  The foundational interactive element. Every user action is expressed through
-  a Button. Use variant to communicate hierarchy and consequence. One primary
-  per surface section maximum.
+    The foundational interactive element. Every user action is expressed through
+    a Button. Use variant to communicate hierarchy and consequence. One primary
+    per surface section maximum.
 
 dom:
-  element: button
-  notes: >
-    Defaults to <button type="button">. When asChild is true, renders as the
-    child element (e.g. <a>). Never use <div> or <span> as a button.
+    element: button
+    notes: >
+        Defaults to <button type="button">. When asChild is true, renders as the
+        child element (e.g. <a>). Never use <div> or <span> as a button.
 
 props:
-  variant:
-    type: enum
-    values: [primary, secondary, ghost, danger, ghost-danger]
-    default: primary
-    descriptions:
-      primary: Highest emphasis. One per surface section. Filled with brand primary color.
-      secondary: Supporting action. Outlined with brand primary color.
-      ghost: Tertiary action. No border or background at rest. Tint on hover.
-      danger: Destructive actions only. Never for non-destructive use.
-      ghost-danger: Destructive but low emphasis. Inline list removals.
+    variant:
+        type: enum
+        values: [primary, secondary, ghost, danger, ghost-danger]
+        default: primary
+        descriptions:
+            primary: Highest emphasis. One per surface section. Filled with brand primary color.
+            secondary: Supporting action. Outlined with brand primary color.
+            ghost: Tertiary action. No border or background at rest. Tint on hover.
+            danger: Destructive actions only. Never for non-destructive use.
+            ghost-danger: Destructive but low emphasis. Inline list removals.
 
-  size:
-    type: enum
-    values: [sm, md, lg]
-    default: md
-    descriptions:
-      sm: 32px height. Filter bars, table actions, compact UIs.
-      md: 40px height. Default for forms, cards, page actions.
-      lg: 48px height. Hero sections, prominent single CTAs.
+    size:
+        type: enum
+        values: [sm, md, lg]
+        default: md
+        descriptions:
+            sm: 32px height. Filter bars, table actions, compact UIs.
+            md: 40px height. Default for forms, cards, page actions.
+            lg: 48px height. Hero sections, prominent single CTAs.
 
-  loading:
-    type: boolean
-    default: false
-    notes: >
-      Shows spinner, disables interaction, sets aria-busy="true" and disabled.
-      Spinner replaces iconStart. Use loading text in children e.g. "Saving..."
+    loading:
+        type: boolean
+        default: false
+        notes: >
+            Shows spinner, disables interaction, sets aria-busy="true" and disabled.
+            Spinner replaces iconStart. Use loading text in children e.g. "Saving..."
 
-  disabled:
-    type: boolean
-    default: false
-    notes: >
-      Native HTML disabled. Removes from tab order. Use when action is
-      genuinely unavailable and does not need to be discovered.
-      For form submit buttons not yet ready, prefer aria-disabled instead.
+    disabled:
+        type: boolean
+        default: false
+        notes: >
+            Native HTML disabled. Removes from tab order. Use when action is
+            genuinely unavailable and does not need to be discovered.
+            For form submit buttons not yet ready, prefer aria-disabled instead.
 
-  aria-disabled:
-    type: boolean
-    default: undefined
-    notes: >
-      ARIA disabled. Stays in tab order — screen readers can still discover it.
-      Use for form submit buttons not yet ready. Must be combined with an
-      onClick guard to prevent action from firing.
+    aria-disabled:
+        type: boolean
+        default: undefined
+        notes: >
+            ARIA disabled. Stays in tab order — screen readers can still discover it.
+            Use for form submit buttons not yet ready. Must be combined with an
+            onClick guard to prevent action from firing.
 
-  iconStart:
-    type: ReactNode
-    default: undefined
-    notes: Icon rendered before label text. Hidden during loading state.
+    iconStart:
+        type: ReactNode
+        default: undefined
+        notes: Icon rendered before label text. Hidden during loading state.
 
-  iconEnd:
-    type: ReactNode
-    default: undefined
-    notes: Icon rendered after label text. Hidden during loading state.
+    iconEnd:
+        type: ReactNode
+        default: undefined
+        notes: Icon rendered after label text. Hidden during loading state.
 
-  iconOnly:
-    type: boolean
-    default: false
-    notes: >
-      Renders a square button. Hides label text visually.
-      REQUIRES aria-label — screen readers have no visible text to read.
-      Touch target expanded to 44x44px on sm size via ::before pseudo-element.
+    iconOnly:
+        type: boolean
+        default: false
+        notes: >
+            Renders a square button. Hides label text visually.
+            REQUIRES aria-label — screen readers have no visible text to read.
+            Touch target expanded to 44x44px on sm size via ::before pseudo-element.
 
-  asChild:
-    type: boolean
-    default: false
-    notes: >
-      Renders as the child element using @radix-ui/react-slot.
-      Use when you need button styles on a non-button element.
-      Most common use: <Button asChild><a href="...">Label</a></Button>
-      The child element must accept className, ref, and all event handlers.
+    asChild:
+        type: boolean
+        default: false
+        notes: >
+            Renders as the child element using @radix-ui/react-slot.
+            Use when you need button styles on a non-button element.
+            Most common use: <Button asChild><a href="...">Label</a></Button>
+            The child element must accept className, ref, and all event handlers.
 
-  type:
-    type: enum
-    values: [button, submit, reset]
-    default: button
-    notes: >
-      Always explicit. Never rely on browser default (which is submit).
-      Use type="submit" only on the form submission button inside a <form>.
+    type:
+        type: enum
+        values: [button, submit, reset]
+        default: button
+        notes: >
+            Always explicit. Never rely on browser default (which is submit).
+            Use type="submit" only on the form submission button inside a <form>.
 
 states:
-  default: Resting state. No background on ghost variants.
-  hover: Slight background fill on ghost/ghost-danger. Lighter fill on primary/danger.
-  focus-visible: Double ring — 2px gap + 4px brand primary color ring.
-  active: Scale 0.98 transform. Not applied when disabled or loading.
-  disabled: Opacity 0.38. pointer-events none. cursor not-allowed.
-  loading: Shows spinner. disabled implied. aria-busy="true". cursor wait.
+    default: Resting state. No background on ghost variants.
+    hover: Slight background fill on ghost/ghost-danger. Lighter fill on primary/danger.
+    focus-visible: Double ring — 2px gap + 4px brand primary color ring.
+    active: Scale 0.98 transform. Not applied when disabled or loading.
+    disabled: Opacity 0.38. pointer-events none. cursor not-allowed.
+    loading: Shows spinner. disabled implied. aria-busy="true". cursor wait.
 
 tokens:
-  background:
-    primary: var(--ptr-color-brand-primary)
-    secondary: transparent
-    ghost: transparent
-    danger: var(--ptr-color-status-error-bg)
-    ghost-danger: transparent
-  color:
-    primary: var(--ptr-color-text-on-brand)
-    secondary: var(--ptr-color-brand-primary)
-    ghost: var(--ptr-color-brand-primary-mid)
-    danger: var(--ptr-color-text-on-brand)
-    ghost-danger: var(--ptr-color-status-error-text)
-  border:
-    secondary: var(--ptr-color-brand-primary)
-    others: transparent
-  border-width: var(--ptr-border-hairline)
-  border-radius: var(--ptr-radius-component-button)
-  font-family: var(--ptr-typography-font-ui)
-  font-weight: var(--ptr-typography-weight-label)
-  transition: var(--ptr-motion-transition-micro)
-  focus-ring: "0 0 0 2px var(--ptr-color-bg-page), 0 0 0 4px var(--ptr-color-brand-primary)"
+    background:
+        primary: var(--ptr-color-brand-primary)
+        secondary: transparent
+        ghost: transparent
+        danger: var(--ptr-color-status-error-bg)
+        ghost-danger: transparent
+    color:
+        primary: var(--ptr-color-text-on-brand)
+        secondary: var(--ptr-color-brand-primary)
+        ghost: var(--ptr-color-brand-primary-mid)
+        danger: var(--ptr-color-text-on-brand)
+        ghost-danger: var(--ptr-color-status-error-text)
+    border:
+        secondary: var(--ptr-color-brand-primary)
+        others: transparent
+    border-width: var(--ptr-border-hairline)
+    border-radius: var(--ptr-radius-component-button)
+    font-family: var(--ptr-typography-font-ui)
+    font-weight: var(--ptr-typography-weight-label)
+    transition: var(--ptr-motion-transition-micro)
+    focus-ring: '0 0 0 2px var(--ptr-color-bg-page), 0 0 0 4px var(--ptr-color-brand-primary)'
 
 accessibility:
-  role: button
-  keyboard:
-    Tab: Move focus to button
-    Enter: Activate button
-    Space: Activate button
-  screen_reader:
-    announces: "Button label, button" (or "dimmed" when aria-disabled)
-    loading: aria-busy="true" announced by screen reader
-    icon_only: aria-label required — used in place of visible text
-  contrast:
-    primary_text_on_bg: "Meet WCAG AA minimum 4.5:1"
-    focus_ring: "3:1 against adjacent colors"
-  touch_target:
-    sm: "Visual 32px, tap target 44px via ::before pseudo-element"
-    md: "40px — meets minimum"
-    lg: "48px — exceeds minimum"
+    role: button
+    keyboard:
+        Tab: Move focus to button
+        Enter: Activate button
+        Space: Activate button
+    screen_reader:
+        announces: >
+            "Button label, button" (or "dimmed" when aria-disabled)
+        loading: aria-busy="true" announced by screen reader
+        icon_only: aria-label required — used in place of visible text
+    contrast:
+        primary_text_on_bg: 'Meet WCAG AA minimum 4.5:1'
+        focus_ring: '3:1 against adjacent colors'
+    touch_target:
+        sm: 'Visual 32px, tap target 44px via ::before pseudo-element'
+        md: '40px — meets minimum'
+        lg: '48px — exceeds minimum'
 
 composition:
-  contains:
-    - Text (required unless iconOnly)
-    - Single icon via iconStart prop
-    - Single icon via iconEnd prop
-    - Single icon as children when iconOnly is true
+    contains:
+        - Text (required unless iconOnly)
+        - Single icon via iconStart prop
+        - Single icon via iconEnd prop
+        - Single icon as children when iconOnly is true
 
-  contained_by:
-    - form
-    - Card (as CTA)
-    - FormFooter
-    - Dialog action areas
-    - nav / toolbar
-    - any layout surface
+    contained_by:
+        - form
+        - Card (as CTA)
+        - FormFooter
+        - Dialog action areas
+        - nav / toolbar
+        - any layout surface
 
-  never_contains:
-    - Another Button
-    - Form elements
-    - Block-level elements
+    never_contains:
+        - Another Button
+        - Form elements
+        - Block-level elements
 
-  never_inside:
-    - Another Button
-    - Headings (h1–h6)
+    never_inside:
+        - Another Button
+        - Headings (h1–h6)
 
 patterns:
-  - id: form-footer
-    description: Primary + secondary in a form footer
-    example: |
-      <FormFooter>
-        <Button variant="secondary" onClick={onCancel}>Cancel</Button>
-        <Button variant="primary" type="submit">Save changes</Button>
-      </FormFooter>
-    notes: Primary is always last (rightmost). Never two primaries.
+    - id: form-footer
+      description: Primary + secondary in a form footer
+      example: |
+          <FormFooter>
+            <Button variant="secondary" onClick={onCancel}>Cancel</Button>
+            <Button variant="primary" type="submit">Save changes</Button>
+          </FormFooter>
+      notes: Primary is always last (rightmost). Never two primaries.
 
-  - id: card-cta
-    description: Single CTA at the bottom of a Card
-    example: |
-      <Card>
-        <CardContent>...</CardContent>
-        <Button variant="primary" fullWidth>Get started</Button>
-      </Card>
+    - id: card-cta
+      description: Single CTA at the bottom of a Card
+      example: |
+          <Card>
+            <CardContent>...</CardContent>
+            <Button variant="primary" fullWidth>Get started</Button>
+          </Card>
 
-  - id: destructive-confirm
-    description: Danger action in a confirmation dialog
-    example: |
-      <Dialog>
-        <DialogBody>Are you sure you want to delete this story?</DialogBody>
-        <DialogFooter>
-          <Button variant="secondary" onClick={onCancel}>Keep it</Button>
-          <Button variant="danger" onClick={onConfirm}>Delete story</Button>
-        </DialogFooter>
-      </Dialog>
+    - id: destructive-confirm
+      description: Danger action in a confirmation dialog
+      example: |
+          <Dialog>
+            <DialogBody>Are you sure you want to delete this story?</DialogBody>
+            <DialogFooter>
+              <Button variant="secondary" onClick={onCancel}>Keep it</Button>
+              <Button variant="danger" onClick={onConfirm}>Delete story</Button>
+            </DialogFooter>
+          </Dialog>
 
-  - id: link-button
-    description: Button styles on an anchor element
-    example: |
-      <Button asChild variant="primary">
-        <a href="/dashboard">Go to dashboard</a>
-      </Button>
-    notes: >
-      asChild renders button styles without a <button> element.
-      The <a> tag is the actual DOM element — correct semantics, correct styles.
+    - id: link-button
+      description: Button styles on an anchor element
+      example: |
+          <Button asChild variant="primary">
+            <a href="/dashboard">Go to dashboard</a>
+          </Button>
+      notes: >
+          asChild renders button styles without a <button> element.
+          The <a> tag is the actual DOM element — correct semantics, correct styles.
 
-  - id: toolbar-action
-    description: Icon-only ghost buttons in a toolbar
-    example: |
-      <Toolbar>
-        <Button variant="ghost" iconOnly size="sm" aria-label="Bold">
-          <BoldIcon />
-        </Button>
-        <Button variant="ghost" iconOnly size="sm" aria-label="Italic">
-          <ItalicIcon />
-        </Button>
-      </Toolbar>
+    - id: toolbar-action
+      description: Icon-only ghost buttons in a toolbar
+      example: |
+          <Toolbar>
+            <Button variant="ghost" iconOnly size="sm" aria-label="Bold">
+              <BoldIcon />
+            </Button>
+            <Button variant="ghost" iconOnly size="sm" aria-label="Italic">
+              <ItalicIcon />
+            </Button>
+          </Toolbar>
 
 anti_patterns:
-  - id: two-primaries
-    description: Two primary buttons side by side
-    wrong: |
-      <Button variant="primary">Save</Button>
-      <Button variant="primary">Publish</Button>
-    right: |
-      <Button variant="secondary">Save draft</Button>
-      <Button variant="primary">Publish</Button>
-    reason: Primary communicates the single most important action. Two primaries removes hierarchy.
+    - id: two-primaries
+      description: Two primary buttons side by side
+      wrong: |
+          <Button variant="primary">Save</Button>
+          <Button variant="primary">Publish</Button>
+      right: |
+          <Button variant="secondary">Save draft</Button>
+          <Button variant="primary">Publish</Button>
+      reason: Primary communicates the single most important action. Two primaries removes hierarchy.
 
-  - id: danger-for-non-destructive
-    description: Using danger variant for non-destructive actions
-    wrong: <Button variant="danger">Send message</Button>
-    right: <Button variant="primary">Send message</Button>
-    reason: danger signals irreversible consequence. Misuse trains users to ignore it.
+    - id: danger-for-non-destructive
+      description: Using danger variant for non-destructive actions
+      wrong: <Button variant="danger">Send message</Button>
+      right: <Button variant="primary">Send message</Button>
+      reason: danger signals irreversible consequence. Misuse trains users to ignore it.
 
-  - id: icon-only-no-label
-    description: Icon-only button without aria-label
-    wrong: <Button iconOnly><XIcon /></Button>
-    right: <Button iconOnly aria-label="Close dialog"><XIcon /></Button>
-    reason: Screen readers have no visible text to read. The button is inaccessible.
+    - id: icon-only-no-label
+      description: Icon-only button without aria-label
+      wrong: <Button iconOnly><XIcon /></Button>
+      right: <Button iconOnly aria-label="Close dialog"><XIcon /></Button>
+      reason: Screen readers have no visible text to read. The button is inaccessible.
 
-  - id: div-as-button
-    description: Using asChild with a non-interactive element
-    wrong: |
-      <Button asChild>
-        <div>Click me</div>
-      </Button>
-    right: |
-      <Button asChild>
-        <a href="/page">Go to page</a>
-      </Button>
-    reason: >
-      asChild exists for semantic elements that need button styles (<a>, router Link).
-      A <div> has no keyboard access or screen reader semantics — use a real <button>.
+    - id: div-as-button
+      description: Using asChild with a non-interactive element
+      wrong: |
+          <Button asChild>
+            <div>Click me</div>
+          </Button>
+      right: |
+          <Button asChild>
+            <a href="/page">Go to page</a>
+          </Button>
+      reason: >
+          asChild exists for semantic elements that need button styles (<a>, router Link).
+          A <div> has no keyboard access or screen reader semantics — use a real <button>.
 
-  - id: disabled-submit
-    description: Using disabled on a form submit button
-    wrong: <Button disabled={!isValid} type="submit">Submit</Button>
-    right: |
-      <Button
-        aria-disabled={!isValid}
-        onClick={isValid ? handleSubmit : undefined}
-        type="submit"
-      >
-        Submit
-      </Button>
-    reason: >
-      disabled removes the button from the tab order. Screen reader users cannot
-      discover it exists or understand why they cannot proceed.
-      aria-disabled keeps it focusable and discoverable.
+    - id: disabled-submit
+      description: Using disabled on a form submit button
+      wrong: <Button disabled={!isValid} type="submit">Submit</Button>
+      right: |
+          <Button
+            aria-disabled={!isValid}
+            onClick={isValid ? handleSubmit : undefined}
+            type="submit"
+          >
+            Submit
+          </Button>
+      reason: >
+          disabled removes the button from the tab order. Screen reader users cannot
+          discover it exists or understand why they cannot proceed.
+          aria-disabled keeps it focusable and discoverable.
 
 related:
-  - id: icon-button
-    status: planned
-    when_to_use: When you need a standalone icon action — consider extracting IconButton if iconOnly usage is frequent
+    - id: icon-button
+      status: planned
+      when_to_use: When you need a standalone icon action — consider extracting IconButton if iconOnly usage is frequent
 
-  - id: toggle
-    when_to_use: For boolean on/off state (bold, muted, starred). Button does not manage toggle state.
+    - id: toggle
+      when_to_use: For boolean on/off state (bold, muted, starred). Button does not manage toggle state.
 
-  - id: link
-    when_to_use: For navigation within a page. Button with asChild for styled navigation links.
+    - id: link
+      when_to_use: For navigation within a page. Button with asChild for styled navigation links.
 
-  - id: menu-trigger
-    status: planned
-    when_to_use: When clicking a button opens a dropdown menu — use MenuTrigger which composes Button.
+    - id: menu-trigger
+      status: planned
+      when_to_use: When clicking a button opens a dropdown menu — use MenuTrigger which composes Button.

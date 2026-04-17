@@ -5,244 +5,244 @@ status: draft
 version: 0.1.0
 
 description: >
-  A story card for the Exquisite Corpse story feed. Three modes control
-  which elements are shown based on the viewer's authentication state
-  and the story's status. Built on Card atom.
+    A story card for the Exquisite Corpse story feed. Three modes control
+    which elements are shown based on the viewer's authentication state
+    and the story's status. Built on Card atom.
 
-  Mode determines layout and visible content:
-  - anonymous: image, title, excerpt, tags, "Read story" — for logged-out readers
-  - completed: full metadata including contributors and dates — for logged-in users
-  - active: no excerpt (part of the game), CTA derived from segment progress
+    Mode determines layout and visible content:
+    - anonymous: image, title, excerpt, tags, "Read story" — for logged-out readers
+    - completed: full metadata including contributors and dates — for logged-in users
+    - active: no excerpt (part of the game), CTA derived from segment progress
 
 dom:
-  element: article (via Card as="article")
+    element: article (via Card as="article")
 
 props:
-  mode:
-    type: enum
-    values: [anonymous, completed, active]
-    required: true
-    notes: >
-      Controls which elements render.
-      anonymous: logged-out reader view — minimal, no metadata
-      completed: logged-in reader view — full metadata
-      active: logged-in contributor view — no excerpt, progress-aware CTA
+    mode:
+        type: enum
+        values: [anonymous, completed, active]
+        required: true
+        notes: >
+            Controls which elements render.
+            anonymous: logged-out reader view — minimal, no metadata
+            completed: logged-in reader view — full metadata
+            active: logged-in contributor view — no excerpt, progress-aware CTA
 
-  title:
-    type: string
-    required: true
+    title:
+        type: string
+        required: true
 
-  status:
-    type: enum
-    values: [draft, in_progress, completed, abandoned, moderated]
-    required: true
-    notes: Drives the status badge. Maps from Story entity StoryStatus enum.
+    status:
+        type: enum
+        values: [draft, in_progress, completed, abandoned, moderated]
+        required: true
+        notes: Drives the status badge. Maps from Story entity StoryStatus enum.
 
-  excerpt:
-    type: string
-    required: false
-    notes: >
-      First paragraph of the story. Shown in anonymous and completed modes.
-      NOT shown in active mode — seeing the story content before contributing
-      breaks the Exquisite Corpse game mechanic.
+    excerpt:
+        type: string
+        required: false
+        notes: >
+            First paragraph of the story. Shown in anonymous and completed modes.
+            NOT shown in active mode — seeing the story content before contributing
+            breaks the Exquisite Corpse game mechanic.
 
-  coverSrc:
-    type: string
-    required: false
-    notes: Cover image URL. Shown in anonymous and completed modes only.
+    coverSrc:
+        type: string
+        required: false
+        notes: Cover image URL. Shown in anonymous and completed modes only.
 
-  coverAlt:
-    type: string
-    required: false
-    notes: Alt text for cover image. Defaults to title if not provided.
+    coverAlt:
+        type: string
+        required: false
+        notes: Alt text for cover image. Defaults to title if not provided.
 
-  tags:
-    type: string[]
-    default: []
-    notes: >
-      Genre/topic tags. Rendered as default Badge components.
-      Shown in all three modes — helps readers choose stories.
-      Planned static tag set: surrealist, horror, comedy, mystery,
-      romance, sci-fi, absurdist, thriller, fantasy, historical.
+    tags:
+        type: string[]
+        default: []
+        notes: >
+            Genre/topic tags. Rendered as default Badge components.
+            Shown in all three modes — helps readers choose stories.
+            Planned static tag set: surrealist, horror, comedy, mystery,
+            romance, sci-fi, absurdist, thriller, fantasy, historical.
 
-  contributors:
-    type: StoryContributor[]
-    default: []
-    notes: >
-      Array of { name: string, src?: string }.
-      Shown in completed and active modes. Max 3 avatars visible,
-      overflow shown as "+N" count.
+    contributors:
+        type: StoryContributor[]
+        default: []
+        notes: >
+            Array of { name: string, src?: string }.
+            Shown in completed and active modes. Max 3 avatars visible,
+            overflow shown as "+N" count.
 
-  currentSegments:
-    type: number
-    required: false
-    notes: Maps to Story.current_segment_count.
+    currentSegments:
+        type: number
+        required: false
+        notes: Maps to Story.current_segment_count.
 
-  minSegments:
-    type: number
-    required: false
-    notes: >
-      Maps to Story.min_segments.
-      Used with currentSegments to determine CTA label in active mode:
-      currentSegments >= minSegments → "Complete story"
-      currentSegments < minSegments → "Continue story"
+    minSegments:
+        type: number
+        required: false
+        notes: >
+            Maps to Story.min_segments.
+            Used with currentSegments to determine CTA label in active mode:
+            currentSegments >= minSegments → "Complete story"
+            currentSegments < minSegments → "Continue story"
 
-  maxSegments:
-    type: number
-    required: false
-    notes: >
-      Maps to Story.max_segments.
-      When provided, segment display shows "X / Y segments".
-      When omitted, shows "X segments".
+    maxSegments:
+        type: number
+        required: false
+        notes: >
+            Maps to Story.max_segments.
+            When provided, segment display shows "X / Y segments".
+            When omitted, shows "X segments".
 
-  completedAt:
-    type: Date | string
-    required: false
-    notes: Shown in completed mode as relative date ("Yesterday", "3 days ago").
+    completedAt:
+        type: Date | string
+        required: false
+        notes: Shown in completed mode as relative date ("Yesterday", "3 days ago").
 
-  href:
-    type: string
-    required: true
-    notes: >
-      Navigation URL for the CTA button.
-      Single CTA per card — navigation decisions happen on the detail page.
+    href:
+        type: string
+        required: true
+        notes: >
+            Navigation URL for the CTA button.
+            Single CTA per card — navigation decisions happen on the detail page.
 
-  loading:
-    type: boolean
-    default: false
+    loading:
+        type: boolean
+        default: false
 
 status_badge_mapping:
-  draft:       { variant: default, label: Draft }
-  in_progress: { variant: info,    label: 'In progress' }
-  completed:   { variant: success, label: Complete }
-  abandoned:   { variant: warning, label: Abandoned }
-  moderated:   { variant: danger,  label: Moderated }
+    draft: { variant: default, label: Draft }
+    in_progress: { variant: info, label: 'In progress' }
+    completed: { variant: success, label: Complete }
+    abandoned: { variant: warning, label: Abandoned }
+    moderated: { variant: danger, label: Moderated }
 
 cta_logic:
-  anonymous: Read story
-  completed: Read story
-  active:
-    rule: >
-      if currentSegments >= minSegments → Complete story
-      else → Continue story
-    fallback: Continue story (when minSegments not provided)
+    anonymous: Read story
+    completed: Read story
+    active:
+        rule: >
+            if currentSegments >= minSegments → Complete story
+            else → Continue story
+        fallback: Continue story (when minSegments not provided)
 
 mode_element_matrix:
-  element:          anonymous  completed  active
-  cover_image:      optional   optional   never
-  title:            yes        yes        yes
-  status_badge:     yes        yes        yes
-  excerpt:          optional   optional   never (game mechanic)
-  active_teaser:    never      never      yes
-  tags:             yes        yes        yes
-  contributors:     never      yes        yes
-  segment_count:    never      yes        yes
-  completed_at:     never      yes        never
-  cta:              yes        yes        yes
+    element: anonymous  completed  active
+    cover_image: optional   optional   never
+    title: yes        yes        yes
+    status_badge: yes        yes        yes
+    excerpt: optional   optional   never (game mechanic)
+    active_teaser: never      never      yes
+    tags: yes        yes        yes
+    contributors: never      yes        yes
+    segment_count: never      yes        yes
+    completed_at: never      yes        never
+    cta: yes        yes        yes
 
 accessibility:
-  landmark: article with aria-label="Story: {title}"
-  cta: anchor element via Button asChild — correct link semantics
-  contributors: avatarGroup has aria-label="{N} contributors"
-  overflow: aria-label="{N} more contributors"
-  status: Badge text conveys meaning — not color alone
+    landmark: 'article with aria-label="Story: {title}"'
+    cta: anchor element via Button asChild — correct link semantics
+    contributors: avatarGroup has aria-label="{N} contributors"
+    overflow: aria-label="{N} more contributors"
+    status: Badge text conveys meaning — not color alone
 
 composition:
-  composes:
-    - Card (surface)
-    - Card.Image (cover)
-    - Card.Header (title + badge)
-    - Card.Body (excerpt/teaser + tags)
-    - Card.Footer (contributors + metadata + CTA)
-    - Badge (status, tags)
-    - Avatar (contributors)
-    - Text (title, excerpt, metadata)
-    - Button asChild (CTA link)
+    composes:
+        - Card (surface)
+        - Card.Image (cover)
+        - Card.Header (title + badge)
+        - Card.Body (excerpt/teaser + tags)
+        - Card.Footer (contributors + metadata + CTA)
+        - Badge (status, tags)
+        - Avatar (contributors)
+        - Text (title, excerpt, metadata)
+        - Button asChild (CTA link)
 
-  contained_by:
-    - Story feed organism (planned)
-    - CardGrid molecule (planned)
-    - Any layout surface
+    contained_by:
+        - Story feed organism (planned)
+        - CardGrid molecule (planned)
+        - Any layout surface
 
 patterns:
-  - id: anonymous-feed
-    description: Public story feed for logged-out readers
-    example: |
-      <StoryCard
-        mode="anonymous"
-        title="The Clockmaker's Last Dream"
-        status="completed"
-        excerpt="The door opened onto a street that hadn't existed yesterday..."
-        coverSrc="/covers/story-1.jpg"
-        coverAlt="Stormy landscape"
-        tags={['surrealist', 'mystery']}
-        href="/stories/1"
-      />
+    - id: anonymous-feed
+      description: Public story feed for logged-out readers
+      example: |
+          <StoryCard
+            mode="anonymous"
+            title="The Clockmaker's Last Dream"
+            status="completed"
+            excerpt="The door opened onto a street that hadn't existed yesterday..."
+            coverSrc="/covers/story-1.jpg"
+            coverAlt="Stormy landscape"
+            tags={['surrealist', 'mystery']}
+            href="/stories/1"
+          />
 
-  - id: completed-feed
-    description: Completed story for logged-in users
-    example: |
-      <StoryCard
-        mode="completed"
-        title="The Clockmaker's Last Dream"
-        status="completed"
-        excerpt="The door opened onto a street that hadn't existed yesterday..."
-        tags={['surrealist', 'mystery']}
-        contributors={[
-          { name: 'Neo', src: '/avatars/neo.jpg' },
-          { name: 'Bella', src: '/avatars/bella.jpg' },
-        ]}
-        currentSegments={6}
-        maxSegments={10}
-        completedAt={story.completed_at}
-        href="/stories/1"
-      />
+    - id: completed-feed
+      description: Completed story for logged-in users
+      example: |
+          <StoryCard
+            mode="completed"
+            title="The Clockmaker's Last Dream"
+            status="completed"
+            excerpt="The door opened onto a street that hadn't existed yesterday..."
+            tags={['surrealist', 'mystery']}
+            contributors={[
+              { name: 'Neo', src: '/avatars/neo.jpg' },
+              { name: 'Bella', src: '/avatars/bella.jpg' },
+            ]}
+            currentSegments={6}
+            maxSegments={10}
+            completedAt={story.completed_at}
+            href="/stories/1"
+          />
 
-  - id: active-story
-    description: In-progress story available to contribute to
-    example: |
-      <StoryCard
-        mode="active"
-        title="The Parliament of Clocks"
-        status="in_progress"
-        tags={['absurdist', 'comedy']}
-        contributors={[{ name: 'Neo' }, { name: 'Bella' }]}
-        currentSegments={3}
-        minSegments={5}
-        maxSegments={8}
-        href="/stories/3/contribute"
-      />
+    - id: active-story
+      description: In-progress story available to contribute to
+      example: |
+          <StoryCard
+            mode="active"
+            title="The Parliament of Clocks"
+            status="in_progress"
+            tags={['absurdist', 'comedy']}
+            contributors={[{ name: 'Neo' }, { name: 'Bella' }]}
+            currentSegments={3}
+            minSegments={5}
+            maxSegments={8}
+            href="/stories/3/contribute"
+          />
 
 anti_patterns:
-  - id: excerpt-in-active
-    description: Passing excerpt in active mode
-    wrong: |
-      <StoryCard mode="active" excerpt="Secret story content..." />
-    right: |
-      <StoryCard mode="active" />
-    reason: >
-      Showing excerpt in active mode breaks the Exquisite Corpse mechanic.
-      Contributors should only see the last sentence when they join.
-      The excerpt prop is silently ignored in active mode.
+    - id: excerpt-in-active
+      description: Passing excerpt in active mode
+      wrong: |
+          <StoryCard mode="active" excerpt="Secret story content..." />
+      right: |
+          <StoryCard mode="active" />
+      reason: >
+          Showing excerpt in active mode breaks the Exquisite Corpse mechanic.
+          Contributors should only see the last sentence when they join.
+          The excerpt prop is silently ignored in active mode.
 
-  - id: no-href
-    description: Missing href
-    wrong: <StoryCard mode="completed" title="Story" status="completed" />
-    right: <StoryCard mode="completed" title="Story" status="completed" href="/stories/1" />
-    reason: href is required — the CTA must navigate somewhere.
+    - id: no-href
+      description: Missing href
+      wrong: <StoryCard mode="completed" title="Story" status="completed" />
+      right: <StoryCard mode="completed" title="Story" status="completed" href="/stories/1" />
+      reason: href is required — the CTA must navigate somewhere.
 
 related:
-  - id: card
-    when_to_use: Use Card directly for non-story card surfaces.
+    - id: card
+      when_to_use: Use Card directly for non-story card surfaces.
 
-  - id: story-feed
-    status: planned
-    when_to_use: >
-      The organism that renders a list of StoryCards with filtering,
-      sorting, and pagination. StoryCard is the item; StoryFeed is the list.
+    - id: story-feed
+      status: planned
+      when_to_use: >
+          The organism that renders a list of StoryCards with filtering,
+          sorting, and pagination. StoryCard is the item; StoryFeed is the list.
 
-  - id: avatar
-    when_to_use: Contributor avatars are rendered via Avatar inside StoryCard.
+    - id: avatar
+      when_to_use: Contributor avatars are rendered via Avatar inside StoryCard.
 
-  - id: badge
-    when_to_use: Status and tags are rendered via Badge inside StoryCard.
+    - id: badge
+      when_to_use: Status and tags are rendered via Badge inside StoryCard.
