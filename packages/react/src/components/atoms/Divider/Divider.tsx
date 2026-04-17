@@ -21,7 +21,7 @@ export const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
     },
     ref,
   ) => {
-    const spacingClass: Record<DividerSpacing, string> = {
+    const spacingClass: Record<DividerSpacing, string | undefined> = {
       none: '',
       sm: styles.spacingSm,
       md: styles.spacingMd,

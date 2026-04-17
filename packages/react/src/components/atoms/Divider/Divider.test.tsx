@@ -52,17 +52,18 @@ describe('Divider', () => {
 		it('has no spacing by default', () => {
 			const { container } = render(<Divider />);
 			const hr = container.querySelector('hr');
-			expect(hr).not.toHaveClass('spacing-sm');
-			expect(hr).not.toHaveClass('spacing-md');
-			expect(hr).not.toHaveClass('spacing-lg');
+			expect(hr).not.toHaveClass('spacingSm');
+			expect(hr).not.toHaveClass('spacingMd');
+			expect(hr).not.toHaveClass('spacingLg');
 		});
 
 		it.each(['sm', 'md', 'lg'] as const)(
 			'applies spacing-%s class',
 			(spacing) => {
 				const { container } = render(<Divider spacing={spacing} />);
+				const capitalized = spacing.charAt(0).toUpperCase() + spacing.slice(1);
 				expect(container.querySelector('hr')).toHaveClass(
-					`spacing-${spacing}`,
+					`spacing${capitalized}`,
 				);
 			},
 		);

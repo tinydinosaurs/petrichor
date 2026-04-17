@@ -142,7 +142,7 @@ Password inputs include a built-in visibility toggle. No additional configuratio
 - `aria-required="true"` set when `required` is true
 - Error message uses `role="alert"` — announced immediately by screen readers
 - Character count uses `aria-live="polite"` — announced after a pause
-- `hideLabel` uses `.sr-only` CSS — label remains in the accessibility tree
+- `hideLabel` uses `.srOnly` CSS — label remains in the accessibility tree
 - Password toggle button has explicit `aria-label` and `aria-controls`
 - Prefix and suffix are `aria-hidden="true"` — decorative only
 

@@ -41,7 +41,7 @@ const sizeToIconSize: Record<AvatarSize, number> = {
 	xl: 32,
 };
 
-const statusClass: Record<AvatarStatus, string> = {
+const statusClass: Record<AvatarStatus, string | undefined> = {
 	online: styles.statusOnline,
 	offline: styles.statusOffline,
 	away: styles.statusAway,

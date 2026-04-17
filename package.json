@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"description": "Petrichor Design System — stormy neutrals, rainbow moments",
+	"type": "module",
 	"scripts": {
 		"build": "turbo run build",
 		"build:tokens": "turbo run build --filter=@petrichor/tokens",
@@ -21,7 +22,7 @@
 	},
 	"engines": {
 		"node": ">=20.0.0",
-		"pnpm": ">=9.0.0"
+		"pnpm": ">=10.0.0"
 	},
-	"packageManager": "pnpm@9.0.0"
+	"packageManager": "pnpm@10.33.0"
 }

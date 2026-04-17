@@ -24,7 +24,7 @@ const CardRoot = React.forwardRef<HTMLElement, CardProps>(
 
     return (
       <Element
-        ref={ref as React.Ref<HTMLDivElement>}
+        ref={ref as React.Ref<any>}
         className={classes}
         {...rest}
       >
@@ -140,7 +140,7 @@ export interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement
   alt: string
 }
 
-const orientationClass: Record<CardImageOrientation, string> = {
+const orientationClass: Record<CardImageOrientation, string | undefined> = {
   top: styles.imageTop,
   bottom: styles.imageBottom,
   left: styles.imageLeft,

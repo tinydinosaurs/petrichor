@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Icon as PhosphorIcon } from '@phosphor-icons/react'
+import type { IconProps as PhosphorIconProps } from '@phosphor-icons/react'
 import styles from './Icon.module.css'
 
 export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'
@@ -14,7 +14,7 @@ export interface IconProps {
    * import { Trophy } from '@phosphor-icons/react'
    * <Icon icon={Trophy} />
    */
-  icon: typeof PhosphorIcon
+  icon: React.ComponentType<PhosphorIconProps>
 
   /**
    * Icon size — maps to our spacing scale.

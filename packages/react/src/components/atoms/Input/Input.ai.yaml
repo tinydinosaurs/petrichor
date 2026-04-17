@@ -88,7 +88,7 @@ props:
     type: boolean
     default: false
     notes: >
-      Visually hides label using sr-only CSS. Label remains in DOM
+      Visually hides label using srOnly CSS. Label remains in DOM
       and is read by screen readers. Use for search inputs where
       context makes the label visually redundant.
 
@@ -173,7 +173,7 @@ accessibility:
     aria_controls: input id
     keyboard: Tab from input, Enter or Space to activate
   prefix_suffix: aria-hidden="true" — decorative only, not read by screen readers
-  hide_label: sr-only CSS — label in DOM, invisible, read by screen readers
+  hide_label: srOnly CSS — label in DOM, invisible, read by screen readers
 
 composition:
   contains:

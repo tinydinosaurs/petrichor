@@ -45,7 +45,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		const isDisabled = disabled || loading;
 		const isAriaDisabled = ariaDisabled ?? (loading ? true : undefined);
 
-		const variantClass: Record<ButtonVariant, string> = {
+		const variantClass: Record<ButtonVariant, string | undefined> = {
 			primary: styles.primary,
 			secondary: styles.secondary,
 			ghost: styles.ghost,
