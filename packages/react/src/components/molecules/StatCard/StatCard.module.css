@@ -3,32 +3,32 @@
    ============================================================ */
 
 .header {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: var(--ptr-spacing-2xs);
-	margin-bottom: var(--ptr-spacing-2xs);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ptr-spacing-2xs);
+  margin-bottom: var(--ptr-spacing-2xs);
 }
 
 .label {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-sm);
-	font-weight: var(--ptr-typography-weight-body);
-	color: var(--ptr-color-text-secondary);
-	line-height: var(--ptr-typography-line-height-ui);
-	letter-spacing: var(--ptr-typography-letter-spacing-wide);
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  font-weight: var(--ptr-typography-weight-body);
+  color: var(--ptr-color-text-secondary);
+  line-height: var(--ptr-typography-line-height-ui);
+  letter-spacing: var(--ptr-typography-letter-spacing-wide);
 }
 
 .iconWrap {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 32px;
-	height: 32px;
-	border-radius: var(--ptr-radius-md);
-	background: var(--ptr-color-brand-primary-tint);
-	color: var(--ptr-color-brand-primary-text);
-	flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ptr-radius-md);
+  background: var(--ptr-color-brand-primary-tint);
+  color: var(--ptr-color-brand-primary-text);
+  flex-shrink: 0;
 }
 
 /* ============================================================
@@ -36,19 +36,19 @@
    ============================================================ */
 
 .valueWrap {
-	display: flex;
-	align-items: baseline;
-	margin-bottom: var(--ptr-spacing-2xs);
+  display: flex;
+  align-items: baseline;
+  margin-bottom: var(--ptr-spacing-2xs);
 }
 
 .value {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-2xl);
-	font-weight: var(--ptr-typography-weight-label);
-	color: var(--ptr-color-text-primary);
-	line-height: 1;
-	letter-spacing: var(--ptr-typography-letter-spacing-tight);
-	font-variant-numeric: tabular-nums;
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-2xl);
+  font-weight: var(--ptr-typography-weight-label);
+  color: var(--ptr-color-text-primary);
+  line-height: 1;
+  letter-spacing: var(--ptr-typography-letter-spacing-tight);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ============================================================
@@ -56,22 +56,22 @@
    ============================================================ */
 
 .skeleton {
-	display: block;
-	height: 36px;
-	width: 80%;
-	border-radius: var(--ptr-radius-md);
-	background: var(--ptr-color-bg-elevated);
-	animation: ptr-stat-shimmer 1.4s ease-in-out infinite;
+  display: block;
+  height: 36px;
+  width: 80%;
+  border-radius: var(--ptr-radius-md);
+  background: var(--ptr-color-bg-elevated);
+  animation: ptr-stat-shimmer 1.4s ease-in-out infinite;
 }
 
 @keyframes ptr-stat-shimmer {
-	0%,
-	100% {
-		opacity: 0.4;
-	}
-	50% {
-		opacity: 0.8;
-	}
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 /* ============================================================
@@ -79,41 +79,41 @@
    ============================================================ */
 
 .trend {
-	display: flex;
-	align-items: center;
-	gap: var(--ptr-spacing-3xs);
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-sm);
-	font-weight: var(--ptr-typography-weight-body);
+  display: flex;
+  align-items: center;
+  gap: var(--ptr-spacing-3xs);
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  font-weight: var(--ptr-typography-weight-body);
 }
 
 .trendArrow {
-	display: inline-flex;
-	align-items: center;
-	flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .trendValue {
-	font-weight: var(--ptr-typography-weight-label);
+  font-weight: var(--ptr-typography-weight-label);
 }
 
 .trendLabel {
-	color: var(--ptr-color-text-secondary);
-	font-size: var(--ptr-typography-size-xs);
+  color: var(--ptr-color-text-secondary);
+  font-size: var(--ptr-typography-size-xs);
 }
 
 .trendPositive {
-	color: var(--ptr-color-status-success-text);
+  color: var(--ptr-color-status-success-text);
 }
 
 .trendNegative {
-	color: var(--ptr-color-status-error-text);
+  color: var(--ptr-color-status-error-text);
 }
 
 .trendNeutral {
-	color: var(--ptr-color-text-secondary);
+  color: var(--ptr-color-text-secondary);
 }
 
 .trendNeutral .trendValue {
-	font-weight: var(--ptr-typography-weight-body);
+  font-weight: var(--ptr-typography-weight-body);
 }

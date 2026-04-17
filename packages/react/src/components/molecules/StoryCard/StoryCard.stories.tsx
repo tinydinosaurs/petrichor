@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { StoryCard } from './StoryCard'
+import type { Meta, StoryObj } from '@storybook/react';
+import { StoryCard } from './StoryCard';
 
 const cats = [
   { name: 'Neo', src: 'https://placecats.com/neo/150/150' },
@@ -7,7 +7,7 @@ const cats = [
   { name: 'Molly', src: 'https://placecats.com/molly/150/150' },
   { name: 'Luna', src: 'https://placecats.com/luna/150/150' },
   { name: 'Millie' },
-]
+];
 
 const meta: Meta<typeof StoryCard> = {
   title: 'Molecules/StoryCard',
@@ -39,11 +39,10 @@ const meta: Meta<typeof StoryCard> = {
       </div>
     ),
   ],
-} satisfies Meta<typeof StoryCard>
+} satisfies Meta<typeof StoryCard>;
 
-export default meta
-type Story = StoryObj<typeof meta>
-
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /* ============================================================
    ANONYMOUS MODE
@@ -55,7 +54,8 @@ export const Anonymous: Story = {
     mode: 'anonymous',
     title: "The Clockmaker's Last Dream",
     status: 'completed',
-    excerpt: 'The door opened onto a street that hadn\'t existed yesterday. She stepped through anyway, because the rain smelled of copper and every clockmaker knows that time runs backwards on Tuesdays.',
+    excerpt:
+      "The door opened onto a street that hadn't existed yesterday. She stepped through anyway, because the rain smelled of copper and every clockmaker knows that time runs backwards on Tuesdays.",
     coverSrc: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=640&q=80',
     coverAlt: 'Stormy landscape',
     tags: ['surrealist', 'mystery', 'time travel'],
@@ -64,24 +64,25 @@ export const Anonymous: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'What logged-out readers see — image, title, truncated excerpt, genre tags, and a read CTA. No contributor metadata.',
+        story:
+          'What logged-out readers see — image, title, truncated excerpt, genre tags, and a read CTA. No contributor metadata.',
       },
     },
   },
-}
+};
 
 export const AnonymousNoImage: Story = {
   name: 'Anonymous — no cover image',
   args: {
     mode: 'anonymous',
-    title: "The Last Train to Nowhere",
+    title: 'The Last Train to Nowhere',
     status: 'completed',
-    excerpt: 'The conductor punched my ticket and smiled with too many teeth. I counted them twice, just to be sure, and then sat down next to the window where the countryside was moving in the wrong direction.',
+    excerpt:
+      'The conductor punched my ticket and smiled with too many teeth. I counted them twice, just to be sure, and then sat down next to the window where the countryside was moving in the wrong direction.',
     tags: ['horror', 'absurdist'],
     href: '/stories/2',
   },
-}
-
+};
 
 /* ============================================================
    COMPLETED MODE
@@ -93,7 +94,8 @@ export const Completed: Story = {
     mode: 'completed',
     title: "The Clockmaker's Last Dream",
     status: 'completed',
-    excerpt: 'The door opened onto a street that hadn\'t existed yesterday. She stepped through anyway, because the rain smelled of copper.',
+    excerpt:
+      "The door opened onto a street that hadn't existed yesterday. She stepped through anyway, because the rain smelled of copper.",
     coverSrc: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=640&q=80',
     coverAlt: 'Stormy landscape',
     tags: ['surrealist', 'mystery'],
@@ -110,15 +112,16 @@ export const Completed: Story = {
       },
     },
   },
-}
+};
 
 export const CompletedManyContributors: Story = {
   name: 'Completed — overflow avatars',
   args: {
     mode: 'completed',
-    title: "The Parliament of Clocks",
+    title: 'The Parliament of Clocks',
     status: 'completed',
-    excerpt: 'Five clocks agreed to settle the matter once and for all. The grandfather clock called the meeting to order.',
+    excerpt:
+      'Five clocks agreed to settle the matter once and for all. The grandfather clock called the meeting to order.',
     tags: ['absurdist', 'comedy'],
     contributors: cats,
     currentSegments: 8,
@@ -133,8 +136,7 @@ export const CompletedManyContributors: Story = {
       },
     },
   },
-}
-
+};
 
 /* ============================================================
    ACTIVE MODE
@@ -144,7 +146,7 @@ export const ActiveContinue: Story = {
   name: 'Active — continue story',
   args: {
     mode: 'active',
-    title: "The Parliament of Clocks",
+    title: 'The Parliament of Clocks',
     status: 'in_progress',
     tags: ['absurdist', 'comedy'],
     contributors: cats.slice(0, 2),
@@ -156,17 +158,18 @@ export const ActiveContinue: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'In-progress story below minimum segments — CTA is "Continue story". No excerpt shown — that\'s part of the game.',
+        story:
+          'In-progress story below minimum segments — CTA is "Continue story". No excerpt shown — that\'s part of the game.',
       },
     },
   },
-}
+};
 
 export const ActiveComplete: Story = {
   name: 'Active — complete story',
   args: {
     mode: 'active',
-    title: "The Parliament of Clocks",
+    title: 'The Parliament of Clocks',
     status: 'in_progress',
     tags: ['absurdist', 'comedy'],
     contributors: cats.slice(0, 4),
@@ -182,8 +185,7 @@ export const ActiveComplete: Story = {
       },
     },
   },
-}
-
+};
 
 /* ============================================================
    ALL STATUS VALUES
@@ -198,7 +200,14 @@ export const AllStatuses: Story = {
     href: '/stories/1',
   },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '340px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+        width: '340px',
+      }}
+    >
       {(['draft', 'in_progress', 'completed', 'abandoned', 'moderated'] as const).map((status) => (
         <StoryCard
           key={status}
@@ -218,8 +227,7 @@ export const AllStatuses: Story = {
       },
     },
   },
-}
-
+};
 
 /* ============================================================
    STORY FEED — how cards look in context
@@ -234,7 +242,14 @@ export const StoryFeed: Story = {
     href: '/stories/2',
   },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '340px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px',
+        width: '340px',
+      }}
+    >
       <StoryCard
         mode="active"
         title="The Parliament of Clocks"
@@ -275,12 +290,12 @@ export const StoryFeed: Story = {
     layout: 'centered',
     docs: {
       description: {
-        story: 'Mixed feed showing active and completed stories as a logged-in user would see them.',
+        story:
+          'Mixed feed showing active and completed stories as a logged-in user would see them.',
       },
     },
   },
-}
-
+};
 
 /* ============================================================
    LOADING
@@ -294,4 +309,4 @@ export const Loading: Story = {
     href: '/stories/1',
     loading: true,
   },
-}
+};

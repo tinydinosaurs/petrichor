@@ -23,38 +23,38 @@ The foundational interactive element. Every action a user can take is expressed 
 
 ## Variants
 
-| Variant | Use for |
-|---|---|
-| `primary` | The single highest-emphasis action on a surface. One per section. |
-| `secondary` | Supporting action alongside a primary. Cancel, Export, Back. |
-| `ghost` | Tertiary actions, toolbar controls, inline actions. |
-| `danger` | Destructive, irreversible actions only. Delete, Remove, Revoke. |
-| `ghost-danger` | Destructive but low-emphasis. Inline list row removals. |
+| Variant        | Use for                                                           |
+| -------------- | ----------------------------------------------------------------- |
+| `primary`      | The single highest-emphasis action on a surface. One per section. |
+| `secondary`    | Supporting action alongside a primary. Cancel, Export, Back.      |
+| `ghost`        | Tertiary actions, toolbar controls, inline actions.               |
+| `danger`       | Destructive, irreversible actions only. Delete, Remove, Revoke.   |
+| `ghost-danger` | Destructive but low-emphasis. Inline list row removals.           |
 
 ## Sizes
 
-| Size | Height | Use for |
-|---|---|---|
-| `sm` | 32px | Filter bars, table actions, compact UIs |
-| `md` | 40px | Default. Forms, cards, page actions. |
-| `lg` | 48px | Hero sections, prominent single CTAs |
+| Size | Height | Use for                                 |
+| ---- | ------ | --------------------------------------- |
+| `sm` | 32px   | Filter bars, table actions, compact UIs |
+| `md` | 40px   | Default. Forms, cards, page actions.    |
+| `lg` | 48px   | Hero sections, prominent single CTAs    |
 
 ---
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `variant` | `'primary' \| 'secondary' \| 'ghost' \| 'danger' \| 'ghost-danger'` | `'primary'` | Visual style and semantic emphasis |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding |
-| `loading` | `boolean` | `false` | Shows spinner, disables interaction, sets `aria-busy` |
-| `disabled` | `boolean` | `false` | Native disabled — removes from tab order |
-| `aria-disabled` | `boolean` | — | ARIA disabled — stays in tab order. Use for form submit buttons not yet ready. |
-| `iconStart` | `ReactNode` | — | Icon before label. Hidden during loading. |
-| `iconEnd` | `ReactNode` | — | Icon after label. Hidden during loading. |
-| `iconOnly` | `boolean` | `false` | Square button. Requires `aria-label`. |
-| `asChild` | `boolean` | `false` | Renders as child element. Use for link buttons. |
-| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type. Always explicit — never accidentally a submit. |
+| Prop            | Type                                                                | Default     | Description                                                                    |
+| --------------- | ------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------ |
+| `variant`       | `'primary' \| 'secondary' \| 'ghost' \| 'danger' \| 'ghost-danger'` | `'primary'` | Visual style and semantic emphasis                                             |
+| `size`          | `'sm' \| 'md' \| 'lg'`                                              | `'md'`      | Height and padding                                                             |
+| `loading`       | `boolean`                                                           | `false`     | Shows spinner, disables interaction, sets `aria-busy`                          |
+| `disabled`      | `boolean`                                                           | `false`     | Native disabled — removes from tab order                                       |
+| `aria-disabled` | `boolean`                                                           | —           | ARIA disabled — stays in tab order. Use for form submit buttons not yet ready. |
+| `iconStart`     | `ReactNode`                                                         | —           | Icon before label. Hidden during loading.                                      |
+| `iconEnd`       | `ReactNode`                                                         | —           | Icon after label. Hidden during loading.                                       |
+| `iconOnly`      | `boolean`                                                           | `false`     | Square button. Requires `aria-label`.                                          |
+| `asChild`       | `boolean`                                                           | `false`     | Renders as child element. Use for link buttons.                                |
+| `type`          | `'button' \| 'submit' \| 'reset'`                                   | `'button'`  | HTML button type. Always explicit — never accidentally a submit.               |
 
 All native `<button>` attributes are supported and forwarded.
 
@@ -101,9 +101,7 @@ All native `<button>` attributes are supported and forwarded.
 ### Loading state
 
 ```tsx
-<Button loading={isSaving}>
-  {isSaving ? 'Saving...' : 'Save changes'}
-</Button>
+<Button loading={isSaving}>{isSaving ? 'Saving...' : 'Save changes'}</Button>
 ```
 
 ### Disabled — form submit not ready
@@ -134,11 +132,11 @@ Use `aria-disabled` (not `disabled`) so the button stays in the tab order and sc
 
 ### Keyboard
 
-| Key | Action |
-|---|---|
-| `Tab` | Move focus to button |
-| `Enter` | Activate button |
-| `Space` | Activate button |
+| Key     | Action               |
+| ------- | -------------------- |
+| `Tab`   | Move focus to button |
+| `Enter` | Activate button      |
+| `Space` | Activate button      |
 
 ### disabled vs aria-disabled
 
@@ -151,11 +149,13 @@ Use `aria-disabled` when the button needs to stay visible and discoverable — p
 ## Composition rules
 
 ### Button can contain
+
 - Text (required unless `iconOnly`)
 - A single icon via `iconStart` or `iconEnd`
 - A single icon as `children` when `iconOnly` is true
 
 ### Button can be placed inside
+
 - `form` elements
 - `Card` (as a CTA)
 - `FormFooter` molecule
@@ -164,6 +164,7 @@ Use `aria-disabled` when the button needs to stay visible and discoverable — p
 - Toolbars
 
 ### Never do
+
 - Two `primary` buttons side by side
 - A `Button` inside another `Button`
 - A `danger` button for any non-destructive action

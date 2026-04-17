@@ -23,10 +23,10 @@ A loading indicator. Inherits color from its parent via `currentColor`. Announce
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'sm'` | Spinner size |
-| `label` | `string` | `'Loading'` | Accessible label — provide context when possible |
+| Prop    | Type                           | Default     | Description                                      |
+| ------- | ------------------------------ | ----------- | ------------------------------------------------ |
+| `size`  | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'sm'`      | Spinner size                                     |
+| `label` | `string`                       | `'Loading'` | Accessible label — provide context when possible |
 
 All native SVG attributes are supported and forwarded.
 
@@ -34,12 +34,12 @@ All native SVG attributes are supported and forwarded.
 
 ## Sizes
 
-| Size | Pixels | Use for |
-|---|---|---|
-| `xs` | 12px | Very tight spaces |
-| `sm` | 16px | Default — inline with text, inside buttons |
-| `md` | 20px | Slightly larger contexts |
-| `lg` | 24px | Section and page loading states |
+| Size | Pixels | Use for                                    |
+| ---- | ------ | ------------------------------------------ |
+| `xs` | 12px   | Very tight spaces                          |
+| `sm` | 16px   | Default — inline with text, inside buttons |
+| `md` | 20px   | Slightly larger contexts                   |
+| `lg` | 24px   | Section and page loading states            |
 
 ---
 
@@ -64,7 +64,14 @@ Always provide a meaningful label when the context is known. `"Loading"` is acce
 ### Inline with text
 
 ```tsx
-<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ptr-spacing-2xs)', color: 'var(--ptr-color-text-secondary)' }}>
+<div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--ptr-spacing-2xs)',
+    color: 'var(--ptr-color-text-secondary)',
+  }}
+>
   <Spinner size="sm" label="Loading results" />
   <span>Loading results...</span>
 </div>
@@ -73,7 +80,14 @@ Always provide a meaningful label when the context is known. `"Loading"` is acce
 ### Section loading state
 
 ```tsx
-<div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--ptr-spacing-xl)', color: 'var(--ptr-color-text-tertiary)' }}>
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    padding: 'var(--ptr-spacing-xl)',
+    color: 'var(--ptr-color-text-tertiary)',
+  }}
+>
   <Spinner size="lg" label="Loading dashboard" />
 </div>
 ```

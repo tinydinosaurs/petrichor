@@ -1,9 +1,9 @@
-import React from 'react'
-import type { IconProps as PhosphorIconProps } from '@phosphor-icons/react'
-import styles from './Icon.module.css'
+import React from 'react';
+import type { IconProps as PhosphorIconProps } from '@phosphor-icons/react';
+import styles from './Icon.module.css';
 
-export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'
-export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
+export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export interface IconProps {
   /**
@@ -14,27 +14,27 @@ export interface IconProps {
    * import { Trophy } from '@phosphor-icons/react'
    * <Icon icon={Trophy} />
    */
-  icon: React.ComponentType<PhosphorIconProps>
+  icon: React.ComponentType<PhosphorIconProps>;
 
   /**
    * Icon size — maps to our spacing scale.
    * xs=12px, sm=16px (default), md=20px, lg=24px, xl=32px
    */
-  size?: IconSize
+  size?: IconSize;
 
   /**
    * Override the brand default weight.
    * Brand weight tokens: Raindrop=regular, Dusk Rose=light
    * Usually leave unset and let the brand token control it.
    */
-  weight?: IconWeight
+  weight?: IconWeight;
 
   /**
    * Use the duotone weight — a deliberate expressive choice.
    * Overrides weight prop. Use for empty states, hero moments, decorative contexts.
    * Not for standard UI icons.
    */
-  duotone?: boolean
+  duotone?: boolean;
 
   /**
    * Accessible label for informative icons.
@@ -44,15 +44,15 @@ export interface IconProps {
    * Most icons are decorative — nearby text provides the context.
    * Only provide label when the icon conveys meaning not expressed elsewhere.
    */
-  label?: string
+  label?: string;
 
   /**
    * CSS color — defaults to currentColor (inherits from parent).
    * Usually leave unset and control color via the parent element's CSS.
    */
-  color?: string
+  color?: string;
 
-  className?: string
+  className?: string;
 }
 
 const sizeMap: Record<IconSize, number> = {
@@ -61,7 +61,7 @@ const sizeMap: Record<IconSize, number> = {
   md: 20,
   lg: 24,
   xl: 32,
-}
+};
 
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
   (
@@ -77,14 +77,12 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
     },
     ref,
   ) => {
-    const resolvedWeight: IconWeight = duotone
-      ? 'duotone'
-      : weight ?? 'regular'
+    const resolvedWeight: IconWeight = duotone ? 'duotone' : (weight ?? 'regular');
 
-    const resolvedSize = sizeMap[size]
-    const isDecorative = !label
+    const resolvedSize = sizeMap[size];
+    const isDecorative = !label;
 
-    const classes = [styles.icon, className ?? ''].filter(Boolean).join(' ')
+    const classes = [styles.icon, className ?? ''].filter(Boolean).join(' ');
 
     return (
       <PhosphorIconComponent
@@ -98,8 +96,8 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
         className={classes}
         {...rest}
       />
-    )
+    );
   },
-)
+);
 
-Icon.displayName = 'Icon'
+Icon.displayName = 'Icon';

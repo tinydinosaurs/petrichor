@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Spinner } from './Spinner'
+import type { Meta, StoryObj } from '@storybook/react';
+import { Spinner } from './Spinner';
 
 const meta = {
   title: 'Atoms/Spinner',
@@ -29,14 +29,12 @@ const meta = {
     size: 'md',
     label: 'Loading',
   },
-} satisfies Meta<typeof Spinner>
+} satisfies Meta<typeof Spinner>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-
-export const Default: Story = {}
-
+export const Default: Story = {};
 
 export const Sizes: Story = {
   render: () => (
@@ -44,16 +42,27 @@ export const Sizes: Story = {
       {(['xs', 'sm', 'md', 'lg'] as const).map((size) => (
         <div
           key={size}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+          }}
         >
           <Spinner size={size} />
-          <span style={{ fontSize: '10px', color: 'var(--ptr-color-text-secondary)' }}>{size}</span>
+          <span
+            style={{
+              fontSize: '10px',
+              color: 'var(--ptr-color-text-secondary)',
+            }}
+          >
+            {size}
+          </span>
         </div>
       ))}
     </div>
   ),
-}
-
+};
 
 export const ColorInheritance: Story = {
   name: 'Color inheritance',
@@ -67,7 +76,13 @@ export const ColorInheritance: Story = {
       ].map(({ color, label }) => (
         <div
           key={label}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', color }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+            color,
+          }}
         >
           <Spinner size="md" />
           <span style={{ fontSize: '10px', opacity: 0.7 }}>{label}</span>
@@ -78,37 +93,48 @@ export const ColorInheritance: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Spinner inherits color from the parent element. Set color on the parent, not the spinner.',
+        story:
+          'Spinner inherits color from the parent element. Set color on the parent, not the spinner.',
       },
     },
   },
-}
-
+};
 
 export const InContext: Story = {
   name: 'In context — loading state',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '240px' }}>
-      <div style={{
+    <div
+      style={{
         display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        color: 'var(--ptr-color-text-secondary)',
-        fontSize: 'var(--ptr-typography-size-sm)',
-        fontFamily: 'var(--ptr-typography-font-ui)',
-      }}>
+        flexDirection: 'column',
+        gap: '16px',
+        width: '240px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          color: 'var(--ptr-color-text-secondary)',
+          fontSize: 'var(--ptr-typography-size-sm)',
+          fontFamily: 'var(--ptr-typography-font-ui)',
+        }}
+      >
         <Spinner size="sm" label="Loading results" />
         <span>Loading results...</span>
       </div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '32px',
-        color: 'var(--ptr-color-text-tertiary)',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '32px',
+          color: 'var(--ptr-color-text-tertiary)',
+        }}
+      >
         <Spinner size="lg" label="Loading dashboard" />
       </div>
     </div>
   ),
-}
+};

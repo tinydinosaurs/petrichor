@@ -5,222 +5,222 @@ status: draft
 version: 0.1.0
 
 description: >
-    Represents a person with a photo, initials, or generic icon.
-    Fallback cascade: image → initials (auto-derived) → Phosphor User icon.
-    Circle shape only. Status dot is optional.
+  Represents a person with a photo, initials, or generic icon.
+  Fallback cascade: image → initials (auto-derived) → Phosphor User icon.
+  Circle shape only. Status dot is optional.
 
 dom:
-    element: span
-    notes: >
-        asChild renders as the child element (e.g. <a> for linked avatars).
-        Image is an <img> inside the span.
-        Initials are a <span aria-hidden="true"> inside the span.
-        Status dot is a <span> with aria-label.
+  element: span
+  notes: >
+    asChild renders as the child element (e.g. <a> for linked avatars).
+    Image is an <img> inside the span.
+    Initials are a <span aria-hidden="true"> inside the span.
+    Status dot is a <span> with aria-label.
 
 props:
-    src:
-        type: string
-        required: false
-        notes: Image URL. Falls back to initials or icon if not provided or if image fails to load.
+  src:
+    type: string
+    required: false
+    notes: Image URL. Falls back to initials or icon if not provided or if image fails to load.
 
-    alt:
-        type: string
-        required: false
-        notes: >
-            Alt text for the image. Required when src is provided.
-            If adjacent text describes the person, use alt="" (empty string).
-            If avatar stands alone, use the person's full name.
+  alt:
+    type: string
+    required: false
+    notes: >
+      Alt text for the image. Required when src is provided.
+      If adjacent text describes the person, use alt="" (empty string).
+      If avatar stands alone, use the person's full name.
 
-    name:
-        type: string
-        required: false
-        notes: >
-            Person's full name. Used to:
-            1. Derive initials when no image is available (max 2 chars, first + last)
-            2. Set aria-label on the avatar container when no explicit aria-label is provided
-            Always provide name when known.
+  name:
+    type: string
+    required: false
+    notes: >
+      Person's full name. Used to:
+      1. Derive initials when no image is available (max 2 chars, first + last)
+      2. Set aria-label on the avatar container when no explicit aria-label is provided
+      Always provide name when known.
 
-    size:
-        type: enum
-        values: [xs, sm, md, lg, xl]
-        default: md
-        pixel_values:
-            xs: 24px
-            sm: 32px
-            md: 40px
-            lg: 48px
-            xl: 64px
-        notes: >
-            xs size shows only one initial (first letter) — too small for two.
-            xl size uses a larger icon (32px) for better legibility.
+  size:
+    type: enum
+    values: [xs, sm, md, lg, xl]
+    default: md
+    pixel_values:
+      xs: 24px
+      sm: 32px
+      md: 40px
+      lg: 48px
+      xl: 64px
+    notes: >
+      xs size shows only one initial (first letter) — too small for two.
+      xl size uses a larger icon (32px) for better legibility.
 
-    status:
-        type: enum
-        values: [online, offline, away, busy]
-        required: false
-        notes: >
-            Shows a colored dot in the bottom-right corner.
-            Has aria-label="Status: {status}" for screen readers.
-            Colors map to semantic status tokens.
-        color_mapping:
-            online: var(--ptr-color-status-success-text)
-            offline: var(--ptr-color-text-tertiary)
-            away: var(--ptr-color-status-warning-text)
-            busy: var(--ptr-color-status-error-text)
+  status:
+    type: enum
+    values: [online, offline, away, busy]
+    required: false
+    notes: >
+      Shows a colored dot in the bottom-right corner.
+      Has aria-label="Status: {status}" for screen readers.
+      Colors map to semantic status tokens.
+    color_mapping:
+      online: var(--ptr-color-status-success-text)
+      offline: var(--ptr-color-text-tertiary)
+      away: var(--ptr-color-status-warning-text)
+      busy: var(--ptr-color-status-error-text)
 
-    asChild:
-        type: boolean
-        default: false
-        notes: >
-            Renders as child element via @radix-ui/react-slot.
-            Use for linked avatars: <Avatar asChild><a href="..."/></Avatar>
-            Provide explicit aria-label describing the link purpose.
+  asChild:
+    type: boolean
+    default: false
+    notes: >
+      Renders as child element via @radix-ui/react-slot.
+      Use for linked avatars: <Avatar asChild><a href="..."/></Avatar>
+      Provide explicit aria-label describing the link purpose.
 
 fallback_cascade:
-    1_image: src provided and loads successfully
-    2_initials: src not provided or fails — name is available
-    3_icon: neither src nor name provided — shows Phosphor User icon
+  1_image: src provided and loads successfully
+  2_initials: src not provided or fails — name is available
+  3_icon: neither src nor name provided — shows Phosphor User icon
 
 initials_rules:
-    - Max 2 characters
-    - Derived from first letter of first word + first letter of last word
-    - Single-word names use only that word's first letter
-    - Always uppercase
-    - xs size shows only first initial (1 char)
+  - Max 2 characters
+  - Derived from first letter of first word + first letter of last word
+  - Single-word names use only that word's first letter
+  - Always uppercase
+  - xs size shows only first initial (1 char)
 
 accessibility:
-    aria_label: >
-        Set from name prop by default.
-        Override with explicit aria-label for link context or additional context.
-        When avatar is adjacent to the person's name in text, aria-label can be omitted
-        or set to "" — the text provides the accessible name.
-    initials: aria-hidden="true" — decorative, name prop provides the accessible label
-    icon_fallback: aria-hidden="true" — decorative
-    status_dot: 'aria-label="Status: {status}" — announced by screen readers'
-    image_alt: >
-        Required when src is provided.
-        Use full name when avatar stands alone.
-        Use "" (empty) when adjacent text already identifies the person.
+  aria_label: >
+    Set from name prop by default.
+    Override with explicit aria-label for link context or additional context.
+    When avatar is adjacent to the person's name in text, aria-label can be omitted
+    or set to "" — the text provides the accessible name.
+  initials: aria-hidden="true" — decorative, name prop provides the accessible label
+  icon_fallback: aria-hidden="true" — decorative
+  status_dot: 'aria-label="Status: {status}" — announced by screen readers'
+  image_alt: >
+    Required when src is provided.
+    Use full name when avatar stands alone.
+    Use "" (empty) when adjacent text already identifies the person.
 
 tokens:
-    container:
-        background: var(--ptr-color-bg-elevated)
-        border-radius: var(--ptr-radius-pill)
-        color: var(--ptr-color-text-secondary)
-        font-family: var(--ptr-typography-font-ui)
-        font-weight: var(--ptr-typography-weight-label)
-    with_initials:
-        background: var(--ptr-color-brand-primary-tint)
-        color: var(--ptr-color-brand-primary-text)
-    status_border: var(--ptr-color-bg-page)
+  container:
+    background: var(--ptr-color-bg-elevated)
+    border-radius: var(--ptr-radius-pill)
+    color: var(--ptr-color-text-secondary)
+    font-family: var(--ptr-typography-font-ui)
+    font-weight: var(--ptr-typography-weight-label)
+  with_initials:
+    background: var(--ptr-color-brand-primary-tint)
+    color: var(--ptr-color-brand-primary-text)
+  status_border: var(--ptr-color-bg-page)
 
 composition:
-    contained_by:
-        - Card.Header (player profiles, story cards)
-        - Contribution chip molecule
-        - Comment threads
-        - Navigation bars (current user)
-        - Data table rows
-        - Avatar group (stacked with negative margin)
+  contained_by:
+    - Card.Header (player profiles, story cards)
+    - Contribution chip molecule
+    - Comment threads
+    - Navigation bars (current user)
+    - Data table rows
+    - Avatar group (stacked with negative margin)
 
-    patterns:
-        - id: basic
-          example: |
-              <Avatar
-                src="/photo.jpg"
-                alt="Jane Smith"
-                name="Jane Smith"
-                size="md"
-              />
+  patterns:
+    - id: basic
+      example: |
+        <Avatar
+          src="/photo.jpg"
+          alt="Jane Smith"
+          name="Jane Smith"
+          size="md"
+        />
 
-        - id: initials-only
-          example: |
-              <Avatar name="Jane Smith" size="sm" />
+    - id: initials-only
+      example: |
+        <Avatar name="Jane Smith" size="sm" />
 
-        - id: with-status
-          example: |
-              <Avatar
-                src="/photo.jpg"
-                alt="Jane Smith"
-                name="Jane Smith"
-                size="md"
-                status="online"
-              />
+    - id: with-status
+      example: |
+        <Avatar
+          src="/photo.jpg"
+          alt="Jane Smith"
+          name="Jane Smith"
+          size="md"
+          status="online"
+        />
 
-        - id: linked
-          example: |
-              <Avatar
-                asChild
-                src="/photo.jpg"
-                alt="Jane Smith"
-                name="Jane Smith"
-                aria-label="View Jane Smith's profile"
-              >
-                <a href="/profile/jane-smith" />
-              </Avatar>
-
-        - id: avatar-group
-          description: Stacked overlapping group
-          example: |
-              <div style={{ display: 'flex' }}>
-                {contributors.map((person, i) => (
-                  <div key={i} style={{
-                    marginLeft: i === 0 ? 0 : '-8px',
-                    borderRadius: '999px',
-                    border: '2px solid var(--ptr-color-bg-page)',
-                    zIndex: contributors.length - i,
-                    position: 'relative',
-                  }}>
-                    <Avatar src={person.src} alt={person.name} name={person.name} size="sm" />
-                  </div>
-                ))}
-              </div>
-          notes: >
-              Border color matches page background to create visual separation.
-              z-index ensures earlier avatars appear on top.
-              AvatarGroup molecule (planned) will encapsulate this pattern.
-
-        - id: contribution-chip
-          description: Avatar + name label — Exquisite Corpse contributor
-          example: |
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ptr-spacing-2xs)' }}>
-                <Avatar src={src} alt={name} name={name} size="xs" />
-                <span style={{ fontSize: 'var(--ptr-typography-size-sm)' }}>{name}</span>
-              </div>
-          notes: Avatar is decorative here — adjacent name text provides the accessible label.
-
-anti_patterns:
-    - id: no-alt-standalone
-      description: Image avatar with no alt text standing alone
-      wrong: <Avatar src="/photo.jpg" />
-      right: <Avatar src="/photo.jpg" alt="Jane Smith" name="Jane Smith" />
-      reason: Standalone image avatars need alt text for screen readers.
-
-    - id: no-name-no-label
-      description: Avatar with no name and no aria-label
-      wrong: <Avatar src="/photo.jpg" alt="photo" />
-      right: <Avatar src="/photo.jpg" alt="Jane Smith" name="Jane Smith" />
-      reason: >
-          Without name, there is no aria-label on the container.
-          Screen readers cannot identify who the avatar represents.
-
-    - id: three-initials
-      description: Expecting more than 2 initials
-      wrong: Expecting "JMS" for "Jane Marie Smith"
-      right: Avatar always derives first + last only — "JS"
-      reason: More than 2 characters don't fit cleanly at small sizes.
-
-related:
-    - id: badge
-      when_to_use: Status badges on avatar (online/offline) — built into Avatar via status prop.
+    - id: linked
+      example: |
+        <Avatar
+          asChild
+          src="/photo.jpg"
+          alt="Jane Smith"
+          name="Jane Smith"
+          aria-label="View Jane Smith's profile"
+        >
+          <a href="/profile/jane-smith" />
+        </Avatar>
 
     - id: avatar-group
-      status: planned
-      when_to_use: >
-          When showing multiple contributors in a compact stacked row.
-          AvatarGroup will encapsulate the negative-margin overlap pattern
-          and handle overflow counting ("+3 more").
+      description: Stacked overlapping group
+      example: |
+        <div style={{ display: 'flex' }}>
+          {contributors.map((person, i) => (
+            <div key={i} style={{
+              marginLeft: i === 0 ? 0 : '-8px',
+              borderRadius: '999px',
+              border: '2px solid var(--ptr-color-bg-page)',
+              zIndex: contributors.length - i,
+              position: 'relative',
+            }}>
+              <Avatar src={person.src} alt={person.name} name={person.name} size="sm" />
+            </div>
+          ))}
+        </div>
+      notes: >
+        Border color matches page background to create visual separation.
+        z-index ensures earlier avatars appear on top.
+        AvatarGroup molecule (planned) will encapsulate this pattern.
 
     - id: contribution-chip
-      status: planned
-      when_to_use: Avatar + name label as an inline chip. Molecule that composes Avatar.
+      description: Avatar + name label — Exquisite Corpse contributor
+      example: |
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ptr-spacing-2xs)' }}>
+          <Avatar src={src} alt={name} name={name} size="xs" />
+          <span style={{ fontSize: 'var(--ptr-typography-size-sm)' }}>{name}</span>
+        </div>
+      notes: Avatar is decorative here — adjacent name text provides the accessible label.
+
+anti_patterns:
+  - id: no-alt-standalone
+    description: Image avatar with no alt text standing alone
+    wrong: <Avatar src="/photo.jpg" />
+    right: <Avatar src="/photo.jpg" alt="Jane Smith" name="Jane Smith" />
+    reason: Standalone image avatars need alt text for screen readers.
+
+  - id: no-name-no-label
+    description: Avatar with no name and no aria-label
+    wrong: <Avatar src="/photo.jpg" alt="photo" />
+    right: <Avatar src="/photo.jpg" alt="Jane Smith" name="Jane Smith" />
+    reason: >
+      Without name, there is no aria-label on the container.
+      Screen readers cannot identify who the avatar represents.
+
+  - id: three-initials
+    description: Expecting more than 2 initials
+    wrong: Expecting "JMS" for "Jane Marie Smith"
+    right: Avatar always derives first + last only — "JS"
+    reason: More than 2 characters don't fit cleanly at small sizes.
+
+related:
+  - id: badge
+    when_to_use: Status badges on avatar (online/offline) — built into Avatar via status prop.
+
+  - id: avatar-group
+    status: planned
+    when_to_use: >
+      When showing multiple contributors in a compact stacked row.
+      AvatarGroup will encapsulate the negative-margin overlap pattern
+      and handle overflow counting ("+3 more").
+
+  - id: contribution-chip
+    status: planned
+    when_to_use: Avatar + name label as an inline chip. Molecule that composes Avatar.

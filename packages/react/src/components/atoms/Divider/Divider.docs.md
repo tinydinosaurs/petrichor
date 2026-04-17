@@ -23,10 +23,10 @@ A thin decorative line for separating content. Always `aria-hidden` — purely v
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Direction of the line |
-| `spacing` | `'none' \| 'sm' \| 'md' \| 'lg'` | `'none'` | Margin added on both sides |
+| Prop          | Type                             | Default        | Description                |
+| ------------- | -------------------------------- | -------------- | -------------------------- |
+| `orientation` | `'horizontal' \| 'vertical'`     | `'horizontal'` | Direction of the line      |
+| `spacing`     | `'none' \| 'sm' \| 'md' \| 'lg'` | `'none'`       | Margin added on both sides |
 
 All native `<hr>` attributes are supported and forwarded.
 

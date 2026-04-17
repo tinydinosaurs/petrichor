@@ -30,334 +30,174 @@
 # =============================================================================
 
 color:
-    # ---------------------------------------------------------------------------
-    # TEXT — foreground / type
-    # ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
+  # TEXT — foreground / type
+  # ---------------------------------------------------------------------------
 
-    text:
-        primary:
-            {
-                value: '{color.base.50}',
-                comment: 'Primary body text — high contrast',
-            }
-        secondary:
-            {
-                value: '{color.base.200}',
-                comment: 'Supporting text, labels, captions',
-            }
-        tertiary:
-            {
-                value: '{color.base.400}',
-                comment: 'Placeholder text, hint text, disabled',
-            }
-        inverse:
-            {
-                value: '{color.base.light-900}',
-                comment: 'Text on light surfaces within dark UI',
-            }
-        on-brand:
-            {
-                value: '{color.base.50}',
-                comment: 'Text on brand primary background',
-            }
+  text:
+    primary: { value: '{color.base.50}', comment: 'Primary body text — high contrast' }
+    secondary: { value: '{color.base.200}', comment: 'Supporting text, labels, captions' }
+    tertiary: { value: '{color.base.400}', comment: 'Placeholder text, hint text, disabled' }
+    inverse: { value: '{color.base.light-900}', comment: 'Text on light surfaces within dark UI' }
+    on-brand: { value: '{color.base.50}', comment: 'Text on brand primary background' }
 
-        # Status text — use for inline status copy and icons
-        info: { value: '{color.rain.400}', comment: 'Informational text' }
-        success: { value: '{color.teal.400}', comment: 'Success text' }
-        warning: { value: '{color.gold.400}', comment: 'Warning text' }
-        error: { value: '{color.amber.400}', comment: 'Error text' }
+    # Status text — use for inline status copy and icons
+    info: { value: '{color.rain.400}', comment: 'Informational text' }
+    success: { value: '{color.teal.400}', comment: 'Success text' }
+    warning: { value: '{color.gold.400}', comment: 'Warning text' }
+    error: { value: '{color.amber.400}', comment: 'Error text' }
 
-    # ---------------------------------------------------------------------------
-    # BACKGROUND — surfaces
-    # ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
+  # BACKGROUND — surfaces
+  # ---------------------------------------------------------------------------
 
-    bg:
-        page: { value: '{color.base.950}', comment: 'Page / app background' }
-        surface:
-            {
-                value: '{color.base.900}',
-                comment: 'Cards, panels, primary surfaces',
-            }
-        elevated:
-            {
-                value: '{color.base.700}',
-                comment: 'Elevated surfaces — dropdowns, modals, skeleton shimmer',
-            }
-        overlay:
-            {
-                value: '{color.overlay.medium}',
-                comment: 'Modal scrim / overlay',
-            }
-        input: { value: '{color.base.900}', comment: 'Form input background' }
-        inverse:
-            {
-                value: '{color.base.light-50}',
-                comment: 'Inverse surface (light in dark context)',
-            }
+  bg:
+    page: { value: '{color.base.950}', comment: 'Page / app background' }
+    surface: { value: '{color.base.900}', comment: 'Cards, panels, primary surfaces' }
+    elevated:
+      {
+        value: '{color.base.700}',
+        comment: 'Elevated surfaces — dropdowns, modals, skeleton shimmer',
+      }
+    overlay: { value: '{color.overlay.medium}', comment: 'Modal scrim / overlay' }
+    input: { value: '{color.base.900}', comment: 'Form input background' }
+    inverse: { value: '{color.base.light-50}', comment: 'Inverse surface (light in dark context)' }
 
-        # Status backgrounds — tinted surfaces for banners, toasts, inline alerts
-        info: { value: '{color.rain.800}', comment: 'Info tinted surface' }
-        success:
-            { value: '{color.teal.800}', comment: 'Success tinted surface' }
-        warning:
-            { value: '{color.gold.800}', comment: 'Warning tinted surface' }
-        error: { value: '{color.amber.800}', comment: 'Error tinted surface' }
+    # Status backgrounds — tinted surfaces for banners, toasts, inline alerts
+    info: { value: '{color.rain.800}', comment: 'Info tinted surface' }
+    success: { value: '{color.teal.800}', comment: 'Success tinted surface' }
+    warning: { value: '{color.gold.800}', comment: 'Warning tinted surface' }
+    error: { value: '{color.amber.800}', comment: 'Error tinted surface' }
 
-    # ---------------------------------------------------------------------------
-    # BORDER — structural lines
-    # ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
+  # BORDER — structural lines
+  # ---------------------------------------------------------------------------
 
-    border:
-        subtle:
-            {
-                value: '{color.base.850}',
-                comment: 'Hairline borders — cards, dividers, default inputs',
-            }
-        default:
-            {
-                value: '{color.base.700}',
-                comment: 'Standard borders — hover states',
-            }
-        strong:
-            {
-                value: '{color.base.400}',
-                comment: 'Emphasis borders — active inputs, focus',
-            }
+  border:
+    subtle:
+      { value: '{color.base.850}', comment: 'Hairline borders — cards, dividers, default inputs' }
+    default: { value: '{color.base.700}', comment: 'Standard borders — hover states' }
+    strong: { value: '{color.base.400}', comment: 'Emphasis borders — active inputs, focus' }
 
-        # Status borders
-        info: { value: '{color.rain.600}', comment: 'Info border' }
-        success: { value: '{color.teal.600}', comment: 'Success border' }
-        warning: { value: '{color.gold.600}', comment: 'Warning border' }
-        error: { value: '{color.amber.600}', comment: 'Error border' }
+    # Status borders
+    info: { value: '{color.rain.600}', comment: 'Info border' }
+    success: { value: '{color.teal.600}', comment: 'Success border' }
+    warning: { value: '{color.gold.600}', comment: 'Warning border' }
+    error: { value: '{color.amber.600}', comment: 'Error border' }
 
-    # ---------------------------------------------------------------------------
-    # BRAND — primary brand color
-    # Overridden entirely by brand files (raindrop.yaml / dusk-rose.yaml)
-    # Default here is neutral rain blue — the system default before any brand applied
-    # ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
+  # BRAND — primary brand color
+  # Overridden entirely by brand files (raindrop.yaml / dusk-rose.yaml)
+  # Default here is neutral rain blue — the system default before any brand applied
+  # ---------------------------------------------------------------------------
 
-    brand:
-        primary:
-            {
-                value: '{color.rain.600}',
-                comment: 'Brand primary — overridden by brand tokens',
-            }
-        primary-mid:
-            {
-                value: '{color.rain.400}',
-                comment: 'Brand primary mid — hover, icons',
-            }
-        primary-light:
-            {
-                value: '{color.rain.200}',
-                comment: 'Brand primary light — tinted backgrounds',
-            }
-        primary-tint:
-            {
-                value: '{color.rain.800}',
-                comment: 'Brand primary tint — dark mode surfaces',
-            }
-        primary-text:
-            {
-                value: '{color.rain.400}',
-                comment: 'Brand text on dark — links, labels',
-            }
+  brand:
+    primary: { value: '{color.rain.600}', comment: 'Brand primary — overridden by brand tokens' }
+    primary-mid: { value: '{color.rain.400}', comment: 'Brand primary mid — hover, icons' }
+    primary-light:
+      { value: '{color.rain.200}', comment: 'Brand primary light — tinted backgrounds' }
+    primary-tint: { value: '{color.rain.800}', comment: 'Brand primary tint — dark mode surfaces' }
+    primary-text: { value: '{color.rain.400}', comment: 'Brand text on dark — links, labels' }
 
-    # ---------------------------------------------------------------------------
-    # STATUS — semantic color roles for info, success, warning, error, danger
-    # Used by components for inline alerts, toasts, badges, form validation.
-    #
-    # error vs danger:
-    #   error  — something went wrong (reactive). Validation failure, API error.
-    #   danger — destructive consequence (proactive). Delete, revoke, irreversible.
-    # ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
+  # STATUS — semantic color roles for info, success, warning, error, danger
+  # Used by components for inline alerts, toasts, badges, form validation.
+  #
+  # error vs danger:
+  #   error  — something went wrong (reactive). Validation failure, API error.
+  #   danger — destructive consequence (proactive). Delete, revoke, irreversible.
+  # ---------------------------------------------------------------------------
 
-    status:
-        info:
-            bg:
-                {
-                    value: '{color.rain.800}',
-                    comment: 'Info tinted surface — dark mode',
-                }
-            text: { value: '{color.rain.400}', comment: 'Info text and icons' }
-            tint:
-                { value: '{color.rain.800}', comment: 'Info subtle background' }
-            border: { value: '{color.rain.600}', comment: 'Info border' }
+  status:
+    info:
+      bg: { value: '{color.rain.800}', comment: 'Info tinted surface — dark mode' }
+      text: { value: '{color.rain.400}', comment: 'Info text and icons' }
+      tint: { value: '{color.rain.800}', comment: 'Info subtle background' }
+      border: { value: '{color.rain.600}', comment: 'Info border' }
 
-        success:
-            bg:
-                {
-                    value: '{color.teal.800}',
-                    comment: 'Success tinted surface — dark mode',
-                }
-            text:
-                { value: '{color.teal.400}', comment: 'Success text and icons' }
-            tint:
-                {
-                    value: '{color.teal.800}',
-                    comment: 'Success subtle background',
-                }
-            border: { value: '{color.teal.600}', comment: 'Success border' }
+    success:
+      bg: { value: '{color.teal.800}', comment: 'Success tinted surface — dark mode' }
+      text: { value: '{color.teal.400}', comment: 'Success text and icons' }
+      tint: { value: '{color.teal.800}', comment: 'Success subtle background' }
+      border: { value: '{color.teal.600}', comment: 'Success border' }
 
-        warning:
-            bg:
-                {
-                    value: '{color.gold.800}',
-                    comment: 'Warning tinted surface — dark mode',
-                }
-            text:
-                { value: '{color.gold.400}', comment: 'Warning text and icons' }
-            tint:
-                {
-                    value: '{color.gold.800}',
-                    comment: 'Warning subtle background',
-                }
-            border: { value: '{color.gold.600}', comment: 'Warning border' }
+    warning:
+      bg: { value: '{color.gold.800}', comment: 'Warning tinted surface — dark mode' }
+      text: { value: '{color.gold.400}', comment: 'Warning text and icons' }
+      tint: { value: '{color.gold.800}', comment: 'Warning subtle background' }
+      border: { value: '{color.gold.600}', comment: 'Warning border' }
 
-        error:
-            bg:
-                {
-                    value: '{color.amber.800}',
-                    comment: 'Error tinted surface — dark mode',
-                }
-            text:
-                { value: '{color.amber.400}', comment: 'Error text and icons' }
-            tint:
-                {
-                    value: '{color.amber.800}',
-                    comment: 'Error subtle background — ghost-danger hover',
-                }
-            border: { value: '{color.amber.600}', comment: 'Error border' }
+    error:
+      bg: { value: '{color.amber.800}', comment: 'Error tinted surface — dark mode' }
+      text: { value: '{color.amber.400}', comment: 'Error text and icons' }
+      tint: { value: '{color.amber.800}', comment: 'Error subtle background — ghost-danger hover' }
+      border: { value: '{color.amber.600}', comment: 'Error border' }
 
-        danger:
-            bg:
-                {
-                    value: '{color.amber.800}',
-                    comment: 'Danger tinted surface — destructive actions',
-                }
-            text:
-                { value: '{color.amber.400}', comment: 'Danger text and icons' }
-            tint:
-                {
-                    value: '{color.amber.800}',
-                    comment: 'Danger subtle background',
-                }
-            border: { value: '{color.amber.600}', comment: 'Danger border' }
+    danger:
+      bg: { value: '{color.amber.800}', comment: 'Danger tinted surface — destructive actions' }
+      text: { value: '{color.amber.400}', comment: 'Danger text and icons' }
+      tint: { value: '{color.amber.800}', comment: 'Danger subtle background' }
+      border: { value: '{color.amber.600}', comment: 'Danger border' }
 
-    # ---------------------------------------------------------------------------
-    # ACCENT PALETTE — named semantic aliases for the 7 spectrum accents
-    # Used when referencing accents by role rather than brand
-    # ---------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
+  # ACCENT PALETTE — named semantic aliases for the 7 spectrum accents
+  # Used when referencing accents by role rather than brand
+  # ---------------------------------------------------------------------------
 
-    accent:
-        rain: { value: '{color.rain.400}', comment: 'Rain blue — mid weight' }
-        teal: { value: '{color.teal.400}', comment: 'Teal — mid weight' }
-        green: { value: '{color.green.400}', comment: 'Green — mid weight' }
-        gold: { value: '{color.gold.400}', comment: 'Gold — mid weight' }
-        amber: { value: '{color.amber.400}', comment: 'Amber — mid weight' }
-        rose: { value: '{color.rose.400}', comment: 'Rose — mid weight' }
-        violet: { value: '{color.violet.400}', comment: 'Violet — mid weight' }
+  accent:
+    rain: { value: '{color.rain.400}', comment: 'Rain blue — mid weight' }
+    teal: { value: '{color.teal.400}', comment: 'Teal — mid weight' }
+    green: { value: '{color.green.400}', comment: 'Green — mid weight' }
+    gold: { value: '{color.gold.400}', comment: 'Gold — mid weight' }
+    amber: { value: '{color.amber.400}', comment: 'Amber — mid weight' }
+    rose: { value: '{color.rose.400}', comment: 'Rose — mid weight' }
+    violet: { value: '{color.violet.400}', comment: 'Violet — mid weight' }
 
 # =============================================================================
 # TYPOGRAPHY — semantic aliases
 # =============================================================================
 
 typography:
-    # Active font families — these are what components use
-    # Brand files override font.ui and font.display
-    font:
-        ui:
-            {
-                value: '{typography.family.sans-ui}',
-                comment: 'UI typeface — overridden per brand',
-            }
-        display:
-            {
-                value: '{typography.family.sans-ui}',
-                comment: 'Display typeface — Exquisite Corpse overrides to serif',
-            }
-        mono:
-            {
-                value: '{typography.family.mono}',
-                comment: 'Monospace — system-wide, not overridden',
-            }
+  # Active font families — these are what components use
+  # Brand files override font.ui and font.display
+  font:
+    ui: { value: '{typography.family.sans-ui}', comment: 'UI typeface — overridden per brand' }
+    display:
+      {
+        value: '{typography.family.sans-ui}',
+        comment: 'Display typeface — Exquisite Corpse overrides to serif',
+      }
+    mono: { value: '{typography.family.mono}', comment: 'Monospace — system-wide, not overridden' }
 
-    # Active size scale — brand files set which scale to use
-    # Default: 1.25 scale (Raindrop)
-    size:
-        xs:
-            {
-                value: '{typography.size-125.xs}',
-                comment: 'Smallest — labels, metadata',
-            }
-        sm:
-            {
-                value: '{typography.size-125.sm}',
-                comment: 'Small — captions, secondary',
-            }
-        base: { value: '{typography.size-125.base}', comment: 'Body text' }
-        md:
-            {
-                value: '{typography.size-125.md}',
-                comment: 'Medium — lead, card labels',
-            }
-        lg:
-            {
-                value: '{typography.size-125.lg}',
-                comment: 'Large — stat values, subheadings',
-            }
-        xl:
-            {
-                value: '{typography.size-125.xl}',
-                comment: 'XL — section headings',
-            }
-        2xl:
-            {
-                value: '{typography.size-125.2xl}',
-                comment: '2XL — page headings',
-            }
-        3xl: { value: '{typography.size-125.3xl}', comment: '3XL — display' }
+  # Active size scale — brand files set which scale to use
+  # Default: 1.25 scale (Raindrop)
+  size:
+    xs: { value: '{typography.size-125.xs}', comment: 'Smallest — labels, metadata' }
+    sm: { value: '{typography.size-125.sm}', comment: 'Small — captions, secondary' }
+    base: { value: '{typography.size-125.base}', comment: 'Body text' }
+    md: { value: '{typography.size-125.md}', comment: 'Medium — lead, card labels' }
+    lg: { value: '{typography.size-125.lg}', comment: 'Large — stat values, subheadings' }
+    xl: { value: '{typography.size-125.xl}', comment: 'XL — section headings' }
+    2xl: { value: '{typography.size-125.2xl}', comment: '2XL — page headings' }
+    3xl: { value: '{typography.size-125.3xl}', comment: '3XL — display' }
 
-    # Weights — semantic aliases
-    weight:
-        body:
-            {
-                value: '{typography.weight.regular}',
-                comment: 'Body text weight',
-            }
-        label:
-            {
-                value: '{typography.weight.medium}',
-                comment: 'Labels, buttons, headings',
-            }
-        display:
-            {
-                value: '{typography.weight.medium}',
-                comment: 'Display headings — medium in most contexts',
-            }
+  # Weights — semantic aliases
+  weight:
+    body: { value: '{typography.weight.regular}', comment: 'Body text weight' }
+    label: { value: '{typography.weight.medium}', comment: 'Labels, buttons, headings' }
+    display:
+      { value: '{typography.weight.medium}', comment: 'Display headings — medium in most contexts' }
 
-    # Line heights — semantic aliases
-    line-height:
-        ui:
-            {
-                value: '{typography.line-height.snug}',
-                comment: 'UI elements — labels, buttons, table cells',
-            }
-        body:
-            {
-                value: '{typography.line-height.base}',
-                comment: 'Body text default',
-            }
-        display:
-            {
-                value: '{typography.line-height.tight}',
-                comment: 'Large headings',
-            }
-        prose:
-            {
-                value: '{typography.line-height.relaxed}',
-                comment: 'Story body — reading comfort',
-            }
+  # Line heights — semantic aliases
+  line-height:
+    ui:
+      {
+        value: '{typography.line-height.snug}',
+        comment: 'UI elements — labels, buttons, table cells',
+      }
+    body: { value: '{typography.line-height.base}', comment: 'Body text default' }
+    display: { value: '{typography.line-height.tight}', comment: 'Large headings' }
+    prose: { value: '{typography.line-height.relaxed}', comment: 'Story body — reading comfort' }
 
 # =============================================================================
 # BORDER RADIUS — semantic layer with brand-defaulted component names
@@ -366,43 +206,22 @@ typography:
 # =============================================================================
 
 radius:
-    none: { value: '{border-radius.none}', comment: 'No rounding' }
-    sm: { value: '{border-radius.sm}', comment: '2px — Raindrop default' }
-    md: { value: '{border-radius.md}', comment: '4px — shared mid' }
-    lg: { value: '{border-radius.lg}', comment: '8px — Dusk Rose default' }
-    xl: { value: '{border-radius.xl}', comment: '12px' }
-    2xl: { value: '{border-radius.2xl}', comment: '16px' }
-    pill:
-        { value: '{border-radius.pill}', comment: '999px — intentional opt-in' }
+  none: { value: '{border-radius.none}', comment: 'No rounding' }
+  sm: { value: '{border-radius.sm}', comment: '2px — Raindrop default' }
+  md: { value: '{border-radius.md}', comment: '4px — shared mid' }
+  lg: { value: '{border-radius.lg}', comment: '8px — Dusk Rose default' }
+  xl: { value: '{border-radius.xl}', comment: '12px' }
+  2xl: { value: '{border-radius.2xl}', comment: '16px' }
+  pill: { value: '{border-radius.pill}', comment: '999px — intentional opt-in' }
 
-    # Component-level semantic aliases — brand files override these
-    component:
-        button:
-            {
-                value: '{border-radius.sm}',
-                comment: 'Button radius — Raindrop: sm, Dusk Rose: md',
-            }
-        input:
-            {
-                value: '{border-radius.sm}',
-                comment: 'Input radius — Raindrop: sm, Dusk Rose: md',
-            }
-        card:
-            {
-                value: '{border-radius.md}',
-                comment: 'Card radius — Raindrop: md, Dusk Rose: lg',
-            }
-        modal:
-            {
-                value: '{border-radius.md}',
-                comment: 'Modal radius — Raindrop: md, Dusk Rose: lg',
-            }
-        badge:
-            {
-                value: '{border-radius.sm}',
-                comment: 'Badge radius — Raindrop: sm, Dusk Rose: pill',
-            }
-        tooltip: { value: '{border-radius.md}', comment: 'Tooltip radius' }
+  # Component-level semantic aliases — brand files override these
+  component:
+    button: { value: '{border-radius.sm}', comment: 'Button radius — Raindrop: sm, Dusk Rose: md' }
+    input: { value: '{border-radius.sm}', comment: 'Input radius — Raindrop: sm, Dusk Rose: md' }
+    card: { value: '{border-radius.md}', comment: 'Card radius — Raindrop: md, Dusk Rose: lg' }
+    modal: { value: '{border-radius.md}', comment: 'Modal radius — Raindrop: md, Dusk Rose: lg' }
+    badge: { value: '{border-radius.sm}', comment: 'Badge radius — Raindrop: sm, Dusk Rose: pill' }
+    tooltip: { value: '{border-radius.md}', comment: 'Tooltip radius' }
 
 # =============================================================================
 # ELEVATION — semantic shadow aliases
@@ -410,17 +229,9 @@ radius:
 # =============================================================================
 
 elevation:
-    none: { value: '{shadow.none}', comment: 'Flat — default' }
-    resting:
-        {
-            value: '{shadow.sm}',
-            comment: 'Resting surfaces — stat cards, containers',
-        }
-    floating:
-        {
-            value: '{shadow.md}',
-            comment: 'Floating surfaces — dropdowns, modals, tooltips',
-        }
+  none: { value: '{shadow.none}', comment: 'Flat — default' }
+  resting: { value: '{shadow.sm}', comment: 'Resting surfaces — stat cards, containers' }
+  floating: { value: '{shadow.md}', comment: 'Floating surfaces — dropdowns, modals, tooltips' }
 
 # =============================================================================
 # BORDER — semantic width aliases
@@ -428,15 +239,6 @@ elevation:
 # =============================================================================
 
 border:
-    hairline:
-        {
-            value: '{border-width.hairline}',
-            comment: '0.5px — default structural borders',
-        }
-    base:
-        { value: '{border-width.base}', comment: '1px — emphasis, focus rings' }
-    thick:
-        {
-            value: '{border-width.thick}',
-            comment: '2px — featured cards, active indicators',
-        }
+  hairline: { value: '{border-width.hairline}', comment: '0.5px — default structural borders' }
+  base: { value: '{border-width.base}', comment: '1px — emphasis, focus rings' }
+  thick: { value: '{border-width.thick}', comment: '2px — featured cards, active indicators' }

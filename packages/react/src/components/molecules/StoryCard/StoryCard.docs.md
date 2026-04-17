@@ -83,29 +83,29 @@ No excerpt — seeing the story content before contributing breaks the Exquisite
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `mode` | `'anonymous' \| 'completed' \| 'active'` | required | Controls which elements render |
-| `title` | `string` | required | Story title |
-| `status` | `StoryStatus` | required | Drives the status badge |
-| `href` | `string` | required | Navigation URL for the CTA |
-| `excerpt` | `string` | — | First paragraph — shown in anonymous and completed modes only |
-| `coverSrc` | `string` | — | Cover image URL — shown in anonymous and completed modes only |
-| `coverAlt` | `string` | — | Cover image alt text — defaults to title |
-| `tags` | `string[]` | `[]` | Genre/topic tags — shown in all modes |
-| `contributors` | `StoryContributor[]` | `[]` | Contributor list — shown in completed and active modes |
-| `currentSegments` | `number` | — | Current segment count |
-| `minSegments` | `number` | — | Minimum segments to complete — drives CTA label in active mode |
-| `maxSegments` | `number` | — | Maximum segments — shows "X / Y segments" when set |
-| `completedAt` | `Date \| string` | — | Completion timestamp — shown as relative date in completed mode |
-| `loading` | `boolean` | `false` | Skeleton loading state |
+| Prop              | Type                                     | Default  | Description                                                     |
+| ----------------- | ---------------------------------------- | -------- | --------------------------------------------------------------- |
+| `mode`            | `'anonymous' \| 'completed' \| 'active'` | required | Controls which elements render                                  |
+| `title`           | `string`                                 | required | Story title                                                     |
+| `status`          | `StoryStatus`                            | required | Drives the status badge                                         |
+| `href`            | `string`                                 | required | Navigation URL for the CTA                                      |
+| `excerpt`         | `string`                                 | —        | First paragraph — shown in anonymous and completed modes only   |
+| `coverSrc`        | `string`                                 | —        | Cover image URL — shown in anonymous and completed modes only   |
+| `coverAlt`        | `string`                                 | —        | Cover image alt text — defaults to title                        |
+| `tags`            | `string[]`                               | `[]`     | Genre/topic tags — shown in all modes                           |
+| `contributors`    | `StoryContributor[]`                     | `[]`     | Contributor list — shown in completed and active modes          |
+| `currentSegments` | `number`                                 | —        | Current segment count                                           |
+| `minSegments`     | `number`                                 | —        | Minimum segments to complete — drives CTA label in active mode  |
+| `maxSegments`     | `number`                                 | —        | Maximum segments — shows "X / Y segments" when set              |
+| `completedAt`     | `Date \| string`                         | —        | Completion timestamp — shown as relative date in completed mode |
+| `loading`         | `boolean`                                | `false`  | Skeleton loading state                                          |
 
 ### StoryContributor
 
 ```ts
 interface StoryContributor {
-  name: string
-  src?: string  // avatar image URL
+  name: string;
+  src?: string; // avatar image URL
 }
 ```
 
@@ -113,13 +113,13 @@ interface StoryContributor {
 
 ## Status badges
 
-| Status | Badge | Label |
-|---|---|---|
-| `draft` | default | Draft |
-| `in_progress` | info | In progress |
-| `completed` | success | Complete |
-| `abandoned` | warning | Abandoned |
-| `moderated` | danger | Moderated |
+| Status        | Badge   | Label       |
+| ------------- | ------- | ----------- |
+| `draft`       | default | Draft       |
+| `in_progress` | info    | In progress |
+| `completed`   | success | Complete    |
+| `abandoned`   | warning | Abandoned   |
+| `moderated`   | danger  | Moderated   |
 
 Maps directly to the `StoryStatus` enum in the Story entity.
 
@@ -178,18 +178,18 @@ This is intentional. The Exquisite Corpse mechanic means contributors should onl
 
 ## Mode × element matrix
 
-| Element | anonymous | completed | active |
-|---|---|---|---|
-| Cover image | optional | optional | never |
-| Title | ✓ | ✓ | ✓ |
-| Status badge | ✓ | ✓ | ✓ |
-| Excerpt | optional | optional | never |
-| Teaser text | never | never | ✓ |
-| Tags | ✓ | ✓ | ✓ |
-| Contributors | never | ✓ | ✓ |
-| Segment count | never | ✓ | ✓ |
-| Completion date | never | ✓ | never |
-| CTA | ✓ | ✓ | ✓ |
+| Element         | anonymous | completed | active |
+| --------------- | --------- | --------- | ------ |
+| Cover image     | optional  | optional  | never  |
+| Title           | ✓         | ✓         | ✓      |
+| Status badge    | ✓         | ✓         | ✓      |
+| Excerpt         | optional  | optional  | never  |
+| Teaser text     | never     | never     | ✓      |
+| Tags            | ✓         | ✓         | ✓      |
+| Contributors    | never     | ✓         | ✓      |
+| Segment count   | never     | ✓         | ✓      |
+| Completion date | never     | ✓         | never  |
+| CTA             | ✓         | ✓         | ✓      |
 
 ---
 
@@ -207,11 +207,13 @@ This is intentional. The Exquisite Corpse mechanic means contributors should onl
 ## Composition rules
 
 ### StoryCard can be placed inside
+
 - Story feed organism (planned)
 - CardGrid molecule (planned)
 - Any layout surface
 
 ### Never do
+
 - Pass `excerpt` in `active` mode — it won't render, but it signals a misunderstanding of the game mechanic
 - Omit `href` — the CTA must navigate somewhere
 - Use StoryCard for non-story content — use Card directly instead

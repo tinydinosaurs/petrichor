@@ -3,16 +3,16 @@
    ============================================================ */
 
 .card {
-	background: var(--ptr-color-bg-surface);
-	border: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
-	border-radius: var(--ptr-radius-component-card);
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
+  background: var(--ptr-color-bg-surface);
+  border: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
+  border-radius: var(--ptr-radius-component-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .loading {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 /* ============================================================
@@ -20,40 +20,40 @@
    ============================================================ */
 
 .skeletonWrap {
-	padding: var(--ptr-spacing-sm);
+  padding: var(--ptr-spacing-sm);
 }
 
 .skeletonLine {
-	border-radius: var(--ptr-radius-md);
-	background: var(--ptr-color-bg-elevated);
-	animation: ptr-shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--ptr-radius-md);
+  background: var(--ptr-color-bg-elevated);
+  animation: ptr-shimmer 1.4s ease-in-out infinite;
 }
 
 .skeletonNarrow {
-	width: 40%;
-	height: 12px;
+  width: 40%;
+  height: 12px;
 }
 
 .skeletonWide {
-	width: 100%;
-	height: 20px;
-	margin-top: var(--ptr-spacing-2xs);
+  width: 100%;
+  height: 20px;
+  margin-top: var(--ptr-spacing-2xs);
 }
 
 .skeletonMedium {
-	width: 80%;
-	height: 14px;
-	margin-top: var(--ptr-spacing-3xs);
+  width: 80%;
+  height: 14px;
+  margin-top: var(--ptr-spacing-3xs);
 }
 
 @keyframes ptr-shimmer {
-	0%,
-	100% {
-		opacity: 0.4;
-	}
-	50% {
-		opacity: 0.8;
-	}
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 /* ============================================================
@@ -61,15 +61,14 @@
    ============================================================ */
 
 .header {
-	padding: var(--ptr-spacing-sm);
-	display: flex;
-	align-items: flex-start;
-	gap: var(--ptr-spacing-2xs);
+  padding: var(--ptr-spacing-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ptr-spacing-2xs);
 }
 
 .headerBordered {
-	border-bottom: var(--ptr-border-hairline) solid
-		var(--ptr-color-border-subtle);
+  border-bottom: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
 }
 
 /* ============================================================
@@ -77,13 +76,13 @@
    ============================================================ */
 
 .body {
-	padding: var(--ptr-spacing-sm);
-	flex: 1;
+  padding: var(--ptr-spacing-sm);
+  flex: 1;
 }
 
 .header + .body,
 .imageWrap + .body {
-	padding-top: 0;
+  padding-top: 0;
 }
 
 /* ============================================================
@@ -91,14 +90,14 @@
    ============================================================ */
 
 .footer {
-	padding: var(--ptr-spacing-sm);
-	display: flex;
-	align-items: center;
-	gap: var(--ptr-spacing-2xs);
+  padding: var(--ptr-spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--ptr-spacing-2xs);
 }
 
 .footerBordered {
-	border-top: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
+  border-top: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
 }
 
 /* ============================================================
@@ -106,45 +105,45 @@
    ============================================================ */
 
 .imageWrap {
-	overflow: hidden;
-	flex-shrink: 0;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .imageTop {
-	border-radius: 0;
+  border-radius: 0;
 }
 
 .imageBottom {
-	order: 999;
-	border-radius: 0;
+  order: 999;
+  border-radius: 0;
 }
 
 .imageLeft {
-	width: 40%;
-	border-radius: 0;
+  width: 40%;
+  border-radius: 0;
 }
 
 .imageRight {
-	width: 40%;
-	order: 999;
-	border-radius: 0;
+  width: 40%;
+  order: 999;
+  border-radius: 0;
 }
 
 .imageLeft ~ *,
 .imageRight ~ * {
-	flex: 1;
+  flex: 1;
 }
 
 .card:has(.imageLeft),
 .card:has(.imageRight) {
-	flex-direction: row;
+  flex-direction: row;
 }
 
 /* ============================================================
@@ -152,9 +151,9 @@
    ============================================================ */
 
 .divider {
-	border: none;
-	border-top: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
-	margin: 0 var(--ptr-spacing-sm);
+  border: none;
+  border-top: var(--ptr-border-hairline) solid var(--ptr-color-border-subtle);
+  margin: 0 var(--ptr-spacing-sm);
 }
 
 /* ============================================================
@@ -162,36 +161,36 @@
    ============================================================ */
 
 .empty {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	padding: var(--ptr-spacing-xl) var(--ptr-spacing-md);
-	gap: var(--ptr-spacing-2xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--ptr-spacing-xl) var(--ptr-spacing-md);
+  gap: var(--ptr-spacing-2xs);
 }
 
 .emptyIcon {
-	color: var(--ptr-color-text-secondary);
-	margin-bottom: var(--ptr-spacing-2xs);
+  color: var(--ptr-color-text-secondary);
+  margin-bottom: var(--ptr-spacing-2xs);
 }
 
 .emptyMessage {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-base);
-	font-weight: var(--ptr-typography-weight-label);
-	color: var(--ptr-color-text-primary);
-	margin: 0;
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-base);
+  font-weight: var(--ptr-typography-weight-label);
+  color: var(--ptr-color-text-primary);
+  margin: 0;
 }
 
 .emptyDescription {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-sm);
-	color: var(--ptr-color-text-secondary);
-	margin: 0;
-	max-width: 280px;
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  color: var(--ptr-color-text-secondary);
+  margin: 0;
+  max-width: 280px;
 }
 
 .emptyAction {
-	margin-top: var(--ptr-spacing-2xs);
+  margin-top: var(--ptr-spacing-2xs);
 }

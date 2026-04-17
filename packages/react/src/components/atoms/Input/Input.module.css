@@ -1,17 +1,17 @@
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	gap: var(--ptr-spacing-2xs);
-	width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ptr-spacing-2xs);
+  width: 100%;
 }
 
 .wrapper.disabled {
-	opacity: 0.38;
-	cursor: not-allowed;
+  opacity: 0.38;
+  cursor: not-allowed;
 }
 
 .wrapper.disabled .field {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 /* ============================================================
@@ -19,27 +19,27 @@
    ============================================================ */
 
 .label {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-sm);
-	font-weight: var(--ptr-typography-weight-label);
-	color: var(--ptr-color-text-primary);
-	line-height: var(--ptr-typography-line-height-ui);
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  font-weight: var(--ptr-typography-weight-label);
+  color: var(--ptr-color-text-primary);
+  line-height: var(--ptr-typography-line-height-ui);
 }
 
 .required {
-	color: var(--ptr-color-status-error-text);
+  color: var(--ptr-color-status-error-text);
 }
 
 .srOnly {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px; /* audit-ignore — sr-only pattern, intentional negative margin */
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border-width: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; /* audit-ignore — sr-only pattern, intentional negative margin */
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* ============================================================
@@ -47,49 +47,49 @@
    ============================================================ */
 
 .inputRow {
-	position: relative;
-	display: flex;
-	align-items: center;
-	width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .field {
-	width: 100%;
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-base);
-	color: var(--ptr-color-text-primary);
-	background: var(--ptr-color-bg-input);
-	border: var(--ptr-border-hairline) solid var(--ptr-color-border-default);
-	border-radius: var(--ptr-radius-component-input);
-	outline: none;
-	transition: var(--ptr-motion-micro);
-	box-sizing: border-box;
+  width: 100%;
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-base);
+  color: var(--ptr-color-text-primary);
+  background: var(--ptr-color-bg-input);
+  border: var(--ptr-border-hairline) solid var(--ptr-color-border-default);
+  border-radius: var(--ptr-radius-component-input);
+  outline: none;
+  transition: var(--ptr-motion-micro);
+  box-sizing: border-box;
 }
 
 .field::placeholder {
-	color: var(--ptr-color-text-tertiary);
+  color: var(--ptr-color-text-tertiary);
 }
 
 .field:hover:not(:disabled) {
-	border-color: var(--ptr-color-border-strong);
+  border-color: var(--ptr-color-border-strong);
 }
 
 .field:focus {
-	border-color: var(--ptr-color-brand-primary);
-	box-shadow:
-		0 0 0 2px var(--ptr-color-bg-page),
-		0 0 0 4px var(--ptr-color-brand-primary);
+  border-color: var(--ptr-color-brand-primary);
+  box-shadow:
+    0 0 0 2px var(--ptr-color-bg-page),
+    0 0 0 4px var(--ptr-color-brand-primary);
 }
 
 .hasError .field {
-	border-color: var(--ptr-color-status-error-text);
+  border-color: var(--ptr-color-status-error-text);
 }
 
 .hasError .field:focus {
-	border-color: var(--ptr-color-status-error-text);
-	box-shadow:
-		0 0 0 2px var(--ptr-color-bg-page),
-		0 0 0 4px var(--ptr-color-status-error-text);
+  border-color: var(--ptr-color-status-error-text);
+  box-shadow:
+    0 0 0 2px var(--ptr-color-bg-page),
+    0 0 0 4px var(--ptr-color-status-error-text);
 }
 
 /* ============================================================
@@ -97,41 +97,41 @@
    ============================================================ */
 
 .sm .field {
-	height: 32px;
-	padding: 0 var(--ptr-spacing-xs);
-	font-size: var(--ptr-typography-size-sm);
-	border-radius: var(--ptr-radius-component-input);
+  height: 32px;
+  padding: 0 var(--ptr-spacing-xs);
+  font-size: var(--ptr-typography-size-sm);
+  border-radius: var(--ptr-radius-component-input);
 }
 
 .md .field {
-	height: 40px;
-	padding: 0 var(--ptr-spacing-sm);
-	font-size: var(--ptr-typography-size-base);
+  height: 40px;
+  padding: 0 var(--ptr-spacing-sm);
+  font-size: var(--ptr-typography-size-base);
 }
 
 .lg .field {
-	height: 48px;
-	padding: 0 var(--ptr-spacing-sm);
-	font-size: var(--ptr-typography-size-md);
+  height: 48px;
+  padding: 0 var(--ptr-spacing-sm);
+  font-size: var(--ptr-typography-size-md);
 }
 
 .sm .field.hasPrefix {
-	padding-left: 32px; /* audit-ignore — calculated offset: field-padding + icon-width */
+  padding-left: 32px; /* audit-ignore — calculated offset: field-padding + icon-width */
 }
 .sm .field.hasSuffix {
-	padding-right: 32px; /* audit-ignore — calculated offset */
+  padding-right: 32px; /* audit-ignore — calculated offset */
 }
 .md .field.hasPrefix {
-	padding-left: 38px; /* audit-ignore — calculated offset */
+  padding-left: 38px; /* audit-ignore — calculated offset */
 }
 .md .field.hasSuffix {
-	padding-right: 38px; /* audit-ignore — calculated offset */
+  padding-right: 38px; /* audit-ignore — calculated offset */
 }
 .lg .field.hasPrefix {
-	padding-left: 42px; /* audit-ignore — calculated offset */
+  padding-left: 42px; /* audit-ignore — calculated offset */
 }
 .lg .field.hasSuffix {
-	padding-right: 42px; /* audit-ignore — calculated offset */
+  padding-right: 42px; /* audit-ignore — calculated offset */
 }
 
 /* ============================================================
@@ -140,35 +140,35 @@
 
 .prefix,
 .suffix {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--ptr-color-text-secondary);
-	pointer-events: none;
-	flex-shrink: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ptr-color-text-secondary);
+  pointer-events: none;
+  flex-shrink: 0;
 }
 
 .prefix {
-	left: var(--ptr-spacing-xs);
+  left: var(--ptr-spacing-xs);
 }
 .suffix {
-	right: var(--ptr-spacing-xs);
+  right: var(--ptr-spacing-xs);
 }
 
 .sm .prefix,
 .sm .suffix {
-	font-size: var(--ptr-typography-size-sm);
+  font-size: var(--ptr-typography-size-sm);
 }
 
 .md .prefix,
 .md .suffix {
-	font-size: var(--ptr-typography-size-base);
+  font-size: var(--ptr-typography-size-base);
 }
 
 .lg .prefix,
 .lg .suffix {
-	font-size: var(--ptr-typography-size-md);
+  font-size: var(--ptr-typography-size-md);
 }
 
 /* ============================================================
@@ -176,30 +176,30 @@
    ============================================================ */
 
 .passwordToggle {
-	position: absolute;
-	right: var(--ptr-spacing-xs);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: transparent;
-	border: none;
-	cursor: pointer;
-	color: var(--ptr-color-text-secondary);
-	padding: 4px; /* audit-ignore — password toggle target, intentionally below spacing scale */
-	border-radius: var(--ptr-radius-md);
-	transition: var(--ptr-motion-micro);
+  position: absolute;
+  right: var(--ptr-spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ptr-color-text-secondary);
+  padding: 4px; /* audit-ignore — password toggle target, intentionally below spacing scale */
+  border-radius: var(--ptr-radius-md);
+  transition: var(--ptr-motion-micro);
 }
 
 .passwordToggle:hover {
-	color: var(--ptr-color-text-primary);
-	background: var(--ptr-color-bg-elevated);
+  color: var(--ptr-color-text-primary);
+  background: var(--ptr-color-bg-elevated);
 }
 
 .passwordToggle:focus-visible {
-	outline: none;
-	box-shadow:
-		0 0 0 2px var(--ptr-color-bg-page),
-		0 0 0 4px var(--ptr-color-brand-primary);
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--ptr-color-bg-page),
+    0 0 0 4px var(--ptr-color-brand-primary);
 }
 
 /* ============================================================
@@ -207,35 +207,35 @@
    ============================================================ */
 
 .footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	gap: var(--ptr-spacing-sm);
-	min-height: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--ptr-spacing-sm);
+  min-height: 18px;
 }
 
 .helperText {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-sm);
-	color: var(--ptr-color-text-secondary);
-	line-height: var(--ptr-typography-line-height-ui);
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  color: var(--ptr-color-text-secondary);
+  line-height: var(--ptr-typography-line-height-ui);
 }
 
 .errorMessage {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-sm);
-	color: var(--ptr-color-status-error-text);
-	line-height: var(--ptr-typography-line-height-ui);
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-sm);
+  color: var(--ptr-color-status-error-text);
+  line-height: var(--ptr-typography-line-height-ui);
 }
 
 .charCount {
-	font-family: var(--ptr-typography-font-mono);
-	font-size: var(--ptr-typography-size-sm);
-	color: var(--ptr-color-text-tertiary);
-	white-space: nowrap;
-	margin-left: auto;
+  font-family: var(--ptr-typography-font-mono);
+  font-size: var(--ptr-typography-size-sm);
+  color: var(--ptr-color-text-tertiary);
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 .hasError .charCount {
-	color: var(--ptr-color-status-error-text);
+  color: var(--ptr-color-status-error-text);
 }

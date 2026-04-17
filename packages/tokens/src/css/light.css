@@ -11,86 +11,86 @@
 
 /* Explicit user preference — always wins */
 [data-color-scheme='light'] {
-	--ptr-color-bg-page: oklch(98% 0.01 80);
-	--ptr-color-bg-surface: oklch(96% 0.01 80);
-	--ptr-color-bg-elevated: oklch(93% 0.02 80);
-	--ptr-color-bg-input: oklch(96% 0.01 80);
-	--ptr-color-bg-overlay: oklch(0% 0 0 / 0.32);
+  --ptr-color-bg-page: oklch(98% 0.01 80);
+  --ptr-color-bg-surface: oklch(96% 0.01 80);
+  --ptr-color-bg-elevated: oklch(93% 0.02 80);
+  --ptr-color-bg-input: oklch(96% 0.01 80);
+  --ptr-color-bg-overlay: oklch(0% 0 0 / 0.32);
 
-	--ptr-color-text-primary: oklch(22% 0.02 80);
-	--ptr-color-text-secondary: oklch(38% 0.02 80);
-	--ptr-color-text-tertiary: oklch(72% 0.02 80);
+  --ptr-color-text-primary: oklch(22% 0.02 80);
+  --ptr-color-text-secondary: oklch(38% 0.02 80);
+  --ptr-color-text-tertiary: oklch(72% 0.02 80);
 
-	--ptr-color-border-subtle: oklch(88% 0.02 80);
-	--ptr-color-border-default: oklch(80% 0.02 80);
-	--ptr-color-border-strong: oklch(65% 0.02 80);
+  --ptr-color-border-subtle: oklch(88% 0.02 80);
+  --ptr-color-border-default: oklch(80% 0.02 80);
+  --ptr-color-border-strong: oklch(65% 0.02 80);
 
-	--ptr-color-status-info-bg: oklch(94% 0.03 240);
-	--ptr-color-status-info-text: oklch(46% 0.12 240);
-	--ptr-color-status-info-tint: oklch(94% 0.03 240);
-	--ptr-color-status-info-border: oklch(46% 0.12 240);
+  --ptr-color-status-info-bg: oklch(94% 0.03 240);
+  --ptr-color-status-info-text: oklch(46% 0.12 240);
+  --ptr-color-status-info-tint: oklch(94% 0.03 240);
+  --ptr-color-status-info-border: oklch(46% 0.12 240);
 
-	--ptr-color-status-success-bg: oklch(94% 0.03 175);
-	--ptr-color-status-success-text: oklch(46% 0.1 175);
-	--ptr-color-status-success-tint: oklch(94% 0.03 175);
-	--ptr-color-status-success-border: oklch(46% 0.1 175);
+  --ptr-color-status-success-bg: oklch(94% 0.03 175);
+  --ptr-color-status-success-text: oklch(46% 0.1 175);
+  --ptr-color-status-success-tint: oklch(94% 0.03 175);
+  --ptr-color-status-success-border: oklch(46% 0.1 175);
 
-	--ptr-color-status-warning-bg: oklch(95% 0.04 90);
-	--ptr-color-status-warning-text: oklch(52% 0.12 90);
-	--ptr-color-status-warning-tint: oklch(95% 0.04 90);
-	--ptr-color-status-warning-border: oklch(52% 0.12 90);
+  --ptr-color-status-warning-bg: oklch(95% 0.04 90);
+  --ptr-color-status-warning-text: oklch(52% 0.12 90);
+  --ptr-color-status-warning-tint: oklch(95% 0.04 90);
+  --ptr-color-status-warning-border: oklch(52% 0.12 90);
 
-	--ptr-color-status-error-bg: oklch(44% 0.12 55);
-	--ptr-color-status-error-text: oklch(44% 0.12 55);
-	--ptr-color-status-error-tint: oklch(94% 0.03 55);
-	--ptr-color-status-error-border: oklch(44% 0.12 55);
+  --ptr-color-status-error-bg: oklch(44% 0.12 55);
+  --ptr-color-status-error-text: oklch(44% 0.12 55);
+  --ptr-color-status-error-tint: oklch(94% 0.03 55);
+  --ptr-color-status-error-border: oklch(44% 0.12 55);
 
-	--ptr-color-status-danger-bg: oklch(44% 0.12 55);
-	--ptr-color-status-danger-text: oklch(44% 0.12 55);
-	--ptr-color-status-danger-tint: oklch(94% 0.03 55);
-	--ptr-color-status-danger-border: oklch(44% 0.12 55);
+  --ptr-color-status-danger-bg: oklch(44% 0.12 55);
+  --ptr-color-status-danger-text: oklch(44% 0.12 55);
+  --ptr-color-status-danger-tint: oklch(94% 0.03 55);
+  --ptr-color-status-danger-border: oklch(44% 0.12 55);
 }
 
 /* OS preference — applies only when no explicit override is set */
 @media (prefers-color-scheme: light) {
-	:root:not([data-color-scheme='dark']) {
-		--ptr-color-bg-page: oklch(98% 0.01 80);
-		--ptr-color-bg-surface: oklch(96% 0.01 80);
-		--ptr-color-bg-elevated: oklch(93% 0.02 80);
-		--ptr-color-bg-input: oklch(96% 0.01 80);
-		--ptr-color-bg-overlay: oklch(0% 0 0 / 0.32);
+  :root:not([data-color-scheme='dark']) {
+    --ptr-color-bg-page: oklch(98% 0.01 80);
+    --ptr-color-bg-surface: oklch(96% 0.01 80);
+    --ptr-color-bg-elevated: oklch(93% 0.02 80);
+    --ptr-color-bg-input: oklch(96% 0.01 80);
+    --ptr-color-bg-overlay: oklch(0% 0 0 / 0.32);
 
-		--ptr-color-text-primary: oklch(22% 0.02 80);
-		--ptr-color-text-secondary: oklch(38% 0.02 80);
-		--ptr-color-text-tertiary: oklch(72% 0.02 80);
+    --ptr-color-text-primary: oklch(22% 0.02 80);
+    --ptr-color-text-secondary: oklch(38% 0.02 80);
+    --ptr-color-text-tertiary: oklch(72% 0.02 80);
 
-		--ptr-color-border-subtle: oklch(88% 0.02 80);
-		--ptr-color-border-default: oklch(80% 0.02 80);
-		--ptr-color-border-strong: oklch(65% 0.02 80);
+    --ptr-color-border-subtle: oklch(88% 0.02 80);
+    --ptr-color-border-default: oklch(80% 0.02 80);
+    --ptr-color-border-strong: oklch(65% 0.02 80);
 
-		--ptr-color-status-info-bg: oklch(94% 0.03 240);
-		--ptr-color-status-info-text: oklch(46% 0.12 240);
-		--ptr-color-status-info-tint: oklch(94% 0.03 240);
-		--ptr-color-status-info-border: oklch(46% 0.12 240);
+    --ptr-color-status-info-bg: oklch(94% 0.03 240);
+    --ptr-color-status-info-text: oklch(46% 0.12 240);
+    --ptr-color-status-info-tint: oklch(94% 0.03 240);
+    --ptr-color-status-info-border: oklch(46% 0.12 240);
 
-		--ptr-color-status-success-bg: oklch(94% 0.03 175);
-		--ptr-color-status-success-text: oklch(46% 0.1 175);
-		--ptr-color-status-success-tint: oklch(94% 0.03 175);
-		--ptr-color-status-success-border: oklch(46% 0.1 175);
+    --ptr-color-status-success-bg: oklch(94% 0.03 175);
+    --ptr-color-status-success-text: oklch(46% 0.1 175);
+    --ptr-color-status-success-tint: oklch(94% 0.03 175);
+    --ptr-color-status-success-border: oklch(46% 0.1 175);
 
-		--ptr-color-status-warning-bg: oklch(95% 0.04 90);
-		--ptr-color-status-warning-text: oklch(52% 0.12 90);
-		--ptr-color-status-warning-tint: oklch(95% 0.04 90);
-		--ptr-color-status-warning-border: oklch(52% 0.12 90);
+    --ptr-color-status-warning-bg: oklch(95% 0.04 90);
+    --ptr-color-status-warning-text: oklch(52% 0.12 90);
+    --ptr-color-status-warning-tint: oklch(95% 0.04 90);
+    --ptr-color-status-warning-border: oklch(52% 0.12 90);
 
-		--ptr-color-status-error-bg: oklch(44% 0.12 55);
-		--ptr-color-status-error-text: oklch(44% 0.12 55);
-		--ptr-color-status-error-tint: oklch(94% 0.03 55);
-		--ptr-color-status-error-border: oklch(44% 0.12 55);
+    --ptr-color-status-error-bg: oklch(44% 0.12 55);
+    --ptr-color-status-error-text: oklch(44% 0.12 55);
+    --ptr-color-status-error-tint: oklch(94% 0.03 55);
+    --ptr-color-status-error-border: oklch(44% 0.12 55);
 
-		--ptr-color-status-danger-bg: oklch(44% 0.12 55);
-		--ptr-color-status-danger-text: oklch(44% 0.12 55);
-		--ptr-color-status-danger-tint: oklch(94% 0.03 55);
-		--ptr-color-status-danger-border: oklch(44% 0.12 55);
-	}
+    --ptr-color-status-danger-bg: oklch(44% 0.12 55);
+    --ptr-color-status-danger-text: oklch(44% 0.12 55);
+    --ptr-color-status-danger-tint: oklch(94% 0.03 55);
+    --ptr-color-status-danger-border: oklch(44% 0.12 55);
+  }
 }

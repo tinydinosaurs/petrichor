@@ -5,317 +5,317 @@ status: draft
 version: 0.1.0
 
 description: >
-    A composite text input — label, field, helper text, error message, and
-    character count as a single component. Label is always required.
-    Error state is driven by the errorMessage prop — no separate state prop.
-    ID is generated internally via useId() — never pass id manually.
+  A composite text input — label, field, helper text, error message, and
+  character count as a single component. Label is always required.
+  Error state is driven by the errorMessage prop — no separate state prop.
+  ID is generated internally via useId() — never pass id manually.
 
 dom:
-    element: div (wrapper)
-    contains:
-        - label (htmlFor linked to input id)
-        - div.inputRow
-          - span.prefix (optional, aria-hidden)
-          - input
-          - button.passwordToggle (type=password only)
-          - span.suffix (optional, aria-hidden)
-        - div.footer
-          - span (helperText or errorMessage)
-          - span (charCount, optional)
+  element: div (wrapper)
+  contains:
+    - label (htmlFor linked to input id)
+    - div.inputRow
+      - span.prefix (optional, aria-hidden)
+      - input
+      - button.passwordToggle (type=password only)
+      - span.suffix (optional, aria-hidden)
+    - div.footer
+      - span (helperText or errorMessage)
+      - span (charCount, optional)
 
 props:
-    label:
-        type: string
-        required: true
-        notes: >
-            Always required — no label-less inputs. Use hideLabel to visually
-            hide while keeping in DOM for screen readers.
+  label:
+    type: string
+    required: true
+    notes: >
+      Always required — no label-less inputs. Use hideLabel to visually
+      hide while keeping in DOM for screen readers.
 
-    type:
-        type: enum
-        values: [text, email, password, number, search, tel, url]
-        default: text
-        notes: >
-            password type automatically shows visibility toggle button.
-            suffix prop is unavailable when type=password (toggle occupies that slot).
+  type:
+    type: enum
+    values: [text, email, password, number, search, tel, url]
+    default: text
+    notes: >
+      password type automatically shows visibility toggle button.
+      suffix prop is unavailable when type=password (toggle occupies that slot).
 
-    size:
-        type: enum
-        values: [sm, md, lg]
-        default: md
-        descriptions:
-            sm: 32px height — compact UIs, filter bars
-            md: 40px height — default for forms
-            lg: 48px height — prominent inputs, hero forms
+  size:
+    type: enum
+    values: [sm, md, lg]
+    default: md
+    descriptions:
+      sm: 32px height — compact UIs, filter bars
+      md: 40px height — default for forms
+      lg: 48px height — prominent inputs, hero forms
 
-    helperText:
-        type: string
-        default: undefined
-        notes: >
-            Assistive text below the field. Replaced by errorMessage when both
-            are present. Do not duplicate the label in helper text.
+  helperText:
+    type: string
+    default: undefined
+    notes: >
+      Assistive text below the field. Replaced by errorMessage when both
+      are present. Do not duplicate the label in helper text.
 
-    errorMessage:
-        type: string
-        default: undefined
-        notes: >
-            Presence of this prop drives the error state — do not use a separate
-            state prop. Sets aria-invalid="true" and aria-describedby on input.
-            Uses role="alert" — announced immediately by screen readers.
-            Must be specific and actionable. "Required" is too vague.
-            Prefer "Please enter a valid email address."
+  errorMessage:
+    type: string
+    default: undefined
+    notes: >
+      Presence of this prop drives the error state — do not use a separate
+      state prop. Sets aria-invalid="true" and aria-describedby on input.
+      Uses role="alert" — announced immediately by screen readers.
+      Must be specific and actionable. "Required" is too vague.
+      Prefer "Please enter a valid email address."
 
-    placeholder:
-        type: string
-        default: undefined
-        notes: >
-            Hint text inside the field. Never replaces the label.
-            Disappears when user types — do not put critical information here.
+  placeholder:
+    type: string
+    default: undefined
+    notes: >
+      Hint text inside the field. Never replaces the label.
+      Disappears when user types — do not put critical information here.
 
-    required:
-        type: boolean
-        default: false
-        notes: >
-            Shows * indicator (aria-hidden). Sets HTML required attribute
-            and aria-required="true".
+  required:
+    type: boolean
+    default: false
+    notes: >
+      Shows * indicator (aria-hidden). Sets HTML required attribute
+      and aria-required="true".
 
-    disabled:
-        type: boolean
-        default: false
-        notes: Applies 0.38 opacity. Prevents interaction.
+  disabled:
+    type: boolean
+    default: false
+    notes: Applies 0.38 opacity. Prevents interaction.
 
-    hideLabel:
-        type: boolean
-        default: false
-        notes: >
-            Visually hides label using srOnly CSS. Label remains in DOM
-            and is read by screen readers. Use for search inputs where
-            context makes the label visually redundant.
+  hideLabel:
+    type: boolean
+    default: false
+    notes: >
+      Visually hides label using srOnly CSS. Label remains in DOM
+      and is read by screen readers. Use for search inputs where
+      context makes the label visually redundant.
 
-    prefix:
-        type: ReactNode
-        default: undefined
-        notes: >
-            Content inside the field on the left. aria-hidden — decorative only.
-            Use for icons, currency symbols ($, €), or unit labels.
-            Input padding adjusts automatically.
+  prefix:
+    type: ReactNode
+    default: undefined
+    notes: >
+      Content inside the field on the left. aria-hidden — decorative only.
+      Use for icons, currency symbols ($, €), or unit labels.
+      Input padding adjusts automatically.
 
-    suffix:
-        type: ReactNode
-        default: undefined
-        notes: >
-            Content inside the field on the right. aria-hidden — decorative only.
-            NOT available when type=password — toggle occupies that slot.
-            Input padding adjusts automatically.
+  suffix:
+    type: ReactNode
+    default: undefined
+    notes: >
+      Content inside the field on the right. aria-hidden — decorative only.
+      NOT available when type=password — toggle occupies that slot.
+      Input padding adjusts automatically.
 
-    maxLength:
-        type: number
-        default: undefined
-        notes: >
-            Enforces character limit via HTML maxlength attribute.
-            Automatically shows count/max counter below field.
-            Counter uses aria-live="polite".
+  maxLength:
+    type: number
+    default: undefined
+    notes: >
+      Enforces character limit via HTML maxlength attribute.
+      Automatically shows count/max counter below field.
+      Counter uses aria-live="polite".
 
-    showCount:
-        type: boolean
-        default: false
-        notes: >
-            Shows character count without enforcing a limit.
-            Use when count is informational rather than restrictive.
-            Exquisite Corpse writing editor uses this pattern.
+  showCount:
+    type: boolean
+    default: false
+    notes: >
+      Shows character count without enforcing a limit.
+      Use when count is informational rather than restrictive.
+      Exquisite Corpse writing editor uses this pattern.
 
 states:
-    default: Resting state. Border uses border-default token.
-    hover: Border uses border-strong token.
-    focus: Brand primary border + double ring focus indicator.
-    filled: No visual change from default — content visible in field.
-    disabled: Wrapper opacity 0.38. Pointer events none.
-    error: Border uses error token. Error message visible below. aria-invalid set.
-    error-focus: Error border + double ring focus indicator in error color.
+  default: Resting state. Border uses border-default token.
+  hover: Border uses border-strong token.
+  focus: Brand primary border + double ring focus indicator.
+  filled: No visual change from default — content visible in field.
+  disabled: Wrapper opacity 0.38. Pointer events none.
+  error: Border uses error token. Error message visible below. aria-invalid set.
+  error-focus: Error border + double ring focus indicator in error color.
 
 tokens:
-    field:
-        background: var(--ptr-color-bg-input)
-        border-default: var(--ptr-color-border-default)
-        border-hover: var(--ptr-color-border-strong)
-        border-focus: var(--ptr-color-brand-primary)
-        border-error: var(--ptr-color-status-error-text)
-        border-width: var(--ptr-border-hairline)
-        border-radius: var(--ptr-radius-component-input)
-        font-family: var(--ptr-typography-font-ui)
-        transition: var(--ptr-motion-transition-micro)
-    focus-ring: '0 0 0 2px var(--ptr-color-bg-page), 0 0 0 4px var(--ptr-color-brand-primary)'
-    error-focus-ring: '0 0 0 2px var(--ptr-color-bg-page), 0 0 0 4px var(--ptr-color-status-error-text)'
-    label:
-        font-size: var(--ptr-typography-size-sm)
-        font-weight: var(--ptr-typography-weight-label)
-        color: var(--ptr-color-text-primary)
-    helper:
-        font-size: var(--ptr-typography-size-sm)
-        color: var(--ptr-color-text-secondary)
-    error-message:
-        font-size: var(--ptr-typography-size-sm)
-        color: var(--ptr-color-status-error-text)
-    char-count:
-        font-family: var(--ptr-typography-font-mono)
-        font-size: var(--ptr-typography-size-sm)
-        color: var(--ptr-color-text-tertiary)
+  field:
+    background: var(--ptr-color-bg-input)
+    border-default: var(--ptr-color-border-default)
+    border-hover: var(--ptr-color-border-strong)
+    border-focus: var(--ptr-color-brand-primary)
+    border-error: var(--ptr-color-status-error-text)
+    border-width: var(--ptr-border-hairline)
+    border-radius: var(--ptr-radius-component-input)
+    font-family: var(--ptr-typography-font-ui)
+    transition: var(--ptr-motion-transition-micro)
+  focus-ring: '0 0 0 2px var(--ptr-color-bg-page), 0 0 0 4px var(--ptr-color-brand-primary)'
+  error-focus-ring: '0 0 0 2px var(--ptr-color-bg-page), 0 0 0 4px var(--ptr-color-status-error-text)'
+  label:
+    font-size: var(--ptr-typography-size-sm)
+    font-weight: var(--ptr-typography-weight-label)
+    color: var(--ptr-color-text-primary)
+  helper:
+    font-size: var(--ptr-typography-size-sm)
+    color: var(--ptr-color-text-secondary)
+  error-message:
+    font-size: var(--ptr-typography-size-sm)
+    color: var(--ptr-color-status-error-text)
+  char-count:
+    font-family: var(--ptr-typography-font-mono)
+    font-size: var(--ptr-typography-size-sm)
+    color: var(--ptr-color-text-tertiary)
 
 accessibility:
-    label_association: htmlFor/id via useId() — automatic, never manual
-    aria_invalid: set to true when errorMessage is present
-    aria_describedby: links helperText id, errorMessage id, charCount id
-    aria_required: set to true when required prop is true
-    error_announcement: role="alert" on error message — immediate announcement
-    count_announcement: aria-live="polite" on char count — polite announcement
-    password_toggle: >
-        aria_label: "Show password" / "Hide password" (toggles)
-        aria_controls: input id
-        keyboard: Tab from input, Enter or Space to activate
-    prefix_suffix: aria-hidden="true" — decorative only, not read by screen readers
-    hide_label: srOnly CSS — label in DOM, invisible, read by screen readers
+  label_association: htmlFor/id via useId() — automatic, never manual
+  aria_invalid: set to true when errorMessage is present
+  aria_describedby: links helperText id, errorMessage id, charCount id
+  aria_required: set to true when required prop is true
+  error_announcement: role="alert" on error message — immediate announcement
+  count_announcement: aria-live="polite" on char count — polite announcement
+  password_toggle: >
+    aria_label: "Show password" / "Hide password" (toggles)
+    aria_controls: input id
+    keyboard: Tab from input, Enter or Space to activate
+  prefix_suffix: aria-hidden="true" — decorative only, not read by screen readers
+  hide_label: srOnly CSS — label in DOM, invisible, read by screen readers
 
 composition:
-    contains:
-        - Text (via value/defaultValue)
-        - Prefix — icon, text symbol, or unit label
-        - Suffix — icon, text symbol, or unit label (not with type=password)
+  contains:
+    - Text (via value/defaultValue)
+    - Prefix — icon, text symbol, or unit label
+    - Suffix — icon, text symbol, or unit label (not with type=password)
 
-    contained_by:
-        - form
-        - FormField molecule (for additional layout)
-        - Any layout surface
+  contained_by:
+    - form
+    - FormField molecule (for additional layout)
+    - Any layout surface
 
-    never_contains:
-        - Interactive elements other than the built-in password toggle
-        - Block-level elements
+  never_contains:
+    - Interactive elements other than the built-in password toggle
+    - Block-level elements
 
-    never_do:
-        - Pass an id prop — generated internally
-        - Use placeholder as label substitute
-        - Use suffix with type=password
+  never_do:
+    - Pass an id prop — generated internally
+    - Use placeholder as label substitute
+    - Use suffix with type=password
 
 patterns:
-    - id: form-field
-      description: Standard labeled form input
-      example: |
-          <Input
-            label="Email address"
-            type="email"
-            required
-            placeholder="you@example.com"
-            helperText="We'll send your receipt here."
-          />
+  - id: form-field
+    description: Standard labeled form input
+    example: |
+      <Input
+        label="Email address"
+        type="email"
+        required
+        placeholder="you@example.com"
+        helperText="We'll send your receipt here."
+      />
 
-    - id: search-hidden-label
-      description: Search input with visually hidden label
-      example: |
-          <Input
-            label="Search players"
-            type="search"
-            hideLabel
-            prefix={<SearchIcon />}
-            placeholder="Search..."
-          />
-      notes: Always provide a label even when hidden — hideLabel not label omission.
+  - id: search-hidden-label
+    description: Search input with visually hidden label
+    example: |
+      <Input
+        label="Search players"
+        type="search"
+        hideLabel
+        prefix={<SearchIcon />}
+        placeholder="Search..."
+      />
+    notes: Always provide a label even when hidden — hideLabel not label omission.
 
-    - id: with-validation
-      description: Controlled input with error state
-      example: |
-          <Input
-            label="Email address"
-            type="email"
-            value={email}
-            errorMessage={errors.email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-      notes: errorMessage presence drives error state — no separate isError prop needed.
+  - id: with-validation
+    description: Controlled input with error state
+    example: |
+      <Input
+        label="Email address"
+        type="email"
+        value={email}
+        errorMessage={errors.email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+    notes: errorMessage presence drives error state — no separate isError prop needed.
 
-    - id: character-limited
-      description: Input with enforced character limit
-      example: |
-          <Input
-            label="Bio"
-            maxLength={160}
-            helperText="Shown on your public profile."
-          />
+  - id: character-limited
+    description: Input with enforced character limit
+    example: |
+      <Input
+        label="Bio"
+        maxLength={160}
+        helperText="Shown on your public profile."
+      />
 
-    - id: exquisite-corpse-editor
-      description: Story segment editor with informational count
-      example: |
-          <Input
-            label="Your segment"
-            showCount
-            maxLength={500}
-            placeholder="Continue the story..."
-            helperText="Pick up from the last sentence above."
-          />
-      notes: showCount without hard enforcement — count is guidance, not a blocker.
+  - id: exquisite-corpse-editor
+    description: Story segment editor with informational count
+    example: |
+      <Input
+        label="Your segment"
+        showCount
+        maxLength={500}
+        placeholder="Continue the story..."
+        helperText="Pick up from the last sentence above."
+      />
+    notes: showCount without hard enforcement — count is guidance, not a blocker.
 
-    - id: currency-input
-      description: Monetary amount input
-      example: |
-          <Input
-            label="Amount"
-            type="number"
-            prefix="$"
-            suffix="USD"
-            placeholder="0.00"
-          />
+  - id: currency-input
+    description: Monetary amount input
+    example: |
+      <Input
+        label="Amount"
+        type="number"
+        prefix="$"
+        suffix="USD"
+        placeholder="0.00"
+      />
 
 anti_patterns:
-    - id: no-label
-      description: Omitting the label prop
-      wrong: <Input placeholder="Enter email" />
-      right: <Input label="Email address" placeholder="you@example.com" />
-      reason: label is required. Screen readers have no accessible name without it.
+  - id: no-label
+    description: Omitting the label prop
+    wrong: <Input placeholder="Enter email" />
+    right: <Input label="Email address" placeholder="you@example.com" />
+    reason: label is required. Screen readers have no accessible name without it.
 
-    - id: placeholder-as-label
-      description: Using placeholder text as the only label
-      wrong: <Input label="" placeholder="Email address" />
-      right: <Input label="Email address" placeholder="you@example.com" />
-      reason: >
-          Placeholder disappears when typing. Users cannot review what field
-          they're filling out. Fails WCAG 1.3.1.
+  - id: placeholder-as-label
+    description: Using placeholder text as the only label
+    wrong: <Input label="" placeholder="Email address" />
+    right: <Input label="Email address" placeholder="you@example.com" />
+    reason: >
+      Placeholder disappears when typing. Users cannot review what field
+      they're filling out. Fails WCAG 1.3.1.
 
-    - id: manual-id
-      description: Passing an id prop
-      wrong: <Input label="Email" id="email-input" />
-      right: <Input label="Email" />
-      reason: >
-          ID is generated internally via useId() to guarantee uniqueness.
-          Passing a manual id may cause duplicate ids if the component
-          is rendered multiple times.
+  - id: manual-id
+    description: Passing an id prop
+    wrong: <Input label="Email" id="email-input" />
+    right: <Input label="Email" />
+    reason: >
+      ID is generated internally via useId() to guarantee uniqueness.
+      Passing a manual id may cause duplicate ids if the component
+      is rendered multiple times.
 
-    - id: vague-error
-      description: Non-actionable error messages
-      wrong: <Input label="Email" errorMessage="Error" />
-      right: <Input label="Email" errorMessage="Please enter a valid email address." />
-      reason: Error messages must tell users what went wrong and how to fix it.
+  - id: vague-error
+    description: Non-actionable error messages
+    wrong: <Input label="Email" errorMessage="Error" />
+    right: <Input label="Email" errorMessage="Please enter a valid email address." />
+    reason: Error messages must tell users what went wrong and how to fix it.
 
-    - id: suffix-with-password
-      description: Using suffix with type=password
-      wrong: <Input type="password" suffix={<LockIcon />} />
-      right: <Input type="password" />
-      reason: The password toggle occupies the suffix slot. Adding suffix will overlap.
+  - id: suffix-with-password
+    description: Using suffix with type=password
+    wrong: <Input type="password" suffix={<LockIcon />} />
+    right: <Input type="password" />
+    reason: The password toggle occupies the suffix slot. Adding suffix will overlap.
 
 related:
-    - id: textarea
-      status: planned
-      when_to_use: Long-form text input — multiple lines, resizable.
+  - id: textarea
+    status: planned
+    when_to_use: Long-form text input — multiple lines, resizable.
 
-    - id: select
-      when_to_use: Choosing from predefined options. Input is for free-form text.
+  - id: select
+    when_to_use: Choosing from predefined options. Input is for free-form text.
 
-    - id: form-field
-      status: planned
-      when_to_use: >
-          When you need additional layout control — stacked vs inline labels,
-          field groups. FormField wraps Input with layout primitives.
+  - id: form-field
+    status: planned
+    when_to_use: >
+      When you need additional layout control — stacked vs inline labels,
+      field groups. FormField wraps Input with layout primitives.
 
-    - id: search-bar
-      status: planned
-      when_to_use: >
-          Full search bar with submit button. Composes Input with Button.
-          Use Input directly for simple search fields without a submit action.
+  - id: search-bar
+    status: planned
+    when_to_use: >
+      Full search bar with submit button. Composes Input with Button.
+      Use Input directly for simple search fields without a submit action.

@@ -1,40 +1,40 @@
 .spinner {
-	display: inline-block;
-	flex-shrink: 0;
-	animation: ptr-spin 0.7s linear infinite;
-	color: currentColor;
+  display: inline-block;
+  flex-shrink: 0;
+  animation: ptr-spin 0.7s linear infinite;
+  color: currentColor;
 }
 
 @keyframes ptr-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Sizes — matches Icon size scale */
 .xs {
-	width: 12px;
-	height: 12px;
+  width: 12px;
+  height: 12px;
 }
 .sm {
-	width: 16px;
-	height: 16px;
+  width: 16px;
+  height: 16px;
 }
 .md {
-	width: 20px;
-	height: 20px;
+  width: 20px;
+  height: 20px;
 }
 .lg {
-	width: 24px;
-	height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.spinner {
-		animation: none;
-		opacity: 0.5;
-	}
+  .spinner {
+    animation: none;
+    opacity: 0.5;
+  }
 }

@@ -25,12 +25,12 @@ A static display label for status, category, or metadata. Purely visual — no i
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `variant` | `'default' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'danger' \| 'brand'` | `'default'` | Color and semantic meaning |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding |
-| `iconStart` | `ReactNode` | — | Icon before label. Always `aria-hidden` — decorative only. |
-| `asChild` | `boolean` | `false` | Renders as child element. Use for linked badges. |
+| Prop        | Type                                                                              | Default     | Description                                                |
+| ----------- | --------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------- |
+| `variant`   | `'default' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'danger' \| 'brand'` | `'default'` | Color and semantic meaning                                 |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                                            | `'md'`      | Height and padding                                         |
+| `iconStart` | `ReactNode`                                                                       | —           | Icon before label. Always `aria-hidden` — decorative only. |
+| `asChild`   | `boolean`                                                                         | `false`     | Renders as child element. Use for linked badges.           |
 
 All native `<span>` attributes are supported and forwarded.
 
@@ -38,15 +38,15 @@ All native `<span>` attributes are supported and forwarded.
 
 ## Variants
 
-| Variant | Color | Use for |
-|---|---|---|
-| `default` | Neutral grey | No semantic meaning — category labels, metadata |
-| `info` | Rain blue | Informational status |
-| `success` | Teal | Positive status — complete, online, stable |
-| `warning` | Gold | Caution — beta, deprecated, degraded |
-| `error` | Amber | Problem state — something went wrong, offline, suspended |
-| `danger` | Amber | Destructive consequence — permanent action, irreversible state |
-| `brand` | Brand primary | Brand moments — New, Featured, highlighted items |
+| Variant   | Color         | Use for                                                        |
+| --------- | ------------- | -------------------------------------------------------------- |
+| `default` | Neutral grey  | No semantic meaning — category labels, metadata                |
+| `info`    | Rain blue     | Informational status                                           |
+| `success` | Teal          | Positive status — complete, online, stable                     |
+| `warning` | Gold          | Caution — beta, deprecated, degraded                           |
+| `error`   | Amber         | Problem state — something went wrong, offline, suspended       |
+| `danger`  | Amber         | Destructive consequence — permanent action, irreversible state |
+| `brand`   | Brand primary | Brand moments — New, Featured, highlighted items               |
 
 ---
 
@@ -108,6 +108,7 @@ All native `<span>` attributes are supported and forwarded.
 ## Composition rules
 
 ### Badge can be placed inside
+
 - Card headers and footers
 - Table cells
 - Nav items (version numbers, counts)
@@ -116,6 +117,7 @@ All native `<span>` attributes are supported and forwarded.
 - Anywhere inline text appears
 
 ### Badge should never
+
 - Be used as the only signal for critical information
 - Contain more than 3–4 words — use a different component for longer labels
 - Be interactive without `asChild` — use Button or Tag instead

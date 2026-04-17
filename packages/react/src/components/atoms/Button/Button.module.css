@@ -1,45 +1,45 @@
 .button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--ptr-spacing-3xs);
-	font-family: var(--ptr-typography-font-ui);
-	font-weight: var(--ptr-typography-weight-label);
-	line-height: var(--ptr-typography-line-height-ui);
-	white-space: nowrap;
-	cursor: pointer;
-	border: var(--ptr-border-hairline) solid transparent;
-	transition: var(--ptr-motion-micro);
-	position: relative;
-	text-decoration: none;
-	outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ptr-spacing-3xs);
+  font-family: var(--ptr-typography-font-ui);
+  font-weight: var(--ptr-typography-weight-label);
+  line-height: var(--ptr-typography-line-height-ui);
+  white-space: nowrap;
+  cursor: pointer;
+  border: var(--ptr-border-hairline) solid transparent;
+  transition: var(--ptr-motion-micro);
+  position: relative;
+  text-decoration: none;
+  outline: none;
 }
 
 .button:focus-visible {
-	box-shadow:
-		0 0 0 2px var(--ptr-color-bg-page),
-		0 0 0 4px var(--ptr-color-brand-primary);
+  box-shadow:
+    0 0 0 2px var(--ptr-color-bg-page),
+    0 0 0 4px var(--ptr-color-brand-primary);
 }
 
 .button:active:not(:disabled):not([aria-disabled='true']) {
-	transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .button:disabled,
 .button[aria-disabled='true'] {
-	opacity: 0.38;
-	cursor: not-allowed;
+  opacity: 0.38;
+  cursor: not-allowed;
 }
 
 .loading {
-	cursor: wait;
+  cursor: wait;
 }
 
 .iconStart,
 .iconEnd {
-	display: inline-flex;
-	align-items: center;
-	flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 /* ============================================================
@@ -47,27 +47,27 @@
    ============================================================ */
 
 .sm {
-	height: 32px;
-	padding: 0 var(--ptr-spacing-xs);
-	font-size: var(--ptr-typography-size-sm);
-	border-radius: var(--ptr-radius-component-button);
-	min-width: 32px;
+  height: 32px;
+  padding: 0 var(--ptr-spacing-xs);
+  font-size: var(--ptr-typography-size-sm);
+  border-radius: var(--ptr-radius-component-button);
+  min-width: 32px;
 }
 
 .md {
-	height: 40px;
-	padding: 0 var(--ptr-spacing-sm);
-	font-size: var(--ptr-typography-size-base);
-	border-radius: var(--ptr-radius-component-button);
-	min-width: 40px;
+  height: 40px;
+  padding: 0 var(--ptr-spacing-sm);
+  font-size: var(--ptr-typography-size-base);
+  border-radius: var(--ptr-radius-component-button);
+  min-width: 40px;
 }
 
 .lg {
-	height: 48px;
-	padding: 0 var(--ptr-spacing-md);
-	font-size: var(--ptr-typography-size-md);
-	border-radius: var(--ptr-radius-component-button);
-	min-width: 48px;
+  height: 48px;
+  padding: 0 var(--ptr-spacing-md);
+  font-size: var(--ptr-typography-size-md);
+  border-radius: var(--ptr-radius-component-button);
+  min-width: 48px;
 }
 
 /* ============================================================
@@ -76,25 +76,25 @@
    ============================================================ */
 
 .iconOnly.sm {
-	width: 32px;
-	padding: 0;
-	position: relative;
+  width: 32px;
+  padding: 0;
+  position: relative;
 }
 
 .iconOnly.sm::before {
-	content: '';
-	position: absolute;
-	inset: -6px;
+  content: '';
+  position: absolute;
+  inset: -6px;
 }
 
 .iconOnly.md {
-	width: 40px;
-	padding: 0;
+  width: 40px;
+  padding: 0;
 }
 
 .iconOnly.lg {
-	width: 48px;
-	padding: 0;
+  width: 48px;
+  padding: 0;
 }
 
 /* ============================================================
@@ -102,53 +102,53 @@
    ============================================================ */
 
 .primary {
-	background: var(--ptr-color-brand-primary);
-	color: var(--ptr-color-text-on-brand);
-	border-color: transparent;
+  background: var(--ptr-color-brand-primary);
+  color: var(--ptr-color-text-on-brand);
+  border-color: transparent;
 }
 
 .primary:hover:not(:disabled):not([aria-disabled='true']) {
-	background: var(--ptr-color-brand-primary-mid);
+  background: var(--ptr-color-brand-primary-mid);
 }
 
 .secondary {
-	background: transparent;
-	color: var(--ptr-color-brand-primary);
-	border-color: var(--ptr-color-brand-primary);
+  background: transparent;
+  color: var(--ptr-color-brand-primary);
+  border-color: var(--ptr-color-brand-primary);
 }
 
 .secondary:hover:not(:disabled):not([aria-disabled='true']) {
-	background: var(--ptr-color-brand-primary-tint);
+  background: var(--ptr-color-brand-primary-tint);
 }
 
 .ghost {
-	background: transparent;
-	color: var(--ptr-color-brand-primary-mid);
-	border-color: transparent;
+  background: transparent;
+  color: var(--ptr-color-brand-primary-mid);
+  border-color: transparent;
 }
 
 .ghost:hover:not(:disabled):not([aria-disabled='true']) {
-	background: var(--ptr-color-brand-primary-tint);
+  background: var(--ptr-color-brand-primary-tint);
 }
 
 .danger {
-	background: var(--ptr-color-status-danger-bg);
-	color: var(--ptr-color-text-on-brand);
-	border-color: transparent;
+  background: var(--ptr-color-status-danger-bg);
+  color: var(--ptr-color-text-on-brand);
+  border-color: transparent;
 }
 
 .danger:hover:not(:disabled):not([aria-disabled='true']) {
-	filter: brightness(1.1);
+  filter: brightness(1.1);
 }
 
 .ghostDanger {
-	background: transparent;
-	color: var(--ptr-color-status-error-text);
-	border-color: transparent;
+  background: transparent;
+  color: var(--ptr-color-status-error-text);
+  border-color: transparent;
 }
 
 .ghostDanger:hover:not(:disabled):not([aria-disabled='true']) {
-	background: var(--ptr-color-status-error-tint);
+  background: var(--ptr-color-status-error-tint);
 }
 
 /* ============================================================
@@ -156,5 +156,5 @@
    ============================================================ */
 
 .spinner {
-	flex-shrink: 0;
+  flex-shrink: 0;
 }

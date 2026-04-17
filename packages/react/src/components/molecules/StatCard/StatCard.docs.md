@@ -24,23 +24,23 @@ A metric display card for dashboards. Shows a single key value with optional tre
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `label` | `string` | required | Metric name. Keep short — 1–3 words. |
-| `value` | `string \| number` | required | The metric value. Format before passing. |
-| `trend` | `StatCardTrend` | — | Optional trend indicator |
-| `icon` | `ReactNode` | — | Optional metric icon — decorative by default |
-| `iconLabel` | `string` | — | Makes icon informative — sets `aria-label` and `role="img"` |
-| `loading` | `boolean` | `false` | Shows skeleton, keeps label visible |
+| Prop        | Type               | Default  | Description                                                 |
+| ----------- | ------------------ | -------- | ----------------------------------------------------------- |
+| `label`     | `string`           | required | Metric name. Keep short — 1–3 words.                        |
+| `value`     | `string \| number` | required | The metric value. Format before passing.                    |
+| `trend`     | `StatCardTrend`    | —        | Optional trend indicator                                    |
+| `icon`      | `ReactNode`        | —        | Optional metric icon — decorative by default                |
+| `iconLabel` | `string`           | —        | Makes icon informative — sets `aria-label` and `role="img"` |
+| `loading`   | `boolean`          | `false`  | Shows skeleton, keeps label visible                         |
 
 ### StatCardTrend
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `direction` | `'up' \| 'down' \| 'neutral'` | required | Direction of change |
-| `value` | `string` | required | Formatted delta — `"+124"`, `"−3%"`, `"No change"` |
-| `label` | `string` | — | Period context — `"vs last month"`, `"this season"` |
-| `positive` | `boolean` | `true` | Whether up is good. Set `false` for inverse metrics. |
+| Prop        | Type                          | Default  | Description                                          |
+| ----------- | ----------------------------- | -------- | ---------------------------------------------------- |
+| `direction` | `'up' \| 'down' \| 'neutral'` | required | Direction of change                                  |
+| `value`     | `string`                      | required | Formatted delta — `"+124"`, `"−3%"`, `"No change"`   |
+| `label`     | `string`                      | —        | Period context — `"vs last month"`, `"this season"`  |
+| `positive`  | `boolean`                     | `true`   | Whether up is good. Set `false` for inverse metrics. |
 
 ---
 
@@ -65,15 +65,15 @@ A metric display card for dashboards. Shows a single key value with optional tre
 ### With icon
 
 ```tsx
-import { Trophy } from '@phosphor-icons/react'
-import { StatCard, Icon } from '@petrichor/react'
+import { Trophy } from '@phosphor-icons/react';
+import { StatCard, Icon } from '@petrichor/react';
 
 <StatCard
   label="Season points"
   value="2,840"
   trend={{ direction: 'up', value: '+124', label: 'vs last month' }}
   icon={<Icon icon={Trophy} size="sm" />}
-/>
+/>;
 ```
 
 ### Inverse metric — up is bad
@@ -82,7 +82,12 @@ import { StatCard, Icon } from '@petrichor/react'
 <StatCard
   label="Errors this month"
   value="3"
-  trend={{ direction: 'up', value: '+2', label: 'vs last month', positive: false }}
+  trend={{
+    direction: 'up',
+    value: '+2',
+    label: 'vs last month',
+    positive: false,
+  }}
 />
 ```
 
@@ -99,7 +104,13 @@ The label stays visible during loading to prevent layout shift and give the user
 ### Dashboard grid
 
 ```tsx
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '12px',
+  }}
+>
   <StatCard
     label="Season points"
     value="2,840"
@@ -133,13 +144,13 @@ The label stays visible during loading to prevent layout shift and give the user
 
 Format values before passing — StatCard renders them as-is.
 
-| Metric type | Example |
-|---|---|
-| Large numbers | `"2,840"` not `2840` |
-| Percentages | `"81%"` |
-| Rankings | `"#1"` |
-| Currency | `"$1,240"` |
-| Deltas | `"+124"` or `"−3%"` — include sign, use minus `−` not hyphen `-` |
+| Metric type   | Example                                                          |
+| ------------- | ---------------------------------------------------------------- |
+| Large numbers | `"2,840"` not `2840`                                             |
+| Percentages   | `"81%"`                                                          |
+| Rankings      | `"#1"`                                                           |
+| Currency      | `"$1,240"`                                                       |
+| Deltas        | `"+124"` or `"−3%"` — include sign, use minus `−` not hyphen `-` |
 
 ---
 
@@ -167,6 +178,7 @@ Format values before passing — StatCard renders them as-is.
 ## Composition rules
 
 ### StatCard can be placed inside
+
 - Dashboard layout grids
 - Player profile organisms
 - Any surface that needs metric display

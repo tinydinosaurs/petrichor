@@ -10,7 +10,7 @@ description: >
   Decorative by default — provide a label only when the icon conveys
   meaning not expressed in nearby text.
 
-library: "@phosphor-icons/react"
+library: '@phosphor-icons/react'
 library_notes: >
   Phosphor has 9000+ icons in 6 weights: thin, light, regular, bold, fill, duotone.
   Import icon components from @phosphor-icons/react and pass as the icon prop.
@@ -24,7 +24,7 @@ dom:
 
 props:
   icon:
-    type: "typeof PhosphorIcon"
+    type: 'typeof PhosphorIcon'
     required: true
     notes: >
       The Phosphor icon component class, not an instance.

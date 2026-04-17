@@ -26,24 +26,24 @@ A compound surface component. Provides the container, structure, and surface for
 Card is a compound component. Import once, use all parts.
 
 ```tsx
-import { Card } from '@petrichor/react'
+import { Card } from '@petrichor/react';
 
 <Card>
   <Card.Header>...</Card.Header>
   <Card.Body>...</Card.Body>
   <Card.Footer>...</Card.Footer>
-</Card>
+</Card>;
 ```
 
-| Sub-component | Purpose |
-|---|---|
-| `Card` | The surface — background, border, radius, overflow |
-| `Card.Header` | Top content area — title, metadata, thumbnail |
-| `Card.Body` | Main content area — expands to fill available space |
-| `Card.Footer` | Bottom content area — actions, status badges |
-| `Card.Image` | Full-bleed image — clips to card border radius |
-| `Card.Divider` | Thin horizontal rule — use sparingly |
-| `Card.Empty` | Empty state — icon + message + optional CTA |
+| Sub-component  | Purpose                                             |
+| -------------- | --------------------------------------------------- |
+| `Card`         | The surface — background, border, radius, overflow  |
+| `Card.Header`  | Top content area — title, metadata, thumbnail       |
+| `Card.Body`    | Main content area — expands to fill available space |
+| `Card.Footer`  | Bottom content area — actions, status badges        |
+| `Card.Image`   | Full-bleed image — clips to card border radius      |
+| `Card.Divider` | Thin horizontal rule — use sparingly                |
+| `Card.Empty`   | Empty state — icon + message + optional CTA         |
 
 All sub-components are optional. Use Card bare when you need full control over interior layout.
 
@@ -53,40 +53,40 @@ All sub-components are optional. Use Card bare when you need full control over i
 
 ### Card
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `as` | `'div' \| 'article' \| 'section' \| 'li'` | `'div'` | Semantic element |
-| `loading` | `boolean` | `false` | Shows shimmer skeleton, hides children |
+| Prop      | Type                                      | Default | Description                            |
+| --------- | ----------------------------------------- | ------- | -------------------------------------- |
+| `as`      | `'div' \| 'article' \| 'section' \| 'li'` | `'div'` | Semantic element                       |
+| `loading` | `boolean`                                 | `false` | Shows shimmer skeleton, hides children |
 
 ### Card.Header
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
+| Prop       | Type      | Default | Description                 |
+| ---------- | --------- | ------- | --------------------------- |
 | `bordered` | `boolean` | `false` | Adds hairline bottom border |
 
 ### Card.Footer
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
+| Prop       | Type      | Default | Description              |
+| ---------- | --------- | ------- | ------------------------ |
 | `bordered` | `boolean` | `false` | Adds hairline top border |
 
 ### Card.Image
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `src` | `string` | required | Image source URL |
-| `alt` | `string` | required | Alt text — empty string for decorative images |
-| `orientation` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Image position relative to content |
-| `aspectRatio` | `string` | — | CSS aspect-ratio value e.g. `"16/9"` |
+| Prop          | Type                                     | Default  | Description                                   |
+| ------------- | ---------------------------------------- | -------- | --------------------------------------------- |
+| `src`         | `string`                                 | required | Image source URL                              |
+| `alt`         | `string`                                 | required | Alt text — empty string for decorative images |
+| `orientation` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'`  | Image position relative to content            |
+| `aspectRatio` | `string`                                 | —        | CSS aspect-ratio value e.g. `"16/9"`          |
 
 ### Card.Empty
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `message` | `string` | required | Primary empty state message |
-| `icon` | `ReactNode` | — | Icon — use `<Icon duotone size="xl" />` |
-| `description` | `string` | — | Supporting explanation |
-| `action` | `ReactNode` | — | CTA — pass a Button component |
+| Prop          | Type        | Default  | Description                             |
+| ------------- | ----------- | -------- | --------------------------------------- |
+| `message`     | `string`    | required | Primary empty state message             |
+| `icon`        | `ReactNode` | —        | Icon — use `<Icon duotone size="xl" />` |
+| `description` | `string`    | —        | Supporting explanation                  |
+| `action`      | `ReactNode` | —        | CTA — pass a Button component           |
 
 All sub-components accept and forward native HTML attributes.
 
@@ -98,9 +98,7 @@ All sub-components accept and forward native HTML attributes.
 
 ```tsx
 <Card>
-  <div style={{ padding: '16px' }}>
-    Full control over interior layout.
-  </div>
+  <div style={{ padding: '16px' }}>Full control over interior layout.</div>
 </Card>
 ```
 
@@ -115,7 +113,9 @@ All sub-components accept and forward native HTML attributes.
     <p>The door opened onto a street that hadn't existed yesterday...</p>
   </Card.Body>
   <Card.Footer bordered>
-    <Button variant="primary" size="sm">Read story</Button>
+    <Button variant="primary" size="sm">
+      Read story
+    </Button>
   </Card.Footer>
 </Card>
 ```
@@ -124,11 +124,7 @@ All sub-components accept and forward native HTML attributes.
 
 ```tsx
 <Card>
-  <Card.Image
-    src="/cover.jpg"
-    alt="Story cover"
-    aspectRatio="16/9"
-  />
+  <Card.Image src="/cover.jpg" alt="Story cover" aspectRatio="16/9" />
   <Card.Header>
     <h3>The Clockmaker's Last Dream</h3>
   </Card.Header>
@@ -142,11 +138,7 @@ All sub-components accept and forward native HTML attributes.
 
 ```tsx
 <Card>
-  <Card.Image
-    src="/cover.jpg"
-    alt="Story cover"
-    orientation="left"
-  />
+  <Card.Image src="/cover.jpg" alt="Story cover" orientation="left" />
   <Card.Body>
     <h3>The Clockmaker's Last Dream</h3>
     <p>4 contributors</p>
@@ -170,21 +162,19 @@ All sub-components accept and forward native HTML attributes.
 ### Loading state
 
 ```tsx
-<Card loading>
-  {/* Children hidden while loading */}
-</Card>
+<Card loading>{/* Children hidden while loading */}</Card>
 ```
 
 ---
 
 ## Choosing the right `as` value
 
-| Context | `as` value | Why |
-|---|---|---|
-| Story card, player profile | `article` | Standalone content — navigable by screen reader |
-| Card grid items | `li` | Items in a list — correct list semantics |
-| Settings panel | `section` | Grouped content within a page |
-| Stat card, UI panel | `div` | No standalone meaning — generic container |
+| Context                    | `as` value | Why                                             |
+| -------------------------- | ---------- | ----------------------------------------------- |
+| Story card, player profile | `article`  | Standalone content — navigable by screen reader |
+| Card grid items            | `li`       | Items in a list — correct list semantics        |
+| Settings panel             | `section`  | Grouped content within a page                   |
+| Stat card, UI panel        | `div`      | No standalone meaning — generic container       |
 
 ---
 

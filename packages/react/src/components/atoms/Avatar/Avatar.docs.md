@@ -23,14 +23,14 @@ Represents a person with a photo, initials, or generic icon fallback. Circle sha
 
 ## Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `src` | `string` | — | Image URL |
-| `alt` | `string` | — | Alt text — required when `src` is provided |
-| `name` | `string` | — | Person's full name — drives initials and `aria-label` |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Avatar size |
-| `status` | `'online' \| 'offline' \| 'away' \| 'busy'` | — | Status indicator dot |
-| `asChild` | `boolean` | `false` | Renders as child element — use for linked avatars |
+| Prop      | Type                                        | Default | Description                                           |
+| --------- | ------------------------------------------- | ------- | ----------------------------------------------------- |
+| `src`     | `string`                                    | —       | Image URL                                             |
+| `alt`     | `string`                                    | —       | Alt text — required when `src` is provided            |
+| `name`    | `string`                                    | —       | Person's full name — drives initials and `aria-label` |
+| `size`    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`      | `'md'`  | Avatar size                                           |
+| `status`  | `'online' \| 'offline' \| 'away' \| 'busy'` | —       | Status indicator dot                                  |
+| `asChild` | `boolean`                                   | `false` | Renders as child element — use for linked avatars     |
 
 ---
 
@@ -50,13 +50,13 @@ The cascade is automatic. Provide `src` and `name` together so the fallback is m
 
 ## Sizes
 
-| Size | Pixels | Use for |
-|---|---|---|
-| `xs` | 24px | Tight spaces — contribution chips, dense lists |
-| `sm` | 32px | List rows, table cells, compact cards |
-| `md` | 40px | Default — cards, comments, nav |
-| `lg` | 48px | Profile headers, featured contributors |
-| `xl` | 64px | Player profile hero, prominent identity moments |
+| Size | Pixels | Use for                                         |
+| ---- | ------ | ----------------------------------------------- |
+| `xs` | 24px   | Tight spaces — contribution chips, dense lists  |
+| `sm` | 32px   | List rows, table cells, compact cards           |
+| `md` | 40px   | Default — cards, comments, nav                  |
+| `lg` | 48px   | Profile headers, featured contributors          |
+| `xl` | 64px   | Player profile hero, prominent identity moments |
 
 At `xs` size, only one initial is shown — the container is too small for two characters.
 
@@ -67,12 +67,7 @@ At `xs` size, only one initial is shown — the container is too small for two c
 ### Basic with image
 
 ```tsx
-<Avatar
-  src="/photo.jpg"
-  alt="Neo"
-  name="Neo"
-  size="md"
-/>
+<Avatar src="/photo.jpg" alt="Neo" name="Neo" size="md" />
 ```
 
 ### Initials fallback
@@ -85,13 +80,7 @@ At `xs` size, only one initial is shown — the container is too small for two c
 ### With status
 
 ```tsx
-<Avatar
-  src="https://placecats.com/neo/150/150"
-  alt="Neo"
-  name="Neo"
-  size="md"
-  status="online"
-/>
+<Avatar src="https://placecats.com/neo/150/150" alt="Neo" name="Neo" size="md" status="online" />
 ```
 
 ### As a link
@@ -113,13 +102,16 @@ At `xs` size, only one initial is shown — the container is too small for two c
 ```tsx
 <div style={{ display: 'flex' }}>
   {contributors.map((cat, i) => (
-    <div key={i} style={{
-      marginLeft: i === 0 ? 0 : '-8px',
-      borderRadius: '999px',
-      border: '2px solid var(--ptr-color-bg-page)',
-      zIndex: contributors.length - i,
-      position: 'relative',
-    }}>
+    <div
+      key={i}
+      style={{
+        marginLeft: i === 0 ? 0 : '-8px',
+        borderRadius: '999px',
+        border: '2px solid var(--ptr-color-bg-page)',
+        zIndex: contributors.length - i,
+        position: 'relative',
+      }}
+    >
       <Avatar src={cat.src} alt={cat.name} name={cat.name} size="sm" />
     </div>
   ))}
@@ -131,7 +123,13 @@ The border color matches the page background to create visual separation between
 ### Contribution chip (Exquisite Corpse)
 
 ```tsx
-<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ptr-spacing-2xs)' }}>
+<div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--ptr-spacing-2xs)',
+  }}
+>
   <Avatar src={src} alt={name} name={name} size="xs" />
   <span style={{ fontSize: 'var(--ptr-typography-size-sm)' }}>{name}</span>
 </div>
@@ -160,12 +158,12 @@ The border color matches the page background to create visual separation between
 
 The `status` prop adds a colored dot in the bottom-right corner.
 
-| Status | Color | Use for |
-|---|---|---|
-| `online` | Success teal | Active, available |
+| Status    | Color         | Use for               |
+| --------- | ------------- | --------------------- |
+| `online`  | Success teal  | Active, available     |
 | `offline` | Tertiary grey | Inactive, unavailable |
-| `away` | Warning gold | Away, idle |
-| `busy` | Error amber | Busy, do not disturb |
+| `away`    | Warning gold  | Away, idle            |
+| `busy`    | Error amber   | Busy, do not disturb  |
 
 The dot has `aria-label="Status: {status}"` — announced by screen readers.
 
@@ -186,6 +184,7 @@ The dot has `aria-label="Status: {status}"` — announced by screen readers.
 ## Composition rules
 
 ### Avatar can be placed inside
+
 - Card.Header — player profiles, story cards
 - Contribution chip molecule (planned)
 - Comment threads
@@ -194,6 +193,7 @@ The dot has `aria-label="Status: {status}"` — announced by screen readers.
 - Avatar group patterns
 
 ### Never do
+
 - Use Avatar for non-person entities — use an icon instead
 - Expect more than 2 initials — the component always derives first + last
 - Put a suffix on `asChild` Avatar — internal content doesn't render when `asChild` is true

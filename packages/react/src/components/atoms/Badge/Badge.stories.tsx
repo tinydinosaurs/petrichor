@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Badge } from './Badge'
+import type { Meta, StoryObj } from '@storybook/react';
+import { Badge } from './Badge';
 
 const DotIcon = () => (
   <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true">
     <circle cx="3" cy="3" r="3" fill="currentColor" />
   </svg>
-)
+);
 
 const meta = {
   title: 'Atoms/Badge',
@@ -40,18 +40,16 @@ const meta = {
     variant: 'default',
     size: 'md',
   },
-} satisfies Meta<typeof Badge>
+} satisfies Meta<typeof Badge>;
 
-export default meta
-type Story = StoryObj<typeof meta>
-
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /* ============================================================
    DEFAULT
    ============================================================ */
 
-export const Default: Story = {}
-
+export const Default: Story = {};
 
 /* ============================================================
    VARIANTS
@@ -60,7 +58,14 @@ export const Default: Story = {}
 export const AllVariants: Story = {
   name: 'All variants',
   render: () => (
-    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: '8px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
       <Badge variant="default">Default</Badge>
       <Badge variant="info">Info</Badge>
       <Badge variant="success">Success</Badge>
@@ -70,20 +75,34 @@ export const AllVariants: Story = {
       <Badge variant="brand">New</Badge>
     </div>
   ),
-}
+};
 
 export const WithDotIcon: Story = {
   name: 'With dot icon',
   render: () => (
-    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <Badge variant="success" iconStart={<DotIcon />}>Online</Badge>
-      <Badge variant="error" iconStart={<DotIcon />}>Offline</Badge>
-      <Badge variant="warning" iconStart={<DotIcon />}>Degraded</Badge>
-      <Badge variant="info" iconStart={<DotIcon />}>Live</Badge>
+    <div
+      style={{
+        display: 'flex',
+        gap: '8px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
+      <Badge variant="success" iconStart={<DotIcon />}>
+        Online
+      </Badge>
+      <Badge variant="error" iconStart={<DotIcon />}>
+        Offline
+      </Badge>
+      <Badge variant="warning" iconStart={<DotIcon />}>
+        Degraded
+      </Badge>
+      <Badge variant="info" iconStart={<DotIcon />}>
+        Live
+      </Badge>
     </div>
   ),
-}
-
+};
 
 /* ============================================================
    SIZES
@@ -97,8 +116,7 @@ export const Sizes: Story = {
       <Badge size="lg">Large</Badge>
     </div>
   ),
-}
-
+};
 
 /* ============================================================
    COMPOSITION PATTERNS
@@ -121,14 +139,16 @@ export const ComponentStatusTaxonomy: Story = {
       },
     },
   },
-}
+};
 
 export const StoryCardBadges: Story = {
   name: 'Story card badges (Exquisite Corpse)',
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
       <Badge variant="brand">New</Badge>
-      <Badge variant="success" iconStart={<DotIcon />}>Complete</Badge>
+      <Badge variant="success" iconStart={<DotIcon />}>
+        Complete
+      </Badge>
       <Badge variant="info">4 contributors</Badge>
       <Badge variant="default">6 segments</Badge>
     </div>
@@ -140,17 +160,34 @@ export const StoryCardBadges: Story = {
       },
     },
   },
-}
+};
 
 export const LeaderboardBadges: Story = {
   name: 'Leaderboard badges (Raindrop)',
   render: () => (
-    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <Badge variant="brand" size="sm">1st</Badge>
-      <Badge variant="default" size="sm">2nd</Badge>
-      <Badge variant="default" size="sm">3rd</Badge>
-      <Badge variant="success" size="sm" iconStart={<DotIcon />}>Active</Badge>
-      <Badge variant="error" size="sm" iconStart={<DotIcon />}>Suspended</Badge>
+    <div
+      style={{
+        display: 'flex',
+        gap: '8px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
+      <Badge variant="brand" size="sm">
+        1st
+      </Badge>
+      <Badge variant="default" size="sm">
+        2nd
+      </Badge>
+      <Badge variant="default" size="sm">
+        3rd
+      </Badge>
+      <Badge variant="success" size="sm" iconStart={<DotIcon />}>
+        Active
+      </Badge>
+      <Badge variant="error" size="sm" iconStart={<DotIcon />}>
+        Suspended
+      </Badge>
     </div>
   ),
   parameters: {
@@ -160,7 +197,7 @@ export const LeaderboardBadges: Story = {
       },
     },
   },
-}
+};
 
 export const AsLink: Story = {
   name: 'As link',
@@ -172,8 +209,9 @@ export const AsLink: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Use asChild to render badge styles on an anchor element. The badge becomes a link — correct semantics, correct styles.',
+        story:
+          'Use asChild to render badge styles on an anchor element. The badge becomes a link — correct semantics, correct styles.',
       },
     },
   },
-}
+};

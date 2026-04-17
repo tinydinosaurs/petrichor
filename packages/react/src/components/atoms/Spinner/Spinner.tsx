@@ -1,17 +1,17 @@
-import React from 'react'
-import styles from './Spinner.module.css'
+import React from 'react';
+import styles from './Spinner.module.css';
 
-export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg'
+export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface SpinnerProps extends React.SVGAttributes<SVGElement> {
   /** Spinner size */
-  size?: SpinnerSize
+  size?: SpinnerSize;
   /**
    * Accessible label. Defaults to "Loading".
    * Provide a more specific label when context requires it:
    * "Saving changes", "Loading results", etc.
    */
-  label?: string
+  label?: string;
 }
 
 const sizeMap: Record<SpinnerSize, number> = {
@@ -19,14 +19,12 @@ const sizeMap: Record<SpinnerSize, number> = {
   sm: 16,
   md: 20,
   lg: 24,
-}
+};
 
 export const Spinner = React.forwardRef<SVGSVGElement, SpinnerProps>(
   ({ size = 'sm', label = 'Loading', className, ...rest }, ref) => {
-    const px = sizeMap[size]
-    const classes = [styles.spinner, styles[size], className ?? '']
-      .filter(Boolean)
-      .join(' ')
+    const px = sizeMap[size];
+    const classes = [styles.spinner, styles[size], className ?? ''].filter(Boolean).join(' ');
 
     return (
       <svg
@@ -41,23 +39,11 @@ export const Spinner = React.forwardRef<SVGSVGElement, SpinnerProps>(
         aria-label={label}
         {...rest}
       >
-        <circle
-          cx="8"
-          cy="8"
-          r="6"
-          stroke="currentColor"
-          strokeOpacity="0.25"
-          strokeWidth="2"
-        />
-        <path
-          d="M14 8a6 6 0 0 0-6-6"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
+        <circle cx="8" cy="8" r="6" stroke="currentColor" strokeOpacity="0.25" strokeWidth="2" />
+        <path d="M14 8a6 6 0 0 0-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
-    )
+    );
   },
-)
+);
 
-Spinner.displayName = 'Spinner'
+Spinner.displayName = 'Spinner';

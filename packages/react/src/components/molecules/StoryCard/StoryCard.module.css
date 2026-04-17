@@ -11,7 +11,6 @@
   min-width: 0;
 }
 
-
 /* ============================================================
    BODY CONTENT
    ============================================================ */
@@ -36,7 +35,6 @@
   gap: var(--ptr-spacing-3xs);
   margin-top: var(--ptr-spacing-2xs);
 }
-
 
 /* ============================================================
    FOOTER
@@ -63,7 +61,6 @@
   flex-direction: column;
   gap: 2px; /* audit-ignore — 2px gap between caption lines, below spacing scale intentionally */
 }
-
 
 /* ============================================================
    AVATAR GROUP

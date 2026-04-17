@@ -6,32 +6,40 @@
  */
 
 .sbdocs-wrapper {
-	font-family: var(--ptr-typography-font-ui);
-	color: var(--ptr-color-text-primary);
+  font-family: var(--ptr-typography-font-ui);
+  color: var(--ptr-color-text-primary);
 }
 
 .sbdocs-wrapper :where(h1:not(.sb-unstyled h1)),
 .sbdocs-wrapper :where(h2:not(.sb-unstyled h2)),
 .sbdocs-wrapper :where(h3:not(.sb-unstyled h3)),
 .sbdocs-wrapper :where(h4:not(.sb-unstyled h4)) {
-	font-family: var(--ptr-typography-font-ui);
-	font-weight: var(--ptr-typography-weight-label);
-	color: var(--ptr-color-text-primary);
+  font-family: var(--ptr-typography-font-ui);
+  font-weight: var(--ptr-typography-weight-label);
+  color: var(--ptr-color-text-primary);
 }
 
-.sbdocs-wrapper :where(h1:not(.sb-unstyled h1)) { font-size: var(--ptr-typography-size-2xl); }
-.sbdocs-wrapper :where(h2:not(.sb-unstyled h2)) { font-size: var(--ptr-typography-size-xl); }
-.sbdocs-wrapper :where(h3:not(.sb-unstyled h3)) { font-size: var(--ptr-typography-size-lg); }
-.sbdocs-wrapper :where(h4:not(.sb-unstyled h4)) { font-size: var(--ptr-typography-size-md); }
+.sbdocs-wrapper :where(h1:not(.sb-unstyled h1)) {
+  font-size: var(--ptr-typography-size-2xl);
+}
+.sbdocs-wrapper :where(h2:not(.sb-unstyled h2)) {
+  font-size: var(--ptr-typography-size-xl);
+}
+.sbdocs-wrapper :where(h3:not(.sb-unstyled h3)) {
+  font-size: var(--ptr-typography-size-lg);
+}
+.sbdocs-wrapper :where(h4:not(.sb-unstyled h4)) {
+  font-size: var(--ptr-typography-size-md);
+}
 
 .sbdocs-wrapper :where(p:not(.sb-unstyled p)),
 .sbdocs-wrapper :where(li:not(.sb-unstyled li)) {
-	font-family: var(--ptr-typography-font-ui);
-	font-size: var(--ptr-typography-size-base);
-	line-height: var(--ptr-typography-line-height-body);
-	color: var(--ptr-color-text-primary);
+  font-family: var(--ptr-typography-font-ui);
+  font-size: var(--ptr-typography-size-base);
+  line-height: var(--ptr-typography-line-height-body);
+  color: var(--ptr-color-text-primary);
 }
 
 .sbdocs-wrapper :where(code:not(.sb-unstyled code)) {
-	font-family: var(--ptr-typography-font-mono);
+  font-family: var(--ptr-typography-font-mono);
 }

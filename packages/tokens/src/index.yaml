@@ -19,77 +19,77 @@
 # =============================================================================
 
 schema:
-    version: '0.1.0'
-    name: 'Petrichor Design System'
-    namespace: '@petrichor'
-    prefix: 'ptr'
+  version: '0.1.0'
+  name: 'Petrichor Design System'
+  namespace: '@petrichor'
+  prefix: 'ptr'
 
-    # Token files — loaded in order, later files override earlier
-    tokens:
-        base:
-            - path: 'tokens/base.yaml'
-              description: 'Raw scale values — color ramps, spacing, type, motion, radius, shadow, border'
+  # Token files — loaded in order, later files override earlier
+  tokens:
+    base:
+      - path: 'tokens/base.yaml'
+        description: 'Raw scale values — color ramps, spacing, type, motion, radius, shadow, border'
 
-        semantic:
-            - path: 'tokens/semantic.yaml'
-              description: 'Semantic aliases — meaning over raw values. Components reference these only.'
+    semantic:
+      - path: 'tokens/semantic.yaml'
+        description: 'Semantic aliases — meaning over raw values. Components reference these only.'
 
-        brands:
-            - id: 'raindrop'
-              path: 'tokens/brands/raindrop.yaml'
-              description: 'Raindrop brand — blue primary, sharp radius, Inter, 1.25 scale'
-              app: 'Sports ranking app'
+    brands:
+      - id: 'raindrop'
+        path: 'tokens/brands/raindrop.yaml'
+        description: 'Raindrop brand — blue primary, sharp radius, Inter, 1.25 scale'
+        app: 'Sports ranking app'
 
-            - id: 'dusk-rose'
-              path: 'tokens/brands/dusk-rose.yaml'
-              description: 'Dusk Rose brand — rose primary, soft radius, Cabinet Grotesk + Fraunces, 1.333 scale'
-              app: 'Exquisite Corpse'
+      - id: 'dusk-rose'
+        path: 'tokens/brands/dusk-rose.yaml'
+        description: 'Dusk Rose brand — rose primary, soft radius, Cabinet Grotesk + Fraunces, 1.333 scale'
+        app: 'Exquisite Corpse'
 
-    # Component contracts — one file per component
-    # Populated as components are built
-    components:
-        atoms: []
-        molecules: []
-        organisms: []
+  # Component contracts — one file per component
+  # Populated as components are built
+  components:
+    atoms: []
+    molecules: []
+    organisms: []
 
-    # External dependencies referenced in tokens
-    dependencies:
-        fonts:
-            - name: 'Inter'
-              source: 'Google Fonts'
-              url: 'https://fonts.google.com/specimen/Inter'
-              brand: 'raindrop'
-              load: "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap')"
+  # External dependencies referenced in tokens
+  dependencies:
+    fonts:
+      - name: 'Inter'
+        source: 'Google Fonts'
+        url: 'https://fonts.google.com/specimen/Inter'
+        brand: 'raindrop'
+        load: "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap')"
 
-            - name: 'Fraunces'
-              source: 'Google Fonts'
-              url: 'https://fonts.google.com/specimen/Fraunces'
-              brand: 'dusk-rose'
-              axes: 'opsz 9-144, wght 100-900, ital 0-1'
-              load: "@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap')"
+      - name: 'Fraunces'
+        source: 'Google Fonts'
+        url: 'https://fonts.google.com/specimen/Fraunces'
+        brand: 'dusk-rose'
+        axes: 'opsz 9-144, wght 100-900, ital 0-1'
+        load: "@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap')"
 
-            - name: 'Cabinet Grotesk'
-              source: 'Fontshare'
-              url: 'https://www.fontshare.com/fonts/cabinet-grotesk'
-              brand: 'dusk-rose'
-              note: 'Loads from api.fontshare.com — separate @font-face from Google Fonts CDN'
-              load: "@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap')"
+      - name: 'Cabinet Grotesk'
+        source: 'Fontshare'
+        url: 'https://www.fontshare.com/fonts/cabinet-grotesk'
+        brand: 'dusk-rose'
+        note: 'Loads from api.fontshare.com — separate @font-face from Google Fonts CDN'
+        load: "@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap')"
 
-            - name: 'JetBrains Mono'
-              source: 'Free / open source'
-              url: 'https://www.jetbrains.com/lp/mono/'
-              brand: 'system'
-              load: "@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap')"
+      - name: 'JetBrains Mono'
+        source: 'Free / open source'
+        url: 'https://www.jetbrains.com/lp/mono/'
+        brand: 'system'
+        load: "@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap')"
 
-        runtime:
-            - name: 'Framer Motion'
-              version: '^11.0.0'
-              brand: 'dusk-rose'
-              usage: 'Reveal strip, random assignment, story completion — spring physics and stagger timing'
-              note: 'CSS cubic-bezier approximations exist in motion.easing.spring for non-animated fallbacks'
+    runtime:
+      - name: 'Framer Motion'
+        version: '^11.0.0'
+        brand: 'dusk-rose'
+        usage: 'Reveal strip, random assignment, story completion — spring physics and stagger timing'
+        note: 'CSS cubic-bezier approximations exist in motion.easing.spring for non-animated fallbacks'
 
-            - name: 'Tiptap'
-              version: '^2.0.0'
-              brand: 'dusk-rose'
-              usage: 'Headless rich text editor for the writing surface'
-              note: 'Headless — zero default styles. Styled entirely by Petrichor CSS modules.'
+      - name: 'Tiptap'
+        version: '^2.0.0'
+        brand: 'dusk-rose'
+        usage: 'Headless rich text editor for the writing surface'
+        note: 'Headless — zero default styles. Styled entirely by Petrichor CSS modules.'

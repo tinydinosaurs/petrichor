@@ -2,20 +2,20 @@
 
 A schema-first, multi-brand design system.
 
-
 ## Behavior
-Petrichor is built contract-first. Every component is defined as a machine-readable `.ai.yaml` contract before any code is written. These contracts are the single source of truth — consumed by the React component library, exposed via the MCP server to AI tools, and readable by humans. 
+
+Petrichor is built contract-first. Every component is defined as a machine-readable `.ai.yaml` contract before any code is written. These contracts are the single source of truth — consumed by the React component library, exposed via the MCP server to AI tools, and readable by humans.
 
 There is no Figma library. Designers who prefer visual tools can use Figma's MCP integration to generate components from the contracts directly.
 
 ## Packages
 
-| Package | Description |
-|---|---|
+| Package             | Description                                                      |
+| ------------------- | ---------------------------------------------------------------- |
 | `@petrichor/tokens` | Design tokens — YAML source → CSS / JS / TS via Style Dictionary |
-| `@petrichor/react` | React component library |
-| `@petrichor/mcp` | MCP server for AI tooling access to schemas and contracts |
-| `@petrichor/docs` | Storybook documentation site |
+| `@petrichor/react`  | React component library                                          |
+| `@petrichor/mcp`    | MCP server for AI tooling access to schemas and contracts        |
+| `@petrichor/docs`   | Storybook documentation site                                     |
 
 ## Getting started
 
