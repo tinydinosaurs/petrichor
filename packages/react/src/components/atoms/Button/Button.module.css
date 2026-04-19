@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--ptr-spacing-3xs);
-  font-family: var(--ptr-typography-font-ui);
+  font-family: var(--ptr-button-font-family, var(--ptr-typography-font-ui));
   font-weight: var(--ptr-typography-weight-label);
   line-height: var(--ptr-typography-line-height-ui);
   white-space: nowrap;
@@ -48,25 +48,25 @@
 
 .sm {
   height: 32px;
-  padding: 0 var(--ptr-spacing-xs);
-  font-size: var(--ptr-typography-size-sm);
-  border-radius: var(--ptr-radius-component-button);
+  padding: var(--ptr-button-padding-sm, 0 var(--ptr-spacing-xs));
+  font-size: var(--ptr-button-font-size, var(--ptr-typography-size-sm));
+  border-radius: var(--ptr-button-radius, var(--ptr-radius-component-button));
   min-width: 32px;
 }
 
 .md {
   height: 40px;
-  padding: 0 var(--ptr-spacing-sm);
-  font-size: var(--ptr-typography-size-base);
-  border-radius: var(--ptr-radius-component-button);
+  padding: var(--ptr-button-padding-md, 0 var(--ptr-spacing-sm));
+  font-size: var(--ptr-button-font-size, var(--ptr-typography-size-base));
+  border-radius: var(--ptr-button-radius, var(--ptr-radius-component-button));
   min-width: 40px;
 }
 
 .lg {
   height: 48px;
-  padding: 0 var(--ptr-spacing-md);
-  font-size: var(--ptr-typography-size-md);
-  border-radius: var(--ptr-radius-component-button);
+  padding: var(--ptr-button-padding-lg, 0 var(--ptr-spacing-md));
+  font-size: var(--ptr-button-font-size, var(--ptr-typography-size-md));
+  border-radius: var(--ptr-button-radius, var(--ptr-radius-component-button));
   min-width: 48px;
 }
 

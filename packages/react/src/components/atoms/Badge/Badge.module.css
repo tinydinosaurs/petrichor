@@ -21,23 +21,23 @@
 
 .sm {
   height: 20px;
-  padding: 0 var(--ptr-spacing-3xs);
-  font-size: var(--ptr-typography-size-xs);
-  border-radius: var(--ptr-radius-component-badge);
+  padding: var(--ptr-badge-padding-sm, 0 var(--ptr-spacing-3xs));
+  font-size: var(--ptr-badge-font-size, var(--ptr-typography-size-xs));
+  border-radius: var(--ptr-badge-radius, var(--ptr-radius-component-badge));
 }
 
 .md {
   height: 24px;
-  padding: 0 var(--ptr-spacing-2xs);
-  font-size: var(--ptr-typography-size-sm);
-  border-radius: var(--ptr-radius-component-badge);
+  padding: var(--ptr-badge-padding-md, 0 var(--ptr-spacing-2xs));
+  font-size: var(--ptr-badge-font-size, var(--ptr-typography-size-sm));
+  border-radius: var(--ptr-badge-radius, var(--ptr-radius-component-badge));
 }
 
 .lg {
   height: 28px;
-  padding: 0 var(--ptr-spacing-xs);
-  font-size: var(--ptr-typography-size-base);
-  border-radius: var(--ptr-radius-component-badge);
+  padding: var(--ptr-badge-padding-lg, 0 var(--ptr-spacing-xs));
+  font-size: var(--ptr-badge-font-size, var(--ptr-typography-size-base));
+  border-radius: var(--ptr-badge-radius, var(--ptr-radius-component-badge));
 }
 
 /* ============================================================

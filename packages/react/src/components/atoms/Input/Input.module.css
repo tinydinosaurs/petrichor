@@ -55,12 +55,13 @@
 
 .field {
   width: 100%;
-  font-family: var(--ptr-typography-font-ui);
-  font-size: var(--ptr-typography-size-base);
+  font-family: var(--ptr-input-font-family, var(--ptr-typography-font-ui));
+  font-size: var(--ptr-input-font-size, var(--ptr-typography-size-base));
   color: var(--ptr-color-text-primary);
   background: var(--ptr-color-bg-input);
-  border: var(--ptr-border-hairline) solid var(--ptr-color-border-default);
-  border-radius: var(--ptr-radius-component-input);
+  border: var(--ptr-input-border-width, var(--ptr-border-hairline)) solid
+    var(--ptr-color-border-default);
+  border-radius: var(--ptr-input-radius, var(--ptr-radius-component-input));
   outline: none;
   transition: var(--ptr-motion-micro);
   box-sizing: border-box;
@@ -98,21 +99,21 @@
 
 .sm .field {
   height: 32px;
-  padding: 0 var(--ptr-spacing-xs);
-  font-size: var(--ptr-typography-size-sm);
-  border-radius: var(--ptr-radius-component-input);
+  padding: 0 var(--ptr-input-padding-x, var(--ptr-spacing-xs));
+  font-size: var(--ptr-input-font-size, var(--ptr-typography-size-sm));
+  border-radius: var(--ptr-input-radius, var(--ptr-radius-component-input));
 }
 
 .md .field {
   height: 40px;
-  padding: 0 var(--ptr-spacing-sm);
-  font-size: var(--ptr-typography-size-base);
+  padding: 0 var(--ptr-input-padding-x, var(--ptr-spacing-sm));
+  font-size: var(--ptr-input-font-size, var(--ptr-typography-size-base));
 }
 
 .lg .field {
   height: 48px;
-  padding: 0 var(--ptr-spacing-sm);
-  font-size: var(--ptr-typography-size-md);
+  padding: 0 var(--ptr-input-padding-x, var(--ptr-spacing-sm));
+  font-size: var(--ptr-input-font-size, var(--ptr-typography-size-md));
 }
 
 .sm .field.hasPrefix {

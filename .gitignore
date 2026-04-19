@@ -15,5 +15,9 @@ packages/docs/storybook-static/
 .env
 .env.local
 
+# TypeScript incremental build cache
+*.tsbuildinfo
+
 # Misc
 notes/
+memory/

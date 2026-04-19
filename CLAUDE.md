@@ -31,7 +31,7 @@ petrichor/
 │   │           └── organisms/
 │   ├── docs/            ← @petrichor/docs — Storybook
 │   └── mcp-server/      ← @petrichor/mcp-server (not yet implemented)
-├── decisions/           ← architectural decision records
+├── notes/               ← architectural decisions, process docs, reference
 ├── specs/               ← LLM-readable token and foundation specs
 ├── scripts/             ← token-audit.js and other tooling
 ├── CLAUDE.md            ← this file
@@ -106,11 +106,24 @@ Theme is applied by setting attributes on `<html>`:
 
 ```html
 <html data-brand="raindrop" data-color-scheme="dark">
-  <html data-brand="dusk-rose" data-color-scheme="light"></html>
-</html>
+<html data-brand="dusk-rose" data-color-scheme="light">
 ```
 
 Never apply theme attributes to a wrapper div. They must be on the root element.
+
+### Default color scheme is per-brand
+
+Each brand has its own default color scheme — do not assume dark is always the default.
+
+| Brand | Default | Dark override |
+|---|---|---|
+| Raindrop | **light** | `data-color-scheme="dark"` |
+| Dusk Rose | **dark** | `data-color-scheme="light"` |
+| Medi-pal | **light** (planned) | `data-color-scheme="dark"` |
+
+**How it works:** `raindrop.yaml` includes light mode token values directly in the `[data-brand="raindrop"]` selector. The Style Dictionary build also outputs a `[data-brand="raindrop"][data-color-scheme="dark"]` block that restores dark values when the user explicitly chooses dark. Dusk Rose has no light overrides in its brand file — it inherits the dark defaults from `semantic.yaml`.
+
+The system-wide `light.css` still works as expected — `data-color-scheme="light"` and `prefers-color-scheme: light` continue to apply light values to any brand that hasn't set its own default.
 
 ### Token reference
 
@@ -398,7 +411,7 @@ Pass the component class (`Trophy`), never an instance (`<Trophy />`).
 | All available tokens    | `specs/tokens/token-reference.md`                                                                 |
 | Component contract      | `packages/react/src/components/[atoms\|molecules\|organisms]/ComponentName/ComponentName.ai.yaml` |
 | Component human docs    | `...ComponentName/ComponentName.docs.md`                                                          |
-| Architectural decisions | `decisions/001-foundation.md`                                                                     |
-| Deferred items          | `decisions/future-items.md`                                                                       |
+| Architectural decisions | `notes/001-foundation.md`                                                                         |
+| Deferred items          | `notes/petrichor-future-items.md`                                                                 |
 | Foundation design brief | `petrichor-design-brief.md`                                                                       |
 | Full context document   | `petrichor-context.md`                                                                            |
