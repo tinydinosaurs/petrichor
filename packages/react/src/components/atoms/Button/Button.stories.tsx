@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ArrowRightIcon, DownloadSimpleIcon, TrophyIcon } from '@phosphor-icons/react';
 import { Button } from './Button';
+import { Icon } from '../Icon/Icon';
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
@@ -143,16 +145,10 @@ export const Disabled: Story = {
    ICONS
    ============================================================ */
 
-const IconPlaceholder = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-    <rect x="2" y="2" width="12" height="12" rx="2" opacity="0.8" />
-  </svg>
-);
-
 export const WithIconStart: Story = {
   name: 'Icon start',
   args: {
-    iconStart: <IconPlaceholder />,
+    iconStart: <Icon icon={DownloadSimpleIcon} />,
     children: 'Export',
   },
 };
@@ -160,7 +156,7 @@ export const WithIconStart: Story = {
 export const WithIconEnd: Story = {
   name: 'Icon end',
   args: {
-    iconEnd: <IconPlaceholder />,
+    iconEnd: <Icon icon={ArrowRightIcon} />,
     children: 'Next',
   },
 };
@@ -169,8 +165,8 @@ export const IconOnlyStory: Story = {
   name: 'Icon only',
   args: {
     iconOnly: true,
-    'aria-label': 'Close dialog',
-    children: <IconPlaceholder />,
+    'aria-label': 'Trophy',
+    children: <Icon icon={TrophyIcon} />,
   },
   parameters: {
     docs: {

@@ -133,7 +133,7 @@
 
 .danger {
   background: var(--ptr-color-status-danger-bg);
-  color: var(--ptr-color-text-on-brand);
+  color: var(--ptr-color-status-danger-text);
   border-color: transparent;
 }
 

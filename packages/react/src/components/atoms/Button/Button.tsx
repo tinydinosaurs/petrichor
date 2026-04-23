@@ -79,7 +79,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {iconStart}
               </span>
             )}
-            {!iconOnly && children}
+            {iconOnly ? (
+              <span className={styles.iconStart} aria-hidden="true">
+                {children}
+              </span>
+            ) : (
+              children
+            )}
             {!loading && iconEnd && (
               <span className={styles.iconEnd} aria-hidden="true">
                 {iconEnd}

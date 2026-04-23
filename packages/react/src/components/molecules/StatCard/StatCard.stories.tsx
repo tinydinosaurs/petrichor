@@ -67,13 +67,6 @@ const meta: Meta<typeof StatCard> = {
     value: '2,840',
     loading: false,
   },
-  decorators: [
-    (Story) => (
-      <div style={{ width: '220px' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof StatCard>;
 
 export default meta;
@@ -83,7 +76,9 @@ type Story = StoryObj<typeof meta>;
    DEFAULT
    ============================================================ */
 
-export const Default: Story = {};
+export const Default: Story = {
+  decorators: [(Story) => <div style={{ width: '220px' }}><Story /></div>],
+};
 
 /* ============================================================
    WITH TREND
@@ -91,6 +86,7 @@ export const Default: Story = {};
 
 export const TrendUp: Story = {
   name: 'Trend — up (positive)',
+  decorators: [(Story) => <div style={{ width: '220px' }}><Story /></div>],
   args: {
     label: 'Season points',
     value: '2,840',
@@ -101,6 +97,7 @@ export const TrendUp: Story = {
 
 export const TrendDown: Story = {
   name: 'Trend — down (negative)',
+  decorators: [(Story) => <div style={{ width: '220px' }}><Story /></div>],
   args: {
     label: 'Win rate',
     value: '81%',
@@ -111,6 +108,7 @@ export const TrendDown: Story = {
 
 export const TrendNeutral: Story = {
   name: 'Trend — neutral',
+  decorators: [(Story) => <div style={{ width: '220px' }}><Story /></div>],
   args: {
     label: 'Current rank',
     value: '#1',
@@ -125,6 +123,7 @@ export const TrendNeutral: Story = {
 
 export const TrendInverse: Story = {
   name: 'Trend — up is bad (inverse)',
+  decorators: [(Story) => <div style={{ width: '220px' }}><Story /></div>],
   args: {
     label: 'Errors this month',
     value: '3',
@@ -150,6 +149,7 @@ export const TrendInverse: Story = {
    ============================================================ */
 
 export const Loading: Story = {
+  decorators: [(Story) => <div style={{ width: '220px' }}><Story /></div>],
   args: {
     label: 'Season points',
     value: '2,840',

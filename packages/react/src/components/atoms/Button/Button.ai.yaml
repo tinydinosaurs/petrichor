@@ -73,7 +73,9 @@ props:
     type: boolean
     default: false
     notes: >
-      Renders a square button. Hides label text visually.
+      Renders a square button. Pass the icon as children — it is wrapped in an
+      aria-hidden span automatically. Do not pass text as children when iconOnly
+      is true; it will render but look wrong.
       REQUIRES aria-label — screen readers have no visible text to read.
       Touch target expanded to 44x44px on sm size via ::before pseudo-element.
 
@@ -212,10 +214,10 @@ patterns:
     example: |
       <Toolbar>
         <Button variant="ghost" iconOnly size="sm" aria-label="Bold">
-          <BoldIcon />
+          <Icon icon={BoldIcon} />
         </Button>
         <Button variant="ghost" iconOnly size="sm" aria-label="Italic">
-          <ItalicIcon />
+          <Icon icon={ItalicIcon} />
         </Button>
       </Toolbar>
 
@@ -238,8 +240,10 @@ anti_patterns:
 
   - id: icon-only-no-label
     description: Icon-only button without aria-label
-    wrong: <Button iconOnly><XIcon /></Button>
-    right: <Button iconOnly aria-label="Close dialog"><XIcon /></Button>
+    wrong: |
+      <Button iconOnly><Icon icon={XIcon} /></Button>
+    right: |
+      <Button iconOnly aria-label="Close dialog"><Icon icon={XIcon} /></Button>
     reason: Screen readers have no visible text to read. The button is inaccessible.
 
   - id: div-as-button

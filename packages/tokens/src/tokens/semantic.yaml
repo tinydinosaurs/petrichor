@@ -45,7 +45,7 @@ color:
     info: { value: '{color.rain.400}', comment: 'Informational text' }
     success: { value: '{color.teal.400}', comment: 'Success text' }
     warning: { value: '{color.gold.400}', comment: 'Warning text' }
-    error: { value: '{color.amber.400}', comment: 'Error text' }
+    error: { value: '{color.red.200}', comment: 'Error text' }
 
   # ---------------------------------------------------------------------------
   # BACKGROUND — surfaces
@@ -67,7 +67,7 @@ color:
     info: { value: '{color.rain.800}', comment: 'Info tinted surface' }
     success: { value: '{color.teal.800}', comment: 'Success tinted surface' }
     warning: { value: '{color.gold.800}', comment: 'Warning tinted surface' }
-    error: { value: '{color.amber.800}', comment: 'Error tinted surface' }
+    error: { value: '{color.red.800}', comment: 'Error tinted surface' }
 
   # ---------------------------------------------------------------------------
   # BORDER — structural lines
@@ -83,7 +83,7 @@ color:
     info: { value: '{color.rain.600}', comment: 'Info border' }
     success: { value: '{color.teal.600}', comment: 'Success border' }
     warning: { value: '{color.gold.600}', comment: 'Warning border' }
-    error: { value: '{color.amber.600}', comment: 'Error border' }
+    error: { value: '{color.red.200}', comment: 'Error border' }
 
   # ---------------------------------------------------------------------------
   # BRAND — primary brand color
@@ -128,16 +128,16 @@ color:
       border: { value: '{color.gold.600}', comment: 'Warning border' }
 
     error:
-      bg: { value: '{color.amber.800}', comment: 'Error tinted surface — dark mode' }
-      text: { value: '{color.amber.400}', comment: 'Error text and icons' }
-      tint: { value: '{color.amber.800}', comment: 'Error subtle background — ghost-danger hover' }
-      border: { value: '{color.amber.600}', comment: 'Error border' }
+      bg: { value: '{color.red.800}', comment: 'Error tinted surface — dark mode' }
+      text: { value: '{color.red.200}', comment: 'Error text and icons' }
+      tint: { value: '{color.red.800}', comment: 'Error subtle background — ghost-danger hover' }
+      border: { value: '{color.red.200}', comment: 'Error border' }
 
     danger:
-      bg: { value: '{color.amber.800}', comment: 'Danger tinted surface — destructive actions' }
-      text: { value: '{color.amber.400}', comment: 'Danger text and icons' }
-      tint: { value: '{color.amber.800}', comment: 'Danger subtle background' }
-      border: { value: '{color.amber.600}', comment: 'Danger border' }
+      bg: { value: '{color.red.800}', comment: 'Danger tinted surface — destructive actions' }
+      text: { value: '{color.red.200}', comment: 'Danger text and icons' }
+      tint: { value: '{color.red.800}', comment: 'Danger subtle background' }
+      border: { value: '{color.red.200}', comment: 'Danger border' }
 
   # ---------------------------------------------------------------------------
   # ACCENT PALETTE — named semantic aliases for the 7 spectrum accents

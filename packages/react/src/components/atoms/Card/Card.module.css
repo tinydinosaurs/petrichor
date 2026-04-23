@@ -85,6 +85,12 @@
   padding-top: 0;
 }
 
+/* Horizontal layouts (image left/right) need full padding on all sides */
+.card:has(.imageLeft) .imageWrap + .body,
+.card:has(.imageRight) .imageWrap + .body {
+  padding-top: var(--ptr-spacing-sm);
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */

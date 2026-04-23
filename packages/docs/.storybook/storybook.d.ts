@@ -16,3 +16,25 @@ declare module '@storybook/preview-api' {
   }
   export const addons: Addons;
 }
+
+declare module '@storybook/manager-api' {
+  export const addons: {
+    register(id: string, fn: () => void): void;
+    add(id: string, options: { type: string; title: string; match: () => boolean; render: React.ComponentType }): void;
+  };
+  export const types: { TOOL: string };
+  export function useGlobals(): [Record<string, string>, (globals: Record<string, string>) => void];
+}
+
+declare module '@storybook/components' {
+  export const IconButton: React.ComponentType<{
+    title?: string;
+    onClick?: () => void;
+    children?: React.ReactNode;
+  }>;
+}
+
+declare module '@storybook/icons' {
+  export const SunIcon: React.ComponentType;
+  export const MoonIcon: React.ComponentType;
+}

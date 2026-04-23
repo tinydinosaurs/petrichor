@@ -31,6 +31,7 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@petrichor/tokens/css/brand/dusk-rose': path.join(tokensDir, 'brand.dusk-rose.css'),
+          '@petrichor/tokens/css/brand/raindrop/dark': path.join(tokensDir, 'brand.raindrop.dark.css'),
           '@petrichor/tokens/css/brand/raindrop': path.join(tokensDir, 'brand.raindrop.css'),
           '@petrichor/tokens/css/light': path.join(tokensDir, 'light.css'),
           '@petrichor/tokens/css': path.join(tokensDir, 'base.css'),

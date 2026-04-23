@@ -85,7 +85,7 @@ color:
     900: { value: 'oklch(14% 0.03 90)', comment: 'Gold deepest' }
 
   amber:
-    # Warm coral-orange — error adjacent, warm accent
+    # Warm coral-orange — warm accent
     50: { value: 'oklch(94% 0.03 55)', comment: 'Amber tint' }
     100: { value: 'oklch(84% 0.08 55)', comment: 'Amber light' }
     200: { value: 'oklch(74% 0.12 55)', comment: 'Amber light mid' }
@@ -93,6 +93,18 @@ color:
     600: { value: 'oklch(44% 0.12 55)', comment: 'Amber strong' }
     800: { value: 'oklch(22% 0.05 55)', comment: 'Amber dark tint' }
     900: { value: 'oklch(14% 0.03 55)', comment: 'Amber deepest' }
+
+  red:
+    # Warm red — error, danger
+    50: { value: 'oklch(93% 0.02 25)', comment: 'Red tint' }
+    100: { value: 'oklch(89% 0.02 25)', comment: 'Red light' }
+    200: { value: 'oklch(78% 0.06 25)', comment: 'Red light mid' }
+    300: { value: 'oklch(62% 0.11 25)', comment: 'Red mid' }
+    400: { value: 'oklch(47% 0.16 25)', comment: 'Red strong' }
+    600: { value: 'oklch(40% 0.13 25)', comment: 'Red strong' }
+    700: { value: 'oklch(34% 0.10 25)', comment: 'Red dark' }
+    800: { value: 'oklch(25% 0.07 25)', comment: 'Red dark tint' }
+    900: { value: 'oklch(18% 0.04 25)', comment: 'Red deepest' }
 
   rose:
     # Cool pink — editorial, confident, Dusk Rose brand primary

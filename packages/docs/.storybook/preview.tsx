@@ -1,36 +1,34 @@
 import type { Preview, Decorator } from '@storybook/react';
-import { addons } from '@storybook/preview-api';
 
 import '@petrichor/tokens/css';
 import '@petrichor/tokens/css/light';
 import '@petrichor/tokens/css/brand/raindrop';
+import '@petrichor/tokens/css/brand/raindrop/dark';
 import '@petrichor/tokens/css/brand/dusk-rose';
 import './docs.css';
 
-// Apply brand/scheme to <html> at module load and on every globals change.
-// This runs on all pages including pure MDX docs — not just story renders.
-function applyTheme(brand: string, colorScheme: string) {
+// Set initial theme before any story renders.
+// Raindrop defaults to light, so we must set dark explicitly.
+document.documentElement.setAttribute('data-brand', 'raindrop');
+document.documentElement.setAttribute('data-color-scheme', 'dark');
+
+const withBrandTheme: Decorator = (Story, context) => {
+  const { brand = 'raindrop', colorScheme = 'dark' } = context.globals;
   document.documentElement.setAttribute('data-brand', brand);
   document.documentElement.setAttribute('data-color-scheme', colorScheme);
-}
 
-applyTheme('raindrop', 'dark');
-
-addons.getChannel().on('globalsUpdated', ({ globals }: { globals: Record<string, string> }) => {
-  applyTheme(globals.brand ?? 'raindrop', globals.colorScheme ?? 'dark');
-});
-
-const withBrandTheme: Decorator = (Story) => (
-  <div
-    style={{
-      padding: '2rem',
-      background: 'var(--ptr-color-bg-page)',
-      color: 'var(--ptr-color-text-primary)',
-    }}
-  >
-    <Story />
-  </div>
-);
+  return (
+    <div
+      style={{
+        padding: '2rem',
+        background: 'var(--ptr-color-bg-page)',
+        color: 'var(--ptr-color-text-primary)',
+      }}
+    >
+      <Story />
+    </div>
+  );
+};
 
 const preview: Preview = {
   globalTypes: {
@@ -48,15 +46,6 @@ const preview: Preview = {
     },
     colorScheme: {
       description: 'Color scheme',
-      toolbar: {
-        title: 'Theme',
-        icon: 'circlehollow',
-        items: [
-          { value: 'dark', title: 'Dark', icon: 'moon' },
-          { value: 'light', title: 'Light', icon: 'sun' },
-        ],
-        dynamicTitle: true,
-      },
     },
   },
   initialGlobals: {
@@ -65,6 +54,7 @@ const preview: Preview = {
   },
   decorators: [withBrandTheme],
   parameters: {
+    layout: 'padded',
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -40,15 +40,15 @@
   --ptr-color-status-warning-tint: oklch(95% 0.04 90);
   --ptr-color-status-warning-border: oklch(52% 0.12 90);
 
-  --ptr-color-status-error-bg: oklch(44% 0.12 55);
-  --ptr-color-status-error-text: oklch(44% 0.12 55);
-  --ptr-color-status-error-tint: oklch(94% 0.03 55);
-  --ptr-color-status-error-border: oklch(44% 0.12 55);
+  --ptr-color-status-error-bg: oklch(93% 0.02 25);
+  --ptr-color-status-error-text: oklch(40% 0.13 25);
+  --ptr-color-status-error-tint: oklch(93% 0.02 25);
+  --ptr-color-status-error-border: oklch(40% 0.13 25);
 
-  --ptr-color-status-danger-bg: oklch(44% 0.12 55);
-  --ptr-color-status-danger-text: oklch(44% 0.12 55);
-  --ptr-color-status-danger-tint: oklch(94% 0.03 55);
-  --ptr-color-status-danger-border: oklch(44% 0.12 55);
+  --ptr-color-status-danger-bg: oklch(93% 0.02 25);
+  --ptr-color-status-danger-text: oklch(40% 0.13 25);
+  --ptr-color-status-danger-tint: oklch(93% 0.02 25);
+  --ptr-color-status-danger-border: oklch(40% 0.13 25);
 }
 
 /* OS preference — applies only when no explicit override is set */
@@ -68,6 +68,11 @@
     --ptr-color-border-default: oklch(80% 0.02 80);
     --ptr-color-border-strong: oklch(65% 0.02 80);
 
+    /* Brand tint — light surfaces need light tint, not dark
+       Brand files override this with their specific hue tint */
+    --ptr-color-brand-primary-tint: oklch(94% 0.02 240);
+    --ptr-color-brand-primary-text: oklch(46% 0.12 240);
+
     --ptr-color-status-info-bg: oklch(94% 0.03 240);
     --ptr-color-status-info-text: oklch(46% 0.12 240);
     --ptr-color-status-info-tint: oklch(94% 0.03 240);
@@ -83,14 +88,14 @@
     --ptr-color-status-warning-tint: oklch(95% 0.04 90);
     --ptr-color-status-warning-border: oklch(52% 0.12 90);
 
-    --ptr-color-status-error-bg: oklch(44% 0.12 55);
-    --ptr-color-status-error-text: oklch(44% 0.12 55);
-    --ptr-color-status-error-tint: oklch(94% 0.03 55);
-    --ptr-color-status-error-border: oklch(44% 0.12 55);
+    --ptr-color-status-error-bg: oklch(93% 0.02 25);
+    --ptr-color-status-error-text: oklch(40% 0.13 25);
+    --ptr-color-status-error-tint: oklch(93% 0.02 25);
+    --ptr-color-status-error-border: oklch(40% 0.13 25);
 
-    --ptr-color-status-danger-bg: oklch(44% 0.12 55);
-    --ptr-color-status-danger-text: oklch(44% 0.12 55);
-    --ptr-color-status-danger-tint: oklch(94% 0.03 55);
-    --ptr-color-status-danger-border: oklch(44% 0.12 55);
+    --ptr-color-status-danger-bg: oklch(93% 0.02 25);
+    --ptr-color-status-danger-text: oklch(40% 0.13 25);
+    --ptr-color-status-danger-tint: oklch(93% 0.02 25);
+    --ptr-color-status-danger-border: oklch(40% 0.13 25);
   }
 }

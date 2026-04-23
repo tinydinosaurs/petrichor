@@ -36,8 +36,9 @@ color:
     primary-light:
       { value: '{color.rain.200}', comment: 'Rain light #b0c8e8 — tinted backgrounds, badges' }
     primary-tint:
-      { value: '{color.rain.800}', comment: 'Rain tint #1e2d40 — dark mode tinted surfaces' }
-    primary-text: { value: '{color.rain.400}', comment: 'Rain mid — links and labels on dark' }
+      { value: '{color.rain.50}', comment: 'Rain tint — light mode ghost hover, icon wraps' }
+    primary-text:
+      { value: '{color.rain.600}', comment: 'Rain primary — text on light tint backgrounds' }
 
     # Gradient mark — used in logo, loading bar, focus indicators
     gradient-from: { value: '{color.rain.600}', comment: 'Gradient start  oklch(46% 0.12 240)' }
@@ -83,15 +84,15 @@ color:
       tint: { value: 'oklch(95% 0.04 90)', comment: 'Warning tint — light mode' }
       border: { value: 'oklch(52% 0.12 90)', comment: 'Warning border — light mode' }
     error:
-      bg: { value: 'oklch(44% 0.12 55)', comment: 'Error bg — light mode' }
-      text: { value: 'oklch(44% 0.12 55)', comment: 'Error text — light mode' }
-      tint: { value: 'oklch(94% 0.03 55)', comment: 'Error tint — light mode' }
-      border: { value: 'oklch(44% 0.12 55)', comment: 'Error border — light mode' }
+      bg: { value: 'oklch(93% 0.02 25)', comment: 'Error bg — light mode, red.50' }
+      text: { value: 'oklch(40% 0.13 25)', comment: 'Error text — light mode, red.600' }
+      tint: { value: 'oklch(93% 0.02 25)', comment: 'Error tint — light mode, red.50' }
+      border: { value: 'oklch(40% 0.13 25)', comment: 'Error border — light mode, red.600' }
     danger:
-      bg: { value: 'oklch(44% 0.12 55)', comment: 'Danger bg — light mode' }
-      text: { value: 'oklch(44% 0.12 55)', comment: 'Danger text — light mode' }
-      tint: { value: 'oklch(94% 0.03 55)', comment: 'Danger tint — light mode' }
-      border: { value: 'oklch(44% 0.12 55)', comment: 'Danger border — light mode' }
+      bg: { value: 'oklch(93% 0.02 25)', comment: 'Danger bg — light mode, red.50' }
+      text: { value: 'oklch(40% 0.13 25)', comment: 'Danger text — light mode, red.600' }
+      tint: { value: 'oklch(93% 0.02 25)', comment: 'Danger tint — light mode, red.50' }
+      border: { value: 'oklch(40% 0.13 25)', comment: 'Danger border — light mode, red.600' }
 
 # ---------------------------------------------------------------------------
 # TYPOGRAPHY OVERRIDES

@@ -22,6 +22,10 @@
       "types": "./src/css-exports.d.ts",
       "default": "./dist/css/brand.raindrop.css"
     },
+    "./css/brand/raindrop/dark": {
+      "types": "./src/css-exports.d.ts",
+      "default": "./dist/css/brand.raindrop.dark.css"
+    },
     "./css/brand/dusk-rose": {
       "types": "./src/css-exports.d.ts",
       "default": "./dist/css/brand.dusk-rose.css"
