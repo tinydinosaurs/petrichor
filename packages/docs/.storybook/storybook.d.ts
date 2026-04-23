@@ -20,7 +20,10 @@ declare module '@storybook/preview-api' {
 declare module '@storybook/manager-api' {
   export const addons: {
     register(id: string, fn: () => void): void;
-    add(id: string, options: { type: string; title: string; match: () => boolean; render: React.ComponentType }): void;
+    add(
+      id: string,
+      options: { type: string; title: string; match: () => boolean; render: React.ComponentType },
+    ): void;
   };
   export const types: { TOOL: string };
   export function useGlobals(): [Record<string, string>, (globals: Record<string, string>) => void];

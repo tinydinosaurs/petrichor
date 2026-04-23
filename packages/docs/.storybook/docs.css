@@ -5,6 +5,12 @@
  * descendants so foundation pages with full custom styling aren't affected.
  */
 
+.docs-story {
+  background: var(--ptr-color-bg-page);
+  color: var(--ptr-color-text-primary);
+  padding: 2rem;
+}
+
 .sbdocs-wrapper {
   font-family: var(--ptr-typography-font-ui);
   color: var(--ptr-color-text-primary);

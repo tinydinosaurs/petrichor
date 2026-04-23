@@ -109,7 +109,7 @@ Theme is applied by setting attributes on `<html>`:
 <html data-brand="dusk-rose" data-color-scheme="light">
 ```
 
-Never apply theme attributes to a wrapper div. They must be on the root element.
+Never apply theme attributes to a wrapper div. They must be on the root element. The reason is portals — tooltips, modals, and dropdowns rendered via `ReactDOM.createPortal` attach to `<body>`, outside any interior wrapper. If the attribute is on a div, portaled elements lose access to the tokens entirely and render without brand styles.
 
 ### Default color scheme is per-brand
 
